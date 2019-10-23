@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		A949039623606E0F009094BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949039523606E0F009094BA /* AppDelegate.swift */; };
 		A949039823606E0F009094BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949039723606E0F009094BA /* SceneDelegate.swift */; };
-		A949039A23606E0F009094BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949039923606E0F009094BA /* ViewController.swift */; };
 		A949039D23606E0F009094BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A949039B23606E0F009094BA /* Main.storyboard */; };
 		A949039F23606E10009094BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A949039E23606E10009094BA /* Assets.xcassets */; };
 		A94903A223606E10009094BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A94903A023606E10009094BA /* LaunchScreen.storyboard */; };
+		A94903AF2360749D009094BA /* AllJokeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94903AE2360749D009094BA /* AllJokeVC.swift */; };
+		A94903B323608163009094BA /* CustomTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94903B223608163009094BA /* CustomTVCell.swift */; };
+		A9C389B42360CE0900A98D6B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C389B32360CE0900A98D6B /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A949039223606E0F009094BA /* ImComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A949039523606E0F009094BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A949039723606E0F009094BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A949039923606E0F009094BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A949039C23606E0F009094BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A949039E23606E10009094BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A94903A123606E10009094BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A94903A323606E10009094BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A94903AE2360749D009094BA /* AllJokeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllJokeVC.swift; sourceTree = "<group>"; };
+		A94903B223608163009094BA /* CustomTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTVCell.swift; sourceTree = "<group>"; };
+		A9C389B32360CE0900A98D6B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +44,7 @@
 		A949038923606E0F009094BA = {
 			isa = PBXGroup;
 			children = (
+				A9C389B32360CE0900A98D6B /* TableViewCell.swift */,
 				A949039423606E0F009094BA /* ImComic */,
 				A949039323606E0F009094BA /* Products */,
 			);
@@ -56,15 +61,56 @@
 		A949039423606E0F009094BA /* ImComic */ = {
 			isa = PBXGroup;
 			children = (
-				A949039523606E0F009094BA /* AppDelegate.swift */,
-				A949039723606E0F009094BA /* SceneDelegate.swift */,
-				A949039923606E0F009094BA /* ViewController.swift */,
-				A949039B23606E0F009094BA /* Main.storyboard */,
-				A949039E23606E10009094BA /* Assets.xcassets */,
-				A94903A023606E10009094BA /* LaunchScreen.storyboard */,
+				A94903AD23607432009094BA /* SupportFile */,
+				A94903AC2360741B009094BA /* iBuilder */,
+				A94903AB2360740F009094BA /* Models */,
+				A94903AA23607406009094BA /* Helpers */,
+				A94903A9236073F7009094BA /* View Controller */,
 				A94903A323606E10009094BA /* Info.plist */,
 			);
 			path = ImComic;
+			sourceTree = "<group>";
+		};
+		A94903A9236073F7009094BA /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A94903AE2360749D009094BA /* AllJokeVC.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		A94903AA23607406009094BA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A94903B223608163009094BA /* CustomTVCell.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A94903AB2360740F009094BA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A94903AC2360741B009094BA /* iBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				A949039B23606E0F009094BA /* Main.storyboard */,
+				A94903A023606E10009094BA /* LaunchScreen.storyboard */,
+			);
+			path = iBuilder;
+			sourceTree = "<group>";
+		};
+		A94903AD23607432009094BA /* SupportFile */ = {
+			isa = PBXGroup;
+			children = (
+				A949039523606E0F009094BA /* AppDelegate.swift */,
+				A949039723606E0F009094BA /* SceneDelegate.swift */,
+				A949039E23606E10009094BA /* Assets.xcassets */,
+			);
+			path = SupportFile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +184,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A949039A23606E0F009094BA /* ViewController.swift in Sources */,
+				A9C389B42360CE0900A98D6B /* TableViewCell.swift in Sources */,
+				A94903AF2360749D009094BA /* AllJokeVC.swift in Sources */,
 				A949039623606E0F009094BA /* AppDelegate.swift in Sources */,
+				A94903B323608163009094BA /* CustomTVCell.swift in Sources */,
 				A949039823606E0F009094BA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,7 +342,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = BigBroGame.ImComic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,7 +360,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = BigBroGame.ImComic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
