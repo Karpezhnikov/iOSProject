@@ -20,6 +20,7 @@
 		A9DA36162367400B0004B711 /* ListCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA36152367400B0004B711 /* ListCategoryVC.swift */; };
 		A9DA361E23676D1A0004B711 /* ModelDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA361D23676D1A0004B711 /* ModelDataBase.swift */; };
 		A9DA3620236782020004B711 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA361F236782020004B711 /* StorageManager.swift */; };
+		A9DA36222368BA160004B711 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = A9DA36212368BA160004B711 /* default.realm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		A9DA36152367400B0004B711 /* ListCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCategoryVC.swift; sourceTree = "<group>"; };
 		A9DA361D23676D1A0004B711 /* ModelDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataBase.swift; sourceTree = "<group>"; };
 		A9DA361F236782020004B711 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		A9DA36212368BA160004B711 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		CC9F2068E1D5AC0849C98437 /* Pods-Flamingo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamingo.debug.xcconfig"; path = "Target Support Files/Pods-Flamingo/Pods-Flamingo.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7C5BF31A635E258B4DE997 /* Pods-Flamingo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamingo.release.xcconfig"; path = "Target Support Files/Pods-Flamingo/Pods-Flamingo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 		A9DA36192367406F0004B711 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A9DA36212368BA160004B711 /* default.realm */,
 				A913336D236317A400A54FEC /* AppDelegate.swift */,
 				A913336F236317A400A54FEC /* SceneDelegate.swift */,
 				A9133376236317A700A54FEC /* Assets.xcassets */,
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A913337A236317A700A54FEC /* LaunchScreen.storyboard in Resources */,
+				A9DA36222368BA160004B711 /* default.realm in Resources */,
 				A9133377236317A700A54FEC /* Assets.xcassets in Resources */,
 				A9133375236317A400A54FEC /* Main.storyboard in Resources */,
 			);

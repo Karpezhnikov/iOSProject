@@ -7,44 +7,23 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ListCategoryVC: UIViewController {
-
-    var titleView = "" // название выбранной категории 
     
-    let arrayCategori = [["ЭСТЕТИЧЕСКАЯ КОСМЕТОЛОГИЯ":"МАССАЖ ЛИЦА"],
-                         ["ЭСТЕТИЧЕСКАЯ КОСМЕТОЛОГИЯ":"ЧИСТКА ЛИЦА"],
-                         ["УЛЬТРАЗВУКОВАЯ":"ЧИСТКА ЛИЦА"],
-                         ["ЭСТЕТИЧЕСКАЯ КОСМЕТОЛОГИЯ":"УХОД ДЛЯ ЛИЦА"],
-                         ["ЭСТЕТИЧЕСКАЯ КОСМЕТОЛОГИЯ":"ПИЛИНГ ЛИЦА"],
-                         ["ЭСТЕТИЧЕСКАЯ КОСМЕТОЛОГИЯ":"ЭЛЕКТРОКОАГУЛЯЦИЯ ПАПИЛЛОМ И РОДИНОК"],
-                         ["ИНЪЕКЦИОННАЯ КОСМЕТОЛОГИЯ":"КОНТУРНАЯ ПЛАСТИКА"],
-                         ["АППАРАТНАЯ КОСМЕТОЛОГИЯ ЛИЦА":"ОЗОНОТЕРАПИЯ"],
-                         ["АППАРАТНАЯ КОСМЕТОЛОГИЯ ЛИЦА":"BB GLOW TREATMENT. «ТОНАЛЬНЫЙ КРЕМ НА ГОД»"],
-                         ["АППАРАТНАЯ КОСМЕТОЛОГИЯ ЛИЦА":"ФОТОТЕРАПИЯ"],
-                         ["АППАРАТНАЯ КОСМЕТОЛОГИЯ ЛИЦА":"ЭЛЕКТРОПОРАЦИЯ. БЕЗИНЪЕКЦИОННАЯ МЕЗОТЕРАПИЯ."],
-                         ["АППАРАТНАЯ КОСМЕТОЛОГИЯ ЛИЦА":"РАДИОВОЛНОВОЙ ЛИФТИНГ"],
-                         ["АППАРАТНАЯ КОСМЕТОЛОГИЯ ЛИЦА":"ВАКУУМНЫЙ МАССАЖ"]]
-    var arrayCategoryValues = Array<String>()
+    var arrayServices: Results<Service>! // для передачи всей информации
+    var service = Service() // для передачи выбраной ячейки
+    var arrayCategoryServices = Array<String>() // для отображений массива з-й
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        newArrayValues() // получаем список услуг
-        self.title = titleView // всталяем название окна
+        //newArrayValues() // получаем список услуг
+        self.title = service.comsmetology // всталяем название окна
         
+        sampleServices(services: arrayServices) // получаем выборку CategoryService по comsmetology
     }
     
-
-    func newArrayValues(){
-        let values = arrayCategori.map { [weak self] (dictionary) -> String? in
-            return dictionary[self!.titleView] // получаем массив из выбраной категории
-        }
-        for value in values{
-            if value != nil{ // проверяем на запись nil
-                arrayCategoryValues.append(value!) // заполняем список услуг по данной категории
-            }
-        }
-    }
+    
     /*
     // MARK: - Navigation
 
@@ -56,17 +35,30 @@ class ListCategoryVC: UIViewController {
     */
 
 }
+
+// MARK: Work Table View
 extension ListCategoryVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayCategoryValues.count
+        return arrayCategoryServices.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = arrayCategoryValues[indexPath.row]
-        
+        cell.textLabel?.text = arrayCategoryServices[indexPath.row]
         return cell
     }
+}
+
+
+extension ListCategoryVC{
+    // MARK: Get array Service param
     
-    
+    private func sampleServices(services: Results<Service>){
+        for value in services{
+            if value.comsmetology == service.comsmetology{
+                arrayCategoryServices.append(value.nameCategoryService)
+            }
+        }
+        arrayCategoryServices = Array(Set<String>(arrayCategoryServices))
+    }
 }

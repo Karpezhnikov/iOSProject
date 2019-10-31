@@ -14,5 +14,6 @@ struct StractSamplePriceList {
     var samplePriceList = Array<String>() // список услуг(в зависомости от выбора ЧТ)
     var humanMale = String() // пол человека
     var partOfBody = String() // часть тела человека
+    var comsmetology = String()
 }
 

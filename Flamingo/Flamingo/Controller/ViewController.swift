@@ -15,8 +15,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         //assignbackground()
     }
+    
     @IBAction func headAction(_ sender: UIButton) {
-        
     }
     
     @IBAction func bodyAction(_ sender: UIButton) {
@@ -28,41 +28,17 @@ class ViewController: UIViewController {
     @IBAction func legAction(_ sender: UIButton) {
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showDeteil"{ // определяем нужный сигвей
-//            guard let indexPath = tableView.indexPathForSelectedRow else {return} // определяем индекс строки
-//            // создаем экземпляр класса по нужному индексу
-//            let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
-//            let newPlaceVC = segue.destination as! NewPlaceViewController // создаем связть с другим вью
-//            newPlaceVC.currentPlace = place
-//        }
-//    }
-    
-//    guard let identifire = segue.identifier, let mapVC = segue.destination as? MapViewController else {return}
-//
-//    mapVC.incomeSegueIdentifier = identifire
-//    mapVC.mapViewControllerDelegate = self
-//
-//    if identifire == "showPlace"{
-//        mapVC.place.name = placeName.text!
-//        mapVC.place.location = placeLocation.text
-//        mapVC.place.type = placeType.text
-//        mapVC.place.imageData = placeImage.image?.pngData()
-//    }
-    
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("asda")
         guard let identifire = segue.identifier, let samplaPlaceVC = segue.destination as? SamplePriceListVC
-            else {
-                print("NONONO")
-                return}
+            else {return}
         
         if identifire == "segueHead"{
             print("segueHead")
-            samplaPlaceVC.priceList.humanMale = "man"
-            samplaPlaceVC.priceList.partOfBody = "Head"
-            samplaPlaceVC.priceList.samplePriceList = ["Стрижка Бокс", "Стрижка Полубокс", "Стрижка налосо"]
+            samplaPlaceVC.arrayComsmetology.humanMale = "man"
+            samplaPlaceVC.arrayComsmetology.partOfBody = "Голова"
         }
+        // ToDo: дописать метод после определения всех нужных частей тела
         
     }
     

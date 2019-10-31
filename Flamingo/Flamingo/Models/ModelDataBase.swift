@@ -14,6 +14,7 @@ class Service: Object{
     @objc dynamic var placeService = 0 // цена услуги
     @objc dynamic var timeService = "" // время действия
     @objc dynamic var serviceDescription = "" // описание услуги
+    @objc dynamic var cosmetics = ""
     
     @objc dynamic var nameCategoryService = "" // название категории услуги
     @objc dynamic var comsmetology = "" // косметология
@@ -29,6 +30,7 @@ class Service: Object{
             newService.placeService = service.placeService
             newService.timeService = service.timeService
             newService.serviceDescription = service.serviceDescription
+            newService.cosmetics = service.cosmetics.isEmpty ? "" : service.cosmetics
             newService.nameCategoryService = service.nameCategoryService
             newService.comsmetology = service.comsmetology
             newService.partOfTheBody = service.partOfTheBody
