@@ -17,10 +17,12 @@
 		A91333822363230F00A54FEC /* SamplePriceListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91333812363230F00A54FEC /* SamplePriceListVC.swift */; };
 		A91333842363270300A54FEC /* ModelSamplePriceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91333832363270300A54FEC /* ModelSamplePriceList.swift */; };
 		A91333862363569000A54FEC /* CustomTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91333852363569000A54FEC /* CustomTVCell.swift */; };
-		A9DA36162367400B0004B711 /* ListCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA36152367400B0004B711 /* ListCategoryVC.swift */; };
+		A92731FC236C23EC00976122 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92731FB236C23EC00976122 /* ModelController.swift */; };
+		A92731FE236C51BA00976122 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = A92731FD236C51B900976122 /* default.realm */; };
+		A9273200236C6B0900976122 /* AllListServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92731FF236C6B0900976122 /* AllListServiceVC.swift */; };
+		A9B5B29B236B445900B47359 /* DetailServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B5B29A236B445900B47359 /* DetailServiceVC.swift */; };
 		A9DA361E23676D1A0004B711 /* ModelDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA361D23676D1A0004B711 /* ModelDataBase.swift */; };
 		A9DA3620236782020004B711 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA361F236782020004B711 /* StorageManager.swift */; };
-		A9DA36222368BA160004B711 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = A9DA36212368BA160004B711 /* default.realm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,10 +38,12 @@
 		A91333812363230F00A54FEC /* SamplePriceListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplePriceListVC.swift; sourceTree = "<group>"; };
 		A91333832363270300A54FEC /* ModelSamplePriceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSamplePriceList.swift; sourceTree = "<group>"; };
 		A91333852363569000A54FEC /* CustomTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTVCell.swift; sourceTree = "<group>"; };
-		A9DA36152367400B0004B711 /* ListCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCategoryVC.swift; sourceTree = "<group>"; };
+		A92731FB236C23EC00976122 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		A92731FD236C51B900976122 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
+		A92731FF236C6B0900976122 /* AllListServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListServiceVC.swift; sourceTree = "<group>"; };
+		A9B5B29A236B445900B47359 /* DetailServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailServiceVC.swift; sourceTree = "<group>"; };
 		A9DA361D23676D1A0004B711 /* ModelDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataBase.swift; sourceTree = "<group>"; };
 		A9DA361F236782020004B711 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
-		A9DA36212368BA160004B711 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		CC9F2068E1D5AC0849C98437 /* Pods-Flamingo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamingo.debug.xcconfig"; path = "Target Support Files/Pods-Flamingo/Pods-Flamingo.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7C5BF31A635E258B4DE997 /* Pods-Flamingo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamingo.release.xcconfig"; path = "Target Support Files/Pods-Flamingo/Pods-Flamingo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,10 +102,11 @@
 		A9DA3617236740360004B711 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A92731FF236C6B0900976122 /* AllListServiceVC.swift */,
 				A9133371236317A400A54FEC /* ViewController.swift */,
 				A91333812363230F00A54FEC /* SamplePriceListVC.swift */,
-				A9DA36152367400B0004B711 /* ListCategoryVC.swift */,
 				A91333852363569000A54FEC /* CustomTVCell.swift */,
+				A9B5B29A236B445900B47359 /* DetailServiceVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -109,7 +114,7 @@
 		A9DA36192367406F0004B711 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A9DA36212368BA160004B711 /* default.realm */,
+				A92731FD236C51B900976122 /* default.realm */,
 				A913336D236317A400A54FEC /* AppDelegate.swift */,
 				A913336F236317A400A54FEC /* SceneDelegate.swift */,
 				A9133376236317A700A54FEC /* Assets.xcassets */,
@@ -120,8 +125,8 @@
 		A9DA361A236740910004B711 /* iBuillder */ = {
 			isa = PBXGroup;
 			children = (
-				A9133373236317A400A54FEC /* Main.storyboard */,
 				A9DA361F236782020004B711 /* StorageManager.swift */,
+				A9133373236317A400A54FEC /* Main.storyboard */,
 				A9133378236317A700A54FEC /* LaunchScreen.storyboard */,
 			);
 			path = iBuillder;
@@ -132,6 +137,7 @@
 			children = (
 				A91333832363270300A54FEC /* ModelSamplePriceList.swift */,
 				A9DA361D23676D1A0004B711 /* ModelDataBase.swift */,
+				A92731FB236C23EC00976122 /* ModelController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -205,7 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A913337A236317A700A54FEC /* LaunchScreen.storyboard in Resources */,
-				A9DA36222368BA160004B711 /* default.realm in Resources */,
+				A92731FE236C51BA00976122 /* default.realm in Resources */,
 				A9133377236317A700A54FEC /* Assets.xcassets in Resources */,
 				A9133375236317A400A54FEC /* Main.storyboard in Resources */,
 			);
@@ -260,11 +266,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9DA36162367400B0004B711 /* ListCategoryVC.swift in Sources */,
 				A91333862363569000A54FEC /* CustomTVCell.swift in Sources */,
+				A92731FC236C23EC00976122 /* ModelController.swift in Sources */,
 				A91333822363230F00A54FEC /* SamplePriceListVC.swift in Sources */,
 				A9DA3620236782020004B711 /* StorageManager.swift in Sources */,
+				A9B5B29B236B445900B47359 /* DetailServiceVC.swift in Sources */,
 				A9133372236317A400A54FEC /* ViewController.swift in Sources */,
+				A9273200236C6B0900976122 /* AllListServiceVC.swift in Sources */,
 				A9DA361E23676D1A0004B711 /* ModelDataBase.swift in Sources */,
 				A913336E236317A400A54FEC /* AppDelegate.swift in Sources */,
 				A91333842363270300A54FEC /* ModelSamplePriceList.swift in Sources */,

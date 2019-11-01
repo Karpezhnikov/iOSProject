@@ -1,0 +1,19 @@
+//
+//  ModelController.swift
+//  Flamingo
+//
+//  Created by Алексей Карпежников on 01/11/2019.
+//  Copyright © 2019 Алексей Карпежников. All rights reserved.
+//
+
+import Foundation
+
+// для передачи части тела и пола человека
+class ModelController {
+    var maleMan = "unisex" // по дефолту будут все пола
+    var partOfBody = "AllPartOfBody" // и все части тела
+    
+}
+
+
+

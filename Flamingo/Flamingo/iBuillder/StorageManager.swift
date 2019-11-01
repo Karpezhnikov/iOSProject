@@ -9,7 +9,16 @@
 
 import RealmSwift
 
-let realm = try! Realm()
+let schemaVersion: UInt64 = 2
+let config = Realm.Configuration(
+        // Get the URL to the bundled file
+    fileURL: Bundle.main.url(forResource: "default", withExtension: "realm"),
+    readOnly: true,
+    schemaVersion: schemaVersion)
+
+// Open the Realm with the configuration
+let realm = try! Realm(configuration: config)
+
 
 class StorageManager{
     
@@ -18,7 +27,6 @@ class StorageManager{
         try! realm.write {
             realm.add(service)
         }
-        
     }
     
 }

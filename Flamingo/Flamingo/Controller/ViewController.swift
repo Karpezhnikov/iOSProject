@@ -10,33 +10,50 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let segueNext = "nextVC"
+    var modelController = ModelController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //assignbackground()
+    }
+    // MARK: Action for man part of Body
+    @IBAction func hairManAction(_ sender: Any) {
+        modelController.maleMan = "man"
+        modelController.partOfBody = "Волосы"
+        performSegue(withIdentifier: "nextVC", sender: nil)
     }
     
-    @IBAction func headAction(_ sender: UIButton) {
+    @IBAction func headManAction(_ sender: UIButton) {
+        modelController.maleMan = "man"
+        modelController.partOfBody = "Голова"
+        performSegue(withIdentifier: "nextVC", sender: nil)
     }
     
-    @IBAction func bodyAction(_ sender: UIButton) {
+    @IBAction func bodyManAction(_ sender: UIButton) {
+        modelController.maleMan = "man"
+        modelController.partOfBody = "Тело"
+        performSegue(withIdentifier: "nextVC", sender: nil)
     }
     
-    @IBAction func handAction(_ sender: UIButton) {
+    @IBAction func handManAction(_ sender: UIButton) {
+        modelController.maleMan = "man"
+        modelController.partOfBody = "Руки"
+        performSegue(withIdentifier: "nextVC", sender: nil)
     }
     
-    @IBAction func legAction(_ sender: UIButton) {
+    @IBAction func legManAction(_ sender: UIButton) {
+        modelController.maleMan = "man"
+        modelController.partOfBody = "Ноги"
+        performSegue(withIdentifier: "nextVC", sender: nil)
     }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifire = segue.identifier, let samplaPlaceVC = segue.destination as? SamplePriceListVC
             else {return}
-        
-        if identifire == "segueHead"{
-            print("segueHead")
-            samplaPlaceVC.arrayComsmetology.humanMale = "man"
-            samplaPlaceVC.arrayComsmetology.partOfBody = "Голова"
+        guard !modelController.partOfBody.isEmpty else {return}
+        if identifire == segueNext{
+            samplaPlaceVC.modelController = modelController
         }
         // ToDo: дописать метод после определения всех нужных частей тела
         

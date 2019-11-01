@@ -10,12 +10,19 @@ import UIKit
 
 class CustomTVCell: UITableViewCell {
 
-    @IBOutlet weak var typeOfService: UILabel!
+    @IBOutlet weak var nameService: UILabel!
     @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var timeService: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        typeOfService.lineBreakMode = .byWordWrapping
-        typeOfService.numberOfLines = 0
+        nameService.lineBreakMode = .byWordWrapping
+        nameService.numberOfLines = 0
+        
+//        layer.cornerRadius = 15
+//        //layer.masksToBounds = false
+//        
+//        contentView.layer.borderWidth = 0.5
         // Initialization code
     }
 
@@ -24,5 +31,19 @@ class CustomTVCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+
+//    override open var frame: CGRect {
+//        get {
+//            return super.frame
+//        }
+//        set (newFrame) {
+//            var frame =  newFrame
+//            frame.origin.y += 5
+//            frame.origin.x += 5
+//            frame.size.height -= 5
+//            frame.size.width -= 2 * 5
+//            super.frame = frame
+//        }
+//    }
 
 }
