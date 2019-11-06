@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        //для задержки на экране загрузке
+        Thread.sleep(forTimeInterval: 1.5)
+        
         let schemaVersion: UInt64 = 2
         
         let config = Realm.Configuration(

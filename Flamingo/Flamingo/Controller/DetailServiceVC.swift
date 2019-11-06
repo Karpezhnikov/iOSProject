@@ -14,13 +14,34 @@ class DetailServiceVC: UIViewController {
     
     @IBOutlet weak var nameDeteilService: UILabel!
     @IBOutlet weak var imageService: UIImageView!
+    @IBOutlet weak var callButton: UIButton!
+    @IBOutlet weak var singUpButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         nameDeteilService.text = service.nameService
-        // Do any additional setup after loading the view.
+        
+        callButton.layer.cornerRadius = 10
+        singUpButton.layer.cornerRadius = 10
+        
+        setupNavigationBar()
+        
     }
     
+    // MARK: SetupNavigationBar
+    private func setupNavigationBar(){
+        // настраиваем кнопку назад
+        if let topItem = navigationController?.navigationBar.topItem{
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            //topItem.backBarButtonItem?.image = UIImage(named: "leftBarButton")
+            let imgBackArrow = UIImage(named: "leftBarButton")
 
+            navigationController?.navigationBar.backIndicatorImage = imgBackArrow
+            navigationController?.navigationBar.backIndicatorTransitionMaskImage = imgBackArrow
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 

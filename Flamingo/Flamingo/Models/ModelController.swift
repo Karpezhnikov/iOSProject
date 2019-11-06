@@ -12,6 +12,8 @@ import Foundation
 class ModelController {
     var maleMan = "unisex" // по дефолту будут все пола
     var partOfBody = "AllPartOfBody" // и все части тела
+    var nameServiceCategory = ""
+    var seatchTeg = "все"
     
 }
 

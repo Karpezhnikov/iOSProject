@@ -19,7 +19,8 @@
 		A91333862363569000A54FEC /* CustomTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91333852363569000A54FEC /* CustomTVCell.swift */; };
 		A92731FC236C23EC00976122 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92731FB236C23EC00976122 /* ModelController.swift */; };
 		A92731FE236C51BA00976122 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = A92731FD236C51B900976122 /* default.realm */; };
-		A9273200236C6B0900976122 /* AllListServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92731FF236C6B0900976122 /* AllListServiceVC.swift */; };
+		A99DC6BE2372AF5D0045D83C /* CategoryListServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99DC6BD2372AF5D0045D83C /* CategoryListServiceVC.swift */; };
+		A99DC6C02372AF9F0045D83C /* CustumCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99DC6BF2372AF9F0045D83C /* CustumCVC.swift */; };
 		A9B5B29B236B445900B47359 /* DetailServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B5B29A236B445900B47359 /* DetailServiceVC.swift */; };
 		A9DA361E23676D1A0004B711 /* ModelDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA361D23676D1A0004B711 /* ModelDataBase.swift */; };
 		A9DA3620236782020004B711 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA361F236782020004B711 /* StorageManager.swift */; };
@@ -40,7 +41,8 @@
 		A91333852363569000A54FEC /* CustomTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTVCell.swift; sourceTree = "<group>"; };
 		A92731FB236C23EC00976122 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		A92731FD236C51B900976122 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
-		A92731FF236C6B0900976122 /* AllListServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListServiceVC.swift; sourceTree = "<group>"; };
+		A99DC6BD2372AF5D0045D83C /* CategoryListServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListServiceVC.swift; sourceTree = "<group>"; };
+		A99DC6BF2372AF9F0045D83C /* CustumCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumCVC.swift; sourceTree = "<group>"; };
 		A9B5B29A236B445900B47359 /* DetailServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailServiceVC.swift; sourceTree = "<group>"; };
 		A9DA361D23676D1A0004B711 /* ModelDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataBase.swift; sourceTree = "<group>"; };
 		A9DA361F236782020004B711 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -102,11 +104,12 @@
 		A9DA3617236740360004B711 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A92731FF236C6B0900976122 /* AllListServiceVC.swift */,
 				A9133371236317A400A54FEC /* ViewController.swift */,
 				A91333812363230F00A54FEC /* SamplePriceListVC.swift */,
 				A91333852363569000A54FEC /* CustomTVCell.swift */,
 				A9B5B29A236B445900B47359 /* DetailServiceVC.swift */,
+				A99DC6BD2372AF5D0045D83C /* CategoryListServiceVC.swift */,
+				A99DC6BF2372AF9F0045D83C /* CustumCVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -272,10 +275,11 @@
 				A9DA3620236782020004B711 /* StorageManager.swift in Sources */,
 				A9B5B29B236B445900B47359 /* DetailServiceVC.swift in Sources */,
 				A9133372236317A400A54FEC /* ViewController.swift in Sources */,
-				A9273200236C6B0900976122 /* AllListServiceVC.swift in Sources */,
 				A9DA361E23676D1A0004B711 /* ModelDataBase.swift in Sources */,
+				A99DC6C02372AF9F0045D83C /* CustumCVC.swift in Sources */,
 				A913336E236317A400A54FEC /* AppDelegate.swift in Sources */,
 				A91333842363270300A54FEC /* ModelSamplePriceList.swift in Sources */,
+				A99DC6BE2372AF5D0045D83C /* CategoryListServiceVC.swift in Sources */,
 				A9133370236317A400A54FEC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

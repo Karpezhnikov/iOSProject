@@ -16,15 +16,20 @@ class SamplePriceListVC: UIViewController{
     var humanMale = ""
     var modelController = ModelController()
     
+    let arrayHashtagSeatch = ["все","ноги","руки","тело","голова","волосы","голова","тело"]
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = modelController.partOfBody
+        self.navigationItem.title = modelController.partOfBody
+        setupNavigationBar() // настраиваем кнопку назад 
         
         services = realm.objects(Service.self) // берем все объекты типа Service
         deleteDuplicates(services: services) // вытаскиваем список для отображения всех service
     }
+    
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,31 +54,56 @@ extension SamplePriceListVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTVCell
         
-        //cell.layer.borderWidth = 1
-        //cell.layer.cornerRadius = 15
-        //cell.contentView.frame = cell.contentView.frame.inset(by: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
-        //cell.contentView.frame.size.height = CGFloat(70)
-        
-//        cell.contentView.layer.cornerRadius = 15
-        
-        
         cell.nameService.text = arrayServises[indexPath.row].nameService
         cell.price.text = "\(arrayServises[indexPath.row].placeService)"
         cell.timeService.text = arrayServises[indexPath.row].timeService
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true) // для того, чтобы ячейка не выделялась
+    }
+}
+
+// MARK: Work Collection View
+extension SamplePriceListVC: UICollectionViewDataSource, UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return arrayHashtagSeatch.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "hashtagSeatch", for: indexPath) as? CustumCVC{
+            itemCell.hashtagLabel.text = "#\(arrayHashtagSeatch[indexPath.row])"
+            itemCell.layer.cornerRadius = 2
+            
+            return itemCell
+        }
+        return UICollectionViewCell()
+    }
+    
+    // для получения нажатой ячейки
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // получаем выбраную категорию и записываем ее в модель контроллера
+        // ToDo: сделать выборку по хештегу
+    }
+    
 }
 
 // MARK: Get array Service param
 extension SamplePriceListVC{
+    // заполняет список услуг для вывода на экран
     private func deleteDuplicates(services: Results<Service>){
-        switch (modelController.partOfBody == "AllPartOfBody") { // если перешли не с этого контроллера
+        switch (modelController.partOfBody == "AllPartOfBody") { // если перешли c tap bar
         case true:
-            self.title = "Список услуг"
+            //self.title = "Список услуг"
+            self.navigationItem.title = modelController.nameServiceCategory // вставляем заголовок
+            
             for service in services{ // выводим весь список услуг
-                arrayServises.append(service)
-                arrayServises = Array(Set<Service>(arrayServises))
+                if service.nameCategoryService == modelController.nameServiceCategory{ // если услуга соответствует выбраной категории
+                    arrayServises.append(service)
+                    arrayServises = Array(Set<Service>(arrayServises))
+                }
             }
         case false:
             for service in services{
@@ -86,5 +116,23 @@ extension SamplePriceListVC{
             }
             arrayServises = Array(Set<Service>(arrayServises)) // убераем дубли
         }
+    }
+}
+
+// MARK: SetupNavigationBar
+extension SamplePriceListVC{
+    
+    private func setupNavigationBar(){
+        // настраиваем кнопку назад
+        if let topItem = navigationController?.navigationBar.topItem{
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            
+            //topItem.backBarButtonItem?.image = UIImage(named: "leftBarButton")
+            let imgBackArrow = UIImage(named: "leftBarButton")
+
+            navigationController?.navigationBar.backIndicatorImage = imgBackArrow
+            navigationController?.navigationBar.backIndicatorTransitionMaskImage = imgBackArrow
+        }
+        
     }
 }

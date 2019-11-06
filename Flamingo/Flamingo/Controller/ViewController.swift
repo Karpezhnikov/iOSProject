@@ -15,7 +15,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.layer.cornerRadius = 20
+        self.tabBarController?.tabBar.layer.borderWidth = 0.5
+        self.tabBarController?.tabBar.layer.borderColor = .init(srgbRed: 100/255, green: 56/255, blue: 0/255, alpha: 1)
+        
     }
+    
+    
     // MARK: Action for man part of Body
     @IBAction func hairManAction(_ sender: Any) {
         modelController.maleMan = "man"
