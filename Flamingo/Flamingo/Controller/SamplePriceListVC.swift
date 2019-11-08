@@ -12,11 +12,15 @@ import RealmSwift
 class SamplePriceListVC: UIViewController{
     
     private var services: Results<Service>! // тип контейнера, который возвращает все объекты(массив)
-    var arrayServises = Array<Service>() // массив с отобранными записями
+    var arrayServises = Array<Service>(){
+        didSet{ // при изменении массива обновляем данные в таблице
+            tableView.reloadData()
+        }
+    } // массив с отобранными записями
     var humanMale = ""
     var modelController = ModelController()
     
-    let arrayHashtagSeatch = ["все","ноги","руки","тело","голова","волосы","голова","тело"]
+    let arrayHashtagSeatch = ["все","ноги","руки","тело","голова","волосы","голова","тело", "пресс","сиськи","они","мываываывчысывацуа"]
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -45,11 +49,10 @@ class SamplePriceListVC: UIViewController{
 
 // MARK: Work Table View
 extension SamplePriceListVC: UITableViewDataSource, UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  (arrayServises.count == 0) ? 0 : arrayServises.count
     }
-    
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTVCell
@@ -75,7 +78,8 @@ extension SamplePriceListVC: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "hashtagSeatch", for: indexPath) as? CustumCVC{
             itemCell.hashtagLabel.text = "#\(arrayHashtagSeatch[indexPath.row])"
-            itemCell.layer.cornerRadius = 2
+//            itemCell.layer.borderWidth = 0.5
+            
             
             return itemCell
         }
@@ -84,9 +88,18 @@ extension SamplePriceListVC: UICollectionViewDataSource, UICollectionViewDelegat
     
     // для получения нажатой ячейки
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // получаем выбраную категорию и записываем ее в модель контроллера
-        // ToDo: сделать выборку по хештегу
+        modelController.seatchTeg = arrayHashtagSeatch[indexPath.row]
+        if indexPath.row == 0{ // если нажат hashtag "все"
+            arrayServises.removeAll() // очищаем массив
+            deleteDuplicates(services: services) // вытаскиваем список для отображения всех service
+            return // выходим
+        }else{
+            arrayServises.removeAll() // очищаем массив
+            deleteDuplicates(services: services) // вытаскиваем список для отображения всех service
+            arrayServises = getServicesHashtag(hashtag: modelController.seatchTeg, inServices: arrayServises)
+        }
     }
+        
     
 }
 
@@ -116,6 +129,25 @@ extension SamplePriceListVC{
             }
             arrayServises = Array(Set<Service>(arrayServises)) // убераем дубли
         }
+    }
+    
+    private func getServicesHashtag(hashtag: String, inServices: Array<Service>)->Array<Service>{
+        
+        var outServices = Array<Service>()
+        
+        for service in inServices{
+            if service.comsmetology.uppercased() == hashtag.uppercased() ||
+                service.cosmetics.uppercased() == hashtag.uppercased() ||
+                service.maleMan.uppercased() == hashtag.uppercased() ||
+                service.nameCategoryService.uppercased() == hashtag.uppercased() ||
+                service.nameService.uppercased() == hashtag.uppercased() ||
+                service.partOfTheBody.uppercased() == hashtag.uppercased() ||
+                String(service.placeService) == hashtag.uppercased(){
+                outServices.append(service)
+            }
+        }
+        
+        return outServices
     }
 }
 

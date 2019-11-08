@@ -171,76 +171,82 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tru-nl-cRv">
-                                <rect key="frame" x="0.0" y="129" width="414" height="684"/>
+                                <rect key="frame" x="0.0" y="166" width="414" height="647"/>
                                 <color key="backgroundColor" red="0.20392156859999999" green="0.36862745099999999" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="PRH-CJ-6I0" customClass="CustomTVCell" customModule="Flamingo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" translatesAutoresizingMaskIntoConstraints="NO" id="PRH-CJ-6I0" customClass="CustomTVCell" customModule="Flamingo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PRH-CJ-6I0" translatesAutoresizingMaskIntoConstraints="NO" id="Pb1-1h-tlG">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundCell" translatesAutoresizingMaskIntoConstraints="NO" id="F2m-hb-tse">
-                                                    <rect key="frame" x="0.0" y="1" width="506" height="141"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Косметическая чистка лица «Оптимальное очищение Academie для молодой непроблемной кожи»" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="402" translatesAutoresizingMaskIntoConstraints="NO" id="Dc1-aV-iGT">
-                                                    <rect key="frame" x="5" y="20" width="492" height="43"/>
-                                                    <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="17"/>
-                                                    <color key="textColor" red="0.41960784309999999" green="0.74509803919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L4Z-UJ-2q0">
-                                                    <rect key="frame" x="307.5" y="84" width="178.5" height="48"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JKC-dJ-Up4">
+                                                    <rect key="frame" x="6" y="32" width="400.5" height="72"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="A9o-Zf-6WD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="78" height="48"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Косметическая чистка лица «Оптимальное очищение Academie для молодой непроблемной кожи»" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="319" translatesAutoresizingMaskIntoConstraints="NO" id="Dc1-aV-iGT">
+                                                            <rect key="frame" x="0.0" y="0.0" width="319" height="72"/>
+                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="20"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RU5-8N-Dzm">
+                                                            <rect key="frame" x="329" y="0.0" width="71.5" height="72"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="6tf-A3-Gfg">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                                </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dP-i7-3vY">
-                                                                    <rect key="frame" x="50" y="13.5" width="28" height="21.5"/>
-                                                                    <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="17"/>
-                                                                    <color key="textColor" red="0.41960784309999999" green="0.74509803919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="2n9-aq-lAl">
-                                                            <rect key="frame" x="88" y="0.0" width="90.5" height="48"/>
-                                                            <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit-card" translatesAutoresizingMaskIntoConstraints="NO" id="2Us-Lv-hI6">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                                </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12500" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPD-19-dEw">
-                                                                    <rect key="frame" x="50" y="0.0" width="40.5" height="48"/>
-                                                                    <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="17"/>
-                                                                    <color key="textColor" red="0.41960784309999999" green="0.74509803919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8pw-xa-IhW">
+                                                                    <rect key="frame" x="0.0" y="12" width="24" height="48"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="6tf-A3-Gfg">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                                        </imageView>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit-card" translatesAutoresizingMaskIntoConstraints="NO" id="2Us-Lv-hI6">
+                                                                            <rect key="frame" x="0.0" y="24" width="24" height="24"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="24" id="rUb-J9-QGL"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="DYJ-pE-Byj">
+                                                                    <rect key="frame" x="32" y="15" width="39.5" height="42.5"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="40" translatesAutoresizingMaskIntoConstraints="NO" id="0dP-i7-3vY">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="39.5" height="18"/>
+                                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12500" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="40" translatesAutoresizingMaskIntoConstraints="NO" id="OPD-19-dEw">
+                                                                            <rect key="frame" x="0.0" y="22" width="39.5" height="20.5"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="20.5" id="rUh-BQ-Z0e"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="RU5-8N-Dzm" secondAttribute="trailing" id="V0N-aa-eRt"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.20392156862745098" green="0.36862745098039218" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="F2m-hb-tse" secondAttribute="trailing" id="3dp-zd-Mzl"/>
-                                                <constraint firstItem="Dc1-aV-iGT" firstAttribute="top" secondItem="Pb1-1h-tlG" secondAttribute="top" constant="20" id="5aC-pU-8IF"/>
-                                                <constraint firstAttribute="trailing" secondItem="L4Z-UJ-2q0" secondAttribute="trailing" constant="20" id="C5i-cS-CQy"/>
-                                                <constraint firstItem="F2m-hb-tse" firstAttribute="leading" secondItem="Pb1-1h-tlG" secondAttribute="leading" id="NWE-jT-dEA"/>
-                                                <constraint firstAttribute="bottom" secondItem="F2m-hb-tse" secondAttribute="bottom" constant="1" id="RQe-eg-NJh"/>
-                                                <constraint firstAttribute="bottom" secondItem="L4Z-UJ-2q0" secondAttribute="bottom" constant="11" id="U0U-W5-Fat"/>
-                                                <constraint firstItem="F2m-hb-tse" firstAttribute="top" secondItem="Pb1-1h-tlG" secondAttribute="top" constant="1" id="jMX-VD-NCY"/>
-                                                <constraint firstAttribute="trailing" secondItem="Dc1-aV-iGT" secondAttribute="trailing" constant="9" id="qpq-92-Wgo"/>
-                                                <constraint firstItem="Dc1-aV-iGT" firstAttribute="leading" secondItem="Pb1-1h-tlG" secondAttribute="leading" constant="5" id="tdM-lq-THg"/>
-                                                <constraint firstItem="L4Z-UJ-2q0" firstAttribute="top" secondItem="Dc1-aV-iGT" secondAttribute="bottom" constant="21" id="vc3-rt-Kxp"/>
+                                                <constraint firstItem="JKC-dJ-Up4" firstAttribute="leading" secondItem="Pb1-1h-tlG" secondAttribute="leading" constant="6" id="0eJ-um-b5V"/>
+                                                <constraint firstAttribute="bottom" secondItem="JKC-dJ-Up4" secondAttribute="bottom" constant="31" id="0in-b3-Ysl"/>
+                                                <constraint firstAttribute="trailing" secondItem="JKC-dJ-Up4" secondAttribute="trailing" constant="6" id="7eX-Ri-4Q7"/>
+                                                <constraint firstItem="JKC-dJ-Up4" firstAttribute="top" secondItem="Pb1-1h-tlG" secondAttribute="top" constant="32" id="o9h-he-CI4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameService" destination="Dc1-aV-iGT" id="PgA-LL-XLx"/>
                                             <outlet property="price" destination="OPD-19-dEw" id="7BC-a2-B1g"/>
+                                            <outlet property="stackView" destination="JKC-dJ-Up4" id="JND-Sa-2gU"/>
                                             <outlet property="timeService" destination="0dP-i7-3vY" id="rNd-Ii-OzP"/>
                                             <segue destination="qs9-6n-OCn" kind="show" identifier="segueDetail" id="GOP-bs-46I"/>
                                         </connections>
@@ -251,42 +257,45 @@
                                     <outlet property="delegate" destination="7Ps-l5-KJ6" id="a5i-aq-jkC"/>
                                 </connections>
                             </tableView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VeH-WL-QYh">
-                                <rect key="frame" x="0.0" y="88" width="414" height="41"/>
-                                <color key="backgroundColor" red="0.30788326263427734" green="0.19265380501747131" blue="0.31243991851806641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VeH-WL-QYh">
+                                <rect key="frame" x="0.0" y="88" width="414" height="70"/>
+                                <color key="backgroundColor" red="0.20392156859999999" green="0.36862745099999999" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="cpX-yo-kaE"/>
-                                    <constraint firstAttribute="height" constant="41" id="pyW-oP-Omd"/>
+                                    <constraint firstAttribute="height" constant="70" id="8xy-Ie-g7i"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="5" id="Xgp-0J-ldp">
-                                    <size key="itemSize" width="163" height="31"/>
+                                    <size key="itemSize" width="186" height="46"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="3" minY="3" maxX="3" maxY="3"/>
+                                    <inset key="sectionInset" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="hashtagSeatch" id="IYW-Sv-luc" customClass="CustumCVC" customModule="Flamingo" customModuleProvider="target">
-                                        <rect key="frame" x="3" y="5" width="163" height="31"/>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="hashtagSeatch" id="IYW-Sv-luc" customClass="CustumCVC" customModule="Flamingo" customModuleProvider="target">
+                                        <rect key="frame" x="3" y="12" width="186" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2Vd-bR-NPf">
-                                            <rect key="frame" x="0.0" y="0.0" width="163" height="31"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Vd-bR-NPf">
+                                            <rect key="frame" x="0.0" y="0.0" width="186" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgI-iH-ZXN">
-                                                    <rect key="frame" x="22" y="4" width="118" height="23"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="14"/>
-                                                    <color key="textColor" red="0.41960784309999999" green="0.74509803919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgI-iH-ZXN">
+                                                    <rect key="frame" x="2" y="2" width="182" height="42"/>
+                                                    <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="0.1056292808219178" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="33C-Fj-ZOq"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="YgI-iH-ZXN" secondAttribute="trailing" constant="23" id="UXE-MM-oGa"/>
-                                                <constraint firstItem="YgI-iH-ZXN" firstAttribute="top" secondItem="2Vd-bR-NPf" secondAttribute="top" constant="4" id="h2e-1y-C67"/>
-                                                <constraint firstItem="YgI-iH-ZXN" firstAttribute="leading" secondItem="2Vd-bR-NPf" secondAttribute="leading" constant="22" id="jtE-6H-1Bu"/>
-                                                <constraint firstAttribute="bottom" secondItem="YgI-iH-ZXN" secondAttribute="bottom" constant="4" id="vGv-as-NBB"/>
+                                                <constraint firstItem="YgI-iH-ZXN" firstAttribute="top" secondItem="2Vd-bR-NPf" secondAttribute="top" constant="2" id="C72-Me-kWt"/>
+                                                <constraint firstAttribute="bottom" secondItem="YgI-iH-ZXN" secondAttribute="bottom" constant="2" id="Jwp-xh-wqs"/>
+                                                <constraint firstAttribute="trailing" secondItem="YgI-iH-ZXN" secondAttribute="trailing" constant="2" id="Zbx-yi-6Cr"/>
+                                                <constraint firstItem="YgI-iH-ZXN" firstAttribute="leading" secondItem="2Vd-bR-NPf" secondAttribute="leading" constant="2" id="bC9-Ml-Goc"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="163" height="31"/>
+                                        <size key="customSize" width="186" height="46"/>
                                         <connections>
                                             <outlet property="hashtagLabel" destination="YgI-iH-ZXN" id="4r4-rk-cZP"/>
                                         </connections>
@@ -300,14 +309,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.20392156859999999" green="0.36862745099999999" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="tru-nl-cRv" firstAttribute="trailing" secondItem="1wc-KP-2et" secondAttribute="trailing" id="2YT-D7-qRs"/>
-                            <constraint firstItem="VeH-WL-QYh" firstAttribute="leading" secondItem="1wc-KP-2et" secondAttribute="leading" id="9gm-AK-dh7"/>
-                            <constraint firstItem="tru-nl-cRv" firstAttribute="top" secondItem="VeH-WL-QYh" secondAttribute="bottom" id="CxJ-je-36Z"/>
-                            <constraint firstItem="VeH-WL-QYh" firstAttribute="top" secondItem="1wc-KP-2et" secondAttribute="top" id="KjK-Hm-E1F"/>
-                            <constraint firstItem="tru-nl-cRv" firstAttribute="leading" secondItem="1wc-KP-2et" secondAttribute="leading" id="OWk-SH-jfZ"/>
-                            <constraint firstItem="tru-nl-cRv" firstAttribute="top" secondItem="VeH-WL-QYh" secondAttribute="bottom" id="dGX-jO-gbO"/>
-                            <constraint firstItem="VeH-WL-QYh" firstAttribute="trailing" secondItem="1wc-KP-2et" secondAttribute="trailing" id="eto-09-vEN"/>
-                            <constraint firstItem="tru-nl-cRv" firstAttribute="bottom" secondItem="1wc-KP-2et" secondAttribute="bottom" id="x2f-xt-bvJ"/>
+                            <constraint firstItem="tru-nl-cRv" firstAttribute="top" secondItem="VeH-WL-QYh" secondAttribute="bottom" constant="8" id="4uq-w7-vv2"/>
+                            <constraint firstItem="VeH-WL-QYh" firstAttribute="trailing" secondItem="1wc-KP-2et" secondAttribute="trailing" id="6NE-XE-FaU"/>
+                            <constraint firstItem="tru-nl-cRv" firstAttribute="bottom" secondItem="1wc-KP-2et" secondAttribute="bottom" id="D3T-ur-ldY"/>
+                            <constraint firstItem="tru-nl-cRv" firstAttribute="leading" secondItem="1wc-KP-2et" secondAttribute="leading" id="XoP-Bo-yzs"/>
+                            <constraint firstItem="tru-nl-cRv" firstAttribute="trailing" secondItem="1wc-KP-2et" secondAttribute="trailing" id="Y16-Io-IrL"/>
+                            <constraint firstItem="VeH-WL-QYh" firstAttribute="leading" secondItem="1wc-KP-2et" secondAttribute="leading" id="YAn-fv-ZUa"/>
+                            <constraint firstItem="VeH-WL-QYh" firstAttribute="top" secondItem="1wc-KP-2et" secondAttribute="top" id="l88-Ze-HrT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1wc-KP-2et"/>
                     </view>
@@ -338,9 +346,9 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Косметическая чистка лица «Оптимальное очищение Academie для молодой непроблемной кожи»" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="374" translatesAutoresizingMaskIntoConstraints="NO" id="2yh-jL-n74">
-                                <rect key="frame" x="20" y="435" width="374" height="72"/>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="19"/>
-                                <color key="textColor" red="0.41960784309999999" green="0.74509803919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="435" width="374" height="68.5"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1d-7q-rjA">
@@ -350,9 +358,9 @@
                                     <constraint firstAttribute="height" constant="30" id="YMy-C7-Rzy"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="149" id="oOL-9t-23N"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="19"/>
                                 <state key="normal" title="Позвонить">
-                                    <color key="titleColor" red="0.27450980390000002" green="0.1450980392" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcI-Au-jh7">
@@ -362,9 +370,9 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="149" id="Uyj-Ii-xNG"/>
                                     <constraint firstAttribute="height" constant="30" id="anu-k7-Als"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="19"/>
                                 <state key="normal" title="Записаться">
-                                    <color key="titleColor" red="0.27669709920000002" green="0.14037814739999999" blue="0.28533875939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                         </subviews>
@@ -466,7 +474,7 @@
                         <color key="barTintColor" red="0.27669709920883179" green="0.14037814736366272" blue="0.28533875942230225" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="25"/>
-                            <color key="textColor" red="0.41960784313725491" green="0.74509803921568629" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -507,7 +515,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="202" height="127"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="22"/>
-                                                    <color key="textColor" red="0.41960784309999999" green="0.74509803919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -562,7 +570,7 @@
                         <color key="barTintColor" red="0.27450980390000002" green="0.1450980392" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="25"/>
-                            <color key="textColor" red="0.41960784309999999" green="0.74509803919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -587,7 +595,7 @@
                         <color key="barTintColor" red="0.27450980390000002" green="0.1450980392" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="25"/>
-                            <color key="textColor" red="0.41960784309999999" green="0.74509803919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -612,7 +620,7 @@
                         <color key="barTintColor" red="0.27450980390000002" green="0.1450980392" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="25"/>
-                            <color key="textColor" red="0.41960784313725491" green="0.74509803921568629" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -627,7 +635,6 @@
     </scenes>
     <resources>
         <image name="DSC_0698" width="2288" height="1525.5"/>
-        <image name="backgroundCell" width="253" height="48"/>
         <image name="backgroundPriceList" width="391.5" height="631.5"/>
         <image name="book" catalog="system" width="64" height="50"/>
         <image name="credit-card" width="24" height="24"/>

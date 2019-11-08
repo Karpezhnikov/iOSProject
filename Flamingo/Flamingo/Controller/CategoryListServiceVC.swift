@@ -42,9 +42,7 @@ extension CategoryListServiceVC: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as? CustumCVC{
             itemCell.nameCotegoryService.text = arrayNameServiceCategory[indexPath.row]
-            itemCell.layer.cornerRadius = 10
-            print(itemCell.frame.size)
-            print(UIScreen.main.bounds.size.width*0.4)
+            
             return itemCell
         }
         return UICollectionViewCell()
