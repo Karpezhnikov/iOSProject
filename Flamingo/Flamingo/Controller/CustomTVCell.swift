@@ -13,7 +13,6 @@ class CustomTVCell: UITableViewCell {
     @IBOutlet weak var nameService: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var timeService: UILabel!
-    @IBOutlet weak var stackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

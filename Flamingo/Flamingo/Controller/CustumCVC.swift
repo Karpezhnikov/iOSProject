@@ -13,9 +13,8 @@ class CustumCVC: UICollectionViewCell {
     @IBOutlet weak var hashtagLabel: UILabel!
     
    override func awakeFromNib() {
-       super.awakeFromNib()
-       self.layer.cornerRadius = 10
-    
+        super.awakeFromNib()
+        self.layer.cornerRadius = 10
     
    }
 }

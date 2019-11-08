@@ -36,7 +36,7 @@ extension CategoryListServiceVC: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.size.width*0.4, height: UIScreen.main.bounds.size.height*0.1)
+        return CGSize(width: UIScreen.main.bounds.size.width*0.4, height: UIScreen.main.bounds.size.height*0.05)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
