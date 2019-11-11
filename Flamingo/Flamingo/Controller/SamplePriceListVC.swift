@@ -11,20 +11,19 @@ import RealmSwift
 
 class SamplePriceListVC: UIViewController{
     
-    private var services: Results<Service>! {// тип контейнера, который возвращает все объекты(массив)
+    private var services: Results<Service>! {// тип контейнера, // массив с отобранными записями
         didSet{ // при изменении массива обновляем данные в таблице
             tableView.reloadData()
         }
-    } // массив с отобранными записями
-//    var arrayServises = Array<Service>(){
-//        didSet{ // при изменении массива обновляем данные в таблице
-//            tableView.reloadData()
-//        }
-//    } // массив с отобранными записями
+    }
     var humanMale = ""
     var modelController = ModelController()
     private let searchController = UISearchController(searchResultsController: nil)//nil-для отображения
-    private var filteredService: Results<Service>! // массив для поиска (список найденых объектов)
+    private var filteredService: Results<Service>!{
+        didSet{ // при поиске выводим результат в таблицу
+            tableView.reloadData()
+        }
+    } // массив для поиска (список найденых объектов)
     private var seatchBarIsEmpty:Bool{
         guard let text = searchController.searchBar.text else {return false} // если получилось добраться до бара
         return text.isEmpty // смотрим есть ли в поиске что-то
@@ -42,6 +41,8 @@ class SamplePriceListVC: UIViewController{
         super.viewDidLoad()
         setupNavigationBar() // настраиваем кнопку назад
         getDataFromTheDataBase() // запоняем services
+        
+        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false // параметр не позволяет работать с этим view как с основным(отключаем)
         searchController.searchBar.placeholder = "Seatch"// вставляем подсказку
         navigationItem.searchController = searchController // устанавливаем в напигейшн бар
@@ -65,16 +66,19 @@ class SamplePriceListVC: UIViewController{
 extension SamplePriceListVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering{ //  если ищем в поиске
+            return filteredService.count // возвращаем кольчество найденых результатов
+        }
         return  (services.count == 0) ? 0 : services.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTVCell
         
-        //let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
-        cell.nameService.text = services[indexPath.row].nameService
-        cell.price.text = "\(services[indexPath.row].placeService)"
-        cell.timeService.text = services[indexPath.row].timeService
+        let arrayToDisplay = isFiltering ? filteredService[indexPath.row] : services[indexPath.row]
+        cell.nameService.text = arrayToDisplay.nameService
+        cell.price.text = "\(arrayToDisplay.placeService)"
+        cell.timeService.text = arrayToDisplay.timeService
         
         return cell
     }
@@ -102,7 +106,6 @@ extension SamplePriceListVC: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         modelController.seatchTeg = arrayHashtagSeatch[indexPath.row]
         if indexPath.row == 0{ // если нажат hashtag "все"
-            print("SDSDSDSDSD")
             getDataFromTheDataBase() // возвразаем обратно все данные
         }else{
             // TODO: сделать функцию которая будет искать по тегу
@@ -166,17 +169,26 @@ extension SamplePriceListVC{
         
     }
 }
-//extension SamplePriceListVC: UISearchResultsUpdating{
-//    // MARK: Seatch
-//    func updateSearchResults(for searchController: UISearchController) {
-//        filterContentForSeatchText(searchController.searchBar.text!)
-//    }
+extension SamplePriceListVC: UISearchResultsUpdating{
+    // MARK: Seatch
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSeatchText(searchController.searchBar.text!)
+    }
+
+    private func filterContentForSeatchText(_ searchText: String){
+        // фильтруем массив по имени
+        filteredService = services.filter("nameService CONTAINS[c] %@ OR cosmetics CONTAINS[c] %@ OR nameCategoryService CONTAINS[c] %@ OR comsmetology CONTAINS[c] %@ OR partOfTheBody CONTAINS[c] %@", searchText, searchText, searchText, searchText, searchText)
+        //tableView.reloadData()
+    }
+
+}
+//@objc dynamic var nameService = ""  // название услуги
+//@objc dynamic var placeService = 0 // цена услуги
+//@objc dynamic var timeService = "" // время действия
+//@objc dynamic var serviceDescription = "" // описание услуги
+//@objc dynamic var cosmetics = ""
 //
-//    private func filterContentForSeatchText(_ searchText: String){
-//        // фильтруем массив по имени
-//        filteredService = services.filter("name CONTAINS[c] %@ OR location CONTAINS[c] %@", searchText, searchText)
-//        deleteDuplicates(services: filteredService)
-//        //tableView.reloadData()
-//    }
-//
-//}
+//@objc dynamic var nameCategoryService = "" // название категории услуги
+//@objc dynamic var comsmetology = "" // косметология
+//@objc dynamic var partOfTheBody = "" //часть тела
+//@objc dynamic var maleMan = "" // для кого (unisex, man, women )
