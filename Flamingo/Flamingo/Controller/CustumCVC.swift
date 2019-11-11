@@ -9,6 +9,8 @@
 import UIKit
 
 class CustumCVC: UICollectionViewCell {
+    var itemPressed = false
+    
     @IBOutlet weak var nameCotegoryService: UILabel!
     @IBOutlet weak var hashtagLabel: UILabel!
     

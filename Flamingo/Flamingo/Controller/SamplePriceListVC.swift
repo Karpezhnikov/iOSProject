@@ -11,28 +11,32 @@ import RealmSwift
 
 class SamplePriceListVC: UIViewController{
     
+    var modelController = ModelController()
+    private let arrayHashtagSeatch = SeatchHashtag()
+    private let searchController = UISearchController(searchResultsController: nil)//nil-для отображения
+    
     private var services: Results<Service>! {// тип контейнера, // массив с отобранными записями
         didSet{ // при изменении массива обновляем данные в таблице
             tableView.reloadData()
         }
     }
-    var humanMale = ""
-    var modelController = ModelController()
-    private let searchController = UISearchController(searchResultsController: nil)//nil-для отображения
+    
     private var filteredService: Results<Service>!{
         didSet{ // при поиске выводим результат в таблицу
             tableView.reloadData()
         }
     } // массив для поиска (список найденых объектов)
+    
     private var seatchBarIsEmpty:Bool{
         guard let text = searchController.searchBar.text else {return false} // если получилось добраться до бара
         return text.isEmpty // смотрим есть ли в поиске что-то
     }
+    
     private var isFiltering:Bool{
         return searchController.isActive && !seatchBarIsEmpty // если поисковая сторока активна и не является пустой
     }
     
-    let arrayHashtagSeatch = ["все","ноги","руки","тело","голова","волосы","голова","тело", "пресс","сиськи","они","мываываывчысывацуа"]
+    
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -41,12 +45,7 @@ class SamplePriceListVC: UIViewController{
         super.viewDidLoad()
         setupNavigationBar() // настраиваем кнопку назад
         getDataFromTheDataBase() // запоняем services
-        
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false // параметр не позволяет работать с этим view как с основным(отключаем)
-        searchController.searchBar.placeholder = "Seatch"// вставляем подсказку
-        navigationItem.searchController = searchController // устанавливаем в напигейшн бар
-        definesPresentationContext = true // позволяет отпустить строку поиска при переходе на другой экран
+        setupSearchBar() // добавляем поиск
     }
     
     //MARK: - Navigation
@@ -91,28 +90,24 @@ extension SamplePriceListVC: UITableViewDataSource, UITableViewDelegate{
 // MARK: Work Collection View
 extension SamplePriceListVC: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayHashtagSeatch.count
+        return arrayHashtagSeatch.seatchHashtagDesignation.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "hashtagSeatch", for: indexPath) as? CustumCVC{
-            itemCell.hashtagLabel.text = "#\(arrayHashtagSeatch[indexPath.row])"
+            itemCell.hashtagLabel.text = "#\(arrayHashtagSeatch.seatchHashtagDesignation[indexPath.row].emojiDesignation)"
             return itemCell
         }
         return UICollectionViewCell()
     }
     
-    // для получения нажатой ячейки
+    // для поиска по нажатой ячейки
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        modelController.seatchTeg = arrayHashtagSeatch[indexPath.row]
-        if indexPath.row == 0{ // если нажат hashtag "все"
-            getDataFromTheDataBase() // возвразаем обратно все данные
-        }else{
-            // TODO: сделать функцию которая будет искать по тегу
-//            arrayServises.removeAll() // очищаем массив
-//            deleteDuplicates(services: services) // вытаскиваем список для отображения всех service
-//            arrayServises = getServicesHashtag(hashtag: modelController.seatchTeg, inServices: arrayServises)
-        }
+        
+        searchController.searchBar.becomeFirstResponder()
+        searchController.searchBar.endEditing(true)
+        searchController.searchBar.text = arrayHashtagSeatch.seatchHashtagDesignation[indexPath.row].textDesignation
+        // ToDo: добавить скрытик клавиатуры при поиске по тегу
     }
         
     
@@ -130,25 +125,6 @@ extension SamplePriceListVC{
             self.navigationItem.title = modelController.partOfBody
             services = realm.objects(Service.self).filter("partOfTheBody = '\(modelController.partOfBody)' AND maleMan = '\(modelController.maleMan)'")
         }
-    }
-    
-    private func getServicesHashtag(hashtag: String, inServices: Array<Service>)->Array<Service>{
-        
-        var outServices = Array<Service>()
-        
-        for service in inServices{
-            if service.comsmetology.uppercased() == hashtag.uppercased() ||
-                service.cosmetics.uppercased() == hashtag.uppercased() ||
-                service.maleMan.uppercased() == hashtag.uppercased() ||
-                service.nameCategoryService.uppercased() == hashtag.uppercased() ||
-                service.nameService.uppercased() == hashtag.uppercased() ||
-                service.partOfTheBody.uppercased() == hashtag.uppercased() ||
-                String(service.placeService) == hashtag.uppercased(){
-                outServices.append(service)
-            }
-        }
-        
-        return outServices
     }
 }
 
@@ -169,26 +145,27 @@ extension SamplePriceListVC{
         
     }
 }
+
+// MARK: Work with Seatch
 extension SamplePriceListVC: UISearchResultsUpdating{
-    // MARK: Seatch
+    // Настраиваем searchBar
+    private func setupSearchBar(){
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false // параметр не позволяет работать с этим view как с основным(отключаем)
+        searchController.searchBar.placeholder = "Seatch"// вставляем подсказку
+        navigationItem.searchController = searchController // устанавливаем в напигейшн бар
+        definesPresentationContext = true // позволяет отпустить строку поиска при переходе на другой экран
+    }
+    
+    // функция для поиска
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSeatchText(searchController.searchBar.text!)
     }
 
+    // поиск из данного массива
     private func filterContentForSeatchText(_ searchText: String){
         // фильтруем массив по имени
-        filteredService = services.filter("nameService CONTAINS[c] %@ OR cosmetics CONTAINS[c] %@ OR nameCategoryService CONTAINS[c] %@ OR comsmetology CONTAINS[c] %@ OR partOfTheBody CONTAINS[c] %@", searchText, searchText, searchText, searchText, searchText)
+        filteredService = services.filter("nameService CONTAINS[c] %@ OR partOfTheBody CONTAINS[c] %@", searchText, searchText)
         //tableView.reloadData()
     }
-
 }
-//@objc dynamic var nameService = ""  // название услуги
-//@objc dynamic var placeService = 0 // цена услуги
-//@objc dynamic var timeService = "" // время действия
-//@objc dynamic var serviceDescription = "" // описание услуги
-//@objc dynamic var cosmetics = ""
-//
-//@objc dynamic var nameCategoryService = "" // название категории услуги
-//@objc dynamic var comsmetology = "" // косметология
-//@objc dynamic var partOfTheBody = "" //часть тела
-//@objc dynamic var maleMan = "" // для кого (unisex, man, women )

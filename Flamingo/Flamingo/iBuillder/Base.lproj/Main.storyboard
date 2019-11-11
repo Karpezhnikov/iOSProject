@@ -170,21 +170,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tru-nl-cRv">
-                                <rect key="frame" x="0.0" y="88" width="335" height="725"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tru-nl-cRv">
+                                <rect key="frame" x="0.0" y="88" width="366" height="725"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20392156859999999" green="0.36862745099999999" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="PRH-CJ-6I0" customClass="CustomTVCell" customModule="Flamingo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="335" height="80"/>
+                                        <rect key="frame" x="0.0" y="28" width="366" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PRH-CJ-6I0" id="Pb1-1h-tlG">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="366" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundCellBlue" translatesAutoresizingMaskIntoConstraints="NO" id="99a-Hs-bab">
-                                                    <rect key="frame" x="2" y="2" width="331" height="76"/>
+                                                    <rect key="frame" x="2" y="2" width="362" height="76"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Косметическая чистка лица «Оптимальное очищение Academie для молодой непроблемной кожи»" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="Dc1-aV-iGT">
                                                     <rect key="frame" x="20" y="12" width="248" height="56"/>
@@ -197,7 +197,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mpt-3R-vyb">
-                                                    <rect key="frame" x="276" y="16" width="43" height="48"/>
+                                                    <rect key="frame" x="307" y="16" width="43" height="48"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vcP-8V-y9H">
                                                             <rect key="frame" x="0.0" y="0.0" width="17" height="48"/>
@@ -262,31 +262,31 @@
                                 </connections>
                             </tableView>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VeH-WL-QYh">
-                                <rect key="frame" x="343" y="119" width="71" height="694"/>
+                                <rect key="frame" x="374" y="119" width="40" height="694"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="694" id="8xy-Ie-g7i"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="5" id="Xgp-0J-ldp">
-                                    <size key="itemSize" width="66" height="38"/>
+                                    <size key="itemSize" width="39" height="34"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="1" minY="3" maxX="3" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" multipleTouchEnabled="YES" alpha="0.20000000000000001" contentMode="scaleToFill" reuseIdentifier="hashtagSeatch" id="IYW-Sv-luc" customClass="CustumCVC" customModule="Flamingo" customModuleProvider="target">
-                                        <rect key="frame" x="1.5" y="3" width="66" height="38"/>
+                                        <rect key="frame" x="-0.5" y="3" width="39" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Vd-bR-NPf">
-                                            <rect key="frame" x="0.0" y="0.0" width="66" height="38"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="39" height="34"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgI-iH-ZXN">
-                                                    <rect key="frame" x="2" y="2" width="62" height="34"/>
+                                                    <rect key="frame" x="2" y="2" width="35" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="33C-Fj-ZOq"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="10"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
                                                     <color key="textColor" red="0.27450980392156865" green="0.14509803921568626" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -299,7 +299,7 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" red="0.52156862745098043" green="0.68627450980392157" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <size key="customSize" width="66" height="38"/>
+                                        <size key="customSize" width="39" height="34"/>
                                         <connections>
                                             <outlet property="hashtagLabel" destination="YgI-iH-ZXN" id="4r4-rk-cZP"/>
                                         </connections>
@@ -310,9 +310,9 @@
                                     <outlet property="delegate" destination="7Ps-l5-KJ6" id="Trr-sj-GN3"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Быстрый поиск" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XO6-YX-6Vs">
-                                <rect key="frame" x="343" y="88" width="71" height="26"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="10"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚡️🔎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XO6-YX-6Vs">
+                                <rect key="frame" x="374" y="88" width="40" height="26"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -322,7 +322,7 @@
                             <constraint firstItem="VeH-WL-QYh" firstAttribute="trailing" secondItem="1wc-KP-2et" secondAttribute="trailing" id="6NE-XE-FaU"/>
                             <constraint firstItem="XO6-YX-6Vs" firstAttribute="leading" secondItem="tru-nl-cRv" secondAttribute="trailing" constant="8" id="Q3Y-Y6-qa8"/>
                             <constraint firstItem="1wc-KP-2et" firstAttribute="trailing" secondItem="XO6-YX-6Vs" secondAttribute="trailing" id="TG8-fy-iky"/>
-                            <constraint firstItem="VeH-WL-QYh" firstAttribute="leading" secondItem="1wc-KP-2et" secondAttribute="leading" constant="343" id="YAn-fv-ZUa"/>
+                            <constraint firstItem="VeH-WL-QYh" firstAttribute="leading" secondItem="1wc-KP-2et" secondAttribute="leading" constant="374" id="YAn-fv-ZUa"/>
                             <constraint firstItem="VeH-WL-QYh" firstAttribute="top" secondItem="XO6-YX-6Vs" secondAttribute="bottom" constant="5" id="eP0-Xe-Gsw"/>
                             <constraint firstItem="VeH-WL-QYh" firstAttribute="top" secondItem="1wc-KP-2et" secondAttribute="top" constant="31" id="l88-Ze-HrT"/>
                             <constraint firstItem="XO6-YX-6Vs" firstAttribute="top" secondItem="1wc-KP-2et" secondAttribute="top" id="mBH-hA-ddQ"/>
@@ -626,7 +626,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5cF-0u-klB">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.58039215690000001" green="0.12941176469999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.27450980390000002" green="0.1450980392" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="25"/>
