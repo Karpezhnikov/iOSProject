@@ -10,8 +10,8 @@ import Foundation
 
 // для передачи части тела и пола человека
 class ModelController {
-    var maleMan = "unisex" // по дефолту будут все пола
-    var partOfBody = "AllPartOfBody" // и все части тела
+    var maleMan = "" // по дефолту будут все пола
+    var partOfBody = "" // и все части тела
     var nameServiceCategory = ""
     var seatchTeg = "все"
     

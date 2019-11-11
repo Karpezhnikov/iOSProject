@@ -24,31 +24,31 @@ class ViewController: UIViewController {
     
     // MARK: Action for man part of Body
     @IBAction func hairManAction(_ sender: Any) {
-        modelController.maleMan = "man"
+        modelController.maleMan = "unisex"
         modelController.partOfBody = "Волосы"
         performSegue(withIdentifier: "nextVC", sender: nil)
     }
     
     @IBAction func headManAction(_ sender: UIButton) {
-        modelController.maleMan = "man"
+        modelController.maleMan = "unisex"
         modelController.partOfBody = "Голова"
         performSegue(withIdentifier: "nextVC", sender: nil)
     }
     
     @IBAction func bodyManAction(_ sender: UIButton) {
-        modelController.maleMan = "man"
+        modelController.maleMan = "unisex"
         modelController.partOfBody = "Тело"
         performSegue(withIdentifier: "nextVC", sender: nil)
     }
     
     @IBAction func handManAction(_ sender: UIButton) {
-        modelController.maleMan = "man"
+        modelController.maleMan = "unisex"
         modelController.partOfBody = "Руки"
         performSegue(withIdentifier: "nextVC", sender: nil)
     }
     
     @IBAction func legManAction(_ sender: UIButton) {
-        modelController.maleMan = "man"
+        modelController.maleMan = "unisex"
         modelController.partOfBody = "Ноги"
         performSegue(withIdentifier: "nextVC", sender: nil)
     }

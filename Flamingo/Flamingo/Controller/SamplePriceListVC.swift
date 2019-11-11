@@ -11,14 +11,27 @@ import RealmSwift
 
 class SamplePriceListVC: UIViewController{
     
-    private var services: Results<Service>! // тип контейнера, который возвращает все объекты(массив)
-    var arrayServises = Array<Service>(){
+    private var services: Results<Service>! {// тип контейнера, который возвращает все объекты(массив)
         didSet{ // при изменении массива обновляем данные в таблице
             tableView.reloadData()
         }
     } // массив с отобранными записями
+//    var arrayServises = Array<Service>(){
+//        didSet{ // при изменении массива обновляем данные в таблице
+//            tableView.reloadData()
+//        }
+//    } // массив с отобранными записями
     var humanMale = ""
     var modelController = ModelController()
+    private let searchController = UISearchController(searchResultsController: nil)//nil-для отображения
+    private var filteredService: Results<Service>! // массив для поиска (список найденых объектов)
+    private var seatchBarIsEmpty:Bool{
+        guard let text = searchController.searchBar.text else {return false} // если получилось добраться до бара
+        return text.isEmpty // смотрим есть ли в поиске что-то
+    }
+    private var isFiltering:Bool{
+        return searchController.isActive && !seatchBarIsEmpty // если поисковая сторока активна и не является пустой
+    }
     
     let arrayHashtagSeatch = ["все","ноги","руки","тело","голова","волосы","голова","тело", "пресс","сиськи","они","мываываывчысывацуа"]
     
@@ -27,13 +40,13 @@ class SamplePriceListVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = modelController.partOfBody
-        setupNavigationBar() // настраиваем кнопку назад 
-        
-        services = realm.objects(Service.self) // берем все объекты типа Service
-        deleteDuplicates(services: services) // вытаскиваем список для отображения всех service
+        setupNavigationBar() // настраиваем кнопку назад
+        getDataFromTheDataBase() // запоняем services
+        searchController.obscuresBackgroundDuringPresentation = false // параметр не позволяет работать с этим view как с основным(отключаем)
+        searchController.searchBar.placeholder = "Seatch"// вставляем подсказку
+        navigationItem.searchController = searchController // устанавливаем в напигейшн бар
+        definesPresentationContext = true // позволяет отпустить строку поиска при переходе на другой экран
     }
-    
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -41,7 +54,8 @@ class SamplePriceListVC: UIViewController{
         else {return}
         if identifire == "segueDetail"{
             guard let indexPath = tableView.indexPathForSelectedRow else {return} // определяем индекс строки
-            detailServiceVC.service = arrayServises[indexPath.row]
+            detailServiceVC.service = services[indexPath.row]
+            //detailServiceVC.service = arrayServises[indexPath.row]
         }
     }
     
@@ -51,15 +65,16 @@ class SamplePriceListVC: UIViewController{
 extension SamplePriceListVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  (arrayServises.count == 0) ? 0 : arrayServises.count
+        return  (services.count == 0) ? 0 : services.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTVCell
         
-        cell.nameService.text = arrayServises[indexPath.row].nameService
-        cell.price.text = "\(arrayServises[indexPath.row].placeService)"
-        cell.timeService.text = arrayServises[indexPath.row].timeService
+        //let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
+        cell.nameService.text = services[indexPath.row].nameService
+        cell.price.text = "\(services[indexPath.row].placeService)"
+        cell.timeService.text = services[indexPath.row].timeService
         
         return cell
     }
@@ -78,9 +93,6 @@ extension SamplePriceListVC: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "hashtagSeatch", for: indexPath) as? CustumCVC{
             itemCell.hashtagLabel.text = "#\(arrayHashtagSeatch[indexPath.row])"
-//            itemCell.layer.borderWidth = 0.5
-            
-            
             return itemCell
         }
         return UICollectionViewCell()
@@ -90,44 +102,30 @@ extension SamplePriceListVC: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         modelController.seatchTeg = arrayHashtagSeatch[indexPath.row]
         if indexPath.row == 0{ // если нажат hashtag "все"
-            arrayServises.removeAll() // очищаем массив
-            deleteDuplicates(services: services) // вытаскиваем список для отображения всех service
-            return // выходим
+            print("SDSDSDSDSD")
+            getDataFromTheDataBase() // возвразаем обратно все данные
         }else{
-            arrayServises.removeAll() // очищаем массив
-            deleteDuplicates(services: services) // вытаскиваем список для отображения всех service
-            arrayServises = getServicesHashtag(hashtag: modelController.seatchTeg, inServices: arrayServises)
+            // TODO: сделать функцию которая будет искать по тегу
+//            arrayServises.removeAll() // очищаем массив
+//            deleteDuplicates(services: services) // вытаскиваем список для отображения всех service
+//            arrayServises = getServicesHashtag(hashtag: modelController.seatchTeg, inServices: arrayServises)
         }
     }
         
     
 }
 
-// MARK: Get array Service param
+// MARK: Get Data From The DataBase
 extension SamplePriceListVC{
-    // заполняет список услуг для вывода на экран
-    private func deleteDuplicates(services: Results<Service>){
-        switch (modelController.partOfBody == "AllPartOfBody") { // если перешли c tap bar
-        case true:
-            //self.title = "Список услуг"
-            self.navigationItem.title = modelController.nameServiceCategory // вставляем заголовок
-            
-            for service in services{ // выводим весь список услуг
-                if service.nameCategoryService == modelController.nameServiceCategory{ // если услуга соответствует выбраной категории
-                    arrayServises.append(service)
-                    arrayServises = Array(Set<Service>(arrayServises))
-                }
-            }
-        case false:
-            for service in services{
-                if service.partOfTheBody == modelController.partOfBody
-                    && (service.maleMan == modelController.maleMan
-                        || service.maleMan == "unisex")
-                { // отбор по части тела
-                    arrayServises.append(service) // получаем все service
-                }
-            }
-            arrayServises = Array(Set<Service>(arrayServises)) // убераем дубли
+    
+    // функция для выборки данный из БД
+    private func getDataFromTheDataBase(){
+        if modelController.partOfBody.isEmpty || modelController.maleMan.isEmpty{ // если перешли сразу к всему списку
+            self.navigationItem.title = modelController.nameServiceCategory
+            services = realm.objects(Service.self).filter("nameCategoryService = '\(modelController.nameServiceCategory)'") // берем все объекты типа Service
+        }else{ // берем объекты по условию
+            self.navigationItem.title = modelController.partOfBody
+            services = realm.objects(Service.self).filter("partOfTheBody = '\(modelController.partOfBody)' AND maleMan = '\(modelController.maleMan)'")
         }
     }
     
@@ -168,3 +166,17 @@ extension SamplePriceListVC{
         
     }
 }
+//extension SamplePriceListVC: UISearchResultsUpdating{
+//    // MARK: Seatch
+//    func updateSearchResults(for searchController: UISearchController) {
+//        filterContentForSeatchText(searchController.searchBar.text!)
+//    }
+//
+//    private func filterContentForSeatchText(_ searchText: String){
+//        // фильтруем массив по имени
+//        filteredService = services.filter("name CONTAINS[c] %@ OR location CONTAINS[c] %@", searchText, searchText)
+//        deleteDuplicates(services: filteredService)
+//        //tableView.reloadData()
+//    }
+//
+//}
