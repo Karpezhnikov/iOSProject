@@ -9,7 +9,7 @@
 
 import RealmSwift
 
-let schemaVersion: UInt64 = 2
+let schemaVersion: UInt64 = 14
 let config = Realm.Configuration(
         // Get the URL to the bundled file
     fileURL: Bundle.main.url(forResource: "default", withExtension: "realm"),

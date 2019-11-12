@@ -10,6 +10,7 @@ import RealmSwift
 
 class Service: Object{
     
+    @objc dynamic var idService = 1
     @objc dynamic var nameService = ""  // название услуги
     @objc dynamic var placeService = 0 // цена услуги
     @objc dynamic var timeService = "" // время действия
@@ -20,12 +21,14 @@ class Service: Object{
     @objc dynamic var comsmetology = "" // косметология
     @objc dynamic var partOfTheBody = "" //часть тела
     @objc dynamic var maleMan = "" // для кого (unisex, man, women )
+    @objc dynamic var idsMasters = ""
         
     // для добавления новой услуги
     func saveService(arrayData: Array<Service>){
         for service in arrayData{
             let newService = Service()
             
+            newService.idService = service.idService
             newService.nameService = service.nameService
             newService.placeService = service.placeService
             newService.timeService = service.timeService
@@ -44,6 +47,12 @@ class Service: Object{
 }
 
 
+class MasterServices: Object {
+    @objc dynamic var idMaster = ""
+    @objc dynamic var nameMaster = ""
+    @objc dynamic var listServicesMaster = "" // список id услуг через ";"
+    @objc dynamic var timeAndPriceMaster = ""
+}
 
 
 

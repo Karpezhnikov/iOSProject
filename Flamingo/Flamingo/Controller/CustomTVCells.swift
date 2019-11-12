@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomTVCell: UITableViewCell {
+class CustomTVCellSample: UITableViewCell {
 
     @IBOutlet weak var nameService: UILabel!
     @IBOutlet weak var price: UILabel!
@@ -28,6 +28,21 @@ class CustomTVCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-
-
 }
+
+class CustomTVCellDetail: UITableViewCell {
+    
+    @IBOutlet weak var nameMaster: UILabel!
+    @IBOutlet weak var serviceMaster: UILabel!
+    @IBOutlet weak var timeAndPriceMaster: UILabel!
+    @IBOutlet weak var photoMaster: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        photoMaster.layer.cornerRadius = photoMaster.frame.size.width / 2
+        
+        //self.layer.borderWidth = 1
+        //self.layer.cornerRadius = 10
+    }
+}
+

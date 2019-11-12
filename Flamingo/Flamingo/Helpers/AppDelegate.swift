@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //для задержки на экране загрузке
         Thread.sleep(forTimeInterval: 1.5)
         
-        let schemaVersion: UInt64 = 2
+        let schemaVersion: UInt64 = 3
         
         let config = Realm.Configuration(
             schemaVersion: schemaVersion,
@@ -34,6 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Now that we've told Realm how to handle the schema change, opening the file
         // will automatically perform the migration
         //let realm = try! Realm()
+        
+        // This is the workaround for Xcode 11.2
+        UITextViewWorkaround.executeWorkaround()
         
         return true
     }
@@ -55,3 +58,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+@objc
+class UITextViewWorkaround : NSObject {
+
+    static func executeWorkaround() {
+        if #available(iOS 13.2, *) {
+        } else {
+            let className = "_UITextLayoutView"
+            let theClass = objc_getClass(className)
+            if theClass == nil {
+                let classPair: AnyClass? = objc_allocateClassPair(UIView.self, className, 0)
+                objc_registerClassPair(classPair!)
+            }
+        }
+    }
+
+}

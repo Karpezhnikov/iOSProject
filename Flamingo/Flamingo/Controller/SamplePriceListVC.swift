@@ -72,7 +72,7 @@ extension SamplePriceListVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTVCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTVCellSample
         
         let arrayToDisplay = isFiltering ? filteredService[indexPath.row] : services[indexPath.row]
         cell.nameService.text = arrayToDisplay.nameService

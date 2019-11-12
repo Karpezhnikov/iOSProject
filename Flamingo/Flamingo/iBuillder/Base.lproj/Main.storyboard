@@ -176,7 +176,7 @@
                                 <color key="backgroundColor" red="0.20392156859999999" green="0.36862745099999999" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="PRH-CJ-6I0" customClass="CustomTVCell" customModule="Flamingo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="PRH-CJ-6I0" customClass="CustomTVCellSample" customModule="Flamingo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="366" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PRH-CJ-6I0" id="Pb1-1h-tlG">
@@ -355,9 +355,9 @@
                                     <constraint firstAttribute="height" constant="339" id="jU8-cX-eHS"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Косметическая чистка лица «Оптимальное очищение Academie для молодой непроблемной кожи»" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="374" translatesAutoresizingMaskIntoConstraints="NO" id="2yh-jL-n74">
-                                <rect key="frame" x="20" y="347" width="374" height="68.5"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Косметическая чистка лица «Оптимальное очищение Academie для молодой непроблемной кожи»" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="374" translatesAutoresizingMaskIntoConstraints="NO" id="2yh-jL-n74">
+                                <rect key="frame" x="20" y="347" width="374" height="72"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -385,6 +385,110 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="COy-LW-8Ne">
+                                <rect key="frame" x="0.0" y="427" width="414" height="381"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ngm-RR-iJn">
+                                        <rect key="frame" x="164.5" y="0.0" width="85" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nYg-9t-Sif">
+                                        <rect key="frame" x="0.0" y="28.5" width="414" height="130.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="130.5" id="F0A-Yr-Q5W"/>
+                                        </constraints>
+                                        <string key="text">   Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </string>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y81-rd-JFA">
+                                        <rect key="frame" x="0.0" y="167" width="414" height="214"/>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.36470588235294116" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="214" id="jQv-P5-U70"/>
+                                        </constraints>
+                                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мастера:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cNz-sF-Uo2">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="6li-Js-UHU" customClass="CustomTVCellDetail" customModule="Flamingo" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="49" width="414" height="70"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6li-Js-UHU" id="GgD-Ce-k8R">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KHw-2q-V6j">
+                                                            <rect key="frame" x="2" y="2" width="410" height="66"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gwH-OX-oOf">
+                                                                    <rect key="frame" x="0.0" y="0.5" width="65" height="65"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="65" id="Wk8-tB-Q6x"/>
+                                                                        <constraint firstAttribute="width" constant="65" id="q0j-um-U8C"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="r8e-4B-wwY">
+                                                                    <rect key="frame" x="75" y="0.0" width="335" height="66"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Карпежников Алексей Михайлович" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82D-nJ-MdF">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="262" height="20"/>
+                                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ногтевой мастер" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dx3-H5-IWb">
+                                                                            <rect key="frame" x="0.0" y="23" width="125" height="20"/>
+                                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 800Р, 3 часа" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0V-VP-nTU">
+                                                                            <rect key="frame" x="0.0" y="46" width="108.5" height="20"/>
+                                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="KHw-2q-V6j" firstAttribute="top" secondItem="GgD-Ce-k8R" secondAttribute="top" constant="2" id="19u-44-i8t"/>
+                                                        <constraint firstAttribute="trailing" secondItem="KHw-2q-V6j" secondAttribute="trailing" constant="2" id="Agu-Oc-H1d"/>
+                                                        <constraint firstItem="KHw-2q-V6j" firstAttribute="leading" secondItem="GgD-Ce-k8R" secondAttribute="leading" constant="2" id="OxM-Oo-3UK"/>
+                                                        <constraint firstAttribute="bottom" secondItem="KHw-2q-V6j" secondAttribute="bottom" constant="2" id="tzU-7A-Sn2"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.15767031910000001" green="0.29145359990000003" blue="0.40394586319999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <connections>
+                                                    <outlet property="nameMaster" destination="82D-nJ-MdF" id="w1t-4f-ibL"/>
+                                                    <outlet property="photoMaster" destination="gwH-OX-oOf" id="MEM-Kp-Ptz"/>
+                                                    <outlet property="serviceMaster" destination="Dx3-H5-IWb" id="V2R-lR-sPf"/>
+                                                    <outlet property="timeAndPriceMaster" destination="I0V-VP-nTU" id="eMF-vP-6hp"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="qs9-6n-OCn" id="8DV-b2-S2B"/>
+                                            <outlet property="delegate" destination="qs9-6n-OCn" id="aKj-CR-dC4"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="y81-rd-JFA" secondAttribute="bottom" id="6N2-fS-nEW"/>
+                                    <constraint firstItem="nYg-9t-Sif" firstAttribute="leading" secondItem="COy-LW-8Ne" secondAttribute="leading" id="fQh-QV-hef"/>
+                                    <constraint firstItem="nYg-9t-Sif" firstAttribute="leading" secondItem="y81-rd-JFA" secondAttribute="leading" id="gYE-Vm-Qc6"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156859999999" green="0.36862745099999999" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -392,12 +496,16 @@
                             <constraint firstItem="KcI-Au-jh7" firstAttribute="leading" secondItem="D1d-7q-rjA" secondAttribute="trailing" constant="76" id="2K0-df-ajX"/>
                             <constraint firstItem="KcI-Au-jh7" firstAttribute="top" secondItem="Oyt-CR-QRH" secondAttribute="bottom" constant="-37" id="CLJ-sc-96A"/>
                             <constraint firstItem="2yh-jL-n74" firstAttribute="leading" secondItem="D74-iS-DqZ" secondAttribute="leadingMargin" id="I30-zt-bvn"/>
+                            <constraint firstItem="COy-LW-8Ne" firstAttribute="top" secondItem="2yh-jL-n74" secondAttribute="bottom" constant="8" id="Tzi-Km-bCE"/>
                             <constraint firstItem="2yh-jL-n74" firstAttribute="centerX" secondItem="Oyt-CR-QRH" secondAttribute="centerX" id="Ywh-RG-O3w"/>
+                            <constraint firstItem="COy-LW-8Ne" firstAttribute="leading" secondItem="D74-iS-DqZ" secondAttribute="leading" id="ZFx-gj-bJk"/>
                             <constraint firstItem="Oyt-CR-QRH" firstAttribute="trailing" secondItem="Kut-wA-ZnR" secondAttribute="trailing" id="a3B-DK-93O"/>
                             <constraint firstItem="Oyt-CR-QRH" firstAttribute="leading" secondItem="Kut-wA-ZnR" secondAttribute="leading" id="c4X-Uv-SHh"/>
+                            <constraint firstItem="Kut-wA-ZnR" firstAttribute="trailing" secondItem="COy-LW-8Ne" secondAttribute="trailing" id="cwH-e0-YKh"/>
                             <constraint firstItem="D1d-7q-rjA" firstAttribute="leading" secondItem="Kut-wA-ZnR" secondAttribute="leading" constant="20" id="e6j-Ds-CtE"/>
                             <constraint firstItem="Kut-wA-ZnR" firstAttribute="trailing" secondItem="KcI-Au-jh7" secondAttribute="trailing" constant="20" id="h0U-NW-s6B"/>
                             <constraint firstItem="D1d-7q-rjA" firstAttribute="top" secondItem="Oyt-CR-QRH" secondAttribute="bottom" constant="-36" id="i5M-Xf-bkW"/>
+                            <constraint firstItem="Kut-wA-ZnR" firstAttribute="bottom" secondItem="COy-LW-8Ne" secondAttribute="bottom" id="qPM-3i-NIQ"/>
                             <constraint firstItem="Oyt-CR-QRH" firstAttribute="top" secondItem="Kut-wA-ZnR" secondAttribute="top" id="rJn-Ka-oaj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Kut-wA-ZnR"/>
