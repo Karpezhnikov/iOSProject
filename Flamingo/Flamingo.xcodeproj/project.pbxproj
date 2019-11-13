@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D17237BE065005EA21D /* SetupScrollView.swift */; };
+		04CF8D1A237C8369005EA21D /* SetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D19237C8369005EA21D /* SetupButton.swift */; };
+		04CF8D1F237C8B3B005EA21D /* SetupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D1E237C8B3B005EA21D /* SetupNavigationController.swift */; };
 		A28172CD896F24A158A516BB /* Pods_Flamingo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B5E537AC8A565B6CD7FFEC /* Pods_Flamingo.framework */; };
 		A913336E236317A400A54FEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913336D236317A400A54FEC /* AppDelegate.swift */; };
 		A9133370236317A400A54FEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913336F236317A400A54FEC /* SceneDelegate.swift */; };
@@ -19,7 +22,7 @@
 		A91333862363569000A54FEC /* CustomTVCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91333852363569000A54FEC /* CustomTVCells.swift */; };
 		A92731FC236C23EC00976122 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92731FB236C23EC00976122 /* ModelController.swift */; };
 		A92731FE236C51BA00976122 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = A92731FD236C51B900976122 /* default.realm */; };
-		A970329A237557990031B598 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9703299237557990031B598 /* TabBarVC.swift */; };
+		A970329A237557990031B598 /* SetupTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9703299237557990031B598 /* SetupTabBarVC.swift */; };
 		A99DC6BE2372AF5D0045D83C /* CategoryListServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99DC6BD2372AF5D0045D83C /* CategoryListServiceVC.swift */; };
 		A99DC6C02372AF9F0045D83C /* CustumCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99DC6BF2372AF9F0045D83C /* CustumCVC.swift */; };
 		A9B5B29B236B445900B47359 /* DetailServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B5B29A236B445900B47359 /* DetailServiceVC.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04CF8D17237BE065005EA21D /* SetupScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScrollView.swift; sourceTree = "<group>"; };
+		04CF8D19237C8369005EA21D /* SetupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SetupButton.swift; path = Flamingo/Controller/SetupButton.swift; sourceTree = SOURCE_ROOT; };
+		04CF8D1E237C8B3B005EA21D /* SetupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationController.swift; sourceTree = "<group>"; };
 		26B5E537AC8A565B6CD7FFEC /* Pods_Flamingo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flamingo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A913336A236317A400A54FEC /* Flamingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A913336D236317A400A54FEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,7 +48,7 @@
 		A91333852363569000A54FEC /* CustomTVCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTVCells.swift; sourceTree = "<group>"; };
 		A92731FB236C23EC00976122 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		A92731FD236C51B900976122 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
-		A9703299237557990031B598 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarVC.swift; path = Flamingo/Controller/TabBarVC.swift; sourceTree = SOURCE_ROOT; };
+		A9703299237557990031B598 /* SetupTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SetupTabBarVC.swift; path = Flamingo/Controller/SetupTabBarVC.swift; sourceTree = SOURCE_ROOT; };
 		A99DC6BD2372AF5D0045D83C /* CategoryListServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListServiceVC.swift; sourceTree = "<group>"; };
 		A99DC6BF2372AF9F0045D83C /* CustumCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumCVC.swift; sourceTree = "<group>"; };
 		A9B5B29A236B445900B47359 /* DetailServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailServiceVC.swift; sourceTree = "<group>"; };
@@ -64,6 +70,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04CF8D1C237C85A8005EA21D /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				A91333852363569000A54FEC /* CustomTVCells.swift */,
+				A99DC6BF2372AF9F0045D83C /* CustumCVC.swift */,
+			);
+			name = CustomElements;
+			sourceTree = "<group>";
+		};
+		04CF8D1D237C860E005EA21D /* SetupElements */ = {
+			isa = PBXGroup;
+			children = (
+				04CF8D1E237C8B3B005EA21D /* SetupNavigationController.swift */,
+				04CF8D19237C8369005EA21D /* SetupButton.swift */,
+				A9703299237557990031B598 /* SetupTabBarVC.swift */,
+				04CF8D17237BE065005EA21D /* SetupScrollView.swift */,
+			);
+			name = SetupElements;
+			sourceTree = "<group>";
+		};
 		3CE2C73A7FD61A2D841357A2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,13 +132,12 @@
 		A9DA3617236740360004B711 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A9703299237557990031B598 /* TabBarVC.swift */,
+				04CF8D1D237C860E005EA21D /* SetupElements */,
+				04CF8D1C237C85A8005EA21D /* CustomElements */,
 				A9133371236317A400A54FEC /* ViewController.swift */,
 				A91333812363230F00A54FEC /* SamplePriceListVC.swift */,
-				A91333852363569000A54FEC /* CustomTVCells.swift */,
 				A9B5B29A236B445900B47359 /* DetailServiceVC.swift */,
 				A99DC6BD2372AF5D0045D83C /* CategoryListServiceVC.swift */,
-				A99DC6BF2372AF9F0045D83C /* CustumCVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -120,10 +145,10 @@
 		A9DA36192367406F0004B711 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A92731FD236C51B900976122 /* default.realm */,
 				A913336D236317A400A54FEC /* AppDelegate.swift */,
 				A913336F236317A400A54FEC /* SceneDelegate.swift */,
 				A9133376236317A700A54FEC /* Assets.xcassets */,
+				A92731FD236C51B900976122 /* default.realm */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -141,9 +166,9 @@
 		A9DA361C236740B80004B711 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A92731FB236C23EC00976122 /* ModelController.swift */,
 				A91333832363270300A54FEC /* ModelSamplePriceList.swift */,
 				A9DA361D23676D1A0004B711 /* ModelDataBase.swift */,
-				A92731FB236C23EC00976122 /* ModelController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -277,10 +302,13 @@
 				A91333822363230F00A54FEC /* SamplePriceListVC.swift in Sources */,
 				A9DA3620236782020004B711 /* StorageManager.swift in Sources */,
 				A9B5B29B236B445900B47359 /* DetailServiceVC.swift in Sources */,
+				04CF8D1A237C8369005EA21D /* SetupButton.swift in Sources */,
 				A9133372236317A400A54FEC /* ViewController.swift in Sources */,
 				A9DA361E23676D1A0004B711 /* ModelDataBase.swift in Sources */,
 				A99DC6C02372AF9F0045D83C /* CustumCVC.swift in Sources */,
-				A970329A237557990031B598 /* TabBarVC.swift in Sources */,
+				04CF8D1F237C8B3B005EA21D /* SetupNavigationController.swift in Sources */,
+				04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */,
+				A970329A237557990031B598 /* SetupTabBarVC.swift in Sources */,
 				A913336E236317A400A54FEC /* AppDelegate.swift in Sources */,
 				A91333842363270300A54FEC /* ModelSamplePriceList.swift in Sources */,
 				A99DC6BE2372AF5D0045D83C /* CategoryListServiceVC.swift in Sources */,

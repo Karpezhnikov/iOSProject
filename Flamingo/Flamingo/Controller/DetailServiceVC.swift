@@ -6,69 +6,30 @@
 //  Copyright © 2019 Алексей Карпежников. All rights reserved.
 //
 
+
+
 import UIKit
 import RealmSwift
 
 class DetailServiceVC: UIViewController {
 
-    var service = Service()
-    private var masters = [MasterServices]()
+    var service = Service() // выбраная услуга
+    private var masters = [MasterServices]() // для списка всех мастеров
+    
     
     @IBOutlet weak var nameDeteilService: UILabel!
     @IBOutlet weak var imageService: UIImageView!
     @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var singUpButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameDeteilService.text = service.nameService
-        callButton.layer.cornerRadius = 10
-        singUpButton.layer.cornerRadius = 10
-        setupNavigationBar()
-        
-        getMasterFromTheDataBase() // заполняем массив masters
-        
-        //ToDo: доделать вывод мастеров на экран
-        
-        
-    }
-    // MARK: Get Data From The DataBase
-    private func getMasterFromTheDataBase(){
-        let idsMaster = service.idsMasters.components(separatedBy: ";") // парсим строку для получения id
-        guard idsMaster.count > 0 else { // проверием что они есть
-            return
-        }
-        let listMasters = realm.objects(MasterServices.self) // делаем запрос в бд
-        for master in listMasters{
-            if idsMaster.contains(master.idMaster) { // берем нужных мастеров
-                masters.append(master)
-            }
-        }
-    }
     
-    // MARK: SetupNavigationBar
-    private func setupNavigationBar(){
-        // настраиваем кнопку назад
-        if let topItem = navigationController?.navigationBar.topItem{
-            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-            //topItem.backBarButtonItem?.image = UIImage(named: "leftBarButton")
-            let imgBackArrow = UIImage(named: "leftBarButton")
-
-            navigationController?.navigationBar.backIndicatorImage = imgBackArrow
-            navigationController?.navigationBar.backIndicatorTransitionMaskImage = imgBackArrow
-        }
-        
-    }
+        masters = StorageManager.getMasterFromTheDataBase(service) // получаем всех мастеров для услуги
+        nameDeteilService.text = service.nameService // устанавливаем заголовок
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
 
 }
 

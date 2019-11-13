@@ -130,19 +130,19 @@ extension SamplePriceListVC{
 
 // MARK: SetupNavigationBar
 extension SamplePriceListVC{
-    
+
     private func setupNavigationBar(){
         // настраиваем кнопку назад
         if let topItem = navigationController?.navigationBar.topItem{
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-            
+
             //topItem.backBarButtonItem?.image = UIImage(named: "leftBarButton")
             let imgBackArrow = UIImage(named: "leftBarButton")
 
             navigationController?.navigationBar.backIndicatorImage = imgBackArrow
             navigationController?.navigationBar.backIndicatorTransitionMaskImage = imgBackArrow
         }
-        
+
     }
 }
 

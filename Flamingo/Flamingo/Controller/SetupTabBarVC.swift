@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabBarVC: UITabBarController {
+class SetupTabBarVC: UITabBarController {
 
         // анимация для значков тап бара ()
     private var bounceAnimation: CAKeyframeAnimation = {
