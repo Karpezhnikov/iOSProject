@@ -50,7 +50,7 @@ class SamplePriceListVC: UIViewController{
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifire = segue.identifier, let detailServiceVC = segue.destination as? DetailServiceVC
+        guard let identifire = segue.identifier, let detailServiceVC = segue.destination as? DetailServiceTVC
         else {return}
         if identifire == "segueDetail"{
             guard let indexPath = tableView.indexPathForSelectedRow else {return} // определяем индекс строки

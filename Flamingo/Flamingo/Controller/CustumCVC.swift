@@ -21,4 +21,20 @@ class CustumCVC: UICollectionViewCell {
    }
 }
 
+class CustumCVCDeteil: UICollectionViewCell {
+    var itemPressed = false
+    
+ 
+    @IBOutlet weak var imageMaster: UIImageView!
+    @IBOutlet weak var nameMaster: UILabel!
+    @IBOutlet weak var profilMaster: UILabel!
+    @IBOutlet weak var timeAndPriceMaster: UILabel!
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        imageMaster.layer.cornerRadius = imageMaster.frame.size.width/2
+
+    }
+}
 
