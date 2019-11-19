@@ -36,6 +36,16 @@ class DetailServiceTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true) // для того, чтобы ячейка не выделялась
     }
+    
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifire = segue.identifier, let editOnService = segue.destination as? EditOnServiceViewController
+        else {return}
+        if identifire == "edit"{
+            editOnService.service = service
+            editOnService.masters = masters
+        }
+    }
 }
 
 // MARK: - Collection View data source

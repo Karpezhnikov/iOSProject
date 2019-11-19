@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04014FDC23829B00008EBE6C /* SetupDataPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04014FDB23829B00008EBE6C /* SetupDataPicker.swift */; };
 		04017CCB237ED65100809ACA /* EditOnServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04017CCA237ED65100809ACA /* EditOnServiceViewController.swift */; };
+		0409686B2383395F00B84ABC /* SetupLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686A2383395F00B84ABC /* SetupLabel.swift */; };
+		0409686D2383429600B84ABC /* SetupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686C2383429600B84ABC /* SetupTextField.swift */; };
+		0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686E2383C6D300B84ABC /* StyleFonts.swift */; };
 		046991C1237D5D6600990826 /* DetailServiceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046991C0237D5D6600990826 /* DetailServiceTVC.swift */; };
 		04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D17237BE065005EA21D /* SetupScrollView.swift */; };
 		04CF8D1A237C8369005EA21D /* SetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D19237C8369005EA21D /* SetupButton.swift */; };
@@ -32,7 +36,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04014FDB23829B00008EBE6C /* SetupDataPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupDataPicker.swift; sourceTree = "<group>"; };
 		04017CCA237ED65100809ACA /* EditOnServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOnServiceViewController.swift; sourceTree = "<group>"; };
+		0409686A2383395F00B84ABC /* SetupLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupLabel.swift; sourceTree = "<group>"; };
+		0409686C2383429600B84ABC /* SetupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTextField.swift; sourceTree = "<group>"; };
+		0409686E2383C6D300B84ABC /* StyleFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFonts.swift; sourceTree = "<group>"; };
 		046991C0237D5D6600990826 /* DetailServiceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailServiceTVC.swift; sourceTree = "<group>"; };
 		04CF8D17237BE065005EA21D /* SetupScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScrollView.swift; sourceTree = "<group>"; };
 		04CF8D19237C8369005EA21D /* SetupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SetupButton.swift; path = Flamingo/Controller/SetupButton.swift; sourceTree = SOURCE_ROOT; };
@@ -84,6 +92,9 @@
 		04CF8D1D237C860E005EA21D /* SetupElements */ = {
 			isa = PBXGroup;
 			children = (
+				0409686C2383429600B84ABC /* SetupTextField.swift */,
+				0409686A2383395F00B84ABC /* SetupLabel.swift */,
+				04014FDB23829B00008EBE6C /* SetupDataPicker.swift */,
 				04CF8D1E237C8B3B005EA21D /* SetupNavigationController.swift */,
 				04CF8D19237C8369005EA21D /* SetupButton.swift */,
 				A9703299237557990031B598 /* SetupTabBarVC.swift */,
@@ -134,10 +145,10 @@
 		A9DA3617236740360004B711 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				04017CCA237ED65100809ACA /* EditOnServiceViewController.swift */,
 				04CF8D1D237C860E005EA21D /* SetupElements */,
 				04CF8D1C237C85A8005EA21D /* CustomElements */,
 				046991C0237D5D6600990826 /* DetailServiceTVC.swift */,
+				04017CCA237ED65100809ACA /* EditOnServiceViewController.swift */,
 				A9133371236317A400A54FEC /* ViewController.swift */,
 				A91333812363230F00A54FEC /* SamplePriceListVC.swift */,
 				A99DC6BD2372AF5D0045D83C /* CategoryListServiceVC.swift */,
@@ -159,6 +170,7 @@
 		A9DA361A236740910004B711 /* iBuillder */ = {
 			isa = PBXGroup;
 			children = (
+				0409686E2383C6D300B84ABC /* StyleFonts.swift */,
 				A9DA361F236782020004B711 /* StorageManager.swift */,
 				A9133373236317A400A54FEC /* Main.storyboard */,
 				A9133378236317A700A54FEC /* LaunchScreen.storyboard */,
@@ -305,8 +317,11 @@
 				A91333822363230F00A54FEC /* SamplePriceListVC.swift in Sources */,
 				A9DA3620236782020004B711 /* StorageManager.swift in Sources */,
 				04CF8D1A237C8369005EA21D /* SetupButton.swift in Sources */,
+				04014FDC23829B00008EBE6C /* SetupDataPicker.swift in Sources */,
 				A9133372236317A400A54FEC /* ViewController.swift in Sources */,
+				0409686B2383395F00B84ABC /* SetupLabel.swift in Sources */,
 				A9DA361E23676D1A0004B711 /* ModelDataBase.swift in Sources */,
+				0409686D2383429600B84ABC /* SetupTextField.swift in Sources */,
 				A99DC6C02372AF9F0045D83C /* CustumCVC.swift in Sources */,
 				04CF8D1F237C8B3B005EA21D /* SetupNavigationController.swift in Sources */,
 				04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */,
@@ -314,6 +329,7 @@
 				04017CCB237ED65100809ACA /* EditOnServiceViewController.swift in Sources */,
 				A913336E236317A400A54FEC /* AppDelegate.swift in Sources */,
 				A91333842363270300A54FEC /* ModelSamplePriceList.swift in Sources */,
+				0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */,
 				046991C1237D5D6600990826 /* DetailServiceTVC.swift in Sources */,
 				A99DC6BE2372AF5D0045D83C /* CategoryListServiceVC.swift in Sources */,
 				A9133370236317A400A54FEC /* SceneDelegate.swift in Sources */,

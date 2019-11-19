@@ -13,6 +13,7 @@ class SetupNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //SetupNavigationController.setupBackButton() // дизайн кнопки назад
+        //self.navigationBar.topItem?.backBarButtonItem?.tintColor = .init(srgbRed: 52/255, green: 0/255, blue: 63/255, alpha: 1)
     }
     
 //    // MARK: setupBackButton

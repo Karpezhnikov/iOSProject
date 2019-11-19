@@ -87,31 +87,31 @@ extension SamplePriceListVC: UITableViewDataSource, UITableViewDelegate{
     }
 }
 
-// MARK: Work Collection View
-extension SamplePriceListVC: UICollectionViewDataSource, UICollectionViewDelegate{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayHashtagSeatch.seatchHashtagDesignation.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "hashtagSeatch", for: indexPath) as? CustumCVC{
-            itemCell.hashtagLabel.text = "#\(arrayHashtagSeatch.seatchHashtagDesignation[indexPath.row].emojiDesignation)"
-            return itemCell
-        }
-        return UICollectionViewCell()
-    }
-    
-    // для поиска по нажатой ячейки
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        searchController.searchBar.becomeFirstResponder()
-        searchController.searchBar.endEditing(true)
-        searchController.searchBar.text = arrayHashtagSeatch.seatchHashtagDesignation[indexPath.row].textDesignation
-        // ToDo: добавить скрытик клавиатуры при поиске по тегу
-    }
-        
-    
-}
+//// MARK: Work Collection View
+//extension SamplePriceListVC: UICollectionViewDataSource, UICollectionViewDelegate{
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return arrayHashtagSeatch.seatchHashtagDesignation.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "hashtagSeatch", for: indexPath) as? CustumCVC{
+//            itemCell.hashtagLabel.text = "#\(arrayHashtagSeatch.seatchHashtagDesignation[indexPath.row].emojiDesignation)"
+//            return itemCell
+//        }
+//        return UICollectionViewCell()
+//    }
+//
+//    // для поиска по нажатой ячейки
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//
+//        searchController.searchBar.becomeFirstResponder()
+//        searchController.searchBar.endEditing(true)
+//        searchController.searchBar.text = arrayHashtagSeatch.seatchHashtagDesignation[indexPath.row].textDesignation
+//        // ToDo: добавить скрытик клавиатуры при поиске по тегу
+//    }
+//
+//
+//}
 
 // MARK: Get Data From The DataBase
 extension SamplePriceListVC{
