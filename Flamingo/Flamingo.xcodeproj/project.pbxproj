@@ -12,6 +12,8 @@
 		0409686B2383395F00B84ABC /* SetupLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686A2383395F00B84ABC /* SetupLabel.swift */; };
 		0409686D2383429600B84ABC /* SetupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686C2383429600B84ABC /* SetupTextField.swift */; };
 		0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686E2383C6D300B84ABC /* StyleFonts.swift */; };
+		040968712384155800B84ABC /* AnimateLaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */; };
+		0409687323841C2E00B84ABC /* DescontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409687223841C2E00B84ABC /* DescontVC.swift */; };
 		046991C1237D5D6600990826 /* DetailServiceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046991C0237D5D6600990826 /* DetailServiceTVC.swift */; };
 		04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D17237BE065005EA21D /* SetupScrollView.swift */; };
 		04CF8D1A237C8369005EA21D /* SetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D19237C8369005EA21D /* SetupButton.swift */; };
@@ -41,6 +43,8 @@
 		0409686A2383395F00B84ABC /* SetupLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupLabel.swift; sourceTree = "<group>"; };
 		0409686C2383429600B84ABC /* SetupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTextField.swift; sourceTree = "<group>"; };
 		0409686E2383C6D300B84ABC /* StyleFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFonts.swift; sourceTree = "<group>"; };
+		040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateLaunchScreenVC.swift; sourceTree = "<group>"; };
+		0409687223841C2E00B84ABC /* DescontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescontVC.swift; sourceTree = "<group>"; };
 		046991C0237D5D6600990826 /* DetailServiceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailServiceTVC.swift; sourceTree = "<group>"; };
 		04CF8D17237BE065005EA21D /* SetupScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScrollView.swift; sourceTree = "<group>"; };
 		04CF8D19237C8369005EA21D /* SetupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SetupButton.swift; path = Flamingo/Controller/SetupButton.swift; sourceTree = SOURCE_ROOT; };
@@ -145,6 +149,8 @@
 		A9DA3617236740360004B711 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0409687223841C2E00B84ABC /* DescontVC.swift */,
+				040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */,
 				04CF8D1D237C860E005EA21D /* SetupElements */,
 				04CF8D1C237C85A8005EA21D /* CustomElements */,
 				046991C0237D5D6600990826 /* DetailServiceTVC.swift */,
@@ -315,6 +321,7 @@
 				A91333862363569000A54FEC /* CustomTVCells.swift in Sources */,
 				A92731FC236C23EC00976122 /* ModelController.swift in Sources */,
 				A91333822363230F00A54FEC /* SamplePriceListVC.swift in Sources */,
+				040968712384155800B84ABC /* AnimateLaunchScreenVC.swift in Sources */,
 				A9DA3620236782020004B711 /* StorageManager.swift in Sources */,
 				04CF8D1A237C8369005EA21D /* SetupButton.swift in Sources */,
 				04014FDC23829B00008EBE6C /* SetupDataPicker.swift in Sources */,
@@ -322,6 +329,7 @@
 				0409686B2383395F00B84ABC /* SetupLabel.swift in Sources */,
 				A9DA361E23676D1A0004B711 /* ModelDataBase.swift in Sources */,
 				0409686D2383429600B84ABC /* SetupTextField.swift in Sources */,
+				0409687323841C2E00B84ABC /* DescontVC.swift in Sources */,
 				A99DC6C02372AF9F0045D83C /* CustumCVC.swift in Sources */,
 				04CF8D1F237C8B3B005EA21D /* SetupNavigationController.swift in Sources */,
 				04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */,

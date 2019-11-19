@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pok-dh-8J6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L9f-KV-y0P">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,16 +11,16 @@
         <!--Выберите часть тела-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainMenu" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundPriceList" translatesAutoresizingMaskIntoConstraints="NO" id="DpH-u7-MAc">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uce-9H-2p5">
-                                <rect key="frame" x="0.0" y="88" width="207" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="207" height="725"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3b-y0-VoG">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="44"/>
@@ -80,7 +80,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xCc-cq-hS3">
-                                <rect key="frame" x="207" y="88" width="207" height="725"/>
+                                <rect key="frame" x="207" y="0.0" width="207" height="725"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XO3-nV-dyf">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="44"/>
@@ -160,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2262" y="-1329"/>
+            <point key="canvasLocation" x="3171.0144927536235" y="-1329.2410714285713"/>
         </scene>
         <!--Часть тела-->
         <scene sceneID="06B-Rz-ZZY">
@@ -274,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w9I-Hv-OTO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3263.7681159420295" y="-1740.4017857142856"/>
+            <point key="canvasLocation" x="4132" y="-1740"/>
         </scene>
         <!--Detail ServiceTVC-->
         <scene sceneID="bIU-EG-sV5">
@@ -520,7 +520,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T7n-Rg-v3J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4152" y="-1740"/>
+            <point key="canvasLocation" x="5264" y="-1740"/>
         </scene>
         <!--Edit On Service View Controller-->
         <scene sceneID="tSG-ob-rJM">
@@ -682,14 +682,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p65-H2-qpI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5035" y="-1740"/>
+            <point key="canvasLocation" x="6446" y="-1740"/>
         </scene>
         <!--Акции-->
         <scene sceneID="vRm-o9-dG4">
             <objects>
-                <viewController id="LYB-uR-HO4" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Start4" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LYB-uR-HO4" customClass="DescontVC" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7lV-sp-dAN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZGN-k7-foC">
@@ -734,6 +734,7 @@
                                                 <constraint firstItem="HBC-MN-nvB" firstAttribute="centerY" secondItem="SA5-px-hmU" secondAttribute="centerY" id="0ba-d8-SR3"/>
                                                 <constraint firstItem="HBC-MN-nvB" firstAttribute="centerX" secondItem="SA5-px-hmU" secondAttribute="centerX" id="EF2-pW-VOM"/>
                                                 <constraint firstItem="zzg-5u-Qry" firstAttribute="top" secondItem="HBC-MN-nvB" secondAttribute="bottom" constant="8" id="QLe-Wi-gsw"/>
+                                                <constraint firstItem="zzg-5u-Qry" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SA5-px-hmU" secondAttribute="leading" constant="20" symbolic="YES" id="aWc-Jp-dCE"/>
                                                 <constraint firstAttribute="trailing" secondItem="zzg-5u-Qry" secondAttribute="trailing" id="pXq-KL-h6g"/>
                                                 <constraint firstItem="HBC-MN-nvB" firstAttribute="leading" secondItem="SA5-px-hmU" secondAttribute="leading" id="skb-UJ-88h"/>
                                             </constraints>
@@ -743,21 +744,21 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.41960784313725491" green="0.74509803921568629" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2Kn-qs-3f7"/>
                     </view>
                     <navigationItem key="navigationItem" title="Акции" id="McE-sW-nR5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vLc-7X-chj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2260.8695652173915" y="-615.40178571428567"/>
+            <point key="canvasLocation" x="3171.0144927536235" y="-615.40178571428567"/>
         </scene>
         <!--Аккаунт -->
         <scene sceneID="MhE-Lc-V6R">
             <objects>
                 <viewController id="JB7-Ce-bo0" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xmF-5R-Gh7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="tPE-Pd-fzk"/>
@@ -768,11 +769,79 @@
             </objects>
             <point key="canvasLocation" x="2261" y="167"/>
         </scene>
+        <!--Animate Launch ScreenVC-->
+        <scene sceneID="csn-ab-SQr">
+            <objects>
+                <viewController storyboardIdentifier="PresentStart" id="OGJ-lw-AZb" customClass="AnimateLaunchScreenVC" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xqe-e5-VAp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Здравствуйте!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYN-OB-3Dz" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
+                                <rect key="frame" x="5" y="64" width="404" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ff-UZ-eox" customClass="SetupButton" customModule="Flamingo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="762" width="374" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="kSB-WU-kF4"/>
+                                </constraints>
+                                <state key="normal" title="Войти">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="startView:" destination="OGJ-lw-AZb" eventType="touchUpInside" id="XI3-Bv-Mc0"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flamingo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAK-kh-Gbh">
+                                <rect key="frame" x="5" y="438" width="404" height="20"/>
+                                <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScr" translatesAutoresizingMaskIntoConstraints="NO" id="p62-rW-wEB">
+                                <rect key="frame" x="0.0" y="71" width="414" height="754"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="p62-rW-wEB" firstAttribute="leading" secondItem="tLr-Db-7QL" secondAttribute="leading" id="6kI-7K-tNR"/>
+                            <constraint firstItem="tLr-Db-7QL" firstAttribute="trailing" secondItem="rAK-kh-Gbh" secondAttribute="trailing" constant="5" id="92u-nM-p1y"/>
+                            <constraint firstItem="p62-rW-wEB" firstAttribute="trailing" secondItem="tLr-Db-7QL" secondAttribute="trailing" id="9Gf-YV-6tm"/>
+                            <constraint firstItem="p62-rW-wEB" firstAttribute="centerY" secondItem="Xqe-e5-VAp" secondAttribute="centerY" id="SEa-QP-zL8"/>
+                            <constraint firstItem="rAK-kh-Gbh" firstAttribute="centerY" secondItem="Xqe-e5-VAp" secondAttribute="centerY" id="Wln-LL-ccJ"/>
+                            <constraint firstItem="rAK-kh-Gbh" firstAttribute="leading" secondItem="tLr-Db-7QL" secondAttribute="leading" constant="5" id="avg-zM-SZ3"/>
+                            <constraint firstItem="p62-rW-wEB" firstAttribute="centerX" secondItem="Xqe-e5-VAp" secondAttribute="centerX" id="cU3-ld-KXJ"/>
+                            <constraint firstItem="GYN-OB-3Dz" firstAttribute="leading" secondItem="tLr-Db-7QL" secondAttribute="leading" constant="5" id="lTP-4i-oHK"/>
+                            <constraint firstItem="tLr-Db-7QL" firstAttribute="trailing" secondItem="GYN-OB-3Dz" secondAttribute="trailing" constant="5" id="lmM-1R-gd3"/>
+                            <constraint firstItem="GYN-OB-3Dz" firstAttribute="top" secondItem="tLr-Db-7QL" secondAttribute="top" constant="20" id="nh5-YE-a04"/>
+                            <constraint firstItem="8Ff-UZ-eox" firstAttribute="bottom" secondItem="tLr-Db-7QL" secondAttribute="bottom" id="qxV-nc-Nd1"/>
+                            <constraint firstItem="tLr-Db-7QL" firstAttribute="trailing" secondItem="8Ff-UZ-eox" secondAttribute="trailing" constant="20" id="r6G-wW-wb3"/>
+                            <constraint firstItem="8Ff-UZ-eox" firstAttribute="leading" secondItem="tLr-Db-7QL" secondAttribute="leading" constant="20" id="yTX-au-agm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tLr-Db-7QL"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="sXY-bV-4wG"/>
+                    <connections>
+                        <outlet property="buttonNext" destination="8Ff-UZ-eox" id="OG8-Ua-14H"/>
+                        <outlet property="flamingoLabel" destination="rAK-kh-Gbh" id="yaq-6l-1zI"/>
+                        <outlet property="helloLebel" destination="GYN-OB-3Dz" id="HJR-8t-arL"/>
+                        <outlet property="logoImage" destination="p62-rW-wEB" id="9cY-zm-gvY"/>
+                        <segue destination="pok-dh-8J6" kind="show" identifier="StartApp" id="Mbx-8p-PA1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YjX-ge-krp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-86.956521739130437" y="-824.33035714285711"/>
+        </scene>
         <!--Setup Tab BarVC-->
         <scene sceneID="EqS-En-naJ">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="pok-dh-8J6" customClass="SetupTabBarVC" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pok-dh-8J6" customClass="SetupTabBarVC" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="LNc-0l-jEk"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="G7J-pq-TNf">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="83"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -790,7 +859,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bmt-CS-1kd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="-823"/>
+            <point key="canvasLocation" x="973.91304347826099" y="-823.66071428571422"/>
         </scene>
         <!--Setup Navigation Controller-->
         <scene sceneID="ocv-5k-l6k">
@@ -799,13 +868,13 @@
                     <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="Glr-sL-NXK"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IhA-Et-T2C">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="IhA-Et-T2C">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="25"/>
+                            <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="25"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -816,18 +885,18 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYh-5i-Bwr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1245" y="-1329"/>
+            <point key="canvasLocation" x="2155.072463768116" y="-1329.2410714285713"/>
         </scene>
         <!--Категория-->
         <scene sceneID="Suo-Rs-lrq">
             <objects>
-                <viewController id="tBc-Yd-C3M" customClass="CategoryListServiceVC" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartApp3" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tBc-Yd-C3M" customClass="CategoryListServiceVC" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Kx-3w-DcF" customClass="Two">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NjS-Kn-pTC">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="3" minimumInteritemSpacing="1" id="7Id-Rj-1BR">
                                     <size key="itemSize" width="202" height="127"/>
@@ -894,16 +963,16 @@
         <!--Setup Navigation Controller-->
         <scene sceneID="Xe6-km-OhK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a7a-kX-0os" customClass="SetupNavigationController" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="StartApp2" automaticallyAdjustsScrollViewInsets="NO" id="a7a-kX-0os" customClass="SetupNavigationController" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="person" catalog="system" id="NMz-zh-nZR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="z8l-Jw-eJj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="z8l-Jw-eJj">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="25"/>
+                            <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="25"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -922,13 +991,13 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="30z-oE-gJm" customClass="SetupNavigationController" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="rosette" catalog="system" id="M5i-3J-yvB"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NsY-oH-l0f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="NsY-oH-l0f">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="25"/>
+                            <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="25"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -939,7 +1008,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aql-bW-edq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1245" y="-615"/>
+            <point key="canvasLocation" x="2155.072463768116" y="-615.40178571428567"/>
         </scene>
         <!--Setup Navigation Controller-->
         <scene sceneID="WYj-oH-lVF">
@@ -947,14 +1016,14 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RgW-VR-aiJ" customClass="SetupNavigationController" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="book" catalog="system" id="CAS-AF-ZM1"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5cF-0u-klB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="5cF-0u-klB">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="25"/>
+                            <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="25"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -966,6 +1035,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUZ-PL-jng" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1245" y="-2108"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7e7-VJ-2Ju">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="L9f-KV-y0P" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="uvz-13-yzb">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OGJ-lw-AZb" kind="relationship" relationship="rootViewController" id="buJ-NU-vJA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h7r-XG-nyw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-997.10144927536237" y="-824.33035714285711"/>
         </scene>
     </scenes>
     <resources>
@@ -979,6 +1068,7 @@
         <image name="edit" width="24" height="24"/>
         <image name="firstPageIcon" width="512" height="512"/>
         <image name="house" catalog="system" width="64" height="54"/>
+        <image name="launchScr" width="392" height="377"/>
         <image name="person" catalog="system" width="64" height="58"/>
         <image name="phone" width="24" height="24"/>
         <image name="priceList" width="24" height="24"/>
@@ -986,6 +1076,6 @@
         <image name="time" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fGj-fz-BiA"/>
+        <segue reference="lMg-cv-wFu"/>
     </inferredMetricsTieBreakers>
 </document>

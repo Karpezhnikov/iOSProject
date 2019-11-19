@@ -25,7 +25,7 @@ class SetupLabel: UILabel {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.textColor = ColorApp.white
         setupFontLabal(sender: self)
         
         

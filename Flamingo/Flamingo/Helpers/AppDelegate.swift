@@ -15,28 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        UITextViewWorkaround.executeWorkaround()// для UITextView
         //для задержки на экране загрузке
-        Thread.sleep(forTimeInterval: 1.5)
+        Thread.sleep(forTimeInterval: 0.5)// чтобы приложение успело открыться
         
-        let schemaVersion: UInt64 = 3
         
-        let config = Realm.Configuration(
-            schemaVersion: schemaVersion,
-            migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < schemaVersion) {
-                }
-            })
 
         // Tell Realm to use this new configuration object for the default Realm
-        Realm.Configuration.defaultConfiguration = config
+        //Realm.Configuration.defaultConfiguration = config
 
         // Now that we've told Realm how to handle the schema change, opening the file
         // will automatically perform the migration
         //let realm = try! Realm()
         
         // This is the workaround for Xcode 11.2
-        UITextViewWorkaround.executeWorkaround()
+        
         
         return true
     }
@@ -58,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-@objc
+@objc // для UITextView
 class UITextViewWorkaround : NSObject {
 
     static func executeWorkaround() {

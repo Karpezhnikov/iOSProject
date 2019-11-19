@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum ColorApp {
-    static let indigo = UIColor.init(red: 52/255, green: 0/255, blue: 0/255, alpha: 1)
+    static let indigo = UIColor.init(red: 69/255, green: 38/255, blue: 71/255, alpha: 1)
     static let black = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
     static let white = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
 }
