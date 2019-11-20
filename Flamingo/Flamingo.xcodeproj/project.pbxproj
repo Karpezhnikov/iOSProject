@@ -15,6 +15,7 @@
 		040968712384155800B84ABC /* AnimateLaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */; };
 		0409687323841C2E00B84ABC /* DescontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409687223841C2E00B84ABC /* DescontVC.swift */; };
 		046991C1237D5D6600990826 /* DetailServiceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046991C0237D5D6600990826 /* DetailServiceTVC.swift */; };
+		04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04859C1F23851B5D000E8709 /* AnimateUI.swift */; };
 		04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D17237BE065005EA21D /* SetupScrollView.swift */; };
 		04CF8D1A237C8369005EA21D /* SetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D19237C8369005EA21D /* SetupButton.swift */; };
 		04CF8D1F237C8B3B005EA21D /* SetupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D1E237C8B3B005EA21D /* SetupNavigationController.swift */; };
@@ -46,6 +47,7 @@
 		040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateLaunchScreenVC.swift; sourceTree = "<group>"; };
 		0409687223841C2E00B84ABC /* DescontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescontVC.swift; sourceTree = "<group>"; };
 		046991C0237D5D6600990826 /* DetailServiceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailServiceTVC.swift; sourceTree = "<group>"; };
+		04859C1F23851B5D000E8709 /* AnimateUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateUI.swift; sourceTree = "<group>"; };
 		04CF8D17237BE065005EA21D /* SetupScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScrollView.swift; sourceTree = "<group>"; };
 		04CF8D19237C8369005EA21D /* SetupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SetupButton.swift; path = Flamingo/Controller/SetupButton.swift; sourceTree = SOURCE_ROOT; };
 		04CF8D1E237C8B3B005EA21D /* SetupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		A9DA361A236740910004B711 /* iBuillder */ = {
 			isa = PBXGroup;
 			children = (
+				04859C1F23851B5D000E8709 /* AnimateUI.swift */,
 				0409686E2383C6D300B84ABC /* StyleFonts.swift */,
 				A9DA361F236782020004B711 /* StorageManager.swift */,
 				A9133373236317A400A54FEC /* Main.storyboard */,
@@ -341,6 +344,7 @@
 				046991C1237D5D6600990826 /* DetailServiceTVC.swift in Sources */,
 				A99DC6BE2372AF5D0045D83C /* CategoryListServiceVC.swift in Sources */,
 				A9133370236317A400A54FEC /* SceneDelegate.swift in Sources */,
+				04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
