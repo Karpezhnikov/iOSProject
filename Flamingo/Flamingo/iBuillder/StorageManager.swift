@@ -9,12 +9,19 @@
 
 import RealmSwift
 
-let schemaVersion: UInt64 = 14
+let schemaVersion: UInt64 = 28
 let config = Realm.Configuration(
         // Get the URL to the bundled file
     fileURL: Bundle.main.url(forResource: "default", withExtension: "realm"),
-    readOnly: true,
-    schemaVersion: schemaVersion)
+    schemaVersion: schemaVersion,
+    migrationBlock: { migration, oldSchemaVersion in
+    // We haven’t migrated anything yet, so oldSchemaVersion == 0
+    if (oldSchemaVersion < schemaVersion) {
+        // Nothing to do!
+        // Realm will automatically detect new properties and removed properties
+        // And will update the schema on disk automatically
+        }}
+)
 
 // Open the Realm with the configuration
 let realm = try! Realm(configuration: config)
@@ -23,9 +30,15 @@ let realm = try! Realm(configuration: config)
 class StorageManager{
     
     // сохраняет полученный объект
-    static func saveObject(_ service: Service){
+    static func saveObject(_ newObject: Object){
         try! realm.write {
-            realm.add(service)
+            realm.add(newObject)
+        }
+    }
+    
+    static func saveObjectDiscount(_ newObject: DiscountTest){
+        try! realm.write {
+            realm.add(newObject)
         }
     }
     

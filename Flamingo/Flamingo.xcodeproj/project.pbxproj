@@ -14,6 +14,7 @@
 		0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686E2383C6D300B84ABC /* StyleFonts.swift */; };
 		040968712384155800B84ABC /* AnimateLaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */; };
 		0409687323841C2E00B84ABC /* DescontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409687223841C2E00B84ABC /* DescontVC.swift */; };
+		04408AA02386DED2007D1999 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 04408A9F2386DED0007D1999 /* default.realm */; };
 		046991C1237D5D6600990826 /* DetailServiceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046991C0237D5D6600990826 /* DetailServiceTVC.swift */; };
 		04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04859C1F23851B5D000E8709 /* AnimateUI.swift */; };
 		04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D17237BE065005EA21D /* SetupScrollView.swift */; };
@@ -30,7 +31,6 @@
 		A91333842363270300A54FEC /* ModelSamplePriceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91333832363270300A54FEC /* ModelSamplePriceList.swift */; };
 		A91333862363569000A54FEC /* CustomTVCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91333852363569000A54FEC /* CustomTVCells.swift */; };
 		A92731FC236C23EC00976122 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92731FB236C23EC00976122 /* ModelController.swift */; };
-		A92731FE236C51BA00976122 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = A92731FD236C51B900976122 /* default.realm */; };
 		A970329A237557990031B598 /* SetupTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9703299237557990031B598 /* SetupTabBarVC.swift */; };
 		A99DC6BE2372AF5D0045D83C /* CategoryListServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99DC6BD2372AF5D0045D83C /* CategoryListServiceVC.swift */; };
 		A99DC6C02372AF9F0045D83C /* CustumCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99DC6BF2372AF9F0045D83C /* CustumCVC.swift */; };
@@ -46,6 +46,7 @@
 		0409686E2383C6D300B84ABC /* StyleFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFonts.swift; sourceTree = "<group>"; };
 		040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateLaunchScreenVC.swift; sourceTree = "<group>"; };
 		0409687223841C2E00B84ABC /* DescontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescontVC.swift; sourceTree = "<group>"; };
+		04408A9F2386DED0007D1999 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		046991C0237D5D6600990826 /* DetailServiceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailServiceTVC.swift; sourceTree = "<group>"; };
 		04859C1F23851B5D000E8709 /* AnimateUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateUI.swift; sourceTree = "<group>"; };
 		04CF8D17237BE065005EA21D /* SetupScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScrollView.swift; sourceTree = "<group>"; };
@@ -64,7 +65,6 @@
 		A91333832363270300A54FEC /* ModelSamplePriceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSamplePriceList.swift; sourceTree = "<group>"; };
 		A91333852363569000A54FEC /* CustomTVCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTVCells.swift; sourceTree = "<group>"; };
 		A92731FB236C23EC00976122 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
-		A92731FD236C51B900976122 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		A9703299237557990031B598 /* SetupTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SetupTabBarVC.swift; path = Flamingo/Controller/SetupTabBarVC.swift; sourceTree = SOURCE_ROOT; };
 		A99DC6BD2372AF5D0045D83C /* CategoryListServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListServiceVC.swift; sourceTree = "<group>"; };
 		A99DC6BF2372AF9F0045D83C /* CustumCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumCVC.swift; sourceTree = "<group>"; };
@@ -168,9 +168,9 @@
 			isa = PBXGroup;
 			children = (
 				A913336D236317A400A54FEC /* AppDelegate.swift */,
+				04408A9F2386DED0007D1999 /* default.realm */,
 				A913336F236317A400A54FEC /* SceneDelegate.swift */,
 				A9133376236317A700A54FEC /* Assets.xcassets */,
-				A92731FD236C51B900976122 /* default.realm */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -266,7 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A913337A236317A700A54FEC /* LaunchScreen.storyboard in Resources */,
-				A92731FE236C51BA00976122 /* default.realm in Resources */,
+				04408AA02386DED2007D1999 /* default.realm in Resources */,
 				A9133377236317A700A54FEC /* Assets.xcassets in Resources */,
 				A9133375236317A400A54FEC /* Main.storyboard in Resources */,
 			);

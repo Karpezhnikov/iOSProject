@@ -12,7 +12,9 @@ class DescontVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let saveData = DiscountTest()
+        saveData.saveDiscount()
         // Do any additional setup after loading the view.
     }
     
@@ -26,5 +28,7 @@ class DescontVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+
 
 }

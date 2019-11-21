@@ -54,7 +54,35 @@ class MasterServices: Object {
     @objc dynamic var timeAndPriceMaster = ""
 }
 
+class DiscountTest: Object{
+    @objc dynamic var nameDiscount = ""  // название акции
+    @objc dynamic var serviceDiscount = ""
+    @objc dynamic var descriptionDiscount = "" // описание акции
+    @objc dynamic var image: Data?
+    
+    // инициализатор для класса
+    convenience init(nameDiscount: String, descriptionDiscount: String, image:Data?){
+        self.init()
+        self.nameDiscount = nameDiscount
+        self.serviceDiscount = ""
+        self.descriptionDiscount = descriptionDiscount
+        self.image = image
+    }
 
+
+    func saveDiscount(){
+        let imageOne = UIImage(named: "discontOne")
+        let imageData = imageOne?.pngData()
+        
+        let newDiscount = DiscountTest(nameDiscount: "Прекрасное лето!",
+                                   descriptionDiscount: "с 13 по 30 июня! При покупке абонемента в солярий на 200 минут В ПОДАРОК абонемент в коллагенарий на 10 сеансов!",
+                                   image: imageData)
+        print(newDiscount)
+        StorageManager.saveObjectDiscount(newDiscount)
+        
+        
+    }
+}
 
 
 
