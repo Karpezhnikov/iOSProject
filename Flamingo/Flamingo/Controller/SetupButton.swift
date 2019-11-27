@@ -35,6 +35,9 @@ class SetupButton: UIButton {
         case 4:
             sender.layer.borderColor = ColorApp.indigo.cgColor
             sender.layer.cornerRadius = 10
+        case 5:
+            self.layer.cornerRadius = self.frame.size.width/2
+            sender.layer.borderColor = ColorApp.white.cgColor
         default:
             return
         }

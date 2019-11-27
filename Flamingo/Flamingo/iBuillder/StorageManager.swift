@@ -9,10 +9,10 @@
 
 import RealmSwift
 
-let schemaVersion: UInt64 = 28
+let schemaVersion: UInt64 = 1
 let config = Realm.Configuration(
         // Get the URL to the bundled file
-    fileURL: Bundle.main.url(forResource: "default", withExtension: "realm"),
+    //fileURL: Bundle.main.url(forResource: "default", withExtension: "realm"),
     schemaVersion: schemaVersion,
     migrationBlock: { migration, oldSchemaVersion in
     // We haven’t migrated anything yet, so oldSchemaVersion == 0
@@ -36,11 +36,17 @@ class StorageManager{
         }
     }
     
-    static func saveObjectDiscount(_ newObject: DiscountTest){
+    
+    static func saveObjectDiscount(_ newObject: Discount){
         try! realm.write {
-            realm.add(newObject)
+            realm.add([newObject])
+            print("Request for DataDase --> saveObjectDiscount")
         }
+//        
+//        let listMasters = realm.objects(Discount.self)
+//        print(listMasters)
     }
+    
     
     // возвращает всех мастеров для указаного service
     static func getMasterFromTheDataBase(_ service: Service) -> [MasterServices]{

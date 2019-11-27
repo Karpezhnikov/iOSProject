@@ -54,12 +54,12 @@ class MasterServices: Object {
     @objc dynamic var timeAndPriceMaster = ""
 }
 
-class DiscountTest: Object{
+class Discount: Object{
     @objc dynamic var nameDiscount = ""  // название акции
     @objc dynamic var serviceDiscount = ""
     @objc dynamic var descriptionDiscount = "" // описание акции
     @objc dynamic var image: Data?
-    
+
     // инициализатор для класса
     convenience init(nameDiscount: String, descriptionDiscount: String, image:Data?){
         self.init()
@@ -68,21 +68,40 @@ class DiscountTest: Object{
         self.descriptionDiscount = descriptionDiscount
         self.image = image
     }
+}
 
-
-    func saveDiscount(){
-        let imageOne = UIImage(named: "discontOne")
-        let imageData = imageOne?.pngData()
-        
-        let newDiscount = DiscountTest(nameDiscount: "Прекрасное лето!",
-                                   descriptionDiscount: "с 13 по 30 июня! При покупке абонемента в солярий на 200 минут В ПОДАРОК абонемент в коллагенарий на 10 сеансов!",
-                                   image: imageData)
-        print(newDiscount)
-        StorageManager.saveObjectDiscount(newDiscount)
-        
-        
+class DiscontFireBase{
+    var id = ""
+    var name = ""
+    var description = ""
+    var dateStart = ""
+    var dateEnd = ""
+    var imageURL = ""
+    
+    convenience init(id: String, name: String, description: String, dateStart: String, dateEnd: String, image: String){
+        self.init()
+        self.id = id
+        self.name = name
+        self.description = description
+        self.dateStart = dateStart
+        self.dateEnd = dateEnd
+        self.imageURL = image
     }
 }
+
+//    func saveDiscount(){
+//        let imageOne = UIImage(named: "discontTwo")
+//        let imageData = imageOne?.pngData()
+//        
+//        let newDiscount = Discount(nameDiscount: "АКЦИЯ!",
+//                                   descriptionDiscount: "Только три дня! 📆6,7,8 июня!СКИДКА 50% на программу «МОЛОДОСТЬ»",
+//                                   image: imageData)
+//        
+//        StorageManager.saveObjectDiscount(newDiscount)
+//        
+//        
+//    }
+
 
 
 

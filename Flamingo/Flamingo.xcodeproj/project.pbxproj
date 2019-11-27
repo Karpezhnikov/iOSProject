@@ -9,14 +9,17 @@
 /* Begin PBXBuildFile section */
 		04014FDC23829B00008EBE6C /* SetupDataPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04014FDB23829B00008EBE6C /* SetupDataPicker.swift */; };
 		04017CCB237ED65100809ACA /* EditOnServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04017CCA237ED65100809ACA /* EditOnServiceViewController.swift */; };
+		040247D1238D467C00C6EFE2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040247D0238D467B00C6EFE2 /* GoogleService-Info.plist */; };
+		040247D3238D66C900C6EFE2 /* AddNewDiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */; };
+		040247D5238DB34C00C6EFE2 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */; };
 		0409686B2383395F00B84ABC /* SetupLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686A2383395F00B84ABC /* SetupLabel.swift */; };
 		0409686D2383429600B84ABC /* SetupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686C2383429600B84ABC /* SetupTextField.swift */; };
 		0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686E2383C6D300B84ABC /* StyleFonts.swift */; };
 		040968712384155800B84ABC /* AnimateLaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */; };
-		0409687323841C2E00B84ABC /* DescontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409687223841C2E00B84ABC /* DescontVC.swift */; };
-		04408AA02386DED2007D1999 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 04408A9F2386DED0007D1999 /* default.realm */; };
+		0409687323841C2E00B84ABC /* DiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409687223841C2E00B84ABC /* DiscontVC.swift */; };
 		046991C1237D5D6600990826 /* DetailServiceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046991C0237D5D6600990826 /* DetailServiceTVC.swift */; };
 		04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04859C1F23851B5D000E8709 /* AnimateUI.swift */; };
+		04B0DAF2238BFC3B0006B7E3 /* DetailDiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0DAF1238BFC3B0006B7E3 /* DetailDiscontVC.swift */; };
 		04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D17237BE065005EA21D /* SetupScrollView.swift */; };
 		04CF8D1A237C8369005EA21D /* SetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D19237C8369005EA21D /* SetupButton.swift */; };
 		04CF8D1F237C8B3B005EA21D /* SetupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D1E237C8B3B005EA21D /* SetupNavigationController.swift */; };
@@ -41,14 +44,17 @@
 /* Begin PBXFileReference section */
 		04014FDB23829B00008EBE6C /* SetupDataPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupDataPicker.swift; sourceTree = "<group>"; };
 		04017CCA237ED65100809ACA /* EditOnServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOnServiceViewController.swift; sourceTree = "<group>"; };
+		040247D0238D467B00C6EFE2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDiscontVC.swift; sourceTree = "<group>"; };
+		040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		0409686A2383395F00B84ABC /* SetupLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupLabel.swift; sourceTree = "<group>"; };
 		0409686C2383429600B84ABC /* SetupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTextField.swift; sourceTree = "<group>"; };
 		0409686E2383C6D300B84ABC /* StyleFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFonts.swift; sourceTree = "<group>"; };
 		040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateLaunchScreenVC.swift; sourceTree = "<group>"; };
-		0409687223841C2E00B84ABC /* DescontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescontVC.swift; sourceTree = "<group>"; };
-		04408A9F2386DED0007D1999 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
+		0409687223841C2E00B84ABC /* DiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscontVC.swift; sourceTree = "<group>"; };
 		046991C0237D5D6600990826 /* DetailServiceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailServiceTVC.swift; sourceTree = "<group>"; };
 		04859C1F23851B5D000E8709 /* AnimateUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateUI.swift; sourceTree = "<group>"; };
+		04B0DAF1238BFC3B0006B7E3 /* DetailDiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDiscontVC.swift; sourceTree = "<group>"; };
 		04CF8D17237BE065005EA21D /* SetupScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScrollView.swift; sourceTree = "<group>"; };
 		04CF8D19237C8369005EA21D /* SetupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SetupButton.swift; path = Flamingo/Controller/SetupButton.swift; sourceTree = SOURCE_ROOT; };
 		04CF8D1E237C8B3B005EA21D /* SetupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationController.swift; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 				A9DA36192367406F0004B711 /* Helpers */,
 				A9DA3617236740360004B711 /* Controller */,
 				A913337B236317A700A54FEC /* Info.plist */,
+				040247D0238D467B00C6EFE2 /* GoogleService-Info.plist */,
 			);
 			path = Flamingo;
 			sourceTree = "<group>";
@@ -151,11 +158,13 @@
 		A9DA3617236740360004B711 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0409687223841C2E00B84ABC /* DescontVC.swift */,
-				040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */,
 				04CF8D1D237C860E005EA21D /* SetupElements */,
 				04CF8D1C237C85A8005EA21D /* CustomElements */,
 				046991C0237D5D6600990826 /* DetailServiceTVC.swift */,
+				040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */,
+				04B0DAF1238BFC3B0006B7E3 /* DetailDiscontVC.swift */,
+				0409687223841C2E00B84ABC /* DiscontVC.swift */,
+				040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */,
 				04017CCA237ED65100809ACA /* EditOnServiceViewController.swift */,
 				A9133371236317A400A54FEC /* ViewController.swift */,
 				A91333812363230F00A54FEC /* SamplePriceListVC.swift */,
@@ -168,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				A913336D236317A400A54FEC /* AppDelegate.swift */,
-				04408A9F2386DED0007D1999 /* default.realm */,
 				A913336F236317A400A54FEC /* SceneDelegate.swift */,
 				A9133376236317A700A54FEC /* Assets.xcassets */,
 			);
@@ -178,6 +186,7 @@
 		A9DA361A236740910004B711 /* iBuillder */ = {
 			isa = PBXGroup;
 			children = (
+				040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */,
 				04859C1F23851B5D000E8709 /* AnimateUI.swift */,
 				0409686E2383C6D300B84ABC /* StyleFonts.swift */,
 				A9DA361F236782020004B711 /* StorageManager.swift */,
@@ -266,7 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A913337A236317A700A54FEC /* LaunchScreen.storyboard in Resources */,
-				04408AA02386DED2007D1999 /* default.realm in Resources */,
+				040247D1238D467C00C6EFE2 /* GoogleService-Info.plist in Resources */,
 				A9133377236317A700A54FEC /* Assets.xcassets in Resources */,
 				A9133375236317A400A54FEC /* Main.storyboard in Resources */,
 			);
@@ -321,18 +330,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B0DAF2238BFC3B0006B7E3 /* DetailDiscontVC.swift in Sources */,
 				A91333862363569000A54FEC /* CustomTVCells.swift in Sources */,
 				A92731FC236C23EC00976122 /* ModelController.swift in Sources */,
+				040247D5238DB34C00C6EFE2 /* FirebaseManager.swift in Sources */,
 				A91333822363230F00A54FEC /* SamplePriceListVC.swift in Sources */,
 				040968712384155800B84ABC /* AnimateLaunchScreenVC.swift in Sources */,
 				A9DA3620236782020004B711 /* StorageManager.swift in Sources */,
+				040247D3238D66C900C6EFE2 /* AddNewDiscontVC.swift in Sources */,
 				04CF8D1A237C8369005EA21D /* SetupButton.swift in Sources */,
 				04014FDC23829B00008EBE6C /* SetupDataPicker.swift in Sources */,
 				A9133372236317A400A54FEC /* ViewController.swift in Sources */,
 				0409686B2383395F00B84ABC /* SetupLabel.swift in Sources */,
 				A9DA361E23676D1A0004B711 /* ModelDataBase.swift in Sources */,
 				0409686D2383429600B84ABC /* SetupTextField.swift in Sources */,
-				0409687323841C2E00B84ABC /* DescontVC.swift in Sources */,
+				0409687323841C2E00B84ABC /* DiscontVC.swift in Sources */,
 				A99DC6C02372AF9F0045D83C /* CustumCVC.swift in Sources */,
 				04CF8D1F237C8B3B005EA21D /* SetupNavigationController.swift in Sources */,
 				04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */,
@@ -489,6 +501,7 @@
 			baseConfigurationReference = CC9F2068E1D5AC0849C98437 /* Pods-Flamingo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3WT2QN7Y27;
 				INFOPLIST_FILE = Flamingo/Info.plist;
@@ -508,6 +521,7 @@
 			baseConfigurationReference = DE7C5BF31A635E258B4DE997 /* Pods-Flamingo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3WT2QN7Y27;
 				INFOPLIST_FILE = Flamingo/Info.plist;

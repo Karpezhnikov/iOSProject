@@ -46,3 +46,17 @@ class CustomTVCellDetail: UITableViewCell {
     }
 }
 
+class CustomTVCellDiscont: UITableViewCell{
+    var nameDiscount = ""  // название акции
+    var serviceDiscount = ""
+    var descriptionDiscount = "" // описание акции
+    
+    @IBOutlet weak var imageDiscont: UIImageView!{
+        didSet{
+            imageDiscont.layer.cornerRadius = 40
+            imageDiscont.contentMode = .scaleToFill
+        }
+    }
+    
+    
+}

@@ -12,13 +12,29 @@ class SetupTextField: UITextField {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+    
+        self.font = Font.fontRegular
+        self.textColor = ColorApp.white
         
         self.layer.borderWidth = BorderWidth.borderWidth
         self.layer.borderColor = ColorApp.indigo.cgColor
-        self.font = Font.fontRegular
-        //self.
         
-        self.layer.cornerRadius = 10
+        setupTextField()
+    }
+    
+    private func setupTextField(){
+        switch self.tag {
+        case 1: // кнопка записи
+            self.backgroundColor = ColorApp.lagthGreyColor
+            self.textColor = ColorApp.white
+            self.font = Font.fontRegular
+            
+            self.layer.borderWidth = BorderWidth.borderWidth
+            self.layer.borderColor = ColorApp.indigo.cgColor
+            
+        default:
+            return
+        }
     }
 
 }

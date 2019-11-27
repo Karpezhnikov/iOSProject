@@ -62,9 +62,6 @@ extension DetailServiceTVC: UICollectionViewDelegate, UICollectionViewDataSource
             itemCell.timeAndPriceMaster.text = "\(service.timeService), \(service.placeService)"
             itemCell.imageMaster.image = UIImage(named: "firstPageIcon")
             
-            //itemCell.layer.borderWidth = 2
-            //itemCell.frame.size.width = collectionView.frame.size.width
-            //itemCell.contentView.frame.size.width = CGFloat(300)
             return itemCell
         }
         return UICollectionViewCell()
