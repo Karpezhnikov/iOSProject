@@ -13,66 +13,73 @@ import Firebase
 
 class DiscontVC: UIViewController {
 
-    private var disconts: Results<Discount>!
+    var indexPathRowUpdate = Int() // запоминает индекс строки выбраной к редактированию
+    var refreshControl:UIRefreshControl!
+    private var disconts: Results<DiscontFireBase>!{
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ////////////////////////////
-//        let db = Firestore.firestore()
-//        // запись в FireBase
-//        var ref: DocumentReference? = nil
-//        ref = db.collection("users").addDocument(data: [
-//            "first": "Ada",
-//            "last": "Lovelace",
-//            "born": 1815
-//        ]) { err in
-//            if let err = err {
-//                print("Error adding document: \(err)")
-//            } else {
-//                print("Document added with ID: \(ref!.documentID)")
-//            }
-//        }
+        setupRefreshControl()
         
-//        ref = db.collection("users").addDocument(data: [
-//            "first": "Alan",
-//            "middle": "Mathison",
-//            "last": "Turing",
-//            "born": 1912
-//        ]) { err in
-//            if let err = err {
-//                print("Error adding document: \(err)")
-//            } else {
-//                print("Document added with ID: \(ref!.documentID)")
-//            }
-//        }
-        
-        // Получение данных из FireBase
-//        db.collection("users").getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data())")
-//                }
-//            }
-//        }
-        
-        
-        //////////////////////////
-        disconts = realm.objects(Discount.self) // получаем все акции
+        disconts = realm.objects(DiscontFireBase.self) // получаем все акции
     }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifire = segue.identifier, let detailDiscontVC = segue.destination as? DetailDiscontVC
-        else {return}
+        guard let identifire = segue.identifier else {return}
         if identifire == "detailDiscont"{
+            guard let detailDiscontVC = segue.destination as? DetailDiscontVC else {return}
             guard let indexPath = tableView.indexPathForSelectedRow else {return} // определяем индекс строки
             detailDiscontVC.discont = disconts[indexPath.row]
             //detailServiceVC.service = arrayServises[indexPath.row]
         }
+        if identifire == "updateDiscontSegue" {
+            let destinationVC = segue.destination as! AddNewDiscontVC
+            destinationVC.discontUpdate = disconts[indexPathRowUpdate]
+            
+        }
+    }
+    
+    // ToDo: добавить одновление сразу после изменения или добавления объекта
+    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .background).async { // в асинхронном режиме записываем данные
+            FirebaseManager.getDataDicontsOfFirebase()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        guard segue.identifier == "backToDiscont" else{return}
+    }
+    
+    //MARK: Setup UIRefreshControl
+    private func setupRefreshControl(){ // ToDo: сделать активной RefreshControl пока не закончится подгрузка
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        refreshControl.tintColor = UIColor.white
+        refreshControl.backgroundColor = .black
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc func refresh(sender:AnyObject) {
+        DispatchQueue.global(qos: .background).async { // в асинхронном режиме записываем данные
+            FirebaseManager.getDataDicontsOfFirebase()
+            DispatchQueue.main.async { [weak self] in
+                self!.disconts = realm.objects(DiscontFireBase.self) // получаем все акции и обновляем TB
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in// через секунду закрываем actionSheet и view
+                    self!.refreshControl.endRefreshing()
+                }
+                
+            }
+        }
+        //refreshControl.colo
+        
     }
     
 }
@@ -87,11 +94,11 @@ extension DiscontVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellDiscont", for: indexPath) as! CustomTVCellDiscont
+        //print("TableView",disconts[indexPath.row].name)
         
         
-        
-        cell.nameDiscount = disconts[indexPath.row].nameDiscount
-        cell.descriptionDiscount = disconts[indexPath.row].descriptionDiscount
+        cell.nameDiscount = disconts[indexPath.row].name
+        cell.descriptionDiscount = disconts[indexPath.row].descriptionDiscont
         cell.imageDiscont.image = UIImage(data: disconts[indexPath.row].image!)
         
         
@@ -107,5 +114,47 @@ extension DiscontVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true) // для того, чтобы ячейка не выделялась
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true // добавляем базовый функционал для управления ячейками ячейки
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteItem = UIContextualAction(style: .normal, title: nil) {  [weak self](contextualAction, view, boolValue) in
+            // вызываем окно подтверждения удаления
+            let actionSheet = UIAlertController(title: nil, message: "Удалить акцию?", preferredStyle: .alert)
+            let delete = UIAlertAction(title: "Удалить", style: .default) { (_) in
+                // delete document
+                let discont = self!.disconts[indexPath.row]
+                FirebaseManager.deleteDiscont(discont) // удаляем данные из FireBase
+                StorageManager.deleteObjectRealm(discont) // удаляем из Realm
+                self!.disconts = realm.objects(DiscontFireBase.self) // перезаполняем массив
+                
+            }
+            let cancel = UIAlertAction(title: "Отмена", style: .cancel)
+            actionSheet.addAction(cancel)
+            actionSheet.addAction(delete)
+            self!.present(actionSheet, animated: true)
+        }
+        deleteItem.backgroundColor = ColorApp.black
+        deleteItem.image = UIImage(named: "trash")
+        // если нажата кнопка редактирования то переходит на экран добавления записи
+        let changeItem = UIContextualAction(style: .normal, title: nil) {  [weak self](contextualAction, view, boolValue) in
+            self!.indexPathRowUpdate = indexPath.row // записываем индекс строки которую редактируем
+            self!.performSegue(withIdentifier: "updateDiscontSegue", sender: nil)
+            
+        }
+        changeItem.backgroundColor = ColorApp.black
+        changeItem.image = UIImage(named: "refresh")
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem, changeItem])
+        swipeActions.performsFirstActionWithFullSwipe = false
+
+        return swipeActions
+    }
+    
     
 }

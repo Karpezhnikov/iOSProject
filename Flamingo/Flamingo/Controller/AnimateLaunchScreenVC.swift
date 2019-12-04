@@ -8,6 +8,7 @@
 
 
 import UIKit
+import Firebase
 
 //MARK: ToDo: добавить окна "Вход" и "Регистрация"
 class LaunchScreenVC: UIViewController {
@@ -23,6 +24,10 @@ class LaunchScreenVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        FirebaseManager.getDataDicontsOfFirebase() // подгружаем данные из FireBase, пока загружается анимация
+        FirebaseManager.getDataServicesOfFirebase()
+        
         cleatViewController() // делаем все объекты невидимыми(+ даективация кнопки)
         animateElements() // анимация элементов UI
         
@@ -31,7 +36,7 @@ class LaunchScreenVC: UIViewController {
     //MARK: Navigation Animate
     @IBAction func startView(_ sender: Any) {
         animate.nextViewController(viewController: self) // запускаем анимацию перехода на view
-        performSegue(withIdentifier: "StartApp", sender: nil) // перехлдим 
+        performSegue(withIdentifier: "StartApp", sender: nil) // переходим 
     }
     
     // MARK: Clear View (alpha 0)
@@ -79,6 +84,6 @@ class LaunchScreenVC: UIViewController {
     
 }
 
-
+        
 
 

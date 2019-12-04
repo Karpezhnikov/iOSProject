@@ -10,30 +10,51 @@ import RealmSwift
 
 class Service: Object{
     
-    @objc dynamic var idService = 1
+    @objc dynamic var id = ""
     @objc dynamic var nameService = ""  // название услуги
-    @objc dynamic var placeService = 0 // цена услуги
+    @objc dynamic var placeService = "" // цена услуги
     @objc dynamic var timeService = "" // время действия
     @objc dynamic var serviceDescription = "" // описание услуги
-    @objc dynamic var cosmetics = ""
-    
+    //@objc dynamic var cosmetics = ""
     @objc dynamic var nameCategoryService = "" // название категории услуги
     @objc dynamic var comsmetology = "" // косметология
     @objc dynamic var partOfTheBody = "" //часть тела
     @objc dynamic var maleMan = "" // для кого (unisex, man, women )
+    @objc dynamic var imageURL = ""
+    @objc dynamic var image: Data?
+    
     @objc dynamic var idsMasters = ""
         
+    convenience init(idService: String?, nameService: String?,
+                     placeService: String?, timeService: String?, serviceDescription: String?,
+                     nameCategoryService: String?, comsmetology: String?, partOfTheBody: String?,
+                     maleMan: String?, imageURL: String?, image: UIImage){
+        self.init()
+        self.id = idService ?? ""
+        self.nameService = nameService ?? "" // название услуги
+        self.placeService = placeService ?? ""// цена услуги
+        self.timeService = timeService ?? ""// время действия
+        self.serviceDescription = serviceDescription ?? ""// описание услуги
+        //@objc dynamic var cosmetics = ""
+        self.nameCategoryService = nameCategoryService ?? ""// название категории услуги
+        self.comsmetology = comsmetology ?? "" // косметология
+        self.partOfTheBody = partOfTheBody ?? "" //часть тела
+        self.maleMan = maleMan ?? "" // для кого (unisex, man, women )
+        self.imageURL = imageURL ?? ""
+        self.image = image.pngData()
+    }
+    
     // для добавления новой услуги
     func saveService(arrayData: Array<Service>){
         for service in arrayData{
             let newService = Service()
             
-            newService.idService = service.idService
+            newService.id = service.id
             newService.nameService = service.nameService
             newService.placeService = service.placeService
             newService.timeService = service.timeService
             newService.serviceDescription = service.serviceDescription
-            newService.cosmetics = service.cosmetics.isEmpty ? "" : service.cosmetics
+            //newService.cosmetics = service.cosmetics.isEmpty ? "" : service.cosmetics
             newService.nameCategoryService = service.nameCategoryService
             newService.comsmetology = service.comsmetology
             newService.partOfTheBody = service.partOfTheBody
@@ -70,22 +91,24 @@ class Discount: Object{
     }
 }
 
-class DiscontFireBase{
-    var id = ""
-    var name = ""
-    var description = ""
-    var dateStart = ""
-    var dateEnd = ""
-    var imageURL = ""
+class DiscontFireBase: Object{
+    @objc dynamic var id = ""
+    @objc dynamic var name = ""
+    @objc dynamic var descriptionDiscont = ""
+    @objc dynamic var dateStart = ""
+    @objc dynamic var dateEnd = ""
+    @objc dynamic var imageURL = ""
+    @objc dynamic var image: Data?
     
-    convenience init(id: String, name: String, description: String, dateStart: String, dateEnd: String, image: String){
+    convenience init(id: String, name: String?, description: String?, dateStart: String?, dateEnd: String?, imageURL: String?, image: UIImage){
         self.init()
         self.id = id
-        self.name = name
-        self.description = description
-        self.dateStart = dateStart
-        self.dateEnd = dateEnd
-        self.imageURL = image
+        self.name = name ?? ""
+        self.descriptionDiscont = description ?? ""
+        self.dateStart = dateStart ?? ""
+        self.dateEnd = dateEnd ?? ""
+        self.imageURL = imageURL ?? ""
+        self.image = image.pngData()
     }
 }
 

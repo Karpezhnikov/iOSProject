@@ -20,6 +20,10 @@ class SetupButton: UIButton {
     private func setupButtonColor(sender: UIButton)
     {
         switch sender.tag {
+        case 0:
+            self.layer.cornerRadius = self.frame.size.width/2
+            sender.layer.borderColor = ColorApp.greenComplete.cgColor
+            sender.tintColor = ColorApp.greenComplete
         case 1: // кнопка записи
             self.layer.cornerRadius = self.frame.size.width/2
             sender.layer.borderColor = ColorApp.black.cgColor

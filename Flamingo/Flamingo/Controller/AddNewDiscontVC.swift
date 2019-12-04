@@ -6,7 +6,7 @@
 //  Copyright © 2019 Алексей Карпежников. All rights reserved.
 //
 
-// ToDo: сделать так, чтобы клавиатура не закрывала экран
+// ToDo: сделать так, чтобы клавиатура не закрывала экран, доделать редактирование и обновление таблицы при возврате
 
 import UIKit
 import Firebase
@@ -17,89 +17,101 @@ class AddNewDiscontVC: UIViewController {
     let datePicker = UIDatePicker()
     var imageURL = ""
     var discont = DiscontFireBase()
+    var discontUpdate = DiscontFireBase() // если заполнена - то в режим редакторования
+    let actionSheet = UIAlertController(title: nil, message: "", preferredStyle: .alert)
+    
     
     @IBOutlet weak var image: UIImageView!
-    
     @IBOutlet weak var nameDiscont: UITextField!
     @IBOutlet weak var dateStart: UITextField!
     @IBOutlet weak var dateEnd: UITextField!
-    
     @IBOutlet weak var discriptionDiscont: UITextView!
-    @IBOutlet weak var saveButton: UIButton!{
-        didSet{
-            saveButton.isUserInteractionEnabled = false
-            saveButton.alpha = 0.5
-        }
-    }
+    @IBOutlet weak var saveButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupDatePicker() // настраиваем UIDatePicker для dateStart и dateEnd
+        setupViewElements() // настраиваем эле-ты на view
         checkTextFieldEmpty() // вызываем тригеры на заполнение полей
-        
-        // setup UITextView
-        discriptionDiscont.layer.cornerRadius = nameDiscont.layer.cornerRadius
-        discriptionDiscont.layer.borderWidth = nameDiscont.layer.borderWidth
-        discriptionDiscont.layer.borderColor = nameDiscont.layer.borderColor
-        discriptionDiscont.font = Font.fontRegular
-        
         // setup keyboard
         //setupKeyboard()
         addDoneButtonOnKeyboard()
+        editingMode() // переводим в режим редактирования, если discontUpdate есть
         
     }
     
+    // MARK: Setup Elements
+    private func setupViewElements(){
+        // setup UIDatePicker
+        setupDatePicker()
+        
+        // setup UIImageView
+        self.image.contentMode = .scaleToFill
+        self.image.layer.cornerRadius = 40
+        
+        // setup UITextView
+        self.discriptionDiscont.layer.cornerRadius = nameDiscont.layer.cornerRadius
+        self.discriptionDiscont.layer.borderWidth = nameDiscont.layer.borderWidth
+        self.discriptionDiscont.layer.borderColor = nameDiscont.layer.borderColor
+        self.discriptionDiscont.font = Font.fontRegular
+        
+        // setup saveButton
+        if !discontUpdate.id.isEmpty{
+            self.saveButton.setTitle("Обновить", for: .normal)
+        }else{
+            self.saveButton.setTitle("Добавить", for: .normal)
+        }
+        self.saveButton.layer.cornerRadius = 10
+        self.saveButton.layer.borderWidth = BorderWidth.borderWidth
+        self.saveButton.layer.borderColor = ColorApp.greenComplete.cgColor
+        self.saveButton.backgroundColor = ColorApp.clear
+        self.saveButton.setTitleColor(ColorApp.greenComplete, for: .normal)
+    }
+    
+    private func editingMode(){
+        
+        if !discontUpdate.name.isEmpty{
+            nameDiscont.text = discontUpdate.name
+            dateStart.text = discontUpdate.dateStart
+            dateEnd.text = discontUpdate.dateEnd
+            discriptionDiscont.text = discontUpdate.descriptionDiscont
+        }
+        guard discontUpdate.image != nil else {
+            return
+        }
+        image.image = UIImage(data: discontUpdate.image!)
+        
+    }
     
     //MARK: Check data to TextField
     private func checkTextFieldEmpty(){
-        nameDiscont.addTarget(self, action: #selector(textFieldDidChange), for: .editingDidEnd) // тригер на заполнение
-        dateStart.addTarget(self, action: #selector(textFieldDidChange), for: .editingDidEnd) // тригер на заполнение
-        dateEnd.addTarget(self, action: #selector(textFieldDidChange), for: .editingDidEnd) // тригер на заполнение
+        nameDiscont.addTarget(self, action: #selector(checkNameDiscont), for: .editingDidEnd) // тригер на заполнение
+        dateStart.addTarget(self, action: #selector(checkDateStart), for: .editingDidEnd) // тригер на заполнение
+        dateEnd.addTarget(self, action: #selector(checkDateEnd), for: .editingDidEnd) // тригер на заполнение
+
     }
     
-    @objc func textFieldDidChange() { // проверка на заполненые поля
-        guard nameDiscont.text != "" else{
-            saveButton.isUserInteractionEnabled = false
-            saveButton.alpha = 0.5
-            nameDiscont.backgroundColor = ColorApp.lagthGreyColor
-            return
+    @objc func checkNameDiscont(){
+        if nameDiscont.text!.isEmpty{
+        }else{
+            nameDiscont.backgroundColor = ColorApp.greenComplete
         }
-        nameDiscont.backgroundColor = ColorApp.greenComplete
-            
-        guard discriptionDiscont.text != "" else{
-            saveButton.isUserInteractionEnabled = false
-            saveButton.alpha = 0.5
-            discriptionDiscont.backgroundColor = ColorApp.lagthGreyColor
-            return
-        }
-        discriptionDiscont.backgroundColor = ColorApp.greenComplete
-        
-        guard dateStart.text != "" && dateStart.text != dateEnd.text else{
-            saveButton.isUserInteractionEnabled = false
-            saveButton.alpha = 0.5
-            dateStart.backgroundColor = ColorApp.lagthGreyColor
-            return
-        }
-        dateStart.backgroundColor = ColorApp.greenComplete
-        
-        guard dateEnd.text != "" && dateStart.text != dateEnd.text else{
-            saveButton.isUserInteractionEnabled = false
-            saveButton.alpha = 0.5
-            dateEnd.backgroundColor = ColorApp.lagthGreyColor
-            return
-        }
-        dateEnd.backgroundColor = ColorApp.greenComplete
-        
-        guard !nameDiscont.text!.isEmpty || !dateStart.text!.isEmpty || !dateEnd.text!.isEmpty || discriptionDiscont.text == "" else{
-            saveButton.isUserInteractionEnabled = false
-            saveButton.alpha = 0.5
-            return
-        }
-        // если все заполнено, то делаем кнопку активной
-        saveButton.isUserInteractionEnabled = true
-        saveButton.alpha = 1
     }
+    
+    @objc func checkDateStart(){
+        if dateStart.text!.isEmpty || dateStart.text == dateEnd.text{
+        }else{
+            dateStart.backgroundColor = ColorApp.greenComplete
+        }
+    }
+    
+    @objc func checkDateEnd(){
+        if dateEnd.text!.isEmpty || dateStart.text == dateEnd.text{
+        }else{
+            dateEnd.backgroundColor = ColorApp.greenComplete
+        }
+    }
+    
     
     // MARK: Add Image
     @IBAction func addImage(_ sender: Any) {
@@ -121,47 +133,77 @@ class AddNewDiscontVC: UIViewController {
     }
     
     
-    // MARK: Save Data to Firebase
+    
+    
+    
+    
     @IBAction func saveDiscont(_ sender: Any) {
-        imageUploadToFirebaseStorage() // получаем URL изображения
+        saveButton.isUserInteractionEnabled = false //делаем кнопку не активной
+        saveButton.alpha = 0.5 //делаем кнопку не активной
         
-        // наполняем discont (точно уверены что все поля заполнены)
-        discont.id = "1"
-        discont.name = nameDiscont.text!
-        discont.description = discriptionDiscont.text!
-        discont.dateStart = dateStart.text!
-        discont.dateEnd = dateEnd.text!
+        if !self.discontUpdate.id.isEmpty{ //если кнопка сохранить нажата в режиме редактирования, то
+            FirebaseManager.deleteDiscont(discontUpdate) // удаляем данные из FireBase
+            saveDataToFireBase() // сохраняем как новую запись в FireBase
+        }else{
+            saveDataToFireBase()
+        }
         
-        saveButton.isUserInteractionEnabled = false
-        saveButton.alpha = 0.5
         
-        // создаем уведомление о процессе загрузки
-        let actionSheet = UIAlertController(title: nil, message: "Подождите...", preferredStyle: .alert)
+        
+    }
+    
+    // MARK: Save Data to Firebase
+    private func saveDataToFireBase(){
+        saveImageToFirebaseStorage() // получаем URL изображения
+        collectDiscont() // наполняем discont (точно уверены что все поля заполнены)
+
+        actionSheet.message = "Подождите..." // создаем уведомление о процессе загрузки
         present(actionSheet, animated: true)
         
         print("URL is Empty.", "Saving is in progress!")
+        
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in // ждем 5 секунд, чтобы успел придти imageURL
-            guard !self!.imageURL.isEmpty else { // проверяем на то, что imageURL заполнен
+            guard !self!.discont.imageURL.isEmpty else { // проверяем на то, что imageURL заполнен
                 self!.saveButton.isUserInteractionEnabled = true
                 self!.saveButton.alpha = 1
+                self!.actionSheet.message = "Не удалось сохранить. Попробуйте еще раз."
                 let cancel = UIAlertAction(title: "ОК", style: .cancel)
-                actionSheet.addAction(cancel)
-                actionSheet.message = "Не удалось сохранить. Попробуйте еще раз."
+                self!.actionSheet.addAction(cancel)
                 return
             }
-            self!.discont.imageURL = self!.imageURL // вставляем ссылку на изображение
-            self!.saveDiscontToFirebase() // сохраняем в firebase
-            actionSheet.message = "Сохранено"
+            FirebaseManager.saveDiscontToFirebase(self!.discont)
+            //StorageManager.saveObjectDiscount(self!.discont)
+            self!.actionSheet.message = "Сохранено"
+            // ToDo: Обновление
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // через секунду закрываем actionSheet и view
-                //actionSheet.message = "Поменял"
-                actionSheet.dismiss(animated: true)
-                self!.dismiss(animated: true, completion: nil)
+                self!.actionSheet.dismiss(animated: true)
+                //self!.dismiss(animated: true, completion: nil)
+                self!.performSegue(withIdentifier: "backToDiscont", sender: nil)
             }
             
             
         }
-        
-        
+    }
+    
+    
+//    private func dataForSaveToRealm(){
+//        let saveRealmDiscont = DiscontFireBase()
+//        discont.id = ""
+//        discont.name = nameDiscont.text!
+//        discont.descriptionDiscont = discriptionDiscont.text!
+//        discont.dateStart = dateStart.text!
+//        discont.dateEnd = dateEnd.text!
+//    }
+
+    
+    private func collectDiscont(){
+        // наполняем discont (точно уверены что все поля заполнены)
+        discont.id = ""
+        discont.name = nameDiscont.text!
+        discont.descriptionDiscont = discriptionDiscont.text!
+        discont.dateStart = dateStart.text!
+        discont.dateEnd = dateEnd.text!
     }
     
 }
@@ -190,7 +232,7 @@ extension AddNewDiscontVC{
     @objc func dateChanged(){ // для записи в dateStart и dateEnd
         if dateStart.isEditing{ // если изменяем dateStart
             getDateFromPicker(datePicker.date, dateStart)
-            datePicker.minimumDate = datePicker.date //
+            //datePicker.minimumDate = datePicker.date //
         }else if dateEnd.isEditing{ // если изменяем dateEnd
             getDateFromPicker(datePicker.date, dateEnd)
         }else{ // при первой нажатии записываем текущую дату
@@ -205,7 +247,7 @@ extension AddNewDiscontVC{
     
     private func getDateFromPicker(_ date: Date,_ element: UITextField){
         let formatter = DateFormatter() //  создаем форматер
-        formatter.dateFormat = "EEEE, dd.MM" // создаем формат даты и времени
+        formatter.dateFormat = "dd.MM" // создаем формат даты и времени
         let localeID = Locale.preferredLanguages.first // определяем локацию для времени
         formatter.locale = Locale(identifier: localeID!)
         element.text = formatter.string(from: date) // записываем дату в dateStart
@@ -215,13 +257,13 @@ extension AddNewDiscontVC{
 // MARK: Firebase
 extension AddNewDiscontVC{
     // save image and get URL image path
-    private func imageUploadToFirebaseStorage(){
-        let imageName = nameDiscont.text // создаем имя для картинки по названию акции
+    private func saveImageToFirebaseStorage(){
+        let imageName = (nameDiscont.text == "") ? "imageDiscont": nameDiscont.text  // создаем имя для картинки по названию акции
         let storage = Storage.storage().reference().child("discont_images") // получаем доступ к папке
         let ref = storage.child(imageName!) // кладем изображения по пути
         
         if let uploadData = image.image?.jpegData(compressionQuality: 0.2){ // переводим изображение в NSData
-            ref.putData(uploadData, metadata: nil) { (metadata, error) in // добавляем изображение
+            ref.putData(uploadData, metadata: nil) { [weak self] (metadata, error) in // добавляем изображение
                 if error != nil{
                     print(error!)
                     return
@@ -231,28 +273,10 @@ extension AddNewDiscontVC{
                         print(error!)
                         return
                     }
-                    self.imageURL = url!.absoluteString // получаем url изображения
+                    // ToDo: придумать как перенести функцию в FireBaseManager
+                    self!.discont.imageURL = url!.absoluteString // получаем url изображения
+                    
                 }
-            }
-        }
-    }
-    
-    // save discont
-    private func saveDiscontToFirebase(){
-        let db = Firestore.firestore()
-        var ref: DocumentReference? = nil
-        ref = db.collection("disconts").addDocument(data: [
-            "id":discont.id,
-            "name": discont.name,
-            "description": discont.description,
-            "dateStart": discont.dateStart,
-            "dateEnd": dateEnd.text!,
-            "image": imageURL
-        ]){ err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
             }
         }
     }

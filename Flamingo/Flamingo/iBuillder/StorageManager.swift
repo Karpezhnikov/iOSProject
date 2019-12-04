@@ -37,16 +37,21 @@ class StorageManager{
     }
     
     
-    static func saveObjectDiscount(_ newObject: Discount){
+    static func saveObjectRealm(_ newObject: Object){
         try! realm.write {
-            realm.add([newObject])
+            realm.add(newObject)
             print("Request for DataDase --> saveObjectDiscount")
         }
 //        
-//        let listMasters = realm.objects(Discount.self)
+//        let listMasters = realm.objects(Discxount.self)
 //        print(listMasters)
     }
     
+    static func deleteObjectRealm(_ newObject: Object){
+        try! realm.write {
+            realm.delete(newObject)
+        }
+    }
     
     // возвращает всех мастеров для указаного service
     static func getMasterFromTheDataBase(_ service: Service) -> [MasterServices]{
