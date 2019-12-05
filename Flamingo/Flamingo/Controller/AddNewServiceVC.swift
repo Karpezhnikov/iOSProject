@@ -1,25 +1,16 @@
 //
-//  AddNewServiceTVC.swift
+//  AddNewServiceVC.swift
 //  Flamingo
 //
-//  Created by mac on 04/12/2019.
+//  Created by mac on 05/12/2019.
 //  Copyright © 2019 Алексей Карпежников. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-/*
- Done: Сохранение и свап бд есть
- ToDo: 1. Добавить мастеров к услугам
-        2. Сделать возможность удалить услугу
-        3. Сделать возможность редактировать услугу
-        4. Добавить обновление таблицы при скролее вниз
-        5. Сделать метод по проверка в одну функцию(Перенести его в класс с SetupTextField)
- */
+class AddNewServiceVC: UIViewController {
 
-class AddNewServiceTVC: UITableViewController {
-    
     let picker = UIPickerView()
     let datePicker = UIDatePicker()
     let actionSheet = UIAlertController(title: nil, message: "", preferredStyle: .alert)
@@ -36,8 +27,8 @@ class AddNewServiceTVC: UITableViewController {
     @IBOutlet weak var cosmetologiService: UITextField!
     @IBOutlet weak var partOfTheBody: UITextField!
     @IBOutlet weak var maleMan: UITextField!
-    @IBOutlet weak var collectionViewMasters: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var masterTableView: UITableView!
     
     
     
@@ -121,29 +112,11 @@ class AddNewServiceTVC: UITableViewController {
         serviceNew.partOfTheBody = partOfTheBody.text ?? ""
         serviceNew.maleMan = maleMan.text ?? ""
     }
-    
-}
 
-
-// MARK: - Table view data source
-extension AddNewServiceTVC{
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 4
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.deselectRow(at: indexPath, animated: true) // для того, чтобы ячейка не выделялась
-    }
 }
 
 // MARK: Check isEmpty TextField
-extension AddNewServiceTVC{
+extension AddNewServiceVC{
     private func checkTextFieldEmpty(){
         nameService.addTarget(self, action: #selector(checkNameService), for: .editingDidEnd)
         timeService.addTarget(self, action: #selector(checkTimeService), for: .editingDidEnd)
@@ -212,7 +185,7 @@ extension AddNewServiceTVC{
 }
 
 // MARK: Work with image
-extension AddNewServiceTVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+extension AddNewServiceVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     func chooseImagePicker(source: UIImagePickerController.SourceType){
         
@@ -236,7 +209,7 @@ extension AddNewServiceTVC: UIImagePickerControllerDelegate, UINavigationControl
 }
 
 // MARK: Save Image To Storage
-extension AddNewServiceTVC{
+extension AddNewServiceVC{
     // save image and get URL image path
     private func saveImageToFirebaseStorage(){
         let imageName = (nameService.text == "") ? "imageService": nameService.text // создаем имя для картинки по названию акции
@@ -265,7 +238,7 @@ extension AddNewServiceTVC{
 
 
 // MARK: Work UIPicker
-extension AddNewServiceTVC: UIPickerViewDelegate, UIPickerViewDataSource{
+extension AddNewServiceVC: UIPickerViewDelegate, UIPickerViewDataSource{
     
     private func setupPicker(){ // определяет поле на которое нажали и обозначаем делегатов
         picker.delegate = self
@@ -352,7 +325,7 @@ extension AddNewServiceTVC: UIPickerViewDelegate, UIPickerViewDataSource{
 }
 
 // MARK: Setup Elements
-extension AddNewServiceTVC{
+extension AddNewServiceVC{
     private func setupViewElements(){
         // setup UIDatePicker
         setupDatePicker()
@@ -377,7 +350,7 @@ extension AddNewServiceTVC{
 }
 
 // MARK: Setup DatePicker
-extension AddNewServiceTVC{
+extension AddNewServiceVC{
     private func setupDatePicker(){
         
         // ToDo: сделать так чтобы DatePicker при первом нажатии не выаодил текущее время
@@ -406,22 +379,17 @@ extension AddNewServiceTVC{
     }
 }
 
-// MARK: - Collection View data source
-extension AddNewServiceTVC: UICollectionViewDelegate, UICollectionViewDataSource{
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+// MARK: Table view
+extension AddNewServiceVC: UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "masterItem", for: indexPath) as? CustumCVCDeteil{
-//            itemCell.nameMaster.text = masters[indexPath.row].nameMaster
-//            itemCell.profilMaster.text = masters[indexPath.row].listServicesMaster
-//            itemCell.timeAndPriceMaster.text = "\(service.timeService), \(service.placeService)"
-//            itemCell.imageMaster.image = UIImage(named: "firstPageIcon")
-            
-            return itemCell
-        }
-        return UICollectionViewCell()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = masterTableView.dequeueReusableCell(withIdentifier: "masterCell", for: indexPath)
+        
+        return cell
     }
+    
+    
 }

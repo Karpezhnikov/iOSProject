@@ -142,7 +142,7 @@ class AddNewDiscontVC: UIViewController {
         saveButton.alpha = 0.5 //делаем кнопку не активной
         
         if !self.discontUpdate.id.isEmpty{ //если кнопка сохранить нажата в режиме редактирования, то
-            FirebaseManager.deleteDiscont(discontUpdate) // удаляем данные из FireBase
+            FirebaseManager.deleteDocument(discontUpdate.id, discontUpdate.imageURL, "disconts", "discont_images")
             saveDataToFireBase() // сохраняем как новую запись в FireBase
         }else{
             saveDataToFireBase()

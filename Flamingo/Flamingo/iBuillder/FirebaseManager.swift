@@ -189,24 +189,37 @@ class FirebaseManager{
     
     
     //MARK: Delete Data Discont To FireBase
-    // для полного удаления из Firebase Cloud
-    static func deleteDiscont(_ discont: DiscontFireBase){
+//    // для полного удаления из Firebase Cloud
+//    static func deleteDiscont(_ discont: DiscontFireBase){
+//        //let db = Firestore.firestore()
+//        firebaseBD.collection("disconts").document("\(discont.id)").delete() { err in
+//            if let err = err {
+//                print("Error removing document: \(err)")
+//            } else {
+//                print("Document successfully removed!")
+//            }
+//        }
+//        deleteImageOfFireBaseStorage(imageURL: discont.imageURL)
+//
+//    }
+    
+    static func deleteDocument(_ id: String, _ imageURL: String, _ collection: String, _ child: String){
         //let db = Firestore.firestore()
-        firebaseBD.collection("disconts").document("\(discont.id)").delete() { err in
+        firebaseBD.collection("disconts").document("\(id)").delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
             } else {
                 print("Document successfully removed!")
             }
         }
-        deleteImageOfFireBaseStorage(imageURL: discont.imageURL)
-        
+        //deleteImageOfFireBaseStorage(imageURL: imageURL)
+        deleteImageOfFireBaseStorage1(imageURL, child)
     }
-    //MARK: Delete image Discont To Storage
-    static func deleteImageOfFireBaseStorage(imageURL: String){
+    
+    static func deleteImageOfFireBaseStorage1(_ imageURL: String, _ child: String){
         //delete image
         let storagePath = imageURL
-        let spaceRef = Storage.storage().reference().child("discont_images") //
+        let spaceRef = Storage.storage().reference().child("\(child)") //
 
         let deleteImage = spaceRef.storage.reference(forURL: storagePath)
 
@@ -218,6 +231,23 @@ class FirebaseManager{
           }
         }
     }
+    
+//    //MARK: Delete image Discont To Storage
+//    static func deleteImageOfFireBaseStorage(imageURL: String){
+//        //delete image
+//        let storagePath = imageURL
+//        let spaceRef = Storage.storage().reference().child("discont_images") //
+//
+//        let deleteImage = spaceRef.storage.reference(forURL: storagePath)
+//
+//        deleteImage.delete { error in
+//            if error != nil {
+//                print(error!)
+//          } else {
+//
+//          }
+//        }
+//    }
     
     // помечаем как удаленное и перемещяем в архив
     static func archivedDiscont(_ discont: DiscontFireBase){

@@ -129,7 +129,8 @@ extension DiscontVC: UITableViewDataSource, UITableViewDelegate{
             let delete = UIAlertAction(title: "Удалить", style: .default) { (_) in
                 // delete document
                 let discont = self!.disconts[indexPath.row]
-                FirebaseManager.deleteDiscont(discont) // удаляем данные из FireBase
+                //FirebaseManager.deleteDiscont(discont) // удаляем данные из FireBase
+                FirebaseManager.deleteDocument(discont.id, discont.imageURL, "disconts", "discont_images")
                 StorageManager.deleteObjectRealm(discont) // удаляем из Realm
                 self!.disconts = realm.objects(DiscontFireBase.self) // перезаполняем массив
                 

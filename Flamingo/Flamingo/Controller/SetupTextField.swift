@@ -66,11 +66,10 @@ class SetupTextField: UITextField {
     
     @objc func doneButtonAction()
     {
-        //UIview.endEditing(true)
-        //UIView.endEditing(self)
         self.endEditing(true)
     }
 
+    
 }
 
 
