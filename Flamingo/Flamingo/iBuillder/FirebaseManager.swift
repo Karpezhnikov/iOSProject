@@ -8,12 +8,13 @@
 
 import Foundation
 import Firebase
+import RealmSwift
 
 class FirebaseManager{
     
     static let firebaseBD = Firestore.firestore()
     
-    // save discont
+    //MARK: Save Disconts of Firebase
     static func saveDiscontToFirebase(_ discont: DiscontFireBase){
         //let db = Firestore.firestore()
         var ref: DocumentReference? = nil
@@ -33,6 +34,7 @@ class FirebaseManager{
         }
     }
     
+    //MARK: Save Service of Firebase
     static func saveServiceToFirebase(_ service: Service){
         //let db = Firestore.firestore()
         //ToDo: добавить idsMasters = ""
@@ -46,7 +48,25 @@ class FirebaseManager{
             "nameCategory":service.nameCategoryService,
             "partOfTheBody":service.partOfTheBody,
             "maleman":service.maleMan,
-            "imageURL":service.imageURL
+            "imageURL":service.imageURL,
+            "idsMasters":service.idsMasters
+        ]){ err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    
+    static func saveObjectOfFirebase(_ master: Master){
+        var ref: DocumentReference? = nil
+        ref = firebaseBD.collection("masters").addDocument(data: [
+            "id":master.id,
+            "name":master.name,
+            "profil":master.profil,
+            "imageURL":master.imageURL
+            
         ]){ err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -187,22 +207,6 @@ class FirebaseManager{
         
     }
     
-    
-    //MARK: Delete Data Discont To FireBase
-//    // для полного удаления из Firebase Cloud
-//    static func deleteDiscont(_ discont: DiscontFireBase){
-//        //let db = Firestore.firestore()
-//        firebaseBD.collection("disconts").document("\(discont.id)").delete() { err in
-//            if let err = err {
-//                print("Error removing document: \(err)")
-//            } else {
-//                print("Document successfully removed!")
-//            }
-//        }
-//        deleteImageOfFireBaseStorage(imageURL: discont.imageURL)
-//
-//    }
-    
     static func deleteDocument(_ id: String, _ imageURL: String, _ collection: String, _ child: String){
         //let db = Firestore.firestore()
         firebaseBD.collection("disconts").document("\(id)").delete() { err in
@@ -227,27 +231,10 @@ class FirebaseManager{
             if error != nil {
                 print(error!)
           } else {
-
+                print("Document successfully removed!")
           }
         }
     }
-    
-//    //MARK: Delete image Discont To Storage
-//    static func deleteImageOfFireBaseStorage(imageURL: String){
-//        //delete image
-//        let storagePath = imageURL
-//        let spaceRef = Storage.storage().reference().child("discont_images") //
-//
-//        let deleteImage = spaceRef.storage.reference(forURL: storagePath)
-//
-//        deleteImage.delete { error in
-//            if error != nil {
-//                print(error!)
-//          } else {
-//
-//          }
-//        }
-//    }
     
     // помечаем как удаленное и перемещяем в архив
     static func archivedDiscont(_ discont: DiscontFireBase){

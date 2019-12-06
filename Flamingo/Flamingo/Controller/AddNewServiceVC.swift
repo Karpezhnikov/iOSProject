@@ -9,8 +9,11 @@
 import UIKit
 import Firebase
 
-//      Done: Создать отдельную форму для добавления мастеров
-// ToDo: Добавить запись в ФБ мастеров и синхронизировать их с услугой
+//          Done: Создать отдельную форму для добавления мастеров
+//          Done: Добавить запись в ФБ мастеров и синхронизировать их с услугой
+//      ToDo: Добавить нормальное сохранения, без использования таймаутов
+//      ToDo: Сделать так, чтобы в UIPickerView данные подгружались по выборке из FireBase
+//      ToDo: Добавить 2 типа ввода, с UIPickerView и с клавиатуры
 
 class AddNewServiceVC: UIViewController {
 
@@ -96,7 +99,7 @@ class AddNewServiceVC: UIViewController {
         imageMasterButton.setImage(UIImage(named: "launchScr"), for: .normal)
     }
     
-    // MARK: Action: Save Service
+    // MARK: Action: Save Service of Firebase
     @IBAction func saveAction(_ sender: Any) {
         // при нажатии кнопки сохранить
         /*
@@ -111,7 +114,7 @@ class AddNewServiceVC: UIViewController {
                 2.2.3 ДОбавляем все id документа в строку через зяпятую
             2.3 Cохряняем сервис в Firebase
          */
-        
+        saveMasterForService()
         
         saveImageToFirebaseStorage()
         collectService()
@@ -122,8 +125,25 @@ class AddNewServiceVC: UIViewController {
         print("URL is Empty.", "Saving is in progress!")
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in // ждем 5 секунд, чтобы успел придти imageURL
-            guard !self!.serviceNew.imageURL.isEmpty else { // проверяем на то, что imageURL заполнен
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5){ [weak self] in // ждем 2 секунд, чтобы успел придти imageURL
+            for master in self!.arrayMaster{
+                guard !master.imageURL.isEmpty else { // проверяем на то, что imageURL master заполнен
+                    self!.saveButton.isUserInteractionEnabled = true
+                    self!.saveButton.alpha = 1
+                    self!.actionSheet.message = "Не удалось сохранить. Попробуйте еще раз."
+                    //let cancel = UIAlertAction(title: "ОК", style: .cancel)
+                    //self!.actionSheet.addAction(cancel)
+                    return
+                }
+            }
+            self!.actionSheet.message = "Сохранение мастеров..."
+            self!.saveMasterGetDocument(arrayMaster: self!.arrayMaster) //Сохраняем мастеров в Firebase
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8) { [weak self] in // ждем 3 секунд, чтобы успел придти imageURL
+            self!.actionSheet.message = "Сохранение услуги..."
+            guard !self!.serviceNew.imageURL.isEmpty, !self!.serviceNew.idsMasters.isEmpty else { // проверяем на то, что imageURL service заполнен
                 self!.saveButton.isUserInteractionEnabled = true
                 self!.saveButton.alpha = 1
                 self!.actionSheet.message = "Не удалось сохранить. Попробуйте еще раз."
@@ -131,12 +151,7 @@ class AddNewServiceVC: UIViewController {
                 self!.actionSheet.addAction(cancel)
                 return
             }
-            print("imageURL -> ", self!.serviceNew.imageURL)
-            
             FirebaseManager.saveServiceToFirebase(self!.serviceNew)
-            
-            
-            //StorageManager.saveObjectDiscount(self!.discont)
             self!.actionSheet.message = "Сохранено"
             // ToDo: Обновление
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // через секунду закрываем actionSheet и view
@@ -503,5 +518,99 @@ extension AddNewServiceVC: UITableViewDataSource, UITableViewDelegate{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteItem = UIContextualAction(style: .normal, title: nil) {  [weak self](contextualAction, view, boolValue) in
+            self!.arrayMaster.remove(at: indexPath.row)
+        }
+        deleteItem.backgroundColor = ColorApp.black
+        deleteItem.image = UIImage(named: "trash")
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem])
+        swipeActions.performsFirstActionWithFullSwipe = true
+        
+        return swipeActions
+    }
+    
+    
+}
+
+// MARK:Save Master
+extension AddNewServiceVC{
+    private func saveMasterForService(){
+//        1. Сохраняем фото мастеров
+//          1.2 Получаем ссылку на фото мастера и домавляем ссылку в класс к мастеру
+//          1.2 Сохраняем мастера в Firebase
+//          1.3 Получаем id документа с мастером
+//          1.4 Сохраняем id документа в класс к мастеру
+        saveImageAndGetURL(arrayMaster: self.arrayMaster) //1.2
+        
+        //saveMasterGetDocument(arrayMaster: self.arrayMaster) //Сохраняем мастеров в Firebase
+        
+    }
+    
+    // сохраняем изобрадение и получаем ссылку на него в Storage
+    private func saveImageAndGetURL(arrayMaster: Array<Master>){
+        var indexArray = 0// номер мастера в indexArray
+        for master in arrayMaster{ // перебераем массив и сохраняем мастеров
+            if let data = master.image{ // если удалось есть данные
+                if let image = UIImage(data: data){ // если получилось получить изображение
+                    savePhotoMaster(image: image, child: "master_image", nameImage: master.name, indexArray: indexArray)
+                }
+            }
+            indexArray += 1
+        }
+    }
+    
+    // сохраняем мастера как документ в FirebaseCloud
+    private func saveMasterGetDocument(arrayMaster: Array<Master>){
+        for master in arrayMaster{
+            saveObjectOfFirebase(master)
+        }
+    }
+    
+    private func savePhotoMaster(image: UIImage, child: String, nameImage: String, indexArray: Int){
+        let nameImage = (nameImage == "") ? "image":nameImage
+        let storage = Storage.storage().reference().child(child)
+        let ref = storage.child(nameImage)
+        
+        if let uploadData = image.jpegData(compressionQuality: 0.2){
+            ref.putData(uploadData, metadata: nil){[weak self] (metadata, error) in // добавляем изображение
+                if error != nil{
+                    print(error!)
+                    return
+                }
+                ref.downloadURL { (url, error) in
+                    if error != nil{
+                        print(error!)
+                        return
+                    }
+                    print("Получена ImageURL для->", self!.arrayMaster[indexArray].name)
+                    self!.arrayMaster[indexArray].imageURL = url!.absoluteString
+                }
+                
+            }
+        }
+    }
+    
+    //MARK: Bed save Master
+    func saveObjectOfFirebase(_ master: Master){
+        let firebaseBD = Firestore.firestore()
+        var ref: DocumentReference? = nil
+        ref = firebaseBD.collection("masters").addDocument(data: [
+            "id":master.id,
+            "name":master.name,
+            "profil":master.profil,
+            "imageURL":master.imageURL
+            
+        ]){ err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Сохранен и Добавлен в idsMasters: \(ref!.documentID)")
+                self.serviceNew.idsMasters += ",\(ref!.documentID)" //сохраняем мастера в serviceNew
+            }
+        }
+    }
     
 }
