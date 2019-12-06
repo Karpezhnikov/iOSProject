@@ -9,6 +9,9 @@
 import UIKit
 import Firebase
 
+//      Done: Создать отдельную форму для добавления мастеров
+// ToDo: Добавить запись в ФБ мастеров и синхронизировать их с услугой
+
 class AddNewServiceVC: UIViewController {
 
     let picker = UIPickerView()
@@ -16,8 +19,15 @@ class AddNewServiceVC: UIViewController {
     let actionSheet = UIAlertController(title: nil, message: "", preferredStyle: .alert)
     var arrayPickerData = Array<String>()
     var serviceNew = Service()
+    var imageServiceIsEditing = false
+    var imageMasterIsEditing = false
+    var arrayMaster = Array<Master>(){//массив мастеров для записи в таблицу мастеров
+        didSet{
+            masterTableView.reloadData()
+        }
+    }
     
-    
+    // Service param
     @IBOutlet weak var imageService: UIImageView!
     @IBOutlet weak var nameService: UITextField!
     @IBOutlet weak var timeService: UITextField!
@@ -27,8 +37,15 @@ class AddNewServiceVC: UIViewController {
     @IBOutlet weak var cosmetologiService: UITextField!
     @IBOutlet weak var partOfTheBody: UITextField!
     @IBOutlet weak var maleMan: UITextField!
-    @IBOutlet weak var saveButton: UIButton!
+    
+    // Master param
+    @IBOutlet weak var nameMasterTF: SetupTextField!
+    @IBOutlet weak var profilMasterTF: SetupTextField!
+    @IBOutlet weak var imageMasterButton: UIButton!
+    
+    
     @IBOutlet weak var masterTableView: UITableView!
+    @IBOutlet weak var saveButton: UIButton!
     
     
     
@@ -47,25 +64,55 @@ class AddNewServiceVC: UIViewController {
         
     }
     
-    // MARK: Get Image Action
+    // MARK: Action: Get photo Service
     @IBAction func addImage(_ sender: Any) {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet) // создаем встлывающее окно
-        let camera = UIAlertAction(title: "Камера", style: .default) { (_) in
-            self.chooseImagePicker(source: .camera)
-        }
-        let photo = UIAlertAction(title: "Альбом", style: .default) { (_) in
-            self.chooseImagePicker(source: .photoLibrary)
-        }
-        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
-        actionSheet.addAction(camera)
-        actionSheet.addAction(photo)
-        actionSheet.addAction(cancel)
-        present(actionSheet, animated: true)
+        imageServiceIsEditing = true // помечаем, что добавляется это изображение
+        getImage()
         
     }
     
-    // MARK: Save Action
+    // MARK: Action: Get photo Master
+    @IBAction func getPhotoMaster(_ sender: Any) {
+        imageMasterIsEditing = true
+        getImage()
+    }
+    
+    // MARK: Action: Add Master
+    @IBAction func addMasterOfService(_ sender: Any) {
+        let master = Master() // создаем мастера и заполняем данные
+        guard let dataPNG = imageMasterButton.imageView?.image!.pngData() else {
+            print("Не удалось добавить мастера")
+            return
+        }
+        master.image = dataPNG
+        guard !nameMasterTF.text!.isEmpty, !profilMasterTF.text!.isEmpty else{return}
+        master.name = nameMasterTF.text!
+        master.profil = profilMasterTF.text!
+        
+        arrayMaster.append(master) // добавляем мастера в массив мастеров
+        // обнуляем форму заполнения
+        nameMasterTF.text = ""
+        profilMasterTF.text = ""
+        imageMasterButton.setImage(UIImage(named: "launchScr"), for: .normal)
+    }
+    
+    // MARK: Action: Save Service
     @IBAction func saveAction(_ sender: Any) {
+        // при нажатии кнопки сохранить
+        /*
+         1. Сохраняем фото мастеров
+            1.2 Получаем ссылку на фото мастера и домавляем ссылку в класс к мастеру
+            1.2 Сохраняем мастера в Firebase
+            1.3 Получаем id документа с мастером
+            1.4 Сохраняем id документа в класс к мастеру
+         2. Сохраняем фото сервиса
+            2.1 Получаем ссылку на фото сервиса
+            2.2 Создаем класс сервиса и определяем все поля
+                2.2.3 ДОбавляем все id документа в строку через зяпятую
+            2.3 Cохряняем сервис в Firebase
+         */
+        
+        
         saveImageToFirebaseStorage()
         collectService()
         
@@ -125,10 +172,31 @@ extension AddNewServiceVC{
         cosmetologiService.addTarget(self, action: #selector(checkCosmetologiService), for: .editingDidEnd)
         partOfTheBody.addTarget(self, action: #selector(checkPartOfTheBody), for: .editingDidEnd)
         maleMan.addTarget(self, action: #selector(checkMaleMan), for: .editingDidEnd)
+        
+        nameMasterTF.addTarget(self, action: #selector(checkNameMasterTF), for: .editingDidEnd)
+        profilMasterTF.addTarget(self, action: #selector(checkProfilMasterTF), for: .editingDidEnd)
+    }
+    
+    @objc func checkProfilMasterTF(){
+        if profilMasterTF.text!.isEmpty{
+            profilMasterTF.layer.borderWidth = 1
+        }else{
+            profilMasterTF.layer.borderWidth = 0
+        }
+    }
+    
+    @objc func checkNameMasterTF(){
+        if nameMasterTF.text == ""{
+            nameMasterTF.layer.borderWidth = 1
+        }else{
+            nameMasterTF.layer.borderWidth = 0
+            //nameService.backgroundColor = ColorApp.greenComplete
+        }
     }
     
     @objc func checkNameService(){
         if nameService.text!.isEmpty{
+            nameService.layer.borderWidth = 1
         }else{
             nameService.layer.borderWidth = 0
             //nameService.backgroundColor = ColorApp.greenComplete
@@ -137,6 +205,7 @@ extension AddNewServiceVC{
     
     @objc func checkTimeService(){
         if timeService.text!.isEmpty{
+            timeService.layer.borderWidth = 1
         }else{
             timeService.layer.borderWidth = 0
             //timeService.backgroundColor = ColorApp.greenComplete
@@ -145,6 +214,7 @@ extension AddNewServiceVC{
     
     @objc func checkPriceService(){
         if priceService.text!.isEmpty{
+            priceService.layer.borderWidth = 1
         }else{
             priceService.layer.borderWidth = 0
             //priceService.backgroundColor = ColorApp.greenComplete
@@ -153,6 +223,7 @@ extension AddNewServiceVC{
     
     @objc func checkNameCategoryOfService(){
         if nameCategoryOfService.text!.isEmpty{
+            nameCategoryOfService.layer.borderWidth = 1
         }else{
             nameCategoryOfService.layer.borderWidth = 0
             //nameCategoryOfService.backgroundColor = ColorApp.greenComplete
@@ -161,6 +232,7 @@ extension AddNewServiceVC{
     
     @objc func checkCosmetologiService(){
         if cosmetologiService.text!.isEmpty{
+            cosmetologiService.layer.borderWidth = 1
         }else{
             cosmetologiService.layer.borderWidth = 0
             //cosmetologiService.backgroundColor = ColorApp.greenComplete
@@ -169,6 +241,7 @@ extension AddNewServiceVC{
     
     @objc func checkPartOfTheBody(){
         if partOfTheBody.text!.isEmpty{
+            partOfTheBody.layer.borderWidth = 1
         }else{
             partOfTheBody.layer.borderWidth = 0
             //partOfTheBody.backgroundColor = ColorApp.greenComplete
@@ -177,6 +250,7 @@ extension AddNewServiceVC{
     
     @objc func checkMaleMan(){
         if maleMan.text!.isEmpty{
+            maleMan.layer.borderWidth = 1
         }else{
             maleMan.layer.borderWidth = 0
             //maleMan.backgroundColor = ColorApp.greenComplete
@@ -186,6 +260,21 @@ extension AddNewServiceVC{
 
 // MARK: Work with image
 extension AddNewServiceVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    private func getImage(){
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet) // создаем встлывающее окно
+        let camera = UIAlertAction(title: "Камера", style: .default) { (_) in
+            self.chooseImagePicker(source: .camera)
+        }
+        let photo = UIAlertAction(title: "Альбом", style: .default) { (_) in
+            self.chooseImagePicker(source: .photoLibrary)
+        }
+        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
+        actionSheet.addAction(camera)
+        actionSheet.addAction(photo)
+        actionSheet.addAction(cancel)
+        present(actionSheet, animated: true)
+    }
     
     func chooseImagePicker(source: UIImagePickerController.SourceType){
         
@@ -200,11 +289,27 @@ extension AddNewServiceVC: UIImagePickerControllerDelegate, UINavigationControll
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        imageService.image = info[.editedImage] as? UIImage // присваиваем отредактирование изображение
-        imageService.contentMode = .scaleAspectFit // распределяем изображение по формату
-        imageService.clipsToBounds = true // обрезаем границы
+        if imageServiceIsEditing{
+            imageService.image = info[.editedImage] as? UIImage // присваиваем отредактирование изображение
+            imageService.contentMode = .scaleAspectFit // распределяем изображение по формату
+            imageService.clipsToBounds = true // обрезаем границы
+        }else if imageMasterIsEditing{
+            print("Add image photo master")
+            let imageMasterPC = info[.editedImage] as? UIImage
+            imageMasterButton.setImage(imageMasterPC, for: .normal)
+            //imageMasterButton.imageView?.image = info[.editedImage] as? UIImage // присваиваем отредактирование изображение
+            //imageMasterButton.imageView?.contentMode = .scaleAspectFit // распределяем изображение по формату
+            //imageMasterButton.imageView?.clipsToBounds = true // обрезаем границы
+        }else{
+            print("BLAAAYYYYYY")
+        }
+        
+        imageServiceIsEditing = false
+        imageMasterIsEditing = false
         dismiss(animated: true)
     }
+    
+    
     
 }
 
@@ -382,11 +487,18 @@ extension AddNewServiceVC{
 // MARK: Table view
 extension AddNewServiceVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return arrayMaster.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = masterTableView.dequeueReusableCell(withIdentifier: "masterCell", for: indexPath)
+        let cell = masterTableView.dequeueReusableCell(withIdentifier: "masterCell", for: indexPath) as! CustomTVCellMaster
+        cell.nameMaster.text = arrayMaster[indexPath.row].name
+        cell.profilMaster.text = arrayMaster[indexPath.row].profil
+        if let data = arrayMaster[indexPath.row].image{
+            cell.imageMaster.image = UIImage(data: data)
+        } else {
+            print("Не удалось отобразить мастера")
+        }
         
         return cell
     }

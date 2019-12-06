@@ -45,6 +45,17 @@ class SetupTextField: UITextField {
         }
     }
     
+    
+    
+//    @IBAction func checkIsEmpty(){
+//        if self.text!.isEmpty{
+//            self.layer.borderWidth = 1
+//        }else{
+//            self.layer.borderWidth = 0
+//            //nameService.backgroundColor = ColorApp.greenComplete
+//        }
+//    }
+    
     func addDoneButtonOnKeyboard() -> UIToolbar
     {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))

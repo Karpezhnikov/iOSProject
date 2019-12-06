@@ -67,6 +67,17 @@ class Service: Object{
     }
 }
 
+class Master: Object{
+    @objc dynamic var id = ""          // id Document Firebase
+    @objc dynamic var name = ""
+    @objc dynamic var lastName = ""    // фамилия
+    @objc dynamic var firstName = ""   // имя
+    @objc dynamic var middleName = ""  // отчество
+    @objc dynamic var profil = ""      // описание професси мастера
+    @objc dynamic var imageURL = ""    // ссылка на Storage
+    @objc dynamic var image: Data?        // изображение в формате Data
+}
+
 
 class MasterServices: Object {
     @objc dynamic var idMaster = ""

@@ -57,6 +57,12 @@ class CustomTVCellDiscont: UITableViewCell{
             imageDiscont.contentMode = .scaleToFill
         }
     }
+}
+
+
+class CustomTVCellMaster: UITableViewCell{
     
-    
+    @IBOutlet weak var nameMaster: UILabel!
+    @IBOutlet weak var profilMaster: UILabel!
+    @IBOutlet weak var imageMaster: UIImageView!
 }
