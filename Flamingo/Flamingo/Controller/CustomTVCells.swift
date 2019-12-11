@@ -64,5 +64,10 @@ class CustomTVCellMaster: UITableViewCell{
     
     @IBOutlet weak var nameMaster: UILabel!
     @IBOutlet weak var profilMaster: UILabel!
-    @IBOutlet weak var imageMaster: UIImageView!
+    @IBOutlet weak var imageMaster: UIImageView!{
+        didSet{
+            imageMaster.layer.cornerRadius = imageMaster.frame.size.width/2
+            imageMaster.contentMode = .scaleToFill
+        }
+    }
 }

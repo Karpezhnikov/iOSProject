@@ -54,17 +54,18 @@ class StorageManager{
     }
     
     // возвращает всех мастеров для указаного service
-    static func getMasterFromTheDataBase(_ service: Service) -> [MasterServices]{
-        var masters = [MasterServices]()
-        let idsMaster = service.idsMasters.components(separatedBy: ";") // парсим строку для получения id
-        
+    static func getMasterFromTheDataBase(_ service: Service) -> [Master]{
+        var masters = [Master]()
+        let idsMaster = service.idsMasters.components(separatedBy: ",") // парсим строку для получения id
+        print("idsMasters = ", idsMaster)
+        print("Service", service)
         guard idsMaster.count > 0 else { // проверием что они есть
             return []
         }
         
-        let listMasters = realm.objects(MasterServices.self) // делаем запрос в бд
+        let listMasters = realm.objects(Master.self) // делаем запрос в бд
         for master in listMasters{
-            if idsMaster.contains(master.idMaster) { // берем нужных мастеров
+            if idsMaster.contains(master.id) { // берем нужных мастеров
                 masters.append(master)
             }
         }

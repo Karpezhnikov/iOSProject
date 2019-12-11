@@ -38,3 +38,17 @@ class CustumCVCDeteil: UICollectionViewCell {
     }
 }
 
+
+class CustumCVCMaster: UICollectionViewCell {
+    
+    @IBOutlet weak var image: UIImageView!
+    
+    @IBOutlet weak var nameMaster: UILabel!
+    @IBOutlet weak var profilMaster: UILabel!
+    
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        imageMaster.layer.cornerRadius = imageMaster.frame.size.width/2
+//
+//    }
+}

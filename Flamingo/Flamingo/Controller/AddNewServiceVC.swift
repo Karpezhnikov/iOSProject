@@ -11,24 +11,36 @@ import Firebase
 
 //          Done: Создать отдельную форму для добавления мастеров
 //          Done: Добавить запись в ФБ мастеров и синхронизировать их с услугой
-//      ToDo: Добавить нормальное сохранения, без использования таймаутов
-//      ToDo: Сделать так, чтобы в UIPickerView данные подгружались по выборке из FireBase
-//      ToDo: Добавить 2 типа ввода, с UIPickerView и с клавиатуры
+//          Done: Добавить нормальное сохранения, без использования таймаутов
+//          Done: Сделать так, чтобы в UIPickerView данные подгружались по выборке из FireBase
+
+
+//          Done: разделить добавление мастеров и добавление услуги
+//                  сначала создавать мастеров, потом услугу
+//      ToDo: таблица не перезагружается
 
 class AddNewServiceVC: UIViewController {
 
+    let firebaseBD = Firestore.firestore()
+    
     let picker = UIPickerView()
     let datePicker = UIDatePicker()
     let actionSheet = UIAlertController(title: nil, message: "", preferredStyle: .alert)
-    var arrayPickerData = Array<String>()
+    let results = realm.objects(Master.self)
+    var deleteOrChange = false // флаг для таблицы, для определения действий со строками
+    var arrayMasterAdded = Array<Master>()//массив добавленных мастеров мастеров
+    var arrayPickerData = Array<String>(){
+        didSet{
+            picker.reloadAllComponents() // обновляем список компонентов
+        }
+    }
     var serviceNew = Service()
-    var imageServiceIsEditing = false
-    var imageMasterIsEditing = false
-    var arrayMaster = Array<Master>(){//массив мастеров для записи в таблицу мастеров
+    var arrayMaster = Array<Master>(){//массив всех мастеров
         didSet{
             masterTableView.reloadData()
         }
     }
+    
     
     // Service param
     @IBOutlet weak var imageService: UIImageView!
@@ -40,11 +52,7 @@ class AddNewServiceVC: UIViewController {
     @IBOutlet weak var cosmetologiService: UITextField!
     @IBOutlet weak var partOfTheBody: UITextField!
     @IBOutlet weak var maleMan: UITextField!
-    
-    // Master param
-    @IBOutlet weak var nameMasterTF: SetupTextField!
-    @IBOutlet weak var profilMasterTF: SetupTextField!
-    @IBOutlet weak var imageMasterButton: UIButton!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     
     @IBOutlet weak var masterTableView: UITableView!
@@ -58,9 +66,32 @@ class AddNewServiceVC: UIViewController {
         setupPicker()
         setupDatePicker()
         setupViewElements()
+        getMasterRealm()// изначально заполняем массив со всеми мастерами
         
         
     }
+    
+    
+    func getDataFirebase(_ getParams: String){
+        firebaseBD.collection("param_app").getDocuments() { (querySnapshot, err) in // get disconts
+            if let err = err {
+                print("Error getting documents: \(err)")
+                return
+            }else{
+                // добавляем новые документы
+                for document in querySnapshot!.documents {
+                    print(document["\(getParams)"]! as! Array<String> )
+                    
+                    if let arrayParam = document["\(getParams)"] as? Array<String>{
+                        self.arrayPickerData = arrayParam
+                        print(self.arrayPickerData)
+                    }
+                }
+                
+            }
+        }
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         //animate.animateAlpha(element: nameDiscont, toAlpha: 0.5, animateRunTime: 5.5)//шаг 2 - исчезает название
@@ -69,101 +100,28 @@ class AddNewServiceVC: UIViewController {
     
     // MARK: Action: Get photo Service
     @IBAction func addImage(_ sender: Any) {
-        imageServiceIsEditing = true // помечаем, что добавляется это изображение
         getImage()
         
     }
     
-    // MARK: Action: Get photo Master
-    @IBAction func getPhotoMaster(_ sender: Any) {
-        imageMasterIsEditing = true
-        getImage()
-    }
+   
     
     // MARK: Action: Add Master
     @IBAction func addMasterOfService(_ sender: Any) {
-        let master = Master() // создаем мастера и заполняем данные
-        guard let dataPNG = imageMasterButton.imageView?.image!.pngData() else {
-            print("Не удалось добавить мастера")
-            return
-        }
-        master.image = dataPNG
-        guard !nameMasterTF.text!.isEmpty, !profilMasterTF.text!.isEmpty else{return}
-        master.name = nameMasterTF.text!
-        master.profil = profilMasterTF.text!
         
-        arrayMaster.append(master) // добавляем мастера в массив мастеров
-        // обнуляем форму заполнения
-        nameMasterTF.text = ""
-        profilMasterTF.text = ""
-        imageMasterButton.setImage(UIImage(named: "launchScr"), for: .normal)
     }
     
     // MARK: Action: Save Service of Firebase
     @IBAction func saveAction(_ sender: Any) {
-        // при нажатии кнопки сохранить
-        /*
-         1. Сохраняем фото мастеров
-            1.2 Получаем ссылку на фото мастера и домавляем ссылку в класс к мастеру
-            1.2 Сохраняем мастера в Firebase
-            1.3 Получаем id документа с мастером
-            1.4 Сохраняем id документа в класс к мастеру
-         2. Сохраняем фото сервиса
-            2.1 Получаем ссылку на фото сервиса
-            2.2 Создаем класс сервиса и определяем все поля
-                2.2.3 ДОбавляем все id документа в строку через зяпятую
-            2.3 Cохряняем сервис в Firebase
-         */
-        saveMasterForService()
-        
+
         saveImageToFirebaseStorage()
         collectService()
         
         actionSheet.message = "Подождите..." // создаем уведомление о процессе загрузки
         present(actionSheet, animated: true)
-        
-        print("URL is Empty.", "Saving is in progress!")
-        
-        
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5){ [weak self] in // ждем 2 секунд, чтобы успел придти imageURL
-            for master in self!.arrayMaster{
-                guard !master.imageURL.isEmpty else { // проверяем на то, что imageURL master заполнен
-                    self!.saveButton.isUserInteractionEnabled = true
-                    self!.saveButton.alpha = 1
-                    self!.actionSheet.message = "Не удалось сохранить. Попробуйте еще раз."
-                    //let cancel = UIAlertAction(title: "ОК", style: .cancel)
-                    //self!.actionSheet.addAction(cancel)
-                    return
-                }
-            }
-            self!.actionSheet.message = "Сохранение мастеров..."
-            self!.saveMasterGetDocument(arrayMaster: self!.arrayMaster) //Сохраняем мастеров в Firebase
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) { [weak self] in // ждем 3 секунд, чтобы успел придти imageURL
-            self!.actionSheet.message = "Сохранение услуги..."
-            guard !self!.serviceNew.imageURL.isEmpty, !self!.serviceNew.idsMasters.isEmpty else { // проверяем на то, что imageURL service заполнен
-                self!.saveButton.isUserInteractionEnabled = true
-                self!.saveButton.alpha = 1
-                self!.actionSheet.message = "Не удалось сохранить. Попробуйте еще раз."
-                let cancel = UIAlertAction(title: "ОК", style: .cancel)
-                self!.actionSheet.addAction(cancel)
-                return
-            }
-            FirebaseManager.saveServiceToFirebase(self!.serviceNew)
-            self!.actionSheet.message = "Сохранено"
-            // ToDo: Обновление
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // через секунду закрываем actionSheet и view
-                self!.actionSheet.dismiss(animated: true)
-                self!.dismiss(animated: true, completion: nil)
-                //self!.performSegue(withIdentifier: "backToDiscont", sender: nil)
-            }
-            
-            
-        }
     }
     
+    // для записи значений из полей
     private func collectService(){
         serviceNew.nameService = nameService.text ?? ""
         serviceNew.placeService = priceService.text ?? ""
@@ -173,6 +131,48 @@ class AddNewServiceVC: UIViewController {
         serviceNew.comsmetology = cosmetologiService.text ?? ""
         serviceNew.partOfTheBody = partOfTheBody.text ?? ""
         serviceNew.maleMan = maleMan.text ?? ""
+        serviceNew.idsMasters = getMasterIds()
+    }
+    
+    // получаем id всех добавлений мастеров в одно строку через запятую
+    private func getMasterIds() -> String{
+        var masterIds = ""
+        for master in arrayMasterAdded{
+            masterIds += ",\(master.id)"
+        }
+        //masterIds.remove(at: masterIds.startIndex) // удаляем первый символ из строки (",")
+        return masterIds
+    }
+    
+    // MARK: Action: Segmented Controll
+    @IBAction func indexChanged(_ sender: Any) {
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            deleteOrChange = false // при выведении всех мастеров, можно только добавлять мастера
+            getMasterRealm()
+        case 1:
+            deleteOrChange = true // после добавления можно только удалять мастера
+            getMasterArray()
+        default:
+            break
+        }
+    }
+    
+    // берем всех мастеров из Realm
+    private func getMasterRealm(){
+        arrayMaster.removeAll() // очищаем массив перед заполнением
+        for master in results{
+            arrayMaster.append(master)
+        }
+    }
+    
+    // берем только из массива arrayMasterAdded
+    private func getMasterArray(){
+        arrayMaster.removeAll() // очищаем массив перед заполнением
+        for master in arrayMasterAdded{
+            arrayMaster.append(master)
+        }
     }
 
 }
@@ -188,25 +188,6 @@ extension AddNewServiceVC{
         partOfTheBody.addTarget(self, action: #selector(checkPartOfTheBody), for: .editingDidEnd)
         maleMan.addTarget(self, action: #selector(checkMaleMan), for: .editingDidEnd)
         
-        nameMasterTF.addTarget(self, action: #selector(checkNameMasterTF), for: .editingDidEnd)
-        profilMasterTF.addTarget(self, action: #selector(checkProfilMasterTF), for: .editingDidEnd)
-    }
-    
-    @objc func checkProfilMasterTF(){
-        if profilMasterTF.text!.isEmpty{
-            profilMasterTF.layer.borderWidth = 1
-        }else{
-            profilMasterTF.layer.borderWidth = 0
-        }
-    }
-    
-    @objc func checkNameMasterTF(){
-        if nameMasterTF.text == ""{
-            nameMasterTF.layer.borderWidth = 1
-        }else{
-            nameMasterTF.layer.borderWidth = 0
-            //nameService.backgroundColor = ColorApp.greenComplete
-        }
     }
     
     @objc func checkNameService(){
@@ -304,23 +285,9 @@ extension AddNewServiceVC: UIImagePickerControllerDelegate, UINavigationControll
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if imageServiceIsEditing{
-            imageService.image = info[.editedImage] as? UIImage // присваиваем отредактирование изображение
-            imageService.contentMode = .scaleAspectFit // распределяем изображение по формату
-            imageService.clipsToBounds = true // обрезаем границы
-        }else if imageMasterIsEditing{
-            print("Add image photo master")
-            let imageMasterPC = info[.editedImage] as? UIImage
-            imageMasterButton.setImage(imageMasterPC, for: .normal)
-            //imageMasterButton.imageView?.image = info[.editedImage] as? UIImage // присваиваем отредактирование изображение
-            //imageMasterButton.imageView?.contentMode = .scaleAspectFit // распределяем изображение по формату
-            //imageMasterButton.imageView?.clipsToBounds = true // обрезаем границы
-        }else{
-            print("BLAAAYYYYYY")
-        }
-        
-        imageServiceIsEditing = false
-        imageMasterIsEditing = false
+        imageService.image = info[.editedImage] as? UIImage // присваиваем отредактирование изображение
+        imageService.contentMode = .scaleAspectFit // распределяем изображение по формату
+        imageService.clipsToBounds = true // обрезаем границы
         dismiss(animated: true)
     }
     
@@ -349,7 +316,22 @@ extension AddNewServiceVC{
                     }
                     // ToDo: придумать как перенести функцию в FireBaseManager
                     self!.serviceNew.imageURL = url!.absoluteString // получаем url изображения
-                    
+                    guard self!.serviceNew.imageURL != "" else{
+                        self!.saveButton.isUserInteractionEnabled = true
+                        self!.saveButton.alpha = 1
+                        self!.actionSheet.message = "Не удалось сохранить. Попробуйте еще раз."
+                        let cancel = UIAlertAction(title: "ОК", style: .cancel)
+                        self!.actionSheet.addAction(cancel)
+                        return
+                    } // проверяем на пустуб строку в ответе
+                    FirebaseManager.saveServiceToFirebase(self!.serviceNew)
+                    self!.actionSheet.message = "Сохранено"
+                    // ToDo: Обновление
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // через секунду закрываем actionSheet и view
+                        self!.actionSheet.dismiss(animated: true)
+                        self!.dismiss(animated: true, completion: nil)
+                        //self!.performSegue(withIdentifier: "backToDiscont", sender: nil)
+                    }
                 }
             }
         }
@@ -368,52 +350,31 @@ extension AddNewServiceVC: UIPickerViewDelegate, UIPickerViewDataSource{
         partOfTheBody.addTarget(self, action: #selector(editingPartOfTheBody(_:)), for: .editingDidBegin)
         nameCategoryOfService.addTarget(self, action: #selector(editingNameCategoryOfService(_:)), for: .editingDidBegin)
         cosmetologiService.addTarget(self, action: #selector(editingCosmetologiService(_:)), for: .editingDidBegin)
+        
     }
     
     @objc func editingCosmetologiService(_ textField: UITextField) {
         arrayPickerData.removeAll() // очищаем массив
         cosmetologiService.inputView = picker // для появления поля по нажатию на nameMaster
-        //getMastersName() // быбираем всез мастеров и записываем в массив arrayPickerData
-        arrayPickerData.append("1 Косметология")
-        arrayPickerData.append("2 Косметология")
-        arrayPickerData.append("3 Косметология")
-        arrayPickerData.append("")
-        picker.reloadAllComponents() // обновляем список компонентов
+        getDataFirebase("cosmetologis")
     }
     
     @objc func editingNameCategoryOfService(_ textField: UITextField) {
         arrayPickerData.removeAll() // очищаем массив
         nameCategoryOfService.inputView = picker // для появления поля по нажатию на nameMaster
-        //getMastersName() // быбираем всез мастеров и записываем в массив arrayPickerData
-        arrayPickerData.append("Массаж лица")
-        arrayPickerData.append("Пиллинг лица")
-        arrayPickerData.append("Чистка лица")
-        arrayPickerData.append("")
-        picker.reloadAllComponents() // обновляем список компонентов
+        getDataFirebase("nameCategorysServices")
     }
     
     @objc func editingMaleMan(_ textField: UITextField) {
         arrayPickerData.removeAll() // очищаем массив
         maleMan.inputView = picker // для появления поля по нажатию на nameMaster
-        //getMastersName() // быбираем всез мастеров и записываем в массив arrayPickerData
-        arrayPickerData.append("Для мужчин")
-        arrayPickerData.append("Для женчин")
-        arrayPickerData.append("Для всех")
-        arrayPickerData.append("")
-        picker.reloadAllComponents() // обновляем список компонентов
+        getDataFirebase("maleMans")
     }
     
     @objc func editingPartOfTheBody (_ textField: UITextField) {
         arrayPickerData.removeAll() // очищаем массив
         partOfTheBody.inputView = picker // для появления поля по нажатию на nameService
-        arrayPickerData.append("Волосы")
-        arrayPickerData.append("Голова")
-        arrayPickerData.append("Лицо")
-        arrayPickerData.append("Тело")
-        arrayPickerData.append("Руки")
-        arrayPickerData.append("Ноги")
-        arrayPickerData.append("")
-        picker.reloadAllComponents() // обновляем список компонентов
+        getDataFirebase("partOfTheBodys")
     }
     
     
@@ -440,6 +401,7 @@ extension AddNewServiceVC: UIPickerViewDelegate, UIPickerViewDataSource{
         }
         return arrayPickerData[row]
     }
+    
     
     
 }
@@ -520,97 +482,40 @@ extension AddNewServiceVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
+        // добавление в arrayMasterAdded
+        let addItem = UIContextualAction(style: .normal, title: nil) {  [weak self](contextualAction, view, boolValue) in
+            let master = self!.arrayMaster[indexPath.row]
+            if !self!.arrayMasterAdded.contains(master){ // если элемента нет в массиве
+                self!.arrayMasterAdded.append(master)
+            }
+        }
+        addItem.backgroundColor = ColorApp.black
+        addItem.image = UIImage(systemName: "plus")
+        
+        // удаление из arrayMasterAdded
         let deleteItem = UIContextualAction(style: .normal, title: nil) {  [weak self](contextualAction, view, boolValue) in
-            self!.arrayMaster.remove(at: indexPath.row)
+            self!.arrayMasterAdded.remove(at: indexPath.row)
+            self!.getMasterArray()
         }
         deleteItem.backgroundColor = ColorApp.black
         deleteItem.image = UIImage(named: "trash")
         
-        let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem])
-        swipeActions.performsFirstActionWithFullSwipe = true
-        
-        return swipeActions
+        if deleteOrChange{ // только удаление (из списка для услуги)
+            let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem])
+            swipeActions.performsFirstActionWithFullSwipe = true
+            return swipeActions
+        }else{ // только добавление из списка всех мастеров
+            let swipeActions = UISwipeActionsConfiguration(actions: [addItem])
+            swipeActions.performsFirstActionWithFullSwipe = true
+            return swipeActions
+        }
     }
-    
     
 }
 
-// MARK:Save Master
-extension AddNewServiceVC{
-    private func saveMasterForService(){
-//        1. Сохраняем фото мастеров
-//          1.2 Получаем ссылку на фото мастера и домавляем ссылку в класс к мастеру
-//          1.2 Сохраняем мастера в Firebase
-//          1.3 Получаем id документа с мастером
-//          1.4 Сохраняем id документа в класс к мастеру
-        saveImageAndGetURL(arrayMaster: self.arrayMaster) //1.2
-        
-        //saveMasterGetDocument(arrayMaster: self.arrayMaster) //Сохраняем мастеров в Firebase
-        
-    }
+
     
-    // сохраняем изобрадение и получаем ссылку на него в Storage
-    private func saveImageAndGetURL(arrayMaster: Array<Master>){
-        var indexArray = 0// номер мастера в indexArray
-        for master in arrayMaster{ // перебераем массив и сохраняем мастеров
-            if let data = master.image{ // если удалось есть данные
-                if let image = UIImage(data: data){ // если получилось получить изображение
-                    savePhotoMaster(image: image, child: "master_image", nameImage: master.name, indexArray: indexArray)
-                }
-            }
-            indexArray += 1
-        }
-    }
+
     
-    // сохраняем мастера как документ в FirebaseCloud
-    private func saveMasterGetDocument(arrayMaster: Array<Master>){
-        for master in arrayMaster{
-            saveObjectOfFirebase(master)
-        }
-    }
-    
-    private func savePhotoMaster(image: UIImage, child: String, nameImage: String, indexArray: Int){
-        let nameImage = (nameImage == "") ? "image":nameImage
-        let storage = Storage.storage().reference().child(child)
-        let ref = storage.child(nameImage)
-        
-        if let uploadData = image.jpegData(compressionQuality: 0.2){
-            ref.putData(uploadData, metadata: nil){[weak self] (metadata, error) in // добавляем изображение
-                if error != nil{
-                    print(error!)
-                    return
-                }
-                ref.downloadURL { (url, error) in
-                    if error != nil{
-                        print(error!)
-                        return
-                    }
-                    print("Получена ImageURL для->", self!.arrayMaster[indexArray].name)
-                    self!.arrayMaster[indexArray].imageURL = url!.absoluteString
-                }
-                
-            }
-        }
-    }
-    
-    //MARK: Bed save Master
-    func saveObjectOfFirebase(_ master: Master){
-        let firebaseBD = Firestore.firestore()
-        var ref: DocumentReference? = nil
-        ref = firebaseBD.collection("masters").addDocument(data: [
-            "id":master.id,
-            "name":master.name,
-            "profil":master.profil,
-            "imageURL":master.imageURL
-            
-        ]){ err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Сохранен и Добавлен в idsMasters: \(ref!.documentID)")
-                self.serviceNew.idsMasters += ",\(ref!.documentID)" //сохраняем мастера в serviceNew
-            }
-        }
-    }
-    
-}
+
+

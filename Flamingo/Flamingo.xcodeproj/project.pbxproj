@@ -24,6 +24,8 @@
 		04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D17237BE065005EA21D /* SetupScrollView.swift */; };
 		04CF8D1A237C8369005EA21D /* SetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D19237C8369005EA21D /* SetupButton.swift */; };
 		04CF8D1F237C8B3B005EA21D /* SetupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D1E237C8B3B005EA21D /* SetupNavigationController.swift */; };
+		04D9A878239ECA690063653D /* MastersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9A877239ECA690063653D /* MastersVC.swift */; };
+		04D9A880239ED2A70063653D /* AddNewMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */; };
 		A28172CD896F24A158A516BB /* Pods_Flamingo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B5E537AC8A565B6CD7FFEC /* Pods_Flamingo.framework */; };
 		A913336E236317A400A54FEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913336D236317A400A54FEC /* AppDelegate.swift */; };
 		A9133370236317A400A54FEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913336F236317A400A54FEC /* SceneDelegate.swift */; };
@@ -60,6 +62,8 @@
 		04CF8D17237BE065005EA21D /* SetupScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScrollView.swift; sourceTree = "<group>"; };
 		04CF8D19237C8369005EA21D /* SetupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SetupButton.swift; path = Flamingo/Controller/SetupButton.swift; sourceTree = SOURCE_ROOT; };
 		04CF8D1E237C8B3B005EA21D /* SetupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationController.swift; sourceTree = "<group>"; };
+		04D9A877239ECA690063653D /* MastersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MastersVC.swift; sourceTree = "<group>"; };
+		04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMasterVC.swift; sourceTree = "<group>"; };
 		26B5E537AC8A565B6CD7FFEC /* Pods_Flamingo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flamingo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A913336A236317A400A54FEC /* Flamingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A913336D236317A400A54FEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 		A9DA3617236740360004B711 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */,
+				04D9A877239ECA690063653D /* MastersVC.swift */,
 				04C56F68239977FD0099E360 /* AddNewServiceVC.swift */,
 				04CF8D1D237C860E005EA21D /* SetupElements */,
 				04CF8D1C237C85A8005EA21D /* CustomElements */,
@@ -350,6 +356,7 @@
 				0409686D2383429600B84ABC /* SetupTextField.swift in Sources */,
 				0409687323841C2E00B84ABC /* DiscontVC.swift in Sources */,
 				A99DC6C02372AF9F0045D83C /* CustumCVC.swift in Sources */,
+				04D9A878239ECA690063653D /* MastersVC.swift in Sources */,
 				04CF8D1F237C8B3B005EA21D /* SetupNavigationController.swift in Sources */,
 				04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */,
 				A970329A237557990031B598 /* SetupTabBarVC.swift in Sources */,
@@ -359,6 +366,7 @@
 				0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */,
 				046991C1237D5D6600990826 /* DetailServiceTVC.swift in Sources */,
 				A99DC6BE2372AF5D0045D83C /* CategoryListServiceVC.swift in Sources */,
+				04D9A880239ED2A70063653D /* AddNewMasterVC.swift in Sources */,
 				A9133370236317A400A54FEC /* SceneDelegate.swift in Sources */,
 				04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */,
 			);

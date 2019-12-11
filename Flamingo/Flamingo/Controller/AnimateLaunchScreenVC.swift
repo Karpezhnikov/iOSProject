@@ -27,6 +27,7 @@ class LaunchScreenVC: UIViewController {
         
         FirebaseManager.getDataDicontsOfFirebase() // подгружаем данные из FireBase, пока загружается анимация
         FirebaseManager.getDataServicesOfFirebase()
+        FirebaseManager.getDataMastersOfFirebase()
         
         cleatViewController() // делаем все объекты невидимыми(+ даективация кнопки)
         animateElements() // анимация элементов UI

@@ -34,6 +34,25 @@ class FirebaseManager{
         }
     }
     
+    //MARK: Save Master of Firebase
+    static func saveMasterToFirebase(_ master: Master){
+        //let db = Firestore.firestore()
+        var ref: DocumentReference? = nil
+        ref = firebaseBD.collection("masters").addDocument(data: [
+            "id": master.id,
+            "name": master.name,
+            "profil": master.profil,
+            "info": master.info,
+            "imageURL": master.imageURL
+        ]){ err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document (Master) added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    
     //MARK: Save Service of Firebase
     static func saveServiceToFirebase(_ service: Service){
         //let db = Firestore.firestore()
@@ -105,6 +124,35 @@ class FirebaseManager{
         }
     }
     
+    //MARK: Get Data Masters
+    // Синхронизоруем Firebase и Realm
+    static func getDataMastersOfFirebase(){
+        var idFireBase = Array<String>() // массив для удаления старых документов
+        firebaseBD.collection("masters").getDocuments() { (querySnapshot, err) in // get disconts
+            if let err = err {
+                print("Error getting documents: \(err)")
+                return
+            }else{
+                // добавляем новые документы
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    let discont = realm.objects(Master.self).filter("id CONTAINS[c] %@", document.documentID).count //ищем id = documentID
+                    if discont == 0{ // если нет данных в БД
+                        self.saveDataMasterToRealm(dataDocument: data, documentID: document.documentID)
+                    }
+                    idFireBase.append(document.documentID) //добаляем id в массив
+                }
+                // удаляем старые
+                let masters = realm.objects(Master.self) //ищем id = documentID
+                for master in masters{
+                    if !idFireBase.contains(master.id){ // если нет такого документа в FireBase, то
+                        StorageManager.deleteObjectRealm(master) // удаляем его из Realm
+                    }
+                }
+            }
+        }
+    }
+    
     //MARK: Get Data Services
     // Синхронизоруем Firebase и Realm
     static func getDataServicesOfFirebase(){
@@ -167,6 +215,42 @@ class FirebaseManager{
         
     }
     
+    //MARK: Save Data Master To Realm
+    // для получения изображения и записи данных в Realm
+    static func saveDataMasterToRealm(dataDocument: Dictionary<String,Any>, documentID: String){
+        //print("asd")
+        guard let imageURL = dataDocument["imageURL"] as? String else{return} // проверяем ссылку на изображение
+        let url = URL(string: imageURL)
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in // создаем URLSession
+            if error != nil{
+                print(error!)
+                return
+            }
+            guard let data = data else{return} // проверяем, что изображение получено
+            DispatchQueue.global(qos: .background).async { // в асинхронном режиме записываем данные
+                DispatchQueue.main.async {
+//                    let master = Master(id: documentID,
+//                                                  name: dataDocument["name"] as? String,
+//                                                  description: dataDocument["description"] as? String,
+//                                                  dateStart: dataDocument["dateStart"] as? String,
+//                                                  dateEnd: dataDocument["dateEnd"] as? String,
+//                                                  imageURL: dataDocument["imageURL"] as? String,
+//                                                  image: UIImage(data: data)!)
+                    guard UIImage(data: data) != nil else{return}
+                    let master = Master(id: documentID,
+                                        name: dataDocument["name"] as? String,
+                                        profil: dataDocument["profil"] as? String,
+                                        info: dataDocument["info"] as? String,
+                                        imageURL: dataDocument["imageURL"] as? String,
+                                        image: UIImage(data: data)!)
+                    StorageManager.saveObjectRealm(master)
+                    print("master save")
+                }
+            }
+        }.resume()
+        
+    }
+    
     //MARK: Save Data Service To Realm
     // для получения изображения и записи данных в Realm
     static func saveDataServiceToRealm(dataDocument: Dictionary<String,Any>, documentID: String){
@@ -181,13 +265,7 @@ class FirebaseManager{
             guard let data = data else{return} // проверяем, что изображение получено
             DispatchQueue.global(qos: .background).async { // в асинхронном режиме записываем данные
                 DispatchQueue.main.async {
-//                    let discont = DiscontFireBase(id: documentID,
-//                                                  name: dataDocument["name"] as? String,
-//                                                  description: dataDocument["description"] as? String,
-//                                                  dateStart: dataDocument["dateStart"] as? String,
-//                                                  dateEnd: dataDocument["dateEnd"] as? String,
-//                                                  imageURL: dataDocument["imageURL"] as? String,
-//                                                  image: UIImage(data: data)!)
+                    guard let imageData = UIImage(data: data) else{return}// если получилось преобразовать и из-е
                     let service = Service(idService: documentID,
                                           nameService: dataDocument["name"] as? String,
                                           placeService: dataDocument["place"] as? String,
@@ -198,7 +276,8 @@ class FirebaseManager{
                                           partOfTheBody: dataDocument["partOfTheBody"] as? String,
                                           maleMan: dataDocument["maleman"] as? String,
                                           imageURL: dataDocument["imageURL"] as? String,
-                                          image: UIImage(data: data)!)
+                                          image: imageData,
+                                          idsMasters: dataDocument["idsMasters"] as? String)
                     StorageManager.saveObjectRealm(service)
                     print("service save")
                 }
@@ -207,31 +286,32 @@ class FirebaseManager{
         
     }
     
+    //MARK: Delete Document
     static func deleteDocument(_ id: String, _ imageURL: String, _ collection: String, _ child: String){
         //let db = Firestore.firestore()
-        firebaseBD.collection("disconts").document("\(id)").delete() { err in
+        firebaseBD.collection("\(collection)").document("\(id)").delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
             } else {
                 print("Document successfully removed!")
             }
         }
-        //deleteImageOfFireBaseStorage(imageURL: imageURL)
-        deleteImageOfFireBaseStorage1(imageURL, child)
+        deleteImageOfFireBaseStorage(imageURL, child)
     }
     
-    static func deleteImageOfFireBaseStorage1(_ imageURL: String, _ child: String){
+    //MARK: Delete Image
+    static func deleteImageOfFireBaseStorage(_ imageURL: String, _ child: String){
         //delete image
         let storagePath = imageURL
         let spaceRef = Storage.storage().reference().child("\(child)") //
-
+        print("TUTU" ,imageURL)
         let deleteImage = spaceRef.storage.reference(forURL: storagePath)
 
         deleteImage.delete { error in
             if error != nil {
                 print(error!)
           } else {
-                print("Document successfully removed!")
+                print("Image successfully removed!")
           }
         }
     }

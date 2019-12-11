@@ -27,7 +27,6 @@ class DiscontVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRefreshControl()
-        
         disconts = realm.objects(DiscontFireBase.self) // получаем все акции
     }
     

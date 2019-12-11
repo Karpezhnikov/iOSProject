@@ -28,7 +28,7 @@ class Service: Object{
     convenience init(idService: String?, nameService: String?,
                      placeService: String?, timeService: String?, serviceDescription: String?,
                      nameCategoryService: String?, comsmetology: String?, partOfTheBody: String?,
-                     maleMan: String?, imageURL: String?, image: UIImage){
+                     maleMan: String?, imageURL: String?, image: UIImage, idsMasters: String?){
         self.init()
         self.id = idService ?? ""
         self.nameService = nameService ?? "" // название услуги
@@ -42,6 +42,7 @@ class Service: Object{
         self.maleMan = maleMan ?? "" // для кого (unisex, man, women )
         self.imageURL = imageURL ?? ""
         self.image = image.pngData()
+        self.idsMasters = idsMasters ?? ""
     }
     
     // для добавления новой услуги
@@ -73,9 +74,21 @@ class Master: Object{
     @objc dynamic var lastName = ""    // фамилия
     @objc dynamic var firstName = ""   // имя
     @objc dynamic var middleName = ""  // отчество
-    @objc dynamic var profil = ""      // описание професси мастера
+    @objc dynamic var profil = ""      // профессия мастера
+    @objc dynamic var info = ""        // информация о местере
     @objc dynamic var imageURL = ""    // ссылка на Storage
-    @objc dynamic var image: Data?        // изображение в формате Data
+    @objc dynamic var image: Data?     // изображение в формате Data
+    
+    // инициализатор для класса
+    convenience init(id: String, name: String?, profil: String?, info: String?, imageURL: String?, image:UIImage){
+        self.init()
+        self.id = id
+        self.name = name ?? ""
+        self.profil = profil ?? ""
+        self.info = info ?? ""
+        self.imageURL = imageURL ?? ""
+        self.image = image.pngData()
+    }
 }
 
 

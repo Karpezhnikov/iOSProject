@@ -11,7 +11,7 @@ import UIKit
 class DetailServiceTVC: UITableViewController {
 
     var service = Service() // выбраная услуга
-    private var masters = [MasterServices]() // для списка всех мастеров
+    private var masters = [Master]() // для списка всех мастеров
     
 
     @IBOutlet weak var nameDeteilService: UILabel!
@@ -43,7 +43,7 @@ class DetailServiceTVC: UITableViewController {
         else {return}
         if identifire == "edit"{
             editOnService.service = service
-            editOnService.masters = masters
+            //editOnService.masters = masters
         }
     }
 }
@@ -57,10 +57,10 @@ extension DetailServiceTVC: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "masterItem", for: indexPath) as? CustumCVCDeteil{
-            itemCell.nameMaster.text = masters[indexPath.row].nameMaster
-            itemCell.profilMaster.text = masters[indexPath.row].listServicesMaster
+            itemCell.nameMaster.text = masters[indexPath.row].name
+            itemCell.profilMaster.text = masters[indexPath.row].profil
             itemCell.timeAndPriceMaster.text = "\(service.timeService), \(service.placeService)"
-            itemCell.imageMaster.image = UIImage(named: "firstPageIcon")
+            itemCell.imageMaster.image = UIImage(data: masters[indexPath.row].image!)
             
             return itemCell
         }
