@@ -17,7 +17,7 @@ import Firebase
 
 //          Done: разделить добавление мастеров и добавление услуги
 //                  сначала создавать мастеров, потом услугу
-//      ToDo: таблица не перезагружается
+//          Done: таблица не перезагружается
 
 class AddNewServiceVC: UIViewController {
 
@@ -29,6 +29,7 @@ class AddNewServiceVC: UIViewController {
     let results = realm.objects(Master.self)
     var deleteOrChange = false // флаг для таблицы, для определения действий со строками
     var arrayMasterAdded = Array<Master>()//массив добавленных мастеров мастеров
+    var arrayMasterAll = Array<Master>()
     var arrayPickerData = Array<String>(){
         didSet{
             picker.reloadAllComponents() // обновляем список компонентов
@@ -66,9 +67,10 @@ class AddNewServiceVC: UIViewController {
         setupPicker()
         setupDatePicker()
         setupViewElements()
-        getMasterRealm()// изначально заполняем массив со всеми мастерами
-        
-        
+        for result in results{
+            arrayMasterAll.append(result)
+        }
+        getArrayMaster(arrayMasterAll) // обновляем массив для таблицы// изначально заполняем массив со всеми мастерами
     }
     
     
@@ -104,12 +106,6 @@ class AddNewServiceVC: UIViewController {
         
     }
     
-   
-    
-    // MARK: Action: Add Master
-    @IBAction func addMasterOfService(_ sender: Any) {
-        
-    }
     
     // MARK: Action: Save Service of Firebase
     @IBAction func saveAction(_ sender: Any) {
@@ -150,27 +146,19 @@ class AddNewServiceVC: UIViewController {
         {
         case 0:
             deleteOrChange = false // при выведении всех мастеров, можно только добавлять мастера
-            getMasterRealm()
+            getArrayMaster(arrayMasterAll)
         case 1:
             deleteOrChange = true // после добавления можно только удалять мастера
-            getMasterArray()
+            getArrayMaster(arrayMasterAdded)
         default:
             break
         }
     }
     
-    // берем всех мастеров из Realm
-    private func getMasterRealm(){
+    // заполняем таблицу для вывода мастеров
+    private func getArrayMaster(_ arrayMasterFor: Array<Master>){
         arrayMaster.removeAll() // очищаем массив перед заполнением
-        for master in results{
-            arrayMaster.append(master)
-        }
-    }
-    
-    // берем только из массива arrayMasterAdded
-    private func getMasterArray(){
-        arrayMaster.removeAll() // очищаем массив перед заполнением
-        for master in arrayMasterAdded{
+        for master in arrayMasterFor{
             arrayMaster.append(master)
         }
     }
@@ -254,7 +242,7 @@ extension AddNewServiceVC{
     }
 }
 
-// MARK: Work with image
+// MARK: Work with image picker
 extension AddNewServiceVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     private func getImage(){
@@ -416,13 +404,7 @@ extension AddNewServiceVC{
         self.imageService.contentMode = .scaleToFill
         self.imageService.layer.cornerRadius = 40
         
-        // setup UITextView
-        self.descriptionService.layer.cornerRadius = nameService.layer.cornerRadius
-        self.descriptionService.layer.borderWidth = nameService.layer.borderWidth
-        self.descriptionService.layer.borderColor = nameService.layer.borderColor
-        self.descriptionService.font = Font.fontRegular
-        
-        
+        // setup saveButton
         self.saveButton.layer.cornerRadius = 10
         self.saveButton.layer.borderWidth = BorderWidth.borderWidth
         self.saveButton.layer.borderColor = ColorApp.greenComplete.cgColor
@@ -481,21 +463,20 @@ extension AddNewServiceVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
         // добавление в arrayMasterAdded
         let addItem = UIContextualAction(style: .normal, title: nil) {  [weak self](contextualAction, view, boolValue) in
-            let master = self!.arrayMaster[indexPath.row]
-            if !self!.arrayMasterAdded.contains(master){ // если элемента нет в массиве
-                self!.arrayMasterAdded.append(master)
-            }
+            let master = self!.arrayMasterAll.remove(at: indexPath.row) // удаляем из массива всех мастеров
+            self!.arrayMasterAdded.append(master) // и добавляем в массив добавленых мастеров
+            self!.getArrayMaster(self!.arrayMasterAll) // обновляем массив для таблицы
         }
         addItem.backgroundColor = ColorApp.black
         addItem.image = UIImage(systemName: "plus")
         
         // удаление из arrayMasterAdded
         let deleteItem = UIContextualAction(style: .normal, title: nil) {  [weak self](contextualAction, view, boolValue) in
-            self!.arrayMasterAdded.remove(at: indexPath.row)
-            self!.getMasterArray()
+            let master = self!.arrayMasterAdded.remove(at: indexPath.row) // удаляем из массива добавленных мстеров
+            self!.arrayMasterAll.append(master) // добавляем в массив всех мастеров
+            self!.getArrayMaster(self!.arrayMasterAdded) // обновляем массив для таблицы
         }
         deleteItem.backgroundColor = ColorApp.black
         deleteItem.image = UIImage(named: "trash")
@@ -513,9 +494,28 @@ extension AddNewServiceVC: UITableViewDataSource, UITableViewDelegate{
     
 }
 
-
-    
-
+//extension AddNewServiceVC{
+//    private func setupKeyboard(){
+//        NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+//        print("1")
+//    }
+//
+//    @objc func kbDidShow( notification: Notification ){
+//        guard let userInfo = notification.userInfo else {
+//            return
+//        }
+//        let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+//        print(kbFrameSize.height, self.view.bounds.size.height)
+//        (self.view as! UIScrollView).contentSize = CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height + kbFrameSize.height)
+//
+//
+//
+//    }
+//    @objc func kbDidHide( notification: Notification ){
+//
+//    }
+//}
     
 
 

@@ -34,7 +34,6 @@ class CustumCVCDeteil: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imageMaster.layer.cornerRadius = imageMaster.frame.size.width/2
-
     }
 }
 

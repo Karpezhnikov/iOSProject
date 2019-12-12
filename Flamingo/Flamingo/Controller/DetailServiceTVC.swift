@@ -14,17 +14,42 @@ class DetailServiceTVC: UITableViewController {
     private var masters = [Master]() // для списка всех мастеров
     
 
+    @IBOutlet weak var stackViewButton: UIStackView!
     @IBOutlet weak var nameDeteilService: UILabel!
     @IBOutlet weak var imageService: UIImageView!
     @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var singUpButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var descriptionService: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Setup stackViewButton
+        //stackViewButton.layer.borderWidth = BorderWidth.borderWidth
+        //stackViewButton.layer.borderColor = ColorApp.black.cgColor
+        
         masters = StorageManager.getMasterFromTheDataBase(service) // получаем всех мастеров для услуги
+        
         nameDeteilService.text = service.nameService // устанавливаем заголовок
+        imageService.image = getImageService()
+        descriptionService.text = service.serviceDescription
     }
+    
+    // функция для безопасного добавления фото
+    private func getImageService() -> UIImage{
+        guard service.image != nil else {
+            return UIImage(named: "DSC_0698")!
+        }
+        let image = UIImage(data: service.image!)
+        return image!
+    }
+    
+    
+    @IBAction func dismissAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1 // количесво секций
@@ -39,11 +64,11 @@ class DetailServiceTVC: UITableViewController {
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifire = segue.identifier, let editOnService = segue.destination as? EditOnServiceViewController
+        guard let identifire = segue.identifier, let makeAppr = segue.destination as? MakeAppointmentVC
         else {return}
-        if identifire == "edit"{
-            editOnService.service = service
-            //editOnService.masters = masters
+        if identifire == "makeAppointment"{
+            makeAppr.service = service
+            makeAppr.arrayMaster = masters
         }
     }
 }

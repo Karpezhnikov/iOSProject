@@ -181,21 +181,8 @@ class AddNewDiscontVC: UIViewController {
                 //self!.dismiss(animated: true, completion: nil)
                 self!.performSegue(withIdentifier: "backToDiscont", sender: nil)
             }
-            
-            
         }
     }
-    
-    
-//    private func dataForSaveToRealm(){
-//        let saveRealmDiscont = DiscontFireBase()
-//        discont.id = ""
-//        discont.name = nameDiscont.text!
-//        discont.descriptionDiscont = discriptionDiscont.text!
-//        discont.dateStart = dateStart.text!
-//        discont.dateEnd = dateEnd.text!
-//    }
-
     
     private func collectDiscont(){
         // наполняем discont (точно уверены что все поля заполнены)

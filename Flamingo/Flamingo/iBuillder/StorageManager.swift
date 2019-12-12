@@ -57,8 +57,6 @@ class StorageManager{
     static func getMasterFromTheDataBase(_ service: Service) -> [Master]{
         var masters = [Master]()
         let idsMaster = service.idsMasters.components(separatedBy: ",") // парсим строку для получения id
-        print("idsMasters = ", idsMaster)
-        print("Service", service)
         guard idsMaster.count > 0 else { // проверием что они есть
             return []
         }

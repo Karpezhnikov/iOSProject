@@ -40,24 +40,17 @@ class SetupTextField: UITextField {
             
             self.layer.cornerRadius = 10
             
+        case 3:
+            self.autocapitalizationType = .sentences
+            self.inputAccessoryView = addDoneButtonOnKeyboard()
+            self.textColor = ColorApp.white
+            self.font = Font.fontTitle
         default:
             return
         }
     }
     
-    
-    
-//    @IBAction func checkIsEmpty(){
-//        if self.text!.isEmpty{
-//            self.layer.borderWidth = 1
-//        }else{
-//            self.layer.borderWidth = 0
-//            //nameService.backgroundColor = ColorApp.greenComplete
-//        }
-//    }
-    
-    func addDoneButtonOnKeyboard() -> UIToolbar
-    {
+    func addDoneButtonOnKeyboard() -> UIToolbar{
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
         doneToolbar.barStyle = UIBarStyle.default
         
