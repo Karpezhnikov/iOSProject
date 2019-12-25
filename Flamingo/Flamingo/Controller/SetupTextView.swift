@@ -21,6 +21,8 @@ class SetupTextView: UITextView {
         self.layer.borderColor = ColorApp.indigo.cgColor
         self.font = Font.fontRegular
         self.inputAccessoryView = addDoneButtonOnKeyboard()//добавление кнопки "Готово"
+        
+        
     }
     
     func addDoneButtonOnKeyboard() -> UIToolbar{

@@ -24,9 +24,12 @@ class AddNewServiceVC: UIViewController {
     let firebaseBD = Firestore.firestore()
     
     let picker = UIPickerView()
-    let datePicker = UIDatePicker()
+    //let datePicker = UIDatePicker()
     let actionSheet = UIAlertController(title: nil, message: "", preferredStyle: .alert)
     let results = realm.objects(Master.self)
+    let dataTimePicker = [["0","1","2","3"],["00","05","10","15","20","25","30","35","40","45","50","60"]]
+    var hourTimeService = ""
+    var serviceUpdate = Service()
     var deleteOrChange = false // флаг для таблицы, для определения действий со строками
     var arrayMasterAdded = Array<Master>()//массив добавленных мастеров мастеров
     var arrayMasterAll = Array<Master>()
@@ -64,15 +67,27 @@ class AddNewServiceVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkTextFieldEmpty() // вызываем тригеры на заполнение полей
+        editingMode()// определяем режим редактирования иди создание
         setupPicker()
-        setupDatePicker()
+        //setupDatePicker()
         setupViewElements()
         for result in results{
             arrayMasterAll.append(result)
         }
-        getArrayMaster(arrayMasterAll) // обновляем массив для таблицы// изначально заполняем массив со всеми мастерами
+        //getArrayMaster(arrayMasterAll) // обновляем массив для таблицы// изначально заполняем массив со всеми мастерами
+        
     }
     
+    func generateTime(){
+        let hours = dataTimePicker[0]
+        let minutes = dataTimePicker[1]
+        for hour in hours{
+            for mitute in minutes{
+                arrayPickerData.append("\(hour):\(mitute)")
+            }
+        }
+        //print(arrayPickerData)
+    }
     
     func getDataFirebase(_ getParams: String){
         firebaseBD.collection("param_app").getDocuments() { (querySnapshot, err) in // get disconts
@@ -86,7 +101,7 @@ class AddNewServiceVC: UIViewController {
                     
                     if let arrayParam = document["\(getParams)"] as? Array<String>{
                         self.arrayPickerData = arrayParam
-                        print(self.arrayPickerData)
+                        //print(self.arrayPickerData)
                     }
                 }
                 
@@ -117,6 +132,7 @@ class AddNewServiceVC: UIViewController {
         present(actionSheet, animated: true)
     }
     
+    //MARK: Fill the Service
     // для записи значений из полей
     private func collectService(){
         serviceNew.nameService = nameService.text ?? ""
@@ -144,12 +160,16 @@ class AddNewServiceVC: UIViewController {
     @IBAction func indexChanged(_ sender: Any) {
         switch segmentedControl.selectedSegmentIndex
         {
-        case 0:
+        case 1: // все мастера
             deleteOrChange = false // при выведении всех мастеров, можно только добавлять мастера
             getArrayMaster(arrayMasterAll)
-        case 1:
+        case 0: // добавленные мастера
             deleteOrChange = true // после добавления можно только удалять мастера
+//            if !serviceUpdate.id.isEmpty{// условие заполнения массива доб-х мастеров в режиме изменения
+//
+//            }
             getArrayMaster(arrayMasterAdded)
+            
         default:
             break
         }
@@ -274,7 +294,7 @@ extension AddNewServiceVC: UIImagePickerControllerDelegate, UINavigationControll
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imageService.image = info[.editedImage] as? UIImage // присваиваем отредактирование изображение
-        imageService.contentMode = .scaleAspectFit // распределяем изображение по формату
+        imageService.contentMode = .scaleAspectFill // распределяем изображение по формату
         imageService.clipsToBounds = true // обрезаем границы
         dismiss(animated: true)
     }
@@ -312,7 +332,14 @@ extension AddNewServiceVC{
                         self!.actionSheet.addAction(cancel)
                         return
                     } // проверяем на пустуб строку в ответе
-                    FirebaseManager.saveServiceToFirebase(self!.serviceNew)
+                    if !self!.serviceUpdate.id.isEmpty{//если режим редактирования
+                        print("Обновление")
+                        FirebaseManager.saveServiceToFirebase(self!.serviceNew)
+                        FirebaseManager.deleteDocument(self!.serviceUpdate.id, self!.serviceUpdate.imageURL, "services", "service_images")
+                    }else{
+                        FirebaseManager.saveServiceToFirebase(self!.serviceNew)
+                    }
+                    
                     self!.actionSheet.message = "Сохранено"
                     // ToDo: Обновление
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // через секунду закрываем actionSheet и view
@@ -331,50 +358,78 @@ extension AddNewServiceVC{
 extension AddNewServiceVC: UIPickerViewDelegate, UIPickerViewDataSource{
     
     private func setupPicker(){ // определяет поле на которое нажали и обозначаем делегатов
+        // назначаем делегата
         picker.delegate = self
         picker.dataSource = self
-        // в зависимости от нажатого поля заполняем массив для picker
+        
+        // определяем поля ввода
+        timeService.inputView = picker
+        cosmetologiService.inputView = picker
+        nameCategoryOfService.inputView = picker
+        maleMan.inputView = picker
+        partOfTheBody.inputView = picker
+        
+        // ставим тригеры на редактирования полей
         maleMan.addTarget(self, action: #selector(editingMaleMan(_:)), for: .editingDidBegin)
         partOfTheBody.addTarget(self, action: #selector(editingPartOfTheBody(_:)), for: .editingDidBegin)
         nameCategoryOfService.addTarget(self, action: #selector(editingNameCategoryOfService(_:)), for: .editingDidBegin)
         cosmetologiService.addTarget(self, action: #selector(editingCosmetologiService(_:)), for: .editingDidBegin)
-        
+        timeService.addTarget(self, action: #selector(editingTimeService(_ :)), for: .editingDidBegin)
+    
+        //
+        //timeService.addTarget(self, action: #selector(editingTimeService(_ :)), for: .editingDidEndOnExit)
+    }
+    
+    @objc func editingTimeService(_ textField: UITextField) {
+        arrayPickerData.removeAll() // очищаем массив
+        generateTime()
+        //picker.reloadAllComponents()
     }
     
     @objc func editingCosmetologiService(_ textField: UITextField) {
         arrayPickerData.removeAll() // очищаем массив
-        cosmetologiService.inputView = picker // для появления поля по нажатию на nameMaster
         getDataFirebase("cosmetologis")
     }
     
     @objc func editingNameCategoryOfService(_ textField: UITextField) {
         arrayPickerData.removeAll() // очищаем массив
-        nameCategoryOfService.inputView = picker // для появления поля по нажатию на nameMaster
-        getDataFirebase("nameCategorysServices")
+        //getDataFirebase("nameCategorysServices")
+        let arrayCategoryResult = realm.objects(CategoryService.self)//выбираем из базы все категории
+        for category in arrayCategoryResult{
+            arrayPickerData.append(category.category)// заполняем массив названием категории
+        }
     }
     
     @objc func editingMaleMan(_ textField: UITextField) {
         arrayPickerData.removeAll() // очищаем массив
-        maleMan.inputView = picker // для появления поля по нажатию на nameMaster
-        getDataFirebase("maleMans")
+        arrayPickerData.append("Для мужчин")
+        arrayPickerData.append("Для женчин")
+        arrayPickerData.append("Для всех")
+        //getDataFirebase("maleMans")
     }
     
     @objc func editingPartOfTheBody (_ textField: UITextField) {
         arrayPickerData.removeAll() // очищаем массив
-        partOfTheBody.inputView = picker // для появления поля по нажатию на nameService
         getDataFirebase("partOfTheBodys")
     }
-    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        //print(arrayPickerData.count)
         return arrayPickerData.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return arrayPickerData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if timeService.isEditing{
+            timeService.text = arrayPickerData[row]
+        }
         if maleMan.isEditing{
             maleMan.text = arrayPickerData[row]
         }
@@ -387,7 +442,6 @@ extension AddNewServiceVC: UIPickerViewDelegate, UIPickerViewDataSource{
         if cosmetologiService.isEditing{
             cosmetologiService.text = arrayPickerData[row]
         }
-        return arrayPickerData[row]
     }
     
     
@@ -398,10 +452,10 @@ extension AddNewServiceVC: UIPickerViewDelegate, UIPickerViewDataSource{
 extension AddNewServiceVC{
     private func setupViewElements(){
         // setup UIDatePicker
-        setupDatePicker()
+        //setupDatePicker()
         
         // setup UIImageView
-        self.imageService.contentMode = .scaleToFill
+        self.imageService.contentMode = .scaleAspectFill
         self.imageService.layer.cornerRadius = 40
         
         // setup saveButton
@@ -410,36 +464,6 @@ extension AddNewServiceVC{
         self.saveButton.layer.borderColor = ColorApp.greenComplete.cgColor
         self.saveButton.backgroundColor = ColorApp.clear
         self.saveButton.setTitleColor(ColorApp.greenComplete, for: .normal)
-    }
-}
-
-// MARK: Setup DatePicker
-extension AddNewServiceVC{
-    private func setupDatePicker(){
-        
-        // ToDo: сделать так чтобы DatePicker при первом нажатии не выаодил текущее время
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureDone)) //для закрытия UIPicker по клику на экран
-        self.view.addGestureRecognizer(tapGesture)
-        
-        timeService.inputView = datePicker //для того, чтобы пикер появлялся по нажатию на поле
-        datePicker.datePickerMode = .time //запись даты и времени
-        datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged) // тригер срабатывает при изменении
-    }
-    
-    @objc func dateChanged(){ // для записи в dateStart и dateEnd
-        getDateFromPicker(datePicker.date, timeService)
-    }
-    
-    @objc func tapGestureDone(){ // для закрытия пикера по тапу на любую часть экрана
-        view.endEditing(true)
-    }
-    
-    private func getDateFromPicker(_ date: Date,_ element: UITextField){
-        let formatter = DateFormatter() //  создаем форматер
-        formatter.dateFormat = "HH:mm" // создаем формат даты и времени
-        let localeID = Locale.preferredLanguages.first // определяем локацию для времени
-        formatter.locale = Locale(identifier: localeID!)
-        element.text = formatter.string(from: date) // записываем дату в dateStart
     }
 }
 
@@ -493,6 +517,27 @@ extension AddNewServiceVC: UITableViewDataSource, UITableViewDelegate{
     }
     
 }
+
+//MARK: Updata Service
+extension AddNewServiceVC{
+    private func editingMode(){
+        if !serviceUpdate.id.isEmpty{ // если master id не постой, то переходим в режим редактирования
+            saveButton.setTitle("Обновить", for: .normal)
+            nameService.text = serviceUpdate.nameService
+            timeService.text = serviceUpdate.timeService
+            priceService.text = serviceUpdate.placeService
+            descriptionService.text = serviceUpdate.serviceDescription
+            nameCategoryOfService.text = serviceUpdate.nameCategoryService
+            cosmetologiService.text = serviceUpdate.comsmetology
+            partOfTheBody.text = serviceUpdate.partOfTheBody
+            maleMan.text = serviceUpdate.maleMan
+            guard let imageData = serviceUpdate.image else {return}
+            imageService.image = UIImage(data: imageData)
+        }
+    }
+}
+
+
 
 //extension AddNewServiceVC{
 //    private func setupKeyboard(){

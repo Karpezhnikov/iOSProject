@@ -13,8 +13,8 @@ class DetailDiscontVC: UIViewController {
     //userInteractive
     //private var scrollView = UIScrollView()
     let animate = AnimateUI()
-    private var disconts: Results<DiscontFireBase>!
-    var discont: DiscontFireBase!
+    private var disconts: Results<Discont>!
+    var discont: Discont!
     
     @IBOutlet weak var imageDiscont: UIImageView!
     
@@ -39,13 +39,13 @@ class DetailDiscontVC: UIViewController {
         
     }
     
-    
+    //MARK: Setup elements
     private func setupViewElements(){
         nameDiscont.text = discont.name
         dateValid.text = "C \(discont.dateStart) по \(discont.dateEnd)"
         
-        imageDiscont.contentMode = .scaleToFill
-        imageDiscont.layer.cornerRadius = 40
+        imageDiscont.contentMode = .scaleAspectFill
+        //imageDiscont.layer.cornerRadius = 40
         if let image = UIImage(data: discont.image!){
             imageDiscont.image = image
             discriptionDiscont.text = discont.descriptionDiscont

@@ -17,6 +17,7 @@ enum ColorApp {
     static let greenComplete = UIColor.init(red: 69/255, green: 128/255, blue: 66/255, alpha: 1)
     static let clear = UIColor.clear
     static let redIsEmpty = UIColor.init(red: 148/255, green: 17/255, blue: 0/255, alpha: 0.2)
+    static let redExit = UIColor.init(red: 148/255, green: 17/255, blue: 0/255, alpha: 1)
 }
 
 enum BorderWidth{

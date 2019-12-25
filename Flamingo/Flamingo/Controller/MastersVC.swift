@@ -103,8 +103,12 @@ extension MastersVC{
         
         if identifire == "updateMasterSegue" {
             let destinationVC = segue.destination as! AddNewMasterVC
-            destinationVC.masterUploud = masters[indexPathRowUpdate]
+            destinationVC.masterUpdate = masters[indexPathRowUpdate]
             
+        }
+        if identifire == "presentMaster"{
+            let destinationVC = segue.destination as! AddNewMasterVC
+            destinationVC.master = masters[indexPathRowUpdate]
         }
     }
 }

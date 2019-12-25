@@ -11,49 +11,19 @@ import RealmSwift
 
 class CategoryListServiceVC: UIViewController {
 
-    private var services: Results<Service>! // тип контейнера, который возвращает все объекты(массив)
-    var arrayServises = Array<Service>() // массив с отобранными записями
-    var arrayNameServiceCategory = Array<String>()
-    var modelController = ModelController()
-    
-    @IBOutlet weak var collectionView: UICollectionView!
+    var modelController = ModelController() // для вывода списка нужных услуг 
+    var categoryService: Results<CategoryService>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        services = realm.objects(Service.self) // берем все объекты типа Service
-        deleteDuplicates(services: services) // вытаскиваем список для отображения всех service
-        
-        
+        //services = realm.objects(Service.self) // берем все объекты типа Service
+        //deleteDuplicates(services: services) // вытаскиваем список для отображения всех service
+        categoryService = realm.objects(CategoryService.self)
+        //print(category)
     }
 }
 
-// MARK: Work these Controller View
-extension CategoryListServiceVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayNameServiceCategory.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.size.width*0.4, height: UIScreen.main.bounds.size.height*0.05)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as? CustumCVC{
-            itemCell.nameCotegoryService.text = arrayNameServiceCategory[indexPath.row]
-            
-            return itemCell
-        }
-        return UICollectionViewCell()
-    }
-    
-    // для получения нажатой ячейки
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // получаем выбраную категорию и записываем ее в модель контроллера
-        modelController.nameServiceCategory = arrayNameServiceCategory[indexPath.item]
-    }
-}
+
 
 //MARK: Navigation
 extension CategoryListServiceVC{
@@ -66,30 +36,31 @@ extension CategoryListServiceVC{
         }
 
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let identifire = segue.identifier, let detailServiceVC = segue.destination as? DetailServiceVC
-//        else {return}
-//        if identifire == "segueDetail"{
-//            guard let indexPath = tableView.indexPathForSelectedRow else {return} // определяем индекс строки
-//            detailServiceVC.service = arrayServises[indexPath.row]
-//        }
-//    }
     
 }
 
-//MARK: Helpers func
-extension CategoryListServiceVC{
-    private func deleteDuplicates(services: Results<Service>){
-        
-        //self.navigationItem.title = "Список ус" // вставляем заголовок
-        
-        for service in services{ // выводим весь список услуг
-            //arrayServises.append(service)
-            arrayNameServiceCategory.append(service.nameCategoryService)
-            //arrayServises = Array(Set<Service>(arrayServises))
-            }
-        
-        arrayNameServiceCategory = Array(Set<String>(arrayNameServiceCategory)) // убераем дубли
+
+//MARK: Table View
+extension CategoryListServiceVC: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categoryService.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellCategory", for: indexPath) as! CategoryTVCell
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.nameCategory.text = categoryService[indexPath.row].category
+        if let dataImage = categoryService[indexPath.row].image{
+            cell.imageCategory.image = UIImage(data: dataImage)
+        }else{
+            cell.imageCategory.image = UIImage(named: "launchScr")
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        modelController.nameServiceCategory = categoryService[indexPath.row].category
+        tableView.deselectRow(at: indexPath, animated: true) // для того, чтобы ячейка не выделялась
     }
 }
 

@@ -15,6 +15,8 @@ import RealmSwift
 class SamplePriceListVC: UIViewController{
     
     var modelController = ModelController()
+    var indexPathRowUpdate = Int()
+    var refreshControl:UIRefreshControl!
     private let arrayHashtagSeatch = SeatchHashtag()
     private let searchController = UISearchController(searchResultsController: nil)//nil-для отображения
     
@@ -42,23 +44,26 @@ class SamplePriceListVC: UIViewController{
     
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar() // настраиваем кнопку назад
         getDataFromTheDataBase() // запоняем services
         setupSearchBar() // добавляем поиск
+        setupRefreshControl()
     }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifire = segue.identifier, let detailServiceVC = segue.destination as? DetailServiceTVC
-        else {return}
+        guard let identifire = segue.identifier else {return}
         if identifire == "segueDetail"{
+            guard let detailServiceVC = segue.destination as? DetailServiceVC else{return}
             guard let indexPath = tableView.indexPathForSelectedRow else {return} // определяем индекс строки
             detailServiceVC.service = services[indexPath.row]
-            //detailServiceVC.service = arrayServises[indexPath.row]
+        }
+        if identifire == "updataService"{
+            guard let addNewServiceVC = segue.destination as? AddNewServiceVC else{return}
+            addNewServiceVC.serviceUpdate = services[indexPathRowUpdate]
         }
     }
     
@@ -81,7 +86,13 @@ extension SamplePriceListVC: UITableViewDataSource, UITableViewDelegate{
         cell.nameService.text = arrayToDisplay.nameService
         cell.price.text = "\(arrayToDisplay.placeService)"
         cell.timeService.text = arrayToDisplay.timeService
-        
+        let imageBackground = UIImageView()
+        imageBackground.image = UIImage(data: arrayToDisplay.image!)
+        //print("Background")
+        imageBackground.contentMode = .scaleAspectFill
+        //imageBackground.alpha = 0.5
+        cell.backgroundView = imageBackground
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
     }
     
@@ -113,8 +124,8 @@ extension SamplePriceListVC: UITableViewDataSource, UITableViewDelegate{
         // если нажата кнопка редактирования то переходит на экран добавления записи
         // ToDo: добавить редактирование услуги
         let changeItem = UIContextualAction(style: .normal, title: nil) { (contextualAction, view, boolValue) in
-//            self!.indexPathRowUpdate = indexPath.row // записываем индекс строки которую редактируем
-//            self!.performSegue(withIdentifier: "updateDiscontSegue", sender: nil)
+            self.indexPathRowUpdate = indexPath.row // записываем индекс строки которую редактируем
+            self.performSegue(withIdentifier: "updataService", sender: nil)
 
         }
         changeItem.backgroundColor = ColorApp.black
@@ -124,6 +135,32 @@ extension SamplePriceListVC: UITableViewDataSource, UITableViewDelegate{
         swipeActions.performsFirstActionWithFullSwipe = false
 
         return swipeActions
+    }
+}
+
+extension SamplePriceListVC{
+    //MARK: Setup UIRefreshControl
+    private func setupRefreshControl(){ // ToDo: сделать активной RefreshControl пока не закончится подгрузка
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        refreshControl.tintColor = UIColor.white
+        refreshControl.backgroundColor = .black
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc func refresh(sender:AnyObject) {
+        DispatchQueue.global(qos: .background).async { // в асинхронном режиме записываем данные
+            FirebaseManager.getDataServicesOfFirebase()
+            DispatchQueue.main.async { [weak self] in
+                self!.getDataFromTheDataBase()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in// через секунду закрываем actionSheet и view
+                    self!.refreshControl.endRefreshing()
+                }
+                
+            }
+        }
+        //refreshControl.colo
+        
     }
 }
 
@@ -164,6 +201,13 @@ extension SamplePriceListVC{
         }else{ // берем объекты по условию
             self.navigationItem.title = modelController.partOfBody
             services = realm.objects(Service.self).filter("partOfTheBody = '\(modelController.partOfBody)' AND maleMan = '\(modelController.maleMan)'")
+        }
+        print(modelController)
+        if modelController.maleMan.isEmpty &&
+            modelController.nameServiceCategory.isEmpty &&
+            modelController.partOfBody.isEmpty &&
+            modelController.seatchTeg.isEmpty{
+            services = realm.objects(Service.self)
         }
     }
 }

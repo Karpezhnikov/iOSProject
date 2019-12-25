@@ -11,9 +11,10 @@ import Firebase
 
 class AddNewMasterVC: UIViewController {
 
-    let master = Master()
+    var master = Master()
     let actionSheet = UIAlertController(title: nil, message: "", preferredStyle: .alert)
-    var masterUploud = Master()
+    var masterUpdate = Master()
+    var viewFlg = false
     
     @IBOutlet weak var imageMaster: UIImageView!
     @IBOutlet weak var nameMaster: UITextField!
@@ -21,14 +22,19 @@ class AddNewMasterVC: UIViewController {
     @IBOutlet weak var infoMaster: UITextView!
     @IBOutlet weak var tableViewMasterServices: UITableView!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var photoButton: SetupButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewElements() // сначала устанавливаем все элементы
         editingMode() // потом определяем режим
+        presentViewSetup()
     }
     
-
+    @IBAction func exitView(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: Action: Save Button
     @IBAction func saveMaster(_ sender: Any) {
         // создаем уведомление о процессе загрузки
@@ -38,9 +44,9 @@ class AddNewMasterVC: UIViewController {
         collectMaster() // наполняем discont (точно уверены что все поля заполнены)
         saveImageToFirebaseStorage() // получаем URL изображения
         // если режим редактирования, то удаляем старый документ
-        if !masterUploud.id.isEmpty{
-            FirebaseManager.deleteDocument(masterUploud.id, masterUploud.imageURL, "masters", "master_images")
-        }
+//        if !masterUploud.id.isEmpty{
+//            FirebaseManager.deleteDocument(masterUploud.id, masterUploud.imageURL, "masters", "master_images")
+//        }
     }
     
     
@@ -164,7 +170,12 @@ extension AddNewMasterVC{
                         let cancel = UIAlertAction(title: "ОК", style: .cancel)
                         self!.actionSheet.addAction(cancel)
                         return} // проверяем на пустуб строку в ответе
-                    FirebaseManager.saveMasterToFirebase(self!.master) // сохраняем мастера на Firebase
+                    if !self!.masterUpdate.id.isEmpty{ //если режим редактирования, то обновляем данные в документа
+                        print("dasdasdasdasd", self!.masterUpdate.id)
+                        FirebaseManager.updataMaster(self!.master, idDocument: self!.masterUpdate.id, imageURLDel: self!.masterUpdate.imageURL)
+                    }else{
+                        FirebaseManager.saveMasterToFirebase(self!.master) // сохраняем мастера на Firebase
+                    }
                     // editingMode
                     self!.actionSheet.message = "Сохранено"
                     // ToDo: Обновление
@@ -186,14 +197,43 @@ extension AddNewMasterVC{
     
     // MARK: Editing Mode
     private func editingMode(){
-        print(masterUploud)
-        if !masterUploud.id.isEmpty{ // если master id не постой, то переходим в режим редактирования
+        print(masterUpdate)
+        if !masterUpdate.id.isEmpty{ // если master id не постой, то переходим в режим редактирования
             saveButton.setTitle("Обновить", for: .normal)
-            nameMaster.text = masterUploud.name
-            profilMaster.text = masterUploud.profil
-            infoMaster.text = masterUploud.info
-            guard let imageData = masterUploud.image else {return}
+            nameMaster.text = masterUpdate.name
+            profilMaster.text = masterUpdate.profil
+            infoMaster.text = masterUpdate.info
+            guard let imageData = masterUpdate.image else {return}
             imageMaster.image = UIImage(data: imageData)
+        }
+    }
+}
+
+
+//MARK: ViewFlg
+extension AddNewMasterVC{
+    private func presentViewSetup(){
+        print(master)
+        if !master.id.isEmpty{ // если master id не пустой, то переходим в режим показа
+            // отключаем кнопки
+            self.saveButton.isUserInteractionEnabled = false
+            self.saveButton.isHidden = true
+            self.photoButton.isUserInteractionEnabled = false
+            self.photoButton.isHidden = true
+            
+            self.infoMaster.layer.borderWidth = 0
+            self.infoMaster.isUserInteractionEnabled = false
+            self.nameMaster.layer.borderWidth = 0
+            self.nameMaster.isUserInteractionEnabled = false
+            self.profilMaster.layer.borderWidth = 0
+            self.profilMaster.isUserInteractionEnabled = false
+            
+            //заполняем данные
+            self.nameMaster.text = master.name
+            self.profilMaster.text = master.profil
+            self.infoMaster.text = master.info
+            guard let imageData = master.image else {return}
+            self.imageMaster.image = UIImage(data: imageData)
         }
     }
 }

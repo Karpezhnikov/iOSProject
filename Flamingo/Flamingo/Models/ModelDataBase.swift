@@ -8,6 +8,7 @@
 
 import RealmSwift
 
+//MARK: Service
 class Service: Object{
     
     @objc dynamic var id = ""
@@ -22,6 +23,7 @@ class Service: Object{
     @objc dynamic var maleMan = "" // для кого (unisex, man, women )
     @objc dynamic var imageURL = ""
     @objc dynamic var image: Data?
+    @objc dynamic var favorites: Bool = false
     
     @objc dynamic var idsMasters = ""
         
@@ -68,6 +70,7 @@ class Service: Object{
     }
 }
 
+//MARK: Master
 class Master: Object{
     @objc dynamic var id = ""          // id Document Firebase
     @objc dynamic var name = ""
@@ -92,30 +95,30 @@ class Master: Object{
 }
 
 
-class MasterServices: Object {
-    @objc dynamic var idMaster = ""
-    @objc dynamic var nameMaster = ""
-    @objc dynamic var listServicesMaster = "" // список id услуг через ";"
-    @objc dynamic var timeAndPriceMaster = ""
-}
+//class MasterServices: Object {
+//    @objc dynamic var idMaster = ""
+//    @objc dynamic var nameMaster = ""
+//    @objc dynamic var listServicesMaster = "" // список id услуг через ";"
+//    @objc dynamic var timeAndPriceMaster = ""
+//}
 
-class Discount: Object{
-    @objc dynamic var nameDiscount = ""  // название акции
-    @objc dynamic var serviceDiscount = ""
-    @objc dynamic var descriptionDiscount = "" // описание акции
-    @objc dynamic var image: Data?
-
-    // инициализатор для класса
-    convenience init(nameDiscount: String, descriptionDiscount: String, image:Data?){
-        self.init()
-        self.nameDiscount = nameDiscount
-        self.serviceDiscount = ""
-        self.descriptionDiscount = descriptionDiscount
-        self.image = image
-    }
-}
-
-class DiscontFireBase: Object{
+//class Discount: Object{
+//    @objc dynamic var nameDiscount = ""  // название акции
+//    @objc dynamic var serviceDiscount = ""
+//    @objc dynamic var descriptionDiscount = "" // описание акции
+//    @objc dynamic var image: Data?
+//
+//    // инициализатор для класса
+//    convenience init(nameDiscount: String, descriptionDiscount: String, image:Data?){
+//        self.init()
+//        self.nameDiscount = nameDiscount
+//        self.serviceDiscount = ""
+//        self.descriptionDiscount = descriptionDiscount
+//        self.image = image
+//    }
+//}
+//MARK: Discont
+class Discont: Object{
     @objc dynamic var id = ""
     @objc dynamic var name = ""
     @objc dynamic var descriptionDiscont = ""
@@ -136,22 +139,52 @@ class DiscontFireBase: Object{
     }
 }
 
-//    func saveDiscount(){
-//        let imageOne = UIImage(named: "discontTwo")
-//        let imageData = imageOne?.pngData()
-//        
-//        let newDiscount = Discount(nameDiscount: "АКЦИЯ!",
-//                                   descriptionDiscount: "Только три дня! 📆6,7,8 июня!СКИДКА 50% на программу «МОЛОДОСТЬ»",
-//                                   image: imageData)
-//        
-//        StorageManager.saveObjectDiscount(newDiscount)
-//        
-//        
-//    }
+//MARK: ServiceEnrty
+class ServiceEntry: Object{
+    @objc dynamic var id = ""
+    @objc dynamic var serviceName = ""
+    @objc dynamic var nameClient = ""
+    @objc dynamic var numberPhoneClient = ""
+    @objc dynamic var dttmEntry = ""
+    @objc dynamic var idMaster = ""
+    @objc dynamic var serviceIdDocument = ""
+    @objc dynamic var price = ""
+    
+    convenience init(id: String, serviceName: String?, nameClient: String, numberPhoneClient: String, dttmEntry: String?, idMaster: String?, serviceIdDocument: String?, price: String?){
+        self.init()
+        self.id = id
+        self.serviceName = serviceName ?? ""
+        self.nameClient = nameClient
+        self.numberPhoneClient = numberPhoneClient
+        self.dttmEntry = dttmEntry ?? ""
+        self.idMaster = idMaster ?? ""
+        self.serviceIdDocument = serviceIdDocument ?? ""
+        self.price = price ?? ""
+    }
+    
+}
 
+//MARK: CategoryService
+class CategoryService: Object{
+    @objc dynamic var id = ""
+    @objc dynamic var category = ""
+    @objc dynamic var imageURL = ""
+    @objc dynamic var image: Data?
+    
+    convenience init(id: String, category: String?, imageURL: String?, image: UIImage){
+        self.init()
+        self.id = id
+        self.category = category ?? ""
+        self.imageURL = imageURL ?? ""
+        self.image = image.pngData()
+    }
+}
 
-
-
-
+class Person: Object{
+    @objc dynamic var name = ""
+    @objc dynamic var numberPhone = ""
+    @objc dynamic var admin = false
+    @objc dynamic var numberVerif = false
+}
 
 

@@ -15,7 +15,8 @@ class DiscontVC: UIViewController {
 
     var indexPathRowUpdate = Int() // запоминает индекс строки выбраной к редактированию
     var refreshControl:UIRefreshControl!
-    private var disconts: Results<DiscontFireBase>!{
+    var indexPathRow = IndexPath()
+    private var disconts: Results<Discont>!{
         didSet{
             tableView.reloadData()
         }
@@ -27,7 +28,14 @@ class DiscontVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRefreshControl()
-        disconts = realm.objects(DiscontFireBase.self) // получаем все акции
+        disconts = realm.objects(Discont.self) // получаем все акции
+        
+    }
+    
+    //MARK: Open Info
+    @IBAction func callAction(_ sender: Any) {
+        print("Нажата кновка вызова")
+        
     }
     
     //MARK: - Navigation
@@ -70,7 +78,7 @@ class DiscontVC: UIViewController {
         DispatchQueue.global(qos: .background).async { // в асинхронном режиме записываем данные
             FirebaseManager.getDataDicontsOfFirebase()
             DispatchQueue.main.async { [weak self] in
-                self!.disconts = realm.objects(DiscontFireBase.self) // получаем все акции и обновляем TB
+                self!.disconts = realm.objects(Discont.self) // получаем все акции и обновляем TB
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in// через секунду закрываем actionSheet и view
                     self!.refreshControl.endRefreshing()
                 }
@@ -99,25 +107,40 @@ extension DiscontVC: UITableViewDataSource, UITableViewDelegate{
         cell.nameDiscount = disconts[indexPath.row].name
         cell.descriptionDiscount = disconts[indexPath.row].descriptionDiscont
         cell.imageDiscont.image = UIImage(data: disconts[indexPath.row].image!)
-        
-        
+        cell.imageDiscont.contentMode = .scaleAspectFill
+        cell.info.text = disconts[indexPath.row].descriptionDiscont
+        cell.alertInfo.textColor = ColorApp.redExit
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
 
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPathRow == indexPath{ // если обновляется нужный индекс
+            guard let cell = tableView.cellForRow(at: indexPathRow) as? CustomTVCellDiscont
+                else{return UIScreen.main.bounds.size.width}// получаем ячейку
+            let heightCell = cell.frame.height//высота ячейки
+            let distanceHeight = cell.info.frame.size.height + cell.alertInfo.frame.size.height + 5 + 20 + 10//высота на которую нужно увеличить
+            if cell.frame.height == UIScreen.main.bounds.size.width{//если она не открыта,
+                return heightCell + distanceHeight // то открываем
+            }else{
+                return UIScreen.main.bounds.size.width // если открыта, то закрываем
+            }
+        }
         return UIScreen.main.bounds.size.width // делаем высоту равной ширине ячейки
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexPathRow = indexPath // записываем номер ячейки на которую нажали
+        self.tableView.reloadRows(at: [indexPathRow], with: UITableView.RowAnimation.automatic)// обновляем ее
+        self.tableView.scrollToRow(at: indexPathRow, at: .middle, animated: true)//прокручиваем до нужной позиции
         tableView.deselectRow(at: indexPath, animated: true) // для того, чтобы ячейка не выделялась
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true // добавляем базовый функционал для управления ячейками ячейки
     }
-    
     
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -131,7 +154,7 @@ extension DiscontVC: UITableViewDataSource, UITableViewDelegate{
                 //FirebaseManager.deleteDiscont(discont) // удаляем данные из FireBase
                 FirebaseManager.deleteDocument(discont.id, discont.imageURL, "disconts", "discont_images")
                 StorageManager.deleteObjectRealm(discont) // удаляем из Realm
-                self!.disconts = realm.objects(DiscontFireBase.self) // перезаполняем массив
+                self!.disconts = realm.objects(Discont.self) // перезаполняем массив
                 
             }
             let cancel = UIAlertAction(title: "Отмена", style: .cancel)

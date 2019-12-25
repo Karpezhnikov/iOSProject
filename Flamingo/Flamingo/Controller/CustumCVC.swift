@@ -51,3 +51,8 @@ class CustumCVCMaster: UICollectionViewCell {
 //
 //    }
 }
+
+class CustomCVCAlbum: UICollectionViewCell{
+    
+    @IBOutlet weak var imageAlbum: UIImageView!
+}

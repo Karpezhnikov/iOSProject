@@ -8,17 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		04014FDC23829B00008EBE6C /* SetupDataPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04014FDB23829B00008EBE6C /* SetupDataPicker.swift */; };
-		04017CCB237ED65100809ACA /* EditOnServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04017CCA237ED65100809ACA /* EditOnServiceViewController.swift */; };
 		040247D1238D467C00C6EFE2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040247D0238D467B00C6EFE2 /* GoogleService-Info.plist */; };
 		040247D3238D66C900C6EFE2 /* AddNewDiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */; };
 		040247D5238DB34C00C6EFE2 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */; };
 		0409686B2383395F00B84ABC /* SetupLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686A2383395F00B84ABC /* SetupLabel.swift */; };
 		0409686D2383429600B84ABC /* SetupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686C2383429600B84ABC /* SetupTextField.swift */; };
 		0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686E2383C6D300B84ABC /* StyleFonts.swift */; };
-		040968712384155800B84ABC /* AnimateLaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */; };
+		040968712384155800B84ABC /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040968702384155800B84ABC /* LaunchScreenVC.swift */; };
 		0409687323841C2E00B84ABC /* DiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409687223841C2E00B84ABC /* DiscontVC.swift */; };
+		045D423823B0D65E00C85243 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D423723B0D65E00C85243 /* LoginVC.swift */; };
+		045D423A23B11BAF00C85243 /* PersonAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D423923B11BAF00C85243 /* PersonAccountVC.swift */; };
+		045D423C23B12EFD00C85243 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D423B23B12EFD00C85243 /* RegistrationVC.swift */; };
 		046991C1237D5D6600990826 /* DetailServiceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046991C0237D5D6600990826 /* DetailServiceTVC.swift */; };
+		047DAA0823A78A1F0044362E /* DetailServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047DAA0723A78A1F0044362E /* DetailServiceVC.swift */; };
 		04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04859C1F23851B5D000E8709 /* AnimateUI.swift */; };
+		049D27C923A8B33400E6872C /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D27C823A8B33400E6872C /* HomeVC.swift */; };
+		049D27CD23A92FB600E6872C /* PresentPhotoSalonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D27CC23A92FB600E6872C /* PresentPhotoSalonVC.swift */; };
 		04B0DAF2238BFC3B0006B7E3 /* DetailDiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0DAF1238BFC3B0006B7E3 /* DetailDiscontVC.swift */; };
 		04C56F69239977FD0099E360 /* AddNewServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C56F68239977FD0099E360 /* AddNewServiceVC.swift */; };
 		04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF8D17237BE065005EA21D /* SetupScrollView.swift */; };
@@ -49,17 +54,22 @@
 
 /* Begin PBXFileReference section */
 		04014FDB23829B00008EBE6C /* SetupDataPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupDataPicker.swift; sourceTree = "<group>"; };
-		04017CCA237ED65100809ACA /* EditOnServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOnServiceViewController.swift; sourceTree = "<group>"; };
 		040247D0238D467B00C6EFE2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDiscontVC.swift; sourceTree = "<group>"; };
 		040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		0409686A2383395F00B84ABC /* SetupLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupLabel.swift; sourceTree = "<group>"; };
 		0409686C2383429600B84ABC /* SetupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTextField.swift; sourceTree = "<group>"; };
 		0409686E2383C6D300B84ABC /* StyleFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFonts.swift; sourceTree = "<group>"; };
-		040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateLaunchScreenVC.swift; sourceTree = "<group>"; };
+		040968702384155800B84ABC /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		0409687223841C2E00B84ABC /* DiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscontVC.swift; sourceTree = "<group>"; };
+		045D423723B0D65E00C85243 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = Flamingo/Controller/LoginVC.swift; sourceTree = SOURCE_ROOT; };
+		045D423923B11BAF00C85243 /* PersonAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonAccountVC.swift; sourceTree = "<group>"; };
+		045D423B23B12EFD00C85243 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		046991C0237D5D6600990826 /* DetailServiceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailServiceTVC.swift; sourceTree = "<group>"; };
+		047DAA0723A78A1F0044362E /* DetailServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailServiceVC.swift; sourceTree = "<group>"; };
 		04859C1F23851B5D000E8709 /* AnimateUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateUI.swift; sourceTree = "<group>"; };
+		049D27C823A8B33400E6872C /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		049D27CC23A92FB600E6872C /* PresentPhotoSalonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentPhotoSalonVC.swift; sourceTree = "<group>"; };
 		04B0DAF1238BFC3B0006B7E3 /* DetailDiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDiscontVC.swift; sourceTree = "<group>"; };
 		04C56F68239977FD0099E360 /* AddNewServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewServiceVC.swift; sourceTree = "<group>"; };
 		04CF8D17237BE065005EA21D /* SetupScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScrollView.swift; sourceTree = "<group>"; };
@@ -104,10 +114,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		045D423623B0B16100C85243 /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+				040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */,
+				A9DA361F236782020004B711 /* StorageManager.swift */,
+			);
+			path = DBManager;
+			sourceTree = "<group>";
+		};
 		047DAA0623A2C6F10044362E /* deleteMB */ = {
 			isa = PBXGroup;
 			children = (
-				04017CCA237ED65100809ACA /* EditOnServiceViewController.swift */,
+				046991C0237D5D6600990826 /* DetailServiceTVC.swift */,
+				04B0DAF1238BFC3B0006B7E3 /* DetailDiscontVC.swift */,
 			);
 			name = deleteMB;
 			sourceTree = "<group>";
@@ -166,6 +186,7 @@
 		A913336C236317A400A54FEC /* Flamingo */ = {
 			isa = PBXGroup;
 			children = (
+				045D423623B0B16100C85243 /* DBManager */,
 				A9DA361C236740B80004B711 /* Models */,
 				A9DA361A236740910004B711 /* iBuillder */,
 				A9DA36192367406F0004B711 /* Helpers */,
@@ -180,18 +201,22 @@
 			isa = PBXGroup;
 			children = (
 				047DAA0623A2C6F10044362E /* deleteMB */,
-				04F9887223A174B50099E354 /* MakeAppointmentVC.swift */,
-				04F9887423A179AC0099E354 /* MakeAppVC.swift */,
-				04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */,
-				04D9A877239ECA690063653D /* MastersVC.swift */,
-				04C56F68239977FD0099E360 /* AddNewServiceVC.swift */,
 				04CF8D1D237C860E005EA21D /* SetupElements */,
 				04CF8D1C237C85A8005EA21D /* CustomElements */,
-				046991C0237D5D6600990826 /* DetailServiceTVC.swift */,
+				045D423723B0D65E00C85243 /* LoginVC.swift */,
+				045D423923B11BAF00C85243 /* PersonAccountVC.swift */,
+				045D423B23B12EFD00C85243 /* RegistrationVC.swift */,
+				040968702384155800B84ABC /* LaunchScreenVC.swift */,
 				040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */,
-				04B0DAF1238BFC3B0006B7E3 /* DetailDiscontVC.swift */,
+				04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */,
+				04C56F68239977FD0099E360 /* AddNewServiceVC.swift */,
+				04F9887423A179AC0099E354 /* MakeAppVC.swift */,
+				04D9A877239ECA690063653D /* MastersVC.swift */,
+				047DAA0723A78A1F0044362E /* DetailServiceVC.swift */,
+				04F9887223A174B50099E354 /* MakeAppointmentVC.swift */,
+				049D27CC23A92FB600E6872C /* PresentPhotoSalonVC.swift */,
+				049D27C823A8B33400E6872C /* HomeVC.swift */,
 				0409687223841C2E00B84ABC /* DiscontVC.swift */,
-				040968702384155800B84ABC /* AnimateLaunchScreenVC.swift */,
 				A9133371236317A400A54FEC /* ViewController.swift */,
 				A91333812363230F00A54FEC /* SamplePriceListVC.swift */,
 				A99DC6BD2372AF5D0045D83C /* CategoryListServiceVC.swift */,
@@ -212,10 +237,8 @@
 		A9DA361A236740910004B711 /* iBuillder */ = {
 			isa = PBXGroup;
 			children = (
-				040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */,
 				04859C1F23851B5D000E8709 /* AnimateUI.swift */,
 				0409686E2383C6D300B84ABC /* StyleFonts.swift */,
-				A9DA361F236782020004B711 /* StorageManager.swift */,
 				A9133373236317A400A54FEC /* Main.storyboard */,
 				A9133378236317A700A54FEC /* LaunchScreen.storyboard */,
 			);
@@ -357,17 +380,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B0DAF2238BFC3B0006B7E3 /* DetailDiscontVC.swift in Sources */,
+				049D27C923A8B33400E6872C /* HomeVC.swift in Sources */,
 				A91333862363569000A54FEC /* CustomTVCells.swift in Sources */,
 				A92731FC236C23EC00976122 /* ModelController.swift in Sources */,
 				040247D5238DB34C00C6EFE2 /* FirebaseManager.swift in Sources */,
 				A91333822363230F00A54FEC /* SamplePriceListVC.swift in Sources */,
-				040968712384155800B84ABC /* AnimateLaunchScreenVC.swift in Sources */,
+				040968712384155800B84ABC /* LaunchScreenVC.swift in Sources */,
 				A9DA3620236782020004B711 /* StorageManager.swift in Sources */,
 				040247D3238D66C900C6EFE2 /* AddNewDiscontVC.swift in Sources */,
 				04CF8D1A237C8369005EA21D /* SetupButton.swift in Sources */,
 				04F4325223A1273C0043546D /* SetupTextView.swift in Sources */,
 				04014FDC23829B00008EBE6C /* SetupDataPicker.swift in Sources */,
 				04C56F69239977FD0099E360 /* AddNewServiceVC.swift in Sources */,
+				049D27CD23A92FB600E6872C /* PresentPhotoSalonVC.swift in Sources */,
 				A9133372236317A400A54FEC /* ViewController.swift in Sources */,
 				0409686B2383395F00B84ABC /* SetupLabel.swift in Sources */,
 				A9DA361E23676D1A0004B711 /* ModelDataBase.swift in Sources */,
@@ -377,16 +402,19 @@
 				A99DC6C02372AF9F0045D83C /* CustumCVC.swift in Sources */,
 				04D9A878239ECA690063653D /* MastersVC.swift in Sources */,
 				04CF8D1F237C8B3B005EA21D /* SetupNavigationController.swift in Sources */,
+				045D423C23B12EFD00C85243 /* RegistrationVC.swift in Sources */,
 				04CF8D18237BE065005EA21D /* SetupScrollView.swift in Sources */,
 				A970329A237557990031B598 /* SetupTabBarVC.swift in Sources */,
-				04017CCB237ED65100809ACA /* EditOnServiceViewController.swift in Sources */,
 				A913336E236317A400A54FEC /* AppDelegate.swift in Sources */,
 				04F9887323A174B50099E354 /* MakeAppointmentVC.swift in Sources */,
 				A91333842363270300A54FEC /* ModelSamplePriceList.swift in Sources */,
 				0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */,
 				046991C1237D5D6600990826 /* DetailServiceTVC.swift in Sources */,
 				A99DC6BE2372AF5D0045D83C /* CategoryListServiceVC.swift in Sources */,
+				045D423823B0D65E00C85243 /* LoginVC.swift in Sources */,
 				04D9A880239ED2A70063653D /* AddNewMasterVC.swift in Sources */,
+				047DAA0823A78A1F0044362E /* DetailServiceVC.swift in Sources */,
+				045D423A23B11BAF00C85243 /* PersonAccountVC.swift in Sources */,
 				A9133370236317A400A54FEC /* SceneDelegate.swift in Sources */,
 				04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */,
 			);

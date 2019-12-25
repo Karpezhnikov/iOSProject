@@ -37,14 +37,13 @@ class StorageManager{
     }
     
     
+    
+    
     static func saveObjectRealm(_ newObject: Object){
         try! realm.write {
             realm.add(newObject)
-            print("Request for DataDase --> saveObjectDiscount")
+            print("Save for Realm--> \(newObject.objectSchema.className)")
         }
-//        
-//        let listMasters = realm.objects(Discxount.self)
-//        print(listMasters)
     }
     
     static func deleteObjectRealm(_ newObject: Object){
@@ -68,6 +67,23 @@ class StorageManager{
             }
         }
         return masters
+    }
+    
+    static func updateFavorites(_ id: String){
+        let result = realm.objects(Service.self).filter("id = '\(id)'")
+        guard result.count > 0 else {
+            return
+        }
+        let updateFavorites = result.first
+        if updateFavorites!.favorites{
+            try! realm.write {
+                updateFavorites!.favorites = false
+            }
+        }else{
+            try! realm.write {
+                updateFavorites!.favorites = true
+            }
+        }
     }
     
 }

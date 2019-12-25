@@ -8,12 +8,12 @@
 
 import Foundation
 
-// для передачи части тела и пола человека
+// для передачи критериев по выводу услуг
 class ModelController {
     var maleMan = "" // по дефолту будут все пола
     var partOfBody = "" // и все части тела
     var nameServiceCategory = ""
-    var seatchTeg = "все"
+    var seatchTeg = ""
     
 }
 

@@ -31,17 +31,17 @@ class SetupTextField: UITextField {
         case 2:
             self.autocapitalizationType = .sentences
             self.inputAccessoryView = addDoneButtonOnKeyboard()
-            self.backgroundColor = ColorApp.black
-            self.textColor = ColorApp.white
+            self.backgroundColor = ColorApp.white
+            self.textColor = ColorApp.black
             self.font = Font.fontRegular
             
-            self.layer.borderWidth = BorderWidth.borderWidth
-            self.layer.borderColor = ColorApp.indigo.cgColor
+            //self.layer.borderWidth = BorderWidth.borderWidth
+            //self.layer.borderColor = ColorApp.indigo.cgColor
             
             self.layer.cornerRadius = 10
             
         case 3:
-            self.autocapitalizationType = .sentences
+            self.autocapitalizationType = .words
             self.inputAccessoryView = addDoneButtonOnKeyboard()
             self.textColor = ColorApp.white
             self.font = Font.fontTitle

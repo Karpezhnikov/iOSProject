@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func legManAction(_ sender: UIButton) {
-        modelController.maleMan = "unisex"
+        modelController.maleMan = "Для всех"
         modelController.partOfBody = "Ноги"
         performSegue(withIdentifier: "nextVC", sender: nil)
     }

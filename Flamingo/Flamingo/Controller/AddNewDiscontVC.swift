@@ -16,8 +16,8 @@ class AddNewDiscontVC: UIViewController {
 
     let datePicker = UIDatePicker()
     var imageURL = ""
-    var discont = DiscontFireBase()
-    var discontUpdate = DiscontFireBase() // если заполнена - то в режим редакторования
+    var discont = Discont()
+    var discontUpdate = Discont() // если заполнена - то в режим редакторования
     let actionSheet = UIAlertController(title: nil, message: "", preferredStyle: .alert)
     
     
@@ -27,6 +27,7 @@ class AddNewDiscontVC: UIViewController {
     @IBOutlet weak var dateEnd: UITextField!
     @IBOutlet weak var discriptionDiscont: UITextView!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     
     override func viewDidLoad() {
@@ -34,8 +35,8 @@ class AddNewDiscontVC: UIViewController {
         setupViewElements() // настраиваем эле-ты на view
         checkTextFieldEmpty() // вызываем тригеры на заполнение полей
         // setup keyboard
-        //setupKeyboard()
-        addDoneButtonOnKeyboard()
+        setupKeyboard()
+        //addDoneButtonOnKeyboard()
         editingMode() // переводим в режим редактирования, если discontUpdate есть
         
     }
@@ -269,59 +270,60 @@ extension AddNewDiscontVC{
     }
 }
 
-// MARK: KeyBoard
-extension AddNewDiscontVC{
-    // add Button Готово
-    func addDoneButtonOnKeyboard()
-    {
-        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
-        doneToolbar.barStyle = UIBarStyle.default
-        
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Готово", style: UIBarButtonItem.Style.done, target: self, action: #selector(doneButtonAction))
-        
-        var items = [UIBarButtonItem]()
-        items.append(flexSpace)
-        items.append(done)
-        
-        doneToolbar.items = items
-        doneToolbar.sizeToFit()
-        
-        self.nameDiscont.inputAccessoryView = doneToolbar
-        self.discriptionDiscont.inputAccessoryView = doneToolbar
-        self.dateStart.inputAccessoryView = doneToolbar
-        self.dateEnd.inputAccessoryView = doneToolbar
-        
-    }
-
-    @objc func doneButtonAction()
-    {
-        self.view.endEditing(true)
-    }
-}
+//// MARK: KeyBoard
 //extension AddNewDiscontVC{
-//    private func setupKeyboard(){
-//        NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
-//        print("1")
+//    // add Button Готово
+//    func addDoneButtonOnKeyboard()
+//    {
+//        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+//        doneToolbar.barStyle = UIBarStyle.default
+//
+//        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+//        let done: UIBarButtonItem = UIBarButtonItem(title: "Готово", style: UIBarButtonItem.Style.done, target: self, action: #selector(doneButtonAction))
+//
+//        var items = [UIBarButtonItem]()
+//        items.append(flexSpace)
+//        items.append(done)
+//
+//        doneToolbar.items = items
+//        doneToolbar.sizeToFit()
+//
+//        self.nameDiscont.inputAccessoryView = doneToolbar
+//        self.discriptionDiscont.inputAccessoryView = doneToolbar
+//        self.dateStart.inputAccessoryView = doneToolbar
+//        self.dateEnd.inputAccessoryView = doneToolbar
+//
 //    }
 //
-//    @objc func kbDidShow( notification: Notification ){
-//        guard let userInfo = notification.userInfo else {
-//            return
-//        }
-//        print("2")
-//        let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-//        print(kbFrameSize.height, self.view.bounds.size.height)
-//        (self.view as! UIScrollView).contentSize = CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height + kbFrameSize.height)
-//
-//
-//
-//    }
-//    @objc func kbDidHide( notification: Notification ){
-//
+//    @objc func doneButtonAction()
+//    {
+//        self.view.endEditing(true)
 //    }
 //}
+
+// MARK: KeyBoard
+extension AddNewDiscontVC{
+    private func setupKeyboard(){
+        NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+
+    @objc func kbDidShow( notification: Notification ){
+        guard let userInfo = notification.userInfo else {
+            return
+        }
+        let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        self.scrollView.contentSize = CGSize(width: self.scrollView.bounds.size.width, height: self.scrollView.bounds.size.height + kbFrameSize.height)
+        
+    }
+    @objc func kbDidHide( notification: Notification ){
+        guard let userInfo = notification.userInfo else {
+            return
+        }
+        let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        self.scrollView.contentSize = CGSize(width: self.scrollView.bounds.size.width, height: self.scrollView.bounds.size.height - kbFrameSize.height)
+    }
+}
 
 // MARK: Work with image
 extension AddNewDiscontVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
