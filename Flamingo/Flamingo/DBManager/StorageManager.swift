@@ -66,6 +66,7 @@ class StorageManager{
                 masters.append(master)
             }
         }
+        
         return masters
     }
     

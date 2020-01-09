@@ -468,6 +468,24 @@ class FirebaseManager{
         firebaseBD.collection("disconts").document("\(discont.id)").updateData(["isDelete" : true])
     }
     
+    static func checkDataNumberPhone(_ number: String){
+        firebaseBD.collection("users").whereField("numberPhone", isEqualTo: "\(number)")
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    let documents = querySnapshot!.documents
+                    guard documents.count > 0 else {return}//если есть данные
+                    let data = documents.first?.data()
+                    UserDefaults.standard.set(data!["name"], forKey: "namePerson")
+                    UserDefaults.standard.set(data!["numberPhone"], forKey: "numberPerson")
+                    UserDefaults.standard.set(data!["numberVerif"], forKey: "numberVerif")
+                    UserDefaults.standard.set(data!["admin"], forKey: "adminPerson")
+                    print(data!)
+                    
+                }
+        }
+    }
     
 }
 
