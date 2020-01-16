@@ -47,6 +47,7 @@ class SamplePriceListVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = modelController.titleController
         setupNavigationBar() // настраиваем кнопку назад
         getDataFromTheDataBase() // запоняем services
         setupSearchBar() // добавляем поиск
@@ -196,18 +197,18 @@ extension SamplePriceListVC{
     // функция для выборки данный из БД
     private func getDataFromTheDataBase(){
         if modelController.partOfBody.isEmpty || modelController.maleMan.isEmpty{ // если перешли сразу к всему списку
-            self.navigationItem.title = modelController.nameServiceCategory
-            services = realm.objects(Service.self).filter("nameCategoryService = '\(modelController.nameServiceCategory)'") // берем все объекты типа Service
+            //self.navigationItem.title = modelController.nameServiceCategory
+            services = realm.objects(Service.self).filter("nameCategoryService = '\(modelController.nameServiceCategory)'").sorted(byKeyPath: "nameService") // берем все объекты типа Service
         }else{ // берем объекты по условию
             self.navigationItem.title = modelController.partOfBody
-            services = realm.objects(Service.self).filter("partOfTheBody = '\(modelController.partOfBody)' AND maleMan = '\(modelController.maleMan)'")
+            services = realm.objects(Service.self).filter("partOfTheBody = '\(modelController.partOfBody)' AND maleMan = '\(modelController.maleMan)'").sorted(byKeyPath: "nameService")
         }
         print(modelController)
         if modelController.maleMan.isEmpty &&
             modelController.nameServiceCategory.isEmpty &&
             modelController.partOfBody.isEmpty &&
             modelController.seatchTeg.isEmpty{
-            services = realm.objects(Service.self)
+            services = realm.objects(Service.self).sorted(byKeyPath: "nameService")
         }
     }
 }

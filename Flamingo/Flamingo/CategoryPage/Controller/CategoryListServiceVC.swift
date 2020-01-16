@@ -18,7 +18,7 @@ class CategoryListServiceVC: UIViewController {
         super.viewDidLoad()
         //services = realm.objects(Service.self) // берем все объекты типа Service
         //deleteDuplicates(services: services) // вытаскиваем список для отображения всех service
-        categoryService = realm.objects(CategoryService.self)
+        categoryService = realm.objects(CategoryService.self).sorted(byKeyPath: "category")
         //print(category)
     }
 }
@@ -64,6 +64,7 @@ extension CategoryListServiceVC: UITableViewDelegate, UITableViewDataSource{
         }else{
             modelController.nameServiceCategory = categoryService[indexPath.row].category
         }
+        modelController.titleController = categoryService[indexPath.row].category
         tableView.deselectRow(at: indexPath, animated: true) // для того, чтобы ячейка не выделялась
     }
 }

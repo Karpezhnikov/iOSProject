@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SpM-51-xiA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SpM-51-xiA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,7 +41,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScr" translatesAutoresizingMaskIntoConstraints="NO" id="XmO-he-KwH">
-                                                <rect key="frame" x="5" y="5" width="96.500000000000114" height="96.5"/>
+                                                <rect key="frame" x="5" y="5" width="96.5" height="96.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="XmO-he-KwH" secondAttribute="height" multiplier="1:1" id="CR6-or-Ou4"/>
                                                 </constraints>
@@ -107,57 +107,70 @@
                                         <rect key="frame" x="192" y="538" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="AUg-1X-xDo">
-                                        <rect key="frame" x="10" y="685.5" width="394" height="148"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ef3-bX-QbD">
-                                                <rect key="frame" x="118.5" y="0.0" width="157" height="36"/>
-                                                <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="20"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="   Специалисты">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="HYb-6j-PQc" kind="show" id="yeh-YK-42V"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqf-N4-Maz">
-                                                <rect key="frame" x="151" y="56" width="92" height="36"/>
-                                                <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="20"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="   Дизайн"/>
-                                                <connections>
-                                                    <segue destination="v2y-dj-DmO" kind="presentation" id="KYz-qo-AJR"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cd2-hl-Bmd">
-                                                <rect key="frame" x="145" y="112" width="104" height="36"/>
-                                                <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="20"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="   Отзывы"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ef3-bX-QbD">
+                                        <rect key="frame" x="10" y="675.5" width="394" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="0.10196382705479452" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="dhb-fC-prB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="20"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Специалисты">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="HYb-6j-PQc" kind="show" id="yeh-YK-42V"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqf-N4-Maz">
+                                        <rect key="frame" x="10" y="745.5" width="394" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="0.09765625" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="ZB4-L8-MRI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="20"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Дизайн"/>
+                                        <connections>
+                                            <segue destination="v2y-dj-DmO" kind="presentation" id="KYz-qo-AJR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cd2-hl-Bmd">
+                                        <rect key="frame" x="10" y="815.5" width="394" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="0.09765625" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="yls-3R-yVW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="20"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Отзывы"/>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="kn0-P8-UBo" firstAttribute="leading" secondItem="mwg-7C-fv6" secondAttribute="leading" id="0xN-jM-5MK"/>
                                     <constraint firstItem="M6J-dY-X8P" firstAttribute="bottom" secondItem="kn0-P8-UBo" secondAttribute="bottom" id="1RX-3u-qpV"/>
                                     <constraint firstItem="UNG-uX-9g8" firstAttribute="top" secondItem="kn0-P8-UBo" secondAttribute="bottom" constant="5" id="2h4-pX-tft"/>
+                                    <constraint firstAttribute="trailing" secondItem="ef3-bX-QbD" secondAttribute="trailing" constant="10" id="7WX-s9-NA3"/>
                                     <constraint firstItem="lol-PG-Pzw" firstAttribute="leading" secondItem="mwg-7C-fv6" secondAttribute="leading" constant="5" id="AAC-zH-H2f"/>
                                     <constraint firstAttribute="trailing" secondItem="UNG-uX-9g8" secondAttribute="trailing" constant="5" id="BQx-3s-6BQ"/>
                                     <constraint firstItem="kn0-P8-UBo" firstAttribute="top" secondItem="mwg-7C-fv6" secondAttribute="top" id="FNq-Te-gTa"/>
                                     <constraint firstItem="M6J-dY-X8P" firstAttribute="leading" secondItem="kn0-P8-UBo" secondAttribute="leading" id="GZ8-9n-4XN"/>
                                     <constraint firstItem="M6J-dY-X8P" firstAttribute="top" secondItem="kn0-P8-UBo" secondAttribute="top" id="Gcv-pe-Zv2"/>
-                                    <constraint firstAttribute="trailing" secondItem="AUg-1X-xDo" secondAttribute="trailing" constant="10" id="JB2-IJ-pXD"/>
+                                    <constraint firstItem="ef3-bX-QbD" firstAttribute="top" secondItem="lol-PG-Pzw" secondAttribute="bottom" constant="10" id="HDl-l6-NjV"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jqf-N4-Maz" secondAttribute="trailing" constant="10" id="IVT-zA-CSh"/>
                                     <constraint firstAttribute="trailing" secondItem="lol-PG-Pzw" secondAttribute="trailing" constant="5" id="JYD-JG-FZv"/>
-                                    <constraint firstItem="AUg-1X-xDo" firstAttribute="top" secondItem="lol-PG-Pzw" secondAttribute="bottom" constant="20" id="c68-e2-uFz"/>
+                                    <constraint firstItem="Cd2-hl-Bmd" firstAttribute="top" secondItem="Jqf-N4-Maz" secondAttribute="bottom" constant="10" id="S9V-uv-08a"/>
+                                    <constraint firstItem="Jqf-N4-Maz" firstAttribute="top" secondItem="ef3-bX-QbD" secondAttribute="bottom" constant="10" id="VeO-fC-3Fl"/>
+                                    <constraint firstItem="Cd2-hl-Bmd" firstAttribute="leading" secondItem="mwg-7C-fv6" secondAttribute="leading" constant="10" id="Xvf-VL-ikF"/>
+                                    <constraint firstItem="Jqf-N4-Maz" firstAttribute="leading" secondItem="mwg-7C-fv6" secondAttribute="leading" constant="10" id="ZtJ-Zw-LhN"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cd2-hl-Bmd" secondAttribute="bottom" constant="10" id="a9f-6c-piV"/>
                                     <constraint firstAttribute="trailing" secondItem="kn0-P8-UBo" secondAttribute="trailing" id="cYQ-K5-MUL"/>
-                                    <constraint firstAttribute="bottom" secondItem="AUg-1X-xDo" secondAttribute="bottom" constant="20" id="ise-YJ-cvz"/>
+                                    <constraint firstItem="ef3-bX-QbD" firstAttribute="leading" secondItem="mwg-7C-fv6" secondAttribute="leading" constant="10" id="jfb-aw-y8J"/>
                                     <constraint firstItem="lol-PG-Pzw" firstAttribute="top" secondItem="UNG-uX-9g8" secondAttribute="bottom" constant="5" id="lBI-SO-I72"/>
                                     <constraint firstItem="M6J-dY-X8P" firstAttribute="trailing" secondItem="kn0-P8-UBo" secondAttribute="trailing" id="nMM-Od-b1m"/>
                                     <constraint firstItem="kn0-P8-UBo" firstAttribute="centerX" secondItem="mwg-7C-fv6" secondAttribute="centerX" id="pdW-JV-63K"/>
                                     <constraint firstItem="UNG-uX-9g8" firstAttribute="leading" secondItem="mwg-7C-fv6" secondAttribute="leading" constant="5" id="plD-Ru-dbP"/>
-                                    <constraint firstItem="AUg-1X-xDo" firstAttribute="leading" secondItem="mwg-7C-fv6" secondAttribute="leading" constant="10" id="zGM-Fw-kOL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cd2-hl-Bmd" secondAttribute="trailing" constant="10" id="yJf-s0-7Gg"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -172,6 +185,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="FLAMINGO" id="gts-4D-U1Y"/>
                     <size key="freeformSize" width="414" height="1000"/>
+                    <connections>
+                        <outlet property="buttomMaster" destination="ef3-bX-QbD" id="pw4-75-YTp"/>
+                        <outlet property="buttonComment" destination="Cd2-hl-Bmd" id="Xqq-A4-muk"/>
+                        <outlet property="buttonDesign" destination="Jqf-N4-Maz" id="l68-VQ-Bfx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rT3-iC-Rs6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -294,7 +312,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScr" translatesAutoresizingMaskIntoConstraints="NO" id="oge-Y8-1Kd">
-                                                    <rect key="frame" x="5" y="10" width="85.000000000000114" height="85"/>
+                                                    <rect key="frame" x="5" y="10" width="85" height="85"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="oge-Y8-1Kd" secondAttribute="height" multiplier="1:1" id="2YN-gy-Cn0"/>
                                                     </constraints>
@@ -381,7 +399,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="912"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScr" translatesAutoresizingMaskIntoConstraints="NO" id="mVh-te-lJV">
-                                        <rect key="frame" x="103.5" y="5" width="207.00000000000011" height="207"/>
+                                        <rect key="frame" x="103.5" y="5" width="207" height="207"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="207" id="8gE-0M-qjf"/>
                                             <constraint firstAttribute="height" constant="207" id="Vr3-FT-9g2"/>

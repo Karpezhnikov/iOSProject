@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gru-JP-BQv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gru-JP-BQv">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,45 +32,45 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Косметическая чистка лица «Оптимальное очищение Academie для молодой непроблемной кожи»" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="qAq-sg-pS1" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
-                                                    <rect key="frame" x="5" y="5" width="350" height="70"/>
+                                                    <rect key="frame" x="5" y="5" width="280" height="70"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="qAq-sg-pS1" secondAttribute="height" multiplier="5:1" id="03V-wd-Ix2"/>
+                                                        <constraint firstAttribute="width" secondItem="qAq-sg-pS1" secondAttribute="height" multiplier="8:2" id="03V-wd-Ix2"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="wd8-4E-gOv">
-                                                    <rect key="frame" x="360" y="17.5" width="49" height="45"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wd8-4E-gOv">
+                                                    <rect key="frame" x="290" y="17.5" width="119" height="45"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NOs-7G-b0O">
-                                                            <rect key="frame" x="0.0" y="0.0" width="22.5" height="45"/>
+                                                        <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="fillEqually" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NOs-7G-b0O">
+                                                            <rect key="frame" x="0.0" y="0.0" width="54.5" height="45"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="29k-tB-eaR">
-                                                                    <rect key="frame" x="1.5" y="0.5" width="20" height="19"/>
+                                                                    <rect key="frame" x="34.5" y="0.5" width="20" height="19"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </imageView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creditcard" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="81U-0V-3Lm">
-                                                                    <rect key="frame" x="0.0" y="27" width="22.5" height="16"/>
+                                                                    <rect key="frame" x="32" y="27" width="22.5" height="16"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </imageView>
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ano-3J-2s1">
-                                                            <rect key="frame" x="22.5" y="0.0" width="26.5" height="45"/>
+                                                            <rect key="frame" x="64.5" y="0.0" width="54.5" height="45"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3p-d7-Z71">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="18" height="22.5"/>
-                                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="10"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="21" height="22.5"/>
+                                                                    <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="12"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12500" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWi-sf-hir">
-                                                                    <rect key="frame" x="0.0" y="22.5" width="26.5" height="22.5"/>
-                                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="10"/>
+                                                                    <rect key="frame" x="0.0" y="22.5" width="30" height="22.5"/>
+                                                                    <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="12"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -85,6 +85,7 @@
                                                 <constraint firstItem="ahb-Jy-fgA" firstAttribute="top" secondItem="cza-2O-wQU" secondAttribute="top" id="6qd-qf-gOJ"/>
                                                 <constraint firstItem="ahb-Jy-fgA" firstAttribute="leading" secondItem="cza-2O-wQU" secondAttribute="leading" id="Ctd-xZ-yz8"/>
                                                 <constraint firstAttribute="bottom" secondItem="ahb-Jy-fgA" secondAttribute="bottom" id="Jkm-md-LlJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="wd8-4E-gOv" secondAttribute="trailing" constant="5" id="Ve7-1c-yHR"/>
                                                 <constraint firstItem="wd8-4E-gOv" firstAttribute="centerY" secondItem="qAq-sg-pS1" secondAttribute="centerY" id="di9-uh-two"/>
                                                 <constraint firstItem="qAq-sg-pS1" firstAttribute="leading" secondItem="cza-2O-wQU" secondAttribute="leading" constant="5" id="fpJ-Fo-vAF"/>
                                                 <constraint firstItem="wd8-4E-gOv" firstAttribute="leading" secondItem="qAq-sg-pS1" secondAttribute="trailing" constant="5" id="oGR-sp-A6S"/>
@@ -423,14 +424,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM0-Kk-VGC">
-                                        <rect key="frame" x="5" y="359.5" width="404" height="252"/>
-                                        <string key="text">   В iOS 6 Apple представили замечательную возможность для вёрстки UI для iOS-приложений — Auto Layout. Но вот что удивительно, до сих пор очень немногие проекты используют эту возможность. А ведь это очень сильный инструмент, если с умом подойти к вёрстке UI, можно сэкономить очень много времени на подстраивании элементов для 3,5” и 4” экранов, портретно-ландшафтном расположении экрана и даже на универсальной вёрстке для iPhone и iPad.</string>
+                                        <rect key="frame" x="5" y="359.5" width="404" height="137.5"/>
+                                        <string key="text">   В iOS 6 Apple представили замечательную возможность для вёрстки UI для iOS-приложений — Auto Layout. Но вот что удивительно, до сих пор очень немногие проекты используют эту возможность. А ведь это очень сильный инструмент, </string>
                                         <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fWq-xY-AlL">
-                                        <rect key="frame" x="5" y="643.5" width="404" height="161.5"/>
+                                        <rect key="frame" x="5" y="529" width="404" height="161.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="fWq-xY-AlL" secondAttribute="height" multiplier="10:4" id="XBO-VU-SDN"/>
@@ -497,7 +498,7 @@
                                         </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Специалисты:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hp7-rv-Hpc">
-                                        <rect key="frame" x="15" y="621.5" width="394" height="17"/>
+                                        <rect key="frame" x="15" y="507" width="394" height="17"/>
                                         <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>

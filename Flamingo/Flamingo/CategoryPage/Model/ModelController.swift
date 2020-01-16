@@ -14,7 +14,7 @@ class ModelController {
     var partOfBody = "" // и все части тела
     var nameServiceCategory = ""
     var seatchTeg = ""
-    
+    var titleController = ""
 }
 
 struct PersonAccount{

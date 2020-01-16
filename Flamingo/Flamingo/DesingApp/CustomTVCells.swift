@@ -104,7 +104,7 @@ class CategoryTVCell: UITableViewCell{
     @IBOutlet weak var imageCategory: UIImageView!{
         didSet{
             imageCategory.contentMode = .scaleAspectFill
-            imageCategory.layer.cornerRadius = imageCategory.frame.size.width*0.1
+            imageCategory.layer.cornerRadius = imageCategory.frame.size.height/2
         }
     }
     @IBOutlet weak var nameCategory: UILabel!

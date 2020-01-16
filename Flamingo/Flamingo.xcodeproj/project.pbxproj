@@ -11,7 +11,6 @@
 		040247D3238D66C900C6EFE2 /* AddNewDiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */; };
 		040247D5238DB34C00C6EFE2 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */; };
 		0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686E2383C6D300B84ABC /* StyleFonts.swift */; };
-		040968712384155800B84ABC /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040968702384155800B84ABC /* LaunchScreenVC.swift */; };
 		0409687323841C2E00B84ABC /* DiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409687223841C2E00B84ABC /* DiscontVC.swift */; };
 		042C2D7C23C7465F0073DE33 /* Accaunt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042C2D7B23C7465F0073DE33 /* Accaunt.storyboard */; };
 		042C2D8223C749630073DE33 /* Discont.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042C2D8123C749630073DE33 /* Discont.storyboard */; };
@@ -31,10 +30,13 @@
 		045D423823B0D65E00C85243 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D423723B0D65E00C85243 /* LoginVC.swift */; };
 		045D423A23B11BAF00C85243 /* PersonAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D423923B11BAF00C85243 /* PersonAccountVC.swift */; };
 		045D423C23B12EFD00C85243 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D423B23B12EFD00C85243 /* RegistrationVC.swift */; };
+		046744F123D085BA00616972 /* RegSelectionScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046744F023D085BA00616972 /* RegSelectionScreenVC.swift */; };
 		047DAA0823A78A1F0044362E /* DetailServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047DAA0723A78A1F0044362E /* DetailServiceVC.swift */; };
 		04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04859C1F23851B5D000E8709 /* AnimateUI.swift */; };
 		049D27C923A8B33400E6872C /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D27C823A8B33400E6872C /* HomeVC.swift */; };
 		049D27CD23A92FB600E6872C /* PresentPhotoSalonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D27CC23A92FB600E6872C /* PresentPhotoSalonVC.swift */; };
+		04C31BED23D0765D006AA0C5 /* TapBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C31BEC23D0765D006AA0C5 /* TapBar.storyboard */; };
+		04C31BEF23D07A12006AA0C5 /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C31BEE23D07A11006AA0C5 /* LaunchVC.swift */; };
 		04C56F69239977FD0099E360 /* AddNewServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C56F68239977FD0099E360 /* AddNewServiceVC.swift */; };
 		04D9A878239ECA690063653D /* MastersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9A877239ECA690063653D /* MastersVC.swift */; };
 		04D9A880239ED2A70063653D /* AddNewMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */; };
@@ -58,7 +60,6 @@
 		040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDiscontVC.swift; sourceTree = "<group>"; };
 		040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		0409686E2383C6D300B84ABC /* StyleFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFonts.swift; sourceTree = "<group>"; };
-		040968702384155800B84ABC /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		0409687223841C2E00B84ABC /* DiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscontVC.swift; sourceTree = "<group>"; };
 		042C2D7B23C7465F0073DE33 /* Accaunt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Accaunt.storyboard; sourceTree = "<group>"; };
 		042C2D8123C749630073DE33 /* Discont.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discont.storyboard; sourceTree = "<group>"; };
@@ -78,12 +79,15 @@
 		045D423723B0D65E00C85243 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = Flamingo/FirstPage/Controller/LoginVC.swift; sourceTree = SOURCE_ROOT; };
 		045D423923B11BAF00C85243 /* PersonAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonAccountVC.swift; sourceTree = "<group>"; };
 		045D423B23B12EFD00C85243 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
+		046744F023D085BA00616972 /* RegSelectionScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegSelectionScreenVC.swift; sourceTree = "<group>"; };
 		046991C0237D5D6600990826 /* DetailServiceTVC.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = DetailServiceTVC.swift; sourceTree = "<group>"; };
 		047DAA0723A78A1F0044362E /* DetailServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailServiceVC.swift; sourceTree = "<group>"; };
 		04859C1F23851B5D000E8709 /* AnimateUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateUI.swift; sourceTree = "<group>"; };
 		049D27C823A8B33400E6872C /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		049D27CC23A92FB600E6872C /* PresentPhotoSalonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentPhotoSalonVC.swift; sourceTree = "<group>"; };
 		04B0DAF1238BFC3B0006B7E3 /* DetailDiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDiscontVC.swift; sourceTree = "<group>"; };
+		04C31BEC23D0765D006AA0C5 /* TapBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TapBar.storyboard; sourceTree = "<group>"; };
+		04C31BEE23D07A11006AA0C5 /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
 		04C56F68239977FD0099E360 /* AddNewServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewServiceVC.swift; sourceTree = "<group>"; };
 		04D9A877239ECA690063653D /* MastersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MastersVC.swift; sourceTree = "<group>"; };
 		04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMasterVC.swift; sourceTree = "<group>"; };
@@ -290,7 +294,8 @@
 			isa = PBXGroup;
 			children = (
 				045D423723B0D65E00C85243 /* LoginVC.swift */,
-				040968702384155800B84ABC /* LaunchScreenVC.swift */,
+				046744F023D085BA00616972 /* RegSelectionScreenVC.swift */,
+				04C31BEE23D07A11006AA0C5 /* LaunchVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -375,6 +380,38 @@
 			path = ../Controller;
 			sourceTree = "<group>";
 		};
+		04C31BE823D07601006AA0C5 /* TapBar */ = {
+			isa = PBXGroup;
+			children = (
+				04C31BEB23D0762E006AA0C5 /* Controller */,
+				04C31BEA23D07626006AA0C5 /* View */,
+				04C31BE923D0761B006AA0C5 /* Model */,
+			);
+			path = TapBar;
+			sourceTree = "<group>";
+		};
+		04C31BE923D0761B006AA0C5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04C31BEA23D07626006AA0C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04C31BEC23D0765D006AA0C5 /* TapBar.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04C31BEB23D0762E006AA0C5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		3CE2C73A7FD61A2D841357A2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +442,7 @@
 		A913336C236317A400A54FEC /* Flamingo */ = {
 			isa = PBXGroup;
 			children = (
+				04C31BE823D07601006AA0C5 /* TapBar */,
 				042C2D9023C7539B0073DE33 /* FirstPage */,
 				042C2D8923C751A50073DE33 /* HomePage */,
 				042C2D8323C74F020073DE33 /* CategoryPage */,
@@ -505,6 +543,7 @@
 				042C2D8E23C751E80073DE33 /* Home.storyboard in Resources */,
 				A913337A236317A700A54FEC /* LaunchScreen.storyboard in Resources */,
 				040247D1238D467C00C6EFE2 /* GoogleService-Info.plist in Resources */,
+				04C31BED23D0765D006AA0C5 /* TapBar.storyboard in Resources */,
 				A9133377236317A700A54FEC /* Assets.xcassets in Resources */,
 				042C2D8223C749630073DE33 /* Discont.storyboard in Resources */,
 				A9133375236317A400A54FEC /* Main.storyboard in Resources */,
@@ -563,8 +602,8 @@
 				049D27C923A8B33400E6872C /* HomeVC.swift in Sources */,
 				A92731FC236C23EC00976122 /* ModelController.swift in Sources */,
 				040247D5238DB34C00C6EFE2 /* FirebaseManager.swift in Sources */,
+				04C31BEF23D07A12006AA0C5 /* LaunchVC.swift in Sources */,
 				A91333822363230F00A54FEC /* SamplePriceListVC.swift in Sources */,
-				040968712384155800B84ABC /* LaunchScreenVC.swift in Sources */,
 				A9DA3620236782020004B711 /* StorageManager.swift in Sources */,
 				042C2DA723C763810073DE33 /* CustumCVC.swift in Sources */,
 				040247D3238D66C900C6EFE2 /* AddNewDiscontVC.swift in Sources */,
@@ -589,6 +628,7 @@
 				042C2DAF23C7677F0073DE33 /* SetupTextView.swift in Sources */,
 				042C2DA123C75DD00073DE33 /* SetupDataPicker.swift in Sources */,
 				045D423823B0D65E00C85243 /* LoginVC.swift in Sources */,
+				046744F123D085BA00616972 /* RegSelectionScreenVC.swift in Sources */,
 				04D9A880239ED2A70063653D /* AddNewMasterVC.swift in Sources */,
 				047DAA0823A78A1F0044362E /* DetailServiceVC.swift in Sources */,
 				045D423A23B11BAF00C85243 /* PersonAccountVC.swift in Sources */,
