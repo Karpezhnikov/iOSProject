@@ -45,6 +45,9 @@ class SetupTextField: UITextField {
             self.inputAccessoryView = addDoneButtonOnKeyboard()
             self.textColor = ColorApp.white
             self.font = Font.fontTitle
+            self.layer.borderWidth = BorderWidth.borderWidth
+            self.layer.borderColor = ColorApp.indigo.cgColor
+            self.layer.cornerRadius = 10
         default:
             return
         }

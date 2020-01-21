@@ -56,3 +56,20 @@ class CustomCVCAlbum: UICollectionViewCell{
     
     @IBOutlet weak var imageAlbum: UIImageView!
 }
+
+class DesignCVC: UICollectionViewCell{
+    @IBOutlet weak var image: UIImageView!
+}
+
+class MasterCVC: UICollectionViewCell{
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var profil: SetupLabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //image.imageCornerRadiusPlusBorder()
+
+        
+    }
+}

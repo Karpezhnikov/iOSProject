@@ -26,7 +26,7 @@ enum BorderWidth{
 
 enum Font{
     private static let nameFont = "Baskerville"
-    static let fontTitle = UIFont(name: nameFont + "-Bold", size: CGFloat(25))
+    static let fontTitle = UIFont(name: nameFont + "-Bold", size: CGFloat(30))
     static let fontSubTitle = UIFont(name: nameFont + "-Bold", size: CGFloat(20))
     static let fontRegular = UIFont(name: nameFont, size: CGFloat(15))
     static let fontSmall = UIFont(name: nameFont, size: CGFloat(10))

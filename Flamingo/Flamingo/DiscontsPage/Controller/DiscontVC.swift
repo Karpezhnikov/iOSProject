@@ -34,8 +34,9 @@ class DiscontVC: UIViewController {
     
     //MARK: Open Info
     @IBAction func callAction(_ sender: Any) {
-        print("Нажата кновка вызова")
-        
+        if let url = URL(string: "tel://+79150658316") {
+            UIApplication.shared.open(url)
+        }
     }
     
     //MARK: - Navigation

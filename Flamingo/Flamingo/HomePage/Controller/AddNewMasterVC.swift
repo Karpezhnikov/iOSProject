@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import RealmSwift
 
 class AddNewMasterVC: UIViewController {
 
@@ -15,6 +16,7 @@ class AddNewMasterVC: UIViewController {
     let actionSheet = UIAlertController(title: nil, message: "", preferredStyle: .alert)
     var masterUpdate = Master()
     var viewFlg = false
+    var services = Array<Service>()
     
     @IBOutlet weak var imageMaster: UIImageView!
     @IBOutlet weak var nameMaster: UITextField!
@@ -29,6 +31,7 @@ class AddNewMasterVC: UIViewController {
         setupViewElements() // сначала устанавливаем все элементы
         editingMode() // потом определяем режим
         presentViewSetup()
+        //print("SizeMaster = ", imageMaster.frame.size)
     }
     
     @IBAction func exitView(_ sender: Any) {
@@ -103,25 +106,50 @@ extension AddNewMasterVC: UIImagePickerControllerDelegate, UINavigationControlle
 // MARK: Table view
 extension AddNewMasterVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return services.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTVCellSample
+        
+        
+        cell.nameService.text = services[indexPath.row].nameService
+        cell.price.text = "\(services[indexPath.row].placeService)"
+        cell.timeService.text = services[indexPath.row].timeService
+        let imageBackground = UIImageView()
+        imageBackground.image = UIImage(data: services[indexPath.row].image!)
+        //print("Background")
+        imageBackground.contentMode = .scaleAspectFill
+        //imageBackground.alpha = 0.5
+        cell.backgroundView = imageBackground
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        return cell
     }
     
+
     
 }
 
 // MARK: Setup View Elements
 extension AddNewMasterVC{
     private func setupViewElements(){
-        // Setup TextField
-        self.nameMaster.font = Font.fontSubTitle
+        
+        //setup tableViewMasterServices
+        self.tableViewMasterServices.layer.cornerRadius = tableViewMasterServices.frame.size.width * 0.05
         
         // setup UIImageView
-        self.imageMaster.contentMode = .scaleToFill
-        self.imageMaster.layer.cornerRadius = 40
+        self.imageMaster.contentMode = .scaleAspectFill
+        self.imageMaster.imageCornerRadiusPlusBorder()
+        
+        // setup nameMaster
+        self.nameMaster.borderStyle = .line
+        self.nameMaster.backgroundColor = ColorApp.black
+        self.nameMaster.textColor = ColorApp.white
+        
+        // setup profilMaster
+        self.profilMaster.borderStyle = .line
+        self.profilMaster.backgroundColor = ColorApp.black
+        self.profilMaster.textColor = ColorApp.white
         
         // setup UITextView
         self.infoMaster.layer.cornerRadius = nameMaster.layer.cornerRadius
@@ -129,7 +157,7 @@ extension AddNewMasterVC{
         self.infoMaster.layer.borderColor = nameMaster.layer.borderColor
         self.infoMaster.backgroundColor = ColorApp.black
         self.infoMaster.textColor = ColorApp.white
-        self.infoMaster.font = Font.fontRegular
+        //self.infoMaster.font = Font.fontRegular
         
         // setup saveButton
         self.saveButton.layer.cornerRadius = 10
@@ -171,7 +199,6 @@ extension AddNewMasterVC{
                         self!.actionSheet.addAction(cancel)
                         return} // проверяем на пустуб строку в ответе
                     if !self!.masterUpdate.id.isEmpty{ //если режим редактирования, то обновляем данные в документа
-                        print("dasdasdasdasd", self!.masterUpdate.id)
                         FirebaseManager.updataMaster(self!.master, idDocument: self!.masterUpdate.id, imageURLDel: self!.masterUpdate.imageURL)
                     }else{
                         FirebaseManager.saveMasterToFirebase(self!.master) // сохраняем мастера на Firebase
@@ -197,14 +224,16 @@ extension AddNewMasterVC{
     
     // MARK: Editing Mode
     private func editingMode(){
-        print(masterUpdate)
-        if !masterUpdate.id.isEmpty{ // если master id не постой, то переходим в режим редактирования
+        if !masterUpdate.id.isEmpty{ // если master id не пустой, то переходим в режим редактирования
+            services = StorageManager.getServicesMaster(master.id)
             saveButton.setTitle("Обновить", for: .normal)
             nameMaster.text = masterUpdate.name
             profilMaster.text = masterUpdate.profil
             infoMaster.text = masterUpdate.info
             guard let imageData = masterUpdate.image else {return}
             imageMaster.image = UIImage(data: imageData)
+        }else{
+            
         }
     }
 }
@@ -213,27 +242,36 @@ extension AddNewMasterVC{
 //MARK: ViewFlg
 extension AddNewMasterVC{
     private func presentViewSetup(){
-        print(master)
-        if !master.id.isEmpty{ // если master id не пустой, то переходим в режим показа
+        if viewFlg{ // если master id не пустой, то переходим в режим показа
+            services = StorageManager.getServicesMaster(master.id)
             // отключаем кнопки
             self.saveButton.isUserInteractionEnabled = false
             self.saveButton.isHidden = true
             self.photoButton.isUserInteractionEnabled = false
             self.photoButton.isHidden = true
             
-            self.infoMaster.layer.borderWidth = 0
-            self.infoMaster.isUserInteractionEnabled = false
-            self.nameMaster.layer.borderWidth = 0
-            self.nameMaster.isUserInteractionEnabled = false
-            self.profilMaster.layer.borderWidth = 0
-            self.profilMaster.isUserInteractionEnabled = false
-            
-            //заполняем данные
-            self.nameMaster.text = master.name
-            self.profilMaster.text = master.profil
-            self.infoMaster.text = master.info
+            //image master
             guard let imageData = master.image else {return}
             self.imageMaster.image = UIImage(data: imageData)
+            
+            //nameMaster
+            self.nameMaster.text = master.name
+            self.nameMaster.layer.borderWidth = 0
+            self.nameMaster.isUserInteractionEnabled = false
+            self.nameMaster.backgroundColor = .clear
+            self.nameMaster.borderStyle = .none
+            
+            //profilMaster
+            self.profilMaster.text = master.profil
+            self.profilMaster.layer.borderWidth = 0
+            self.profilMaster.isUserInteractionEnabled = false
+            self.profilMaster.backgroundColor = .clear
+            self.profilMaster.borderStyle = .none
+            
+            //infoMaster
+            self.infoMaster.text = master.info
+            self.infoMaster.layer.borderWidth = 0
+            self.infoMaster.isUserInteractionEnabled = false
         }
     }
 }

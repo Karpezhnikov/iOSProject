@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Flamingo/DesingApp/CollectionViewAlbum.swift">
+   </FileRef>
+   <FileRef
       location = "group:Flamingo.xcodeproj">
    </FileRef>
    <FileRef

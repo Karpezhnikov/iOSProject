@@ -12,6 +12,7 @@
 		040247D5238DB34C00C6EFE2 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */; };
 		0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686E2383C6D300B84ABC /* StyleFonts.swift */; };
 		0409687323841C2E00B84ABC /* DiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409687223841C2E00B84ABC /* DiscontVC.swift */; };
+		0410FEE723D5DAA300F285A5 /* CollectionViewAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410FEE623D5DAA100F285A5 /* CollectionViewAlbum.swift */; };
 		042C2D7C23C7465F0073DE33 /* Accaunt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042C2D7B23C7465F0073DE33 /* Accaunt.storyboard */; };
 		042C2D8223C749630073DE33 /* Discont.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042C2D8123C749630073DE33 /* Discont.storyboard */; };
 		042C2D8823C74F330073DE33 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042C2D8723C74F330073DE33 /* Category.storyboard */; };
@@ -41,6 +42,7 @@
 		04D9A878239ECA690063653D /* MastersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9A877239ECA690063653D /* MastersVC.swift */; };
 		04D9A880239ED2A70063653D /* AddNewMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */; };
 		04F9887323A174B50099E354 /* MakeAppointmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9887223A174B50099E354 /* MakeAppointmentVC.swift */; };
+		04FDA55D23D713B90050AD06 /* SupportDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDA55C23D713B90050AD06 /* SupportDesign.swift */; };
 		A28172CD896F24A158A516BB /* Pods_Flamingo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B5E537AC8A565B6CD7FFEC /* Pods_Flamingo.framework */; };
 		A913336E236317A400A54FEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913336D236317A400A54FEC /* AppDelegate.swift */; };
 		A9133370236317A400A54FEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913336F236317A400A54FEC /* SceneDelegate.swift */; };
@@ -61,6 +63,7 @@
 		040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		0409686E2383C6D300B84ABC /* StyleFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFonts.swift; sourceTree = "<group>"; };
 		0409687223841C2E00B84ABC /* DiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscontVC.swift; sourceTree = "<group>"; };
+		0410FEE623D5DAA100F285A5 /* CollectionViewAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewAlbum.swift; sourceTree = "<group>"; };
 		042C2D7B23C7465F0073DE33 /* Accaunt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Accaunt.storyboard; sourceTree = "<group>"; };
 		042C2D8123C749630073DE33 /* Discont.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discont.storyboard; sourceTree = "<group>"; };
 		042C2D8723C74F330073DE33 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 		04D9A877239ECA690063653D /* MastersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MastersVC.swift; sourceTree = "<group>"; };
 		04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMasterVC.swift; sourceTree = "<group>"; };
 		04F9887223A174B50099E354 /* MakeAppointmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAppointmentVC.swift; sourceTree = "<group>"; };
+		04FDA55C23D713B90050AD06 /* SupportDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportDesign.swift; sourceTree = "<group>"; };
 		26B5E537AC8A565B6CD7FFEC /* Pods_Flamingo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flamingo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A913336A236317A400A54FEC /* Flamingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A913336D236317A400A54FEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -303,6 +307,7 @@
 		042C2D9423C753FD0073DE33 /* DesingApp */ = {
 			isa = PBXGroup;
 			children = (
+				0410FEE623D5DAA100F285A5 /* CollectionViewAlbum.swift */,
 				04859C1F23851B5D000E8709 /* AnimateUI.swift */,
 				0409686E2383C6D300B84ABC /* StyleFonts.swift */,
 				042C2D9C23C75CB80073DE33 /* File.swift */,
@@ -314,6 +319,7 @@
 				042C2DAC23C7675A0073DE33 /* SetupTextField.swift */,
 				042C2DAE23C7677F0073DE33 /* SetupTextView.swift */,
 				042C2DB023C767DE0073DE33 /* SetupTabBarVC.swift */,
+				04FDA55C23D713B90050AD06 /* SupportDesign.swift */,
 			);
 			path = DesingApp;
 			sourceTree = "<group>";
@@ -615,6 +621,7 @@
 				A9DA361E23676D1A0004B711 /* ModelDataBase.swift in Sources */,
 				0409687323841C2E00B84ABC /* DiscontVC.swift in Sources */,
 				04D9A878239ECA690063653D /* MastersVC.swift in Sources */,
+				0410FEE723D5DAA300F285A5 /* CollectionViewAlbum.swift in Sources */,
 				045D423C23B12EFD00C85243 /* RegistrationVC.swift in Sources */,
 				042C2DA323C75DFD0073DE33 /* SetupLabel.swift in Sources */,
 				A913336E236317A400A54FEC /* AppDelegate.swift in Sources */,
@@ -626,6 +633,7 @@
 				A99DC6BE2372AF5D0045D83C /* CategoryListServiceVC.swift in Sources */,
 				042C2DA523C763230073DE33 /* CustomTVCells.swift in Sources */,
 				042C2DAF23C7677F0073DE33 /* SetupTextView.swift in Sources */,
+				04FDA55D23D713B90050AD06 /* SupportDesign.swift in Sources */,
 				042C2DA123C75DD00073DE33 /* SetupDataPicker.swift in Sources */,
 				045D423823B0D65E00C85243 /* LoginVC.swift in Sources */,
 				046744F123D085BA00616972 /* RegSelectionScreenVC.swift in Sources */,

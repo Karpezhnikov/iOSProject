@@ -529,6 +529,9 @@
                                                 <state key="normal" image="phone.fill.arrow.up.right" catalog="system">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="callAction:" destination="gLl-wr-ba4" eventType="touchUpInside" id="Fep-P6-cAK"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qip-4A-OiQ" customClass="SetupButton" customModule="Flamingo" customModuleProvider="target">
                                                 <rect key="frame" x="116" y="0.0" width="50" height="50"/>
@@ -802,7 +805,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="dd8-Ce-IR7"/>
                                         </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="multiply" catalog="system"/>
                                         <connections>
                                             <action selector="dismissAction:" destination="gLl-wr-ba4" eventType="touchUpInside" id="vVJ-gb-68v"/>

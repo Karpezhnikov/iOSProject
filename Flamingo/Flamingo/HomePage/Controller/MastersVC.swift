@@ -30,7 +30,7 @@ class MastersVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRefreshControl()
-        masters = realm.objects(Master.self)
+        masters = realm.objects(Master.self).sorted(byKeyPath: "name")
         setupNavigationBar()
         // Do any additional setup after loading the view.
     }
@@ -126,6 +126,7 @@ extension MastersVC{
             if let indexPath = masterTableView.indexPathForSelectedRow{
                 let destinationVC = segue.destination as! AddNewMasterVC
                 destinationVC.master = masters[indexPath.row]
+                destinationVC.viewFlg = true
             }
         }
     }

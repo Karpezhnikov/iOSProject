@@ -56,6 +56,11 @@ class DetailServiceVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func callAction(_ sender: Any) {
+        if let url = URL(string: "tel://+79150658316") {
+            UIApplication.shared.open(url)
+        }
+    }
     
     @IBAction func favoritesAction(_ sender: Any) {
         

@@ -70,6 +70,18 @@ class StorageManager{
         return masters
     }
     
+    static func getServicesMaster(_ id:String)-> [Service]{
+        var servicesReturn = Array<Service>()
+        let services = realm.objects(Service.self).sorted(byKeyPath: "nameService")
+        for service in services{ //смотрим все услуги
+            let idsMaster = service.idsMasters.components(separatedBy: ",")//находим запись о мастерах и парсим
+            if idsMaster.contains(id){ // смотрим, есть ли там мстер
+                servicesReturn.append(service) // если есть добавляем в список
+            }
+        }
+        return servicesReturn
+    }
+    
     static func updateFavorites(_ id: String){
         let result = realm.objects(Service.self).filter("id = '\(id)'")
         guard result.count > 0 else {
