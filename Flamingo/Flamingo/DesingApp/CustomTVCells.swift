@@ -51,13 +51,34 @@ class CustomTVCellDetail: UITableViewCell {
 }
 
 class CustomTVCellDiscont: UITableViewCell{
-    var nameDiscount = ""  // название акции
+    //var nameDiscount = ""  // название акции
     var serviceDiscount = ""
-    var descriptionDiscount = "" // описание акции
+    //var descriptionDiscount = "" // описание акции
+    //var newDiscont = false
     
+    @IBOutlet weak var newDiscont: UILabel!{
+        didSet{
+            newDiscont.textColor = .orange
+        }
+    }
+    @IBOutlet weak var textLook: SetupLabel!{
+        didSet{
+            textLook.text = "  Смотреть  "
+            textLook.layer.cornerRadius = textLook.frame.size.width * 0.05
+            textLook.layer.borderWidth = BorderWidth.borderWidth
+            textLook.layer.borderColor = ColorApp.white.cgColor
+        }
+    }
+    @IBOutlet weak var nameDiscont: SetupLabel!
+    @IBOutlet weak var descriptionDiscount: SetupLabel!
+//    @IBOutlet weak var imageNewDiscont: UIImageView!{
+//        didSet{
+//            imageNewDiscont.isHidden = newDiscont
+//        }
+//    }
     @IBOutlet weak var imageDiscont: UIImageView!{
         didSet{
-            //imageDiscont.layer.cornerRadius = 40
+            imageDiscont.layer.cornerRadius = imageDiscont.frame.size.width * 0.01
             imageDiscont.contentMode = .scaleToFill
         }
     }

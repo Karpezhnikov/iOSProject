@@ -35,13 +35,12 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lO0-Lo-F44">
-                                                <rect key="frame" x="113.5" y="92.5" width="295.5" height="86"/>
+                                                <rect key="frame" x="113.5" y="101" width="295.5" height="69"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <string key="text">   Москва, Мичуринский пр-т, 38
-   Пн-Сб: 10:00 - 21:00
-   Вс: 10:00 - 20:00
-   +7 (915) 065-83-16
-   +7 (915) 965-83-14</string>
+                                                <string key="text">   Караганда, пр-т Нуркена Абдирова, дом 9
+   Пн-Bc: 10:00-20:00 
+   +7 (701) 962-40-20
+   +7 (700) 931-65-29</string>
                                                 <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -63,15 +62,12 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lol-PG-Pzw" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="237.5" width="404" height="345"/>
-                                        <string key="text">   В нашем Салоне для Вас представлены услуги: парикмахеров, стилистов, колористов, бровиста, изысканный макияж на все случаи жизни. Наши высококвалифицированные специалисты с удовольствием проконсультируют Вас по всем видам услуг и процедур, подберут самые подходящие только для Вас.
-   Мы поможем воплотить в жизнь Ваше желание: преобразиться, подчеркнуть свои достоинства, восстановить силы и оздоровиться, а может, просто поднять настроение.
-   Ваша красота – наша профессия!
-
- 
-
-Желаем Вам приятного отдыха и ярких впечатлений в нашем Салоне!</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lol-PG-Pzw" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="237.5" width="404" height="264"/>
+                                        <mutableString key="text">   "FLAMINGO" - центр ведущих технологий красоты и здоровья! Райский оазис посреди пустыни.
+   Лучшая команда квалифицированных мастеров. Новейшее оборудование и качественная продукция специально для вас. Самый широкий спектр услуг в городе. Внимательное отношение и высокий сервис. 
+   ЦЕНТР КРАСОТЫ "FLAMINGO" - ГАРАНТИЯ ВОСХИТИТЕЛЬНОГО РЕЗУЛЬТАТА! 
+Желаем Вам приятного отдыха и ярких впечатлений в нашем Салоне!</mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -81,13 +77,13 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Специалисты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0U-4X-fFC" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="604.5" width="108.5" height="20.5"/>
+                                        <rect key="frame" x="5" y="523.5" width="108.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-yW-z2g">
-                                        <rect key="frame" x="5" y="630" width="404" height="202"/>
+                                        <rect key="frame" x="5" y="549" width="404" height="202"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Raa-yW-z2g" secondAttribute="height" multiplier="2:1" id="5kM-Ox-pbJ"/>
@@ -169,7 +165,7 @@
                                         </connections>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ef3-bX-QbD">
-                                        <rect key="frame" x="123.5" y="602.5" width="285.5" height="24"/>
+                                        <rect key="frame" x="123.5" y="521.5" width="285.5" height="24"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="20"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -181,19 +177,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Отзывы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9v-rA-j5Z" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="988" width="62" height="20.5"/>
+                                        <rect key="frame" x="5" y="907" width="62" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ссылки" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phd-RI-xzT" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="892.5" width="61.5" height="20.5"/>
+                                        <rect key="frame" x="5" y="811.5" width="61.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="9MG-g4-RNK">
-                                        <rect key="frame" x="5" y="918" width="174" height="50"/>
+                                        <rect key="frame" x="5" y="837" width="174" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khm-4g-OzI">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -231,20 +227,20 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cd2-hl-Bmd">
-                                        <rect key="frame" x="72" y="986" width="337" height="24"/>
+                                        <rect key="frame" x="72" y="905" width="337" height="24"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="20"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="chevron.right.circle" catalog="system"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Интерьер" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBZ-LK-LWw" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="852" width="78" height="20.5"/>
+                                        <rect key="frame" x="5" y="771" width="78" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqf-N4-Maz">
-                                        <rect key="frame" x="88" y="850" width="321" height="24"/>
+                                        <rect key="frame" x="88" y="769" width="321" height="24"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="20"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

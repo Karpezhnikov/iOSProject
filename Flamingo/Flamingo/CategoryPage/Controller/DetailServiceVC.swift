@@ -10,6 +10,7 @@ import UIKit
 
 class DetailServiceVC: UIViewController {
 
+    let actionSheet = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
     var service = Service() // выбраная услуга
     private var masters = [Master]() // для списка всех мастеров
     
@@ -28,19 +29,11 @@ class DetailServiceVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("1")
+        actionSheet.setupCallAction()
         masters = StorageManager.getMasterFromTheDataBase(service) // получаем всех мастеров для услуги
         nameService.text = service.nameService // устанавливаем заголовок
         imageService.image = getImageService()
         descriptionService.text = service.serviceDescription
-        
-//        UITabBar.appearance().barTintColor = UIColor.clear
-//        UITabBar.appearance().backgroundImage = UIImage()
-//        
-//        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-//        self.navigationController!.navigationBar.shadowImage = UIImage()
-//        self.navigationController!.navigationBar.isTranslucent = true
-//        self.navigationController!.view.backgroundColor = UIColor.clear
     }
 
     // функция для безопасного добавления фото
@@ -52,14 +45,13 @@ class DetailServiceVC: UIViewController {
         return image!
     }
     
+    //MARK: Actions
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func callAction(_ sender: Any) {
-        if let url = URL(string: "tel://+79150658316") {
-            UIApplication.shared.open(url)
-        }
+        present(actionSheet, animated: true, completion: nil)
     }
     
     @IBAction func favoritesAction(_ sender: Any) {
@@ -92,6 +84,7 @@ class DetailServiceVC: UIViewController {
     
 }
 
+//MARK: Table View
 extension DetailServiceVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return masters.count

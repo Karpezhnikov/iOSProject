@@ -43,6 +43,7 @@
 		04D9A880239ED2A70063653D /* AddNewMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */; };
 		04F9887323A174B50099E354 /* MakeAppointmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9887223A174B50099E354 /* MakeAppointmentVC.swift */; };
 		04FDA55D23D713B90050AD06 /* SupportDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDA55C23D713B90050AD06 /* SupportDesign.swift */; };
+		04FDA55F23D760B40050AD06 /* CallAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDA55E23D760B40050AD06 /* CallAlertVC.swift */; };
 		A28172CD896F24A158A516BB /* Pods_Flamingo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B5E537AC8A565B6CD7FFEC /* Pods_Flamingo.framework */; };
 		A913336E236317A400A54FEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913336D236317A400A54FEC /* AppDelegate.swift */; };
 		A9133370236317A400A54FEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913336F236317A400A54FEC /* SceneDelegate.swift */; };
@@ -96,6 +97,7 @@
 		04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMasterVC.swift; sourceTree = "<group>"; };
 		04F9887223A174B50099E354 /* MakeAppointmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAppointmentVC.swift; sourceTree = "<group>"; };
 		04FDA55C23D713B90050AD06 /* SupportDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportDesign.swift; sourceTree = "<group>"; };
+		04FDA55E23D760B40050AD06 /* CallAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallAlertVC.swift; sourceTree = "<group>"; };
 		26B5E537AC8A565B6CD7FFEC /* Pods_Flamingo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flamingo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A913336A236317A400A54FEC /* Flamingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A913336D236317A400A54FEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 		042C2D9423C753FD0073DE33 /* DesingApp */ = {
 			isa = PBXGroup;
 			children = (
+				04FDA55E23D760B40050AD06 /* CallAlertVC.swift */,
 				0410FEE623D5DAA100F285A5 /* CollectionViewAlbum.swift */,
 				04859C1F23851B5D000E8709 /* AnimateUI.swift */,
 				0409686E2383C6D300B84ABC /* StyleFonts.swift */,
@@ -614,6 +617,7 @@
 				042C2DA723C763810073DE33 /* CustumCVC.swift in Sources */,
 				040247D3238D66C900C6EFE2 /* AddNewDiscontVC.swift in Sources */,
 				04C56F69239977FD0099E360 /* AddNewServiceVC.swift in Sources */,
+				04FDA55F23D760B40050AD06 /* CallAlertVC.swift in Sources */,
 				042C2DAD23C7675A0073DE33 /* SetupTextField.swift in Sources */,
 				042C2D9F23C75D7A0073DE33 /* SetupButton.swift in Sources */,
 				049D27CD23A92FB600E6872C /* PresentPhotoSalonVC.swift in Sources */,

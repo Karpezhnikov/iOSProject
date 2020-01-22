@@ -13,6 +13,7 @@ import Firebase
 
 class DiscontVC: UIViewController {
 
+    let actionSheet = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
     var indexPathRowUpdate = Int() // запоминает индекс строки выбраной к редактированию
     var refreshControl:UIRefreshControl!
     var indexPathRow = IndexPath()
@@ -22,21 +23,18 @@ class DiscontVC: UIViewController {
         }
     }
     
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRefreshControl()
+        actionSheet.setupCallAction()
         disconts = realm.objects(Discont.self) // получаем все акции
-        
     }
     
     //MARK: Open Info
     @IBAction func callAction(_ sender: Any) {
-        if let url = URL(string: "tel://+79150658316") {
-            UIApplication.shared.open(url)
-        }
+        present(actionSheet, animated: true, completion: nil)
     }
     
     //MARK: - Navigation
@@ -103,8 +101,9 @@ extension DiscontVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellDiscont", for: indexPath) as! CustomTVCellDiscont
         //print("TableView",disconts[indexPath.row].name)
-        cell.nameDiscount = disconts[indexPath.row].name
-        cell.descriptionDiscount = disconts[indexPath.row].descriptionDiscont
+        cell.newDiscont.isHidden = true
+        cell.nameDiscont.text = disconts[indexPath.row].name
+        cell.descriptionDiscount.text = disconts[indexPath.row].descriptionDiscont
         cell.imageDiscont.image = UIImage(data: disconts[indexPath.row].image!)
         cell.imageDiscont.contentMode = .scaleAspectFill
         cell.info.text = disconts[indexPath.row].descriptionDiscont
@@ -116,18 +115,19 @@ extension DiscontVC: UITableViewDataSource, UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let standartWidth = UIScreen.main.bounds.size.width - 20 // 20 - left and rigth constrains
         if indexPathRow == indexPath{ // если обновляется нужный индекс
             guard let cell = tableView.cellForRow(at: indexPathRow) as? CustomTVCellDiscont
-                else{return UIScreen.main.bounds.size.width}// получаем ячейку
+                else{return standartWidth}// получаем ячейку
             let heightCell = cell.frame.height//высота ячейки
             let distanceHeight = cell.info.frame.size.height + cell.alertInfo.frame.size.height + 5 + 20 + 10//высота на которую нужно увеличить
-            if cell.frame.height == UIScreen.main.bounds.size.width{//если она не открыта,
+            if cell.frame.height == standartWidth{//если она не открыта,
                 return heightCell + distanceHeight // то открываем
             }else{
-                return UIScreen.main.bounds.size.width // если открыта, то закрываем
+                return standartWidth // если открыта, то закрываем
             }
         }
-        return UIScreen.main.bounds.size.width // делаем высоту равной ширине ячейки
+        return standartWidth // делаем высоту равной ширине ячейки
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

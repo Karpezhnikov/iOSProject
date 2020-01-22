@@ -34,31 +34,16 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        masters = realm.objects(Master.self).sorted(byKeyPath: "name")
-        
-        setupactionSheet()
+        actionSheet.setupactionSheet()
         setupCollectionView()
         imageLogo.imageCornerRadiusPlusBorder()
-        
-        //imageLogo.layer.borderWidth = BorderWidth.borderWidth
-        //imageLogo.layer.borderColor = ColorApp.white.cgColor
-        //imageLogo.layer.cornerRadius = imageLogo.frame.size.height/2
-        
+        masters = realm.objects(Master.self).sorted(byKeyPath: "name")
     }
     
-    func setupactionSheet(){
-        self.actionSheet.message = "Перейти WhatsApp?"
-        let openWA = UIAlertAction(title: "тел:+79150658316", style: .default) { (_) in
-            UIApplication.shared.open(URL(string:"https://api.whatsapp.com/send?phone=+79150658316")!)
-        }
-        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
-        self.actionSheet.addAction(openWA)
-        self.actionSheet.addAction(cancel)
-    }
     
+    //MARK: Actions
     @IBAction func openInstagram(_ sender: Any) {
-        let path = "https://www.instagram.com/lexa686/?hl=ru" // 1
+        let path = "https://www.instagram.com/flamingocentr/?igshid=1rl459j50l05s" // 1
         let url = URL(string: path)! // 3
         
         UIApplication.shared.open(url, options: [:], completionHandler: nil) // 4
