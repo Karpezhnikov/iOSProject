@@ -66,7 +66,8 @@ extension MastersVC: UITableViewDataSource, UITableViewDelegate{
         } else {
             print("Не удалось отобразить мастера")
         }
-        
+        cell.imageMaster.layer.borderWidth = BorderWidth.borderWidth
+        cell.imageMaster.layer.borderColor = ColorApp.white.cgColor
         return cell
     }
     

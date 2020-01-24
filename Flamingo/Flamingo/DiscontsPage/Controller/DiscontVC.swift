@@ -40,12 +40,6 @@ class DiscontVC: UIViewController {
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifire = segue.identifier else {return}
-        if identifire == "detailDiscont"{
-            guard let detailDiscontVC = segue.destination as? DetailDiscontVC else {return}
-            guard let indexPath = tableView.indexPathForSelectedRow else {return} // определяем индекс строки
-            detailDiscontVC.discont = disconts[indexPath.row]
-            //detailServiceVC.service = arrayServises[indexPath.row]
-        }
         if identifire == "updateDiscontSegue" {
             let destinationVC = segue.destination as! AddNewDiscontVC
             destinationVC.discontUpdate = disconts[indexPathRowUpdate]
@@ -107,7 +101,6 @@ extension DiscontVC: UITableViewDataSource, UITableViewDelegate{
         cell.imageDiscont.image = UIImage(data: disconts[indexPath.row].image!)
         cell.imageDiscont.contentMode = .scaleAspectFill
         cell.info.text = disconts[indexPath.row].descriptionDiscont
-        cell.alertInfo.textColor = ColorApp.redExit
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
 
@@ -120,7 +113,7 @@ extension DiscontVC: UITableViewDataSource, UITableViewDelegate{
             guard let cell = tableView.cellForRow(at: indexPathRow) as? CustomTVCellDiscont
                 else{return standartWidth}// получаем ячейку
             let heightCell = cell.frame.height//высота ячейки
-            let distanceHeight = cell.info.frame.size.height + cell.alertInfo.frame.size.height + 5 + 20 + 10//высота на которую нужно увеличить
+            let distanceHeight = cell.info.frame.size.height + cell.buttonAlertInfo.frame.size.height + 10 + 20 + 10//высота на которую нужно увеличить
             if cell.frame.height == standartWidth{//если она не открыта,
                 return heightCell + distanceHeight // то открываем
             }else{

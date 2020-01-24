@@ -16,12 +16,13 @@ class SetupTextView: UITextView {
     }
 
     private func setupTextView(){
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = self.frame.size.width * 0.01
         self.layer.borderWidth = BorderWidth.borderWidth
-        self.layer.borderColor = ColorApp.indigo.cgColor
+        self.layer.borderColor = ColorApp.white.cgColor
+        self.backgroundColor = ColorApp.black
+        self.textColor = ColorApp.white
         self.font = Font.fontRegular
         self.inputAccessoryView = addDoneButtonOnKeyboard()//добавление кнопки "Готово"
-        
         
     }
     

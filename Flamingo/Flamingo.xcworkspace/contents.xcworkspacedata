@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/mac/Documents/GitHub/iOSProject/Flamingo/Flamingo/AccauntPage/Controller/CustomUIView.swift">
+   </FileRef>
+   <FileRef
       location = "group:Flamingo/DesingApp/CollectionViewAlbum.swift">
    </FileRef>
    <FileRef

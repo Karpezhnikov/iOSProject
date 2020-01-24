@@ -76,6 +76,7 @@ class MakeAppointmentVC: UIViewController{
         
     }
     
+    //MARK: Actions
     @IBAction func exitAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

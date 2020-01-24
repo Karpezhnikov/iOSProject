@@ -14,7 +14,7 @@ import RealmSwift
 
 class SamplePriceListVC: UIViewController{
     
-    var modelController = ModelController()
+    var modelSamplePriceListVC = ModelSamplePriceListVC()
     var indexPathRowUpdate = Int()
     var refreshControl:UIRefreshControl!
     private let arrayHashtagSeatch = SeatchHashtag()
@@ -47,12 +47,17 @@ class SamplePriceListVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = modelController.titleController
+        self.navigationItem.title = modelSamplePriceListVC.titleController
         setupNavigationBar() // настраиваем кнопку назад
         getDataFromTheDataBase() // запоняем services
         setupSearchBar() // добавляем поиск
         setupRefreshControl()
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        searchController.isActive = true
+//    }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -196,19 +201,13 @@ extension SamplePriceListVC{
     
     // функция для выборки данный из БД
     private func getDataFromTheDataBase(){
-        if modelController.partOfBody.isEmpty || modelController.maleMan.isEmpty{ // если перешли сразу к всему списку
-            //self.navigationItem.title = modelController.nameServiceCategory
-            services = realm.objects(Service.self).filter("nameCategoryService = '\(modelController.nameServiceCategory)'").sorted(byKeyPath: "nameService") // берем все объекты типа Service
-        }else{ // берем объекты по условию
-            self.navigationItem.title = modelController.partOfBody
-            services = realm.objects(Service.self).filter("partOfTheBody = '\(modelController.partOfBody)' AND maleMan = '\(modelController.maleMan)'").sorted(byKeyPath: "nameService")
-        }
-        print(modelController)
-        if modelController.maleMan.isEmpty &&
-            modelController.nameServiceCategory.isEmpty &&
-            modelController.partOfBody.isEmpty &&
-            modelController.seatchTeg.isEmpty{
+        if modelSamplePriceListVC.category.isEmpty{
             services = realm.objects(Service.self).sorted(byKeyPath: "nameService")
+        }else{
+            services = realm.objects(Service.self).filter("nameCategoryService = '\(modelSamplePriceListVC.category)'").sorted(byKeyPath: "nameService")
+        }
+        if modelSamplePriceListVC.presentFavorites{
+            services = services.filter("favorites = \(modelSamplePriceListVC.presentFavorites)").sorted(byKeyPath: "nameService")
         }
     }
 }
@@ -241,6 +240,7 @@ extension SamplePriceListVC: UISearchResultsUpdating{
         navigationItem.searchController = searchController // устанавливаем в напигейшн бар
         definesPresentationContext = true // позволяет отпустить строку поиска при переходе на другой экран
         searchController.searchBar.searchTextField.textColor = ColorApp.white
+        navigationItem.hidesSearchBarWhenScrolling = false //делаем searchController активным всегда
     }
     
     // функция для поиска
@@ -251,7 +251,8 @@ extension SamplePriceListVC: UISearchResultsUpdating{
     // поиск из данного массива
     private func filterContentForSeatchText(_ searchText: String){
         // фильтруем массив по имени
-        filteredService = services.filter("nameService CONTAINS[c] %@ OR partOfTheBody CONTAINS[c] %@", searchText, searchText)
+        filteredService = services.filter("nameService CONTAINS[c] %@", searchText).sorted(byKeyPath: "nameService")
         //tableView.reloadData()
     }
 }
+

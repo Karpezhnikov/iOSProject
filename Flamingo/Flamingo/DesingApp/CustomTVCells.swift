@@ -51,11 +51,7 @@ class CustomTVCellDetail: UITableViewCell {
 }
 
 class CustomTVCellDiscont: UITableViewCell{
-    //var nameDiscount = ""  // название акции
     var serviceDiscount = ""
-    //var descriptionDiscount = "" // описание акции
-    //var newDiscont = false
-    
     @IBOutlet weak var newDiscont: UILabel!{
         didSet{
             newDiscont.textColor = .orange
@@ -71,11 +67,6 @@ class CustomTVCellDiscont: UITableViewCell{
     }
     @IBOutlet weak var nameDiscont: SetupLabel!
     @IBOutlet weak var descriptionDiscount: SetupLabel!
-//    @IBOutlet weak var imageNewDiscont: UIImageView!{
-//        didSet{
-//            imageNewDiscont.isHidden = newDiscont
-//        }
-//    }
     @IBOutlet weak var imageDiscont: UIImageView!{
         didSet{
             imageDiscont.layer.cornerRadius = imageDiscont.frame.size.width * 0.01
@@ -83,13 +74,8 @@ class CustomTVCellDiscont: UITableViewCell{
         }
     }
     
+    @IBOutlet weak var buttonAlertInfo: UIButton!
     @IBOutlet weak var info: SetupLabel!
-    @IBOutlet weak var alertInfo: SetupLabel!{
-        didSet{
-            alertInfo.textColor = ColorApp.redExit
-        }
-    }
-    
 }
 
 
@@ -125,9 +111,29 @@ class CategoryTVCell: UITableViewCell{
     @IBOutlet weak var imageCategory: UIImageView!{
         didSet{
             imageCategory.contentMode = .scaleAspectFill
-            imageCategory.layer.cornerRadius = imageCategory.frame.size.height/2
+            imageCategory.layer.cornerRadius = imageCategory.frame.size.width * 0.01
         }
     }
     @IBOutlet weak var nameCategory: UILabel!
+    
+}
+
+class ServiceEnryTVCell: UITableViewCell{
+    
+    
+    @IBOutlet weak var nameService: UILabel!
+    @IBOutlet weak var labelMaster: UILabel!
+    @IBOutlet weak var nameMaster: UILabel!
+    
+    @IBOutlet weak var timeServiceEntry: UILabel!
+    @IBOutlet weak var buttonCancellation: UIButton!
+    @IBOutlet weak var buttonOverwrite: UIButton!
+    @IBOutlet weak var viewServiceEntry: UIView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.viewServiceEntry.layer.cornerRadius = self.viewServiceEntry.frame.size.width * 0.01
+        //self.viewServiceEntry.backgroundColor = ColorApp.indigo.withAlphaComponent(1)
+    }
     
 }

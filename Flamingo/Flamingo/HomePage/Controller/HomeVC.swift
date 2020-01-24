@@ -95,7 +95,7 @@ extension HomeVC{
     }
 }
 
-//MARK: Table View
+//MARK: Collection View
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return masters.count

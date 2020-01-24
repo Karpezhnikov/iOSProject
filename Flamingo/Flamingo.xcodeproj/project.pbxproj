@@ -10,6 +10,7 @@
 		040247D1238D467C00C6EFE2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040247D0238D467B00C6EFE2 /* GoogleService-Info.plist */; };
 		040247D3238D66C900C6EFE2 /* AddNewDiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */; };
 		040247D5238DB34C00C6EFE2 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */; };
+		040306EB23D87FFE00045D54 /* PresentMaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040306EA23D87FFE00045D54 /* PresentMaster.storyboard */; };
 		0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686E2383C6D300B84ABC /* StyleFonts.swift */; };
 		0409687323841C2E00B84ABC /* DiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409687223841C2E00B84ABC /* DiscontVC.swift */; };
 		0410FEE723D5DAA300F285A5 /* CollectionViewAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410FEE623D5DAA100F285A5 /* CollectionViewAlbum.swift */; };
@@ -23,11 +24,11 @@
 		042C2DA323C75DFD0073DE33 /* SetupLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C2DA223C75DFD0073DE33 /* SetupLabel.swift */; };
 		042C2DA523C763230073DE33 /* CustomTVCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C2DA423C763230073DE33 /* CustomTVCells.swift */; };
 		042C2DA723C763810073DE33 /* CustumCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C2DA623C763810073DE33 /* CustumCVC.swift */; };
-		042C2DAB23C764A50073DE33 /* DetailDiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C2DAA23C764A50073DE33 /* DetailDiscontVC.swift */; };
 		042C2DAD23C7675A0073DE33 /* SetupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C2DAC23C7675A0073DE33 /* SetupTextField.swift */; };
 		042C2DAF23C7677F0073DE33 /* SetupTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C2DAE23C7677F0073DE33 /* SetupTextView.swift */; };
 		042C2DB123C767DE0073DE33 /* SetupTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C2DB023C767DE0073DE33 /* SetupTabBarVC.swift */; };
 		0441BCA023C729D2002A7DB6 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0441BC9F23C729D2002A7DB6 /* Registration.storyboard */; };
+		04477A7A23D8A80B00155566 /* PresentService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04477A7923D8A80B00155566 /* PresentService.storyboard */; };
 		045D423823B0D65E00C85243 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D423723B0D65E00C85243 /* LoginVC.swift */; };
 		045D423A23B11BAF00C85243 /* PersonAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D423923B11BAF00C85243 /* PersonAccountVC.swift */; };
 		045D423C23B12EFD00C85243 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D423B23B12EFD00C85243 /* RegistrationVC.swift */; };
@@ -36,6 +37,11 @@
 		04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04859C1F23851B5D000E8709 /* AnimateUI.swift */; };
 		049D27C923A8B33400E6872C /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D27C823A8B33400E6872C /* HomeVC.swift */; };
 		049D27CD23A92FB600E6872C /* PresentPhotoSalonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D27CC23A92FB600E6872C /* PresentPhotoSalonVC.swift */; };
+		04BA917F23D9CD1E007EDA1F /* AccauntVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA917E23D9CD1E007EDA1F /* AccauntVC.swift */; };
+		04BA918423D9DC09007EDA1F /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA918323D9DC09007EDA1F /* CustomUIView.swift */; };
+		04BA918A23DACA27007EDA1F /* PresentCatalogServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA918923DACA27007EDA1F /* PresentCatalogServices.storyboard */; };
+		04BA918C23DAD708007EDA1F /* ModelSimplePraceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA918B23DAD708007EDA1F /* ModelSimplePraceList.swift */; };
+		04BA918E23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA918D23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift */; };
 		04C31BED23D0765D006AA0C5 /* TapBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C31BEC23D0765D006AA0C5 /* TapBar.storyboard */; };
 		04C31BEF23D07A12006AA0C5 /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C31BEE23D07A11006AA0C5 /* LaunchVC.swift */; };
 		04C56F69239977FD0099E360 /* AddNewServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C56F68239977FD0099E360 /* AddNewServiceVC.swift */; };
@@ -62,6 +68,7 @@
 		040247D0238D467B00C6EFE2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDiscontVC.swift; sourceTree = "<group>"; };
 		040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		040306EA23D87FFE00045D54 /* PresentMaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentMaster.storyboard; sourceTree = "<group>"; };
 		0409686E2383C6D300B84ABC /* StyleFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFonts.swift; sourceTree = "<group>"; };
 		0409687223841C2E00B84ABC /* DiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscontVC.swift; sourceTree = "<group>"; };
 		0410FEE623D5DAA100F285A5 /* CollectionViewAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewAlbum.swift; sourceTree = "<group>"; };
@@ -75,21 +82,24 @@
 		042C2DA223C75DFD0073DE33 /* SetupLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupLabel.swift; sourceTree = "<group>"; };
 		042C2DA423C763230073DE33 /* CustomTVCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTVCells.swift; sourceTree = "<group>"; };
 		042C2DA623C763810073DE33 /* CustumCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumCVC.swift; sourceTree = "<group>"; };
-		042C2DAA23C764A50073DE33 /* DetailDiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailDiscontVC.swift; path = ../../../../../DetailDiscontVC.swift; sourceTree = "<group>"; };
 		042C2DAC23C7675A0073DE33 /* SetupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTextField.swift; sourceTree = "<group>"; };
 		042C2DAE23C7677F0073DE33 /* SetupTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTextView.swift; sourceTree = "<group>"; };
 		042C2DB023C767DE0073DE33 /* SetupTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTabBarVC.swift; sourceTree = "<group>"; };
 		0441BC9F23C729D2002A7DB6 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
+		04477A7923D8A80B00155566 /* PresentService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentService.storyboard; sourceTree = "<group>"; };
 		045D423723B0D65E00C85243 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = Flamingo/FirstPage/Controller/LoginVC.swift; sourceTree = SOURCE_ROOT; };
 		045D423923B11BAF00C85243 /* PersonAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonAccountVC.swift; sourceTree = "<group>"; };
 		045D423B23B12EFD00C85243 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		046744F023D085BA00616972 /* RegSelectionScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegSelectionScreenVC.swift; sourceTree = "<group>"; };
-		046991C0237D5D6600990826 /* DetailServiceTVC.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = DetailServiceTVC.swift; sourceTree = "<group>"; };
 		047DAA0723A78A1F0044362E /* DetailServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailServiceVC.swift; sourceTree = "<group>"; };
 		04859C1F23851B5D000E8709 /* AnimateUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateUI.swift; sourceTree = "<group>"; };
 		049D27C823A8B33400E6872C /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		049D27CC23A92FB600E6872C /* PresentPhotoSalonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentPhotoSalonVC.swift; sourceTree = "<group>"; };
-		04B0DAF1238BFC3B0006B7E3 /* DetailDiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDiscontVC.swift; sourceTree = "<group>"; };
+		04BA917E23D9CD1E007EDA1F /* AccauntVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccauntVC.swift; path = Flamingo/AccauntPage/Controller/AccauntVC.swift; sourceTree = SOURCE_ROOT; };
+		04BA918323D9DC09007EDA1F /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomUIView.swift; path = /Users/mac/Documents/GitHub/iOSProject/Flamingo/Flamingo/AccauntPage/Controller/CustomUIView.swift; sourceTree = "<absolute>"; };
+		04BA918923DACA27007EDA1F /* PresentCatalogServices.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentCatalogServices.storyboard; sourceTree = "<group>"; };
+		04BA918B23DAD708007EDA1F /* ModelSimplePraceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSimplePraceList.swift; sourceTree = "<group>"; };
+		04BA918D23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SampleServiceEmptyVC.swift; path = Flamingo/AccauntPage/Controller/SampleServiceEmptyVC.swift; sourceTree = SOURCE_ROOT; };
 		04C31BEC23D0765D006AA0C5 /* TapBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TapBar.storyboard; sourceTree = "<group>"; };
 		04C31BEE23D07A11006AA0C5 /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
 		04C56F68239977FD0099E360 /* AddNewServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewServiceVC.swift; sourceTree = "<group>"; };
@@ -128,6 +138,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040306E623D87FA700045D54 /* PresentMaster */ = {
+			isa = PBXGroup;
+			children = (
+				040306E923D87FCD00045D54 /* Controller */,
+				040306E823D87FC700045D54 /* View */,
+				040306E723D87FC000045D54 /* Model */,
+			);
+			path = PresentMaster;
+			sourceTree = "<group>";
+		};
+		040306E723D87FC000045D54 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		040306E823D87FC700045D54 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				040306EA23D87FFE00045D54 /* PresentMaster.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		040306E923D87FCD00045D54 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		042C2D7723C746300073DE33 /* AccauntPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				045D423923B11BAF00C85243 /* PersonAccountVC.swift */,
+				04BA917E23D9CD1E007EDA1F /* AccauntVC.swift */,
+				04BA918D23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -226,10 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				A99DC6BD2372AF5D0045D83C /* CategoryListServiceVC.swift */,
-				A91333812363230F00A54FEC /* SamplePriceListVC.swift */,
-				047DAA0723A78A1F0044362E /* DetailServiceVC.swift */,
-				04C56F68239977FD0099E360 /* AddNewServiceVC.swift */,
-				04F9887223A174B50099E354 /* MakeAppointmentVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -265,7 +306,6 @@
 				049D27C823A8B33400E6872C /* HomeVC.swift */,
 				049D27CC23A92FB600E6872C /* PresentPhotoSalonVC.swift */,
 				04D9A877239ECA690063653D /* MastersVC.swift */,
-				04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -309,6 +349,7 @@
 		042C2D9423C753FD0073DE33 /* DesingApp */ = {
 			isa = PBXGroup;
 			children = (
+				04BA918323D9DC09007EDA1F /* CustomUIView.swift */,
 				04FDA55E23D760B40050AD06 /* CallAlertVC.swift */,
 				0410FEE623D5DAA100F285A5 /* CollectionViewAlbum.swift */,
 				04859C1F23851B5D000E8709 /* AnimateUI.swift */,
@@ -331,7 +372,6 @@
 			isa = PBXGroup;
 			children = (
 				047DAA0623A2C6F10044362E /* deleteMB */,
-				042C2DAA23C764A50073DE33 /* DetailDiscontVC.swift */,
 			);
 			path = Basket;
 			sourceTree = "<group>";
@@ -369,6 +409,40 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		04477A7523D8A7D000155566 /* PresentService */ = {
+			isa = PBXGroup;
+			children = (
+				04477A7823D8A7E900155566 /* Controller */,
+				04477A7723D8A7E400155566 /* View */,
+				04477A7623D8A7DE00155566 /* Model */,
+			);
+			path = PresentService;
+			sourceTree = "<group>";
+		};
+		04477A7623D8A7DE00155566 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04477A7723D8A7E400155566 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04477A7923D8A80B00155566 /* PresentService.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04477A7823D8A7E900155566 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				047DAA0723A78A1F0044362E /* DetailServiceVC.swift */,
+				04F9887223A174B50099E354 /* MakeAppointmentVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		045D423623B0B16100C85243 /* DBManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,11 +456,44 @@
 		047DAA0623A2C6F10044362E /* deleteMB */ = {
 			isa = PBXGroup;
 			children = (
-				046991C0237D5D6600990826 /* DetailServiceTVC.swift */,
-				04B0DAF1238BFC3B0006B7E3 /* DetailDiscontVC.swift */,
 			);
 			name = deleteMB;
 			path = ../Controller;
+			sourceTree = "<group>";
+		};
+		04BA918523DAC9C3007EDA1F /* PresentCatalogServicre */ = {
+			isa = PBXGroup;
+			children = (
+				04BA918823DACA05007EDA1F /* Controller */,
+				04BA918723DAC9FE007EDA1F /* View */,
+				04BA918623DAC9F4007EDA1F /* Model */,
+			);
+			path = PresentCatalogServicre;
+			sourceTree = "<group>";
+		};
+		04BA918623DAC9F4007EDA1F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04BA918B23DAD708007EDA1F /* ModelSimplePraceList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04BA918723DAC9FE007EDA1F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04BA918923DACA27007EDA1F /* PresentCatalogServices.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04BA918823DACA05007EDA1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A91333812363230F00A54FEC /* SamplePriceListVC.swift */,
+				04C56F68239977FD0099E360 /* AddNewServiceVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		04C31BE823D07601006AA0C5 /* TapBar */ = {
@@ -451,6 +558,9 @@
 		A913336C236317A400A54FEC /* Flamingo */ = {
 			isa = PBXGroup;
 			children = (
+				04BA918523DAC9C3007EDA1F /* PresentCatalogServicre */,
+				04477A7523D8A7D000155566 /* PresentService */,
+				040306E623D87FA700045D54 /* PresentMaster */,
 				04C31BE823D07601006AA0C5 /* TapBar */,
 				042C2D9023C7539B0073DE33 /* FirstPage */,
 				042C2D8923C751A50073DE33 /* HomePage */,
@@ -548,13 +658,16 @@
 			files = (
 				042C2D8823C74F330073DE33 /* Category.storyboard in Resources */,
 				042C2D7C23C7465F0073DE33 /* Accaunt.storyboard in Resources */,
+				04477A7A23D8A80B00155566 /* PresentService.storyboard in Resources */,
 				0441BCA023C729D2002A7DB6 /* Registration.storyboard in Resources */,
 				042C2D8E23C751E80073DE33 /* Home.storyboard in Resources */,
 				A913337A236317A700A54FEC /* LaunchScreen.storyboard in Resources */,
 				040247D1238D467C00C6EFE2 /* GoogleService-Info.plist in Resources */,
+				040306EB23D87FFE00045D54 /* PresentMaster.storyboard in Resources */,
 				04C31BED23D0765D006AA0C5 /* TapBar.storyboard in Resources */,
 				A9133377236317A700A54FEC /* Assets.xcassets in Resources */,
 				042C2D8223C749630073DE33 /* Discont.storyboard in Resources */,
+				04BA918A23DACA27007EDA1F /* PresentCatalogServices.storyboard in Resources */,
 				A9133375236317A400A54FEC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,19 +739,22 @@
 				0409687323841C2E00B84ABC /* DiscontVC.swift in Sources */,
 				04D9A878239ECA690063653D /* MastersVC.swift in Sources */,
 				0410FEE723D5DAA300F285A5 /* CollectionViewAlbum.swift in Sources */,
+				04BA918E23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift in Sources */,
 				045D423C23B12EFD00C85243 /* RegistrationVC.swift in Sources */,
 				042C2DA323C75DFD0073DE33 /* SetupLabel.swift in Sources */,
 				A913336E236317A400A54FEC /* AppDelegate.swift in Sources */,
 				04F9887323A174B50099E354 /* MakeAppointmentVC.swift in Sources */,
 				042C2DB123C767DE0073DE33 /* SetupTabBarVC.swift in Sources */,
+				04BA918C23DAD708007EDA1F /* ModelSimplePraceList.swift in Sources */,
 				A91333842363270300A54FEC /* ModelSamplePriceList.swift in Sources */,
+				04BA917F23D9CD1E007EDA1F /* AccauntVC.swift in Sources */,
 				0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */,
-				042C2DAB23C764A50073DE33 /* DetailDiscontVC.swift in Sources */,
 				A99DC6BE2372AF5D0045D83C /* CategoryListServiceVC.swift in Sources */,
 				042C2DA523C763230073DE33 /* CustomTVCells.swift in Sources */,
 				042C2DAF23C7677F0073DE33 /* SetupTextView.swift in Sources */,
 				04FDA55D23D713B90050AD06 /* SupportDesign.swift in Sources */,
 				042C2DA123C75DD00073DE33 /* SetupDataPicker.swift in Sources */,
+				04BA918423D9DC09007EDA1F /* CustomUIView.swift in Sources */,
 				045D423823B0D65E00C85243 /* LoginVC.swift in Sources */,
 				046744F123D085BA00616972 /* RegSelectionScreenVC.swift in Sources */,
 				04D9A880239ED2A70063653D /* AddNewMasterVC.swift in Sources */,

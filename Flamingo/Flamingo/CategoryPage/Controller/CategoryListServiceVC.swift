@@ -11,8 +11,8 @@ import RealmSwift
 
 class CategoryListServiceVC: UIViewController {
 
-    var modelController = ModelController() // для вывода списка нужных услуг 
     var categoryService: Results<CategoryService>!
+    var modelSamplePriceListVC = ModelSamplePriceListVC()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +27,12 @@ class CategoryListServiceVC: UIViewController {
 
 //MARK: Navigation
 extension CategoryListServiceVC{
-    
-   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifire = segue.identifier, let samplePriceList = segue.destination as? SamplePriceListVC else {return}
         if identifire == "segueCategoryListService"{
-            samplePriceList.modelController = modelController
+            samplePriceList.modelSamplePriceListVC = self.modelSamplePriceListVC
         }
-
     }
-    
 }
 
 
@@ -60,11 +56,11 @@ extension CategoryListServiceVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if categoryService[indexPath.row].category == "Все услуги"{
-            modelController.nameServiceCategory = ""
+            modelSamplePriceListVC.category = ""
         }else{
-            modelController.nameServiceCategory = categoryService[indexPath.row].category
+            modelSamplePriceListVC.category = categoryService[indexPath.row].category
         }
-        modelController.titleController = categoryService[indexPath.row].category
+        modelSamplePriceListVC.titleController = categoryService[indexPath.row].category
         tableView.deselectRow(at: indexPath, animated: true) // для того, чтобы ячейка не выделялась
     }
 }

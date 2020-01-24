@@ -29,15 +29,12 @@ class SetupTextField: UITextField {
             self.layer.cornerRadius = 10
             
         case 2:
-            self.autocapitalizationType = .sentences
+            self.autocapitalizationType = .words
             self.inputAccessoryView = addDoneButtonOnKeyboard()
-            self.backgroundColor = ColorApp.white
-            self.textColor = ColorApp.black
+            self.textColor = ColorApp.white
             self.font = Font.fontRegular
-            
-            //self.layer.borderWidth = BorderWidth.borderWidth
-            //self.layer.borderColor = ColorApp.indigo.cgColor
-            
+            self.layer.borderWidth = BorderWidth.borderWidth
+            self.layer.borderColor = ColorApp.indigo.cgColor
             self.layer.cornerRadius = 10
             
         case 3:
@@ -51,6 +48,23 @@ class SetupTextField: UITextField {
         default:
             return
         }
+    }
+    
+}
+
+
+extension UITextField{
+    func fieldToFill(_ fontTF: CGFloat){
+        self.autocapitalizationType = .words
+        self.inputAccessoryView = addDoneButtonOnKeyboard()
+        self.textColor = ColorApp.white
+        self.font = Font.fontTitle
+        self.font?.withSize(fontTF)
+        self.backgroundColor = ColorApp.clear
+        self.borderStyle = .none
+        self.layer.borderWidth = BorderWidth.borderWidth
+        self.layer.borderColor = ColorApp.white.cgColor
+        self.layer.cornerRadius = self.frame.size.width*0.01
     }
     
     func addDoneButtonOnKeyboard() -> UIToolbar{
@@ -75,6 +89,4 @@ class SetupTextField: UITextField {
     {
         self.endEditing(true)
     }
-
-    
 }

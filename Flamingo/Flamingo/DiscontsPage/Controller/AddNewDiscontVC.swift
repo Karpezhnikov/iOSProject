@@ -21,6 +21,8 @@ class AddNewDiscontVC: UIViewController {
     let actionSheet = UIAlertController(title: nil, message: "", preferredStyle: .alert)
     
     
+    @IBOutlet weak var shortText: SetupLabel!
+    @IBOutlet weak var textLook: SetupLabel!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var nameDiscont: UITextField!
     @IBOutlet weak var dateStart: UITextField!
@@ -38,7 +40,13 @@ class AddNewDiscontVC: UIViewController {
         setupKeyboard()
         //addDoneButtonOnKeyboard()
         editingMode() // переводим в режим редактирования, если discontUpdate есть
+        setupTextViewDelegate()
         
+        //textLook
+        textLook.text = "  Смотреть  "
+        textLook.layer.cornerRadius = textLook.frame.size.width * 0.05
+        textLook.layer.borderWidth = BorderWidth.borderWidth
+        textLook.layer.borderColor = ColorApp.white.cgColor
     }
     
     // MARK: Setup Elements
@@ -46,15 +54,15 @@ class AddNewDiscontVC: UIViewController {
         // setup UIDatePicker
         setupDatePicker()
         
+        // setup TextField
+        nameDiscont.fieldToFill(30)
+        dateEnd.fieldToFill(20)
+        dateStart.fieldToFill(20)
+        
         // setup UIImageView
         self.image.contentMode = .scaleToFill
-        self.image.layer.cornerRadius = 40
+        self.image.layer.cornerRadius = self.image.frame.size.width * 0.01
         
-        // setup UITextView
-        self.discriptionDiscont.layer.cornerRadius = nameDiscont.layer.cornerRadius
-        self.discriptionDiscont.layer.borderWidth = nameDiscont.layer.borderWidth
-        self.discriptionDiscont.layer.borderColor = nameDiscont.layer.borderColor
-        self.discriptionDiscont.font = Font.fontRegular
         
         // setup saveButton
         if !discontUpdate.id.isEmpty{
@@ -69,9 +77,9 @@ class AddNewDiscontVC: UIViewController {
         self.saveButton.setTitleColor(ColorApp.greenComplete, for: .normal)
     }
     
+    //режим изменения акции
     private func editingMode(){
-        
-        if !discontUpdate.name.isEmpty{
+        if !discontUpdate.id.isEmpty{
             nameDiscont.text = discontUpdate.name
             dateStart.text = discontUpdate.dateStart
             dateEnd.text = discontUpdate.dateEnd
@@ -81,7 +89,6 @@ class AddNewDiscontVC: UIViewController {
             return
         }
         image.image = UIImage(data: discontUpdate.image!)
-        
     }
     
     //MARK: Check data to TextField
@@ -89,27 +96,26 @@ class AddNewDiscontVC: UIViewController {
         nameDiscont.addTarget(self, action: #selector(checkNameDiscont), for: .editingDidEnd) // тригер на заполнение
         dateStart.addTarget(self, action: #selector(checkDateStart), for: .editingDidEnd) // тригер на заполнение
         dateEnd.addTarget(self, action: #selector(checkDateEnd), for: .editingDidEnd) // тригер на заполнение
-
     }
     
     @objc func checkNameDiscont(){
         if nameDiscont.text!.isEmpty{
         }else{
-            nameDiscont.backgroundColor = ColorApp.greenComplete
+            nameDiscont.layer.borderWidth = 0
         }
     }
     
     @objc func checkDateStart(){
         if dateStart.text!.isEmpty || dateStart.text == dateEnd.text{
         }else{
-            dateStart.backgroundColor = ColorApp.greenComplete
+            dateStart.layer.borderWidth = 0
         }
     }
     
     @objc func checkDateEnd(){
         if dateEnd.text!.isEmpty || dateStart.text == dateEnd.text{
         }else{
-            dateEnd.backgroundColor = ColorApp.greenComplete
+            dateEnd.layer.borderWidth = 0
         }
     }
     
@@ -270,36 +276,6 @@ extension AddNewDiscontVC{
     }
 }
 
-//// MARK: KeyBoard
-//extension AddNewDiscontVC{
-//    // add Button Готово
-//    func addDoneButtonOnKeyboard()
-//    {
-//        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
-//        doneToolbar.barStyle = UIBarStyle.default
-//
-//        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-//        let done: UIBarButtonItem = UIBarButtonItem(title: "Готово", style: UIBarButtonItem.Style.done, target: self, action: #selector(doneButtonAction))
-//
-//        var items = [UIBarButtonItem]()
-//        items.append(flexSpace)
-//        items.append(done)
-//
-//        doneToolbar.items = items
-//        doneToolbar.sizeToFit()
-//
-//        self.nameDiscont.inputAccessoryView = doneToolbar
-//        self.discriptionDiscont.inputAccessoryView = doneToolbar
-//        self.dateStart.inputAccessoryView = doneToolbar
-//        self.dateEnd.inputAccessoryView = doneToolbar
-//
-//    }
-//
-//    @objc func doneButtonAction()
-//    {
-//        self.view.endEditing(true)
-//    }
-//}
 
 // MARK: KeyBoard
 extension AddNewDiscontVC{
@@ -349,3 +325,20 @@ extension AddNewDiscontVC: UIImagePickerControllerDelegate, UINavigationControll
     
 }
 
+//MARK: Text View Delegate
+extension AddNewDiscontVC: UITextViewDelegate{
+    func setupTextViewDelegate(){
+        self.discriptionDiscont.delegate = self
+    }
+    
+    //начало редакторования
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+    }
+
+    //конец редактирования
+    func textViewDidEndEditing(_ textView: UITextView) {
+        shortText.text = discriptionDiscont.text
+        discriptionDiscont.layer.borderWidth = 0
+    }
+}
