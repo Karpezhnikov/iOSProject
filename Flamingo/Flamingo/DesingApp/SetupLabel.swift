@@ -51,9 +51,16 @@ class SetupLabel: UILabel {
             self.layer.borderWidth = BorderWidth.borderWidth
             self.layer.borderColor = ColorApp.indigo.cgColor
             self.layer.cornerRadius = 10
+        case 9:
+            self.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
+            //self.backgroundColor = ColorApp.white.withAlphaComponent(0.1)
+            self.textColor = ColorApp.white.withAlphaComponent(0.7)
         default:
             sender.font = Font.fontRegular
         }
+        
+        
+        
     }
     
 }

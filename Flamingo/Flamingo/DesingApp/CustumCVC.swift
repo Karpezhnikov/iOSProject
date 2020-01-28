@@ -73,3 +73,19 @@ class MasterCVC: UICollectionViewCell{
         
     }
 }
+
+class DateCalendar: UICollectionViewCell{
+    @IBOutlet weak var date: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //image.imageCornerRadiusPlusBorder()
+        //self.backgroundColor = ColorApp.clear
+        //self.isUserInteractionEnabled = true
+        
+        date.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
+        date.layer.borderColor = ColorApp.white.withAlphaComponent(0.1).cgColor
+        date.layer.borderWidth = BorderWidth.borderWidth
+    }
+    
+}

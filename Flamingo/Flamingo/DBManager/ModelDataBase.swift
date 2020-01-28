@@ -8,6 +8,10 @@
 
 import RealmSwift
 
+class ServiceAppTime: Object{
+    @objc dynamic var time = Date()
+}
+
 //MARK: Service
 class Service: Object{
     
@@ -26,11 +30,12 @@ class Service: Object{
     @objc dynamic var favorites: Bool = false
     
     @objc dynamic var idsMasters = ""
+    let appTime = List<Date>()
         
     convenience init(idService: String?, nameService: String?,
                      placeService: String?, timeService: String?, serviceDescription: String?,
                      nameCategoryService: String?, comsmetology: String?, partOfTheBody: String?,
-                     maleMan: String?, imageURL: String?, image: UIImage, idsMasters: String?){
+                     maleMan: String?, imageURL: String?, image: UIImage, idsMasters: String?, appTime: Array<Any>?){
         self.init()
         self.id = idService ?? ""
         self.nameService = nameService ?? "" // название услуги
@@ -45,6 +50,14 @@ class Service: Object{
         self.imageURL = imageURL ?? ""
         self.image = image.pngData()
         self.idsMasters = idsMasters ?? ""
+        //заполняем времена записи
+        
+//        if let appTime = appTime{ // проверяем дату
+//            for time in appTime{
+//                print(time)
+//            }
+//        }
+        
     }
     
     // для добавления новой услуги

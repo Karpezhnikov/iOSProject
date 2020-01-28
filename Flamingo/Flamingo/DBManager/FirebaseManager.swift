@@ -78,14 +78,12 @@ class FirebaseManager{
                 //StorageManager.saveObjectRealm(serviceEnrty) // сохраняем в бд
             }
         }
+        
     }
     
     //MARK: Save Service of Firebase
     static func saveServiceToFirebase(_ service: Service){
-        //let db = Firestore.firestore()
-        //ToDo: добавить idsMasters = ""
-        var ref: DocumentReference? = nil
-        ref = firebaseBD.collection("services").addDocument(data: [
+        let docData: [String: Any] = [
             "id":service.id,
             "name":service.nameService,
             "place":service.placeService,
@@ -95,14 +93,46 @@ class FirebaseManager{
             "partOfTheBody":service.partOfTheBody,
             "maleman":service.maleMan,
             "imageURL":service.imageURL,
-            "idsMasters":service.idsMasters
-        ]){ err in
+            "idsMasters":service.idsMasters,
+            "appTime": createDataEntry(timeService: service.timeService)
+        ]
+        firebaseBD.collection("services").addDocument(data: docData) { (err) in
             if let err = err {
-                print("Error adding document: \(err)")
+                print("Error writing document: \(err)")
             } else {
-                print("Document added with ID: \(ref!.documentID)")
+                print("Document successfully written!")
             }
         }
+    }
+    
+    // для создания массива свободных дат для записи
+    static func createDataEntry(timeService: String)->Array<Date>{
+        //сначала разобьем на временные отрезки
+        let timeInterval = timeService.components(separatedBy: ":")//орпеделяем время услуги
+        // переводим время в минуты
+        guard let hour = Int(timeInterval[0]) else {return []}
+        guard let minute = Int(timeInterval[1]) else {return []}
+        let timeIntervalMinute = (hour * 60) + minute
+        // определяем время начала и конца рабочего дня
+        let stopDate = dateFromStringFirebase(dateStr: "01.01.2020 20:00")
+        var startDate = dateFromStringFirebase(dateStr: "01.01.2020 10:00")
+        guard stopDate != nil, startDate != nil else {return []}
+        // цикл будет от начала рабочего дня до конца
+        var docDataEntry: [Date] = []
+        while startDate! < stopDate!{
+            // создаем запись через интервал времени услуги
+            docDataEntry.append(startDate!)
+            startDate = Calendar.current.date(byAdding: .minute, value: timeIntervalMinute, to: startDate!)
+        }
+        return docDataEntry
+    }
+    
+    //MARK: Date Formater
+    static func dateFromStringFirebase (dateStr: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        let date = dateFormatter.date(from: dateStr)
+        return date
     }
     
     //MARK: Save Person of Firebase
@@ -403,6 +433,7 @@ class FirebaseManager{
             guard let data = data else{return} // проверяем, что изображение получено
             DispatchQueue.global(qos: .background).async { // в асинхронном режиме записываем данные
                 DispatchQueue.main.async {
+                    print(dataDocument)
                     guard let imageData = UIImage(data: data) else{return}// если получилось преобразовать и из-е
                     let service = Service(idService: documentID,
                                           nameService: dataDocument["name"] as? String,
@@ -415,7 +446,8 @@ class FirebaseManager{
                                           maleMan: dataDocument["maleman"] as? String,
                                           imageURL: dataDocument["imageURL"] as? String,
                                           image: imageData,
-                                          idsMasters: dataDocument["idsMasters"] as? String)
+                                          idsMasters: dataDocument["idsMasters"] as? String,
+                                          appTime: dataDocument["appTime"] as? Array<Any>)
                     StorageManager.saveObjectRealm(service)
                     print("service save")
                 }

@@ -30,11 +30,13 @@ class MakeAppointmentVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewElements()
-        setupDatePicker()
+        //setupDatePicker()
         setupKeyboard()
         checkTextFieldEmpty()
         
         phoneClient.delegate = self
+        
+        //self.navigationController?.navigationBar.backItem?.title = "Anything Else"
     }
     
     //MARK: Setup View Elements
@@ -49,14 +51,19 @@ class MakeAppointmentVC: UIViewController{
         self.nameService.text = service.nameService
         self.imageService.image = getImageService()
         
+        //Table View
         self.tableView.isPagingEnabled = true
-        //self.collectionView.delegate = self
+        self.tableView.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
+        self.tableView.layer.borderColor = ColorApp.white.cgColor
+        self.tableView.backgroundColor = ColorApp.white.withAlphaComponent(0.1)
+
+        self.imageService.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
+        self.imageService.layer.borderColor = ColorApp.white.cgColor
+        self.imageService.backgroundColor = ColorApp.white.withAlphaComponent(0.1)
         
-        // setup saveButton
-        self.makeButton.layer.cornerRadius = 10
-        self.makeButton.layer.borderWidth = BorderWidth.borderWidth
-        self.makeButton.layer.borderColor = ColorApp.greenComplete.cgColor
-        self.makeButton.backgroundColor = ColorApp.clear
+        self.makeButton.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
+        self.makeButton.layer.borderColor = ColorApp.white.cgColor
+        self.makeButton.backgroundColor = ColorApp.white.withAlphaComponent(0.1)
         self.makeButton.setTitleColor(ColorApp.greenComplete, for: .normal)
         
         // add Epmty fitrs item
@@ -76,6 +83,22 @@ class MakeAppointmentVC: UIViewController{
         
     }
     
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifire = segue.identifier
+        else {return}
+        if identifire == "selectDateAndTime"{
+            //print("nen")
+            guard let calendarVC = segue.destination as? CelendarVC else {return}
+            //print("nen")
+            //guard let indexPath = tableView.indexPathForSelectedRow else {return} // определяем индекс строки
+            //print("nen")
+            calendarVC.service = service
+            //calendarVC.master = arrayMaster[indexPath.row]
+            
+        }
+    }
+    
     //MARK: Actions
     @IBAction func exitAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -84,15 +107,15 @@ class MakeAppointmentVC: UIViewController{
     
     @IBAction func makeAppointment(_ sender: Any) {
         
-        guard checkNameClient(), checkPhoneClient() else{return} // проверяем заполнение данных
-        collectService() //заполняем данные
-        
-        DispatchQueue.global(qos: .background).async { //делаем запись в Firebase и Realm(тк это запись клиента)
-            FirebaseManager.saveServiceEntryToFirebase(self.serviceEntry)
-            
-        }
-        
-        self.dismiss(animated: true, completion: nil)
+//        guard checkNameClient(), checkPhoneClient() else{return} // проверяем заполнение данных
+//        collectService() //заполняем данные
+//
+//        DispatchQueue.global(qos: .background).async { //делаем запись в Firebase и Realm(тк это запись клиента)
+//            FirebaseManager.saveServiceEntryToFirebase(self.serviceEntry)
+//
+//        }
+//
+//        self.dismiss(animated: true, completion: nil)
     }
     
     //MARK: Fill the Service Entry

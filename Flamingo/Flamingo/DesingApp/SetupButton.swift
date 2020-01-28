@@ -43,6 +43,11 @@ class SetupButton: UIButton {
         case 5:
             self.layer.cornerRadius = self.frame.size.width/2
             self.layer.borderColor = ColorApp.white.cgColor
+            
+        case 6:
+            self.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
+            //self.backgroundColor = ColorApp.white.withAlphaComponent(0.1)
+            self.tintColor = ColorApp.white.withAlphaComponent(1)
         default:
             return
         }

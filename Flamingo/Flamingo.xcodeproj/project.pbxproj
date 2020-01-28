@@ -11,6 +11,8 @@
 		040247D3238D66C900C6EFE2 /* AddNewDiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */; };
 		040247D5238DB34C00C6EFE2 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */; };
 		040306EB23D87FFE00045D54 /* PresentMaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040306EA23D87FFE00045D54 /* PresentMaster.storyboard */; };
+		0406900A23E022CD00EC57DD /* CelendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0406900923E022CD00EC57DD /* CelendarVC.swift */; };
+		0406900C23E0264500EC57DD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0406900B23E0264500EC57DD /* Model.swift */; };
 		0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686E2383C6D300B84ABC /* StyleFonts.swift */; };
 		0409687323841C2E00B84ABC /* DiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409687223841C2E00B84ABC /* DiscontVC.swift */; };
 		0410FEE723D5DAA300F285A5 /* CollectionViewAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410FEE623D5DAA100F285A5 /* CollectionViewAlbum.swift */; };
@@ -69,6 +71,8 @@
 		040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDiscontVC.swift; sourceTree = "<group>"; };
 		040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		040306EA23D87FFE00045D54 /* PresentMaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentMaster.storyboard; sourceTree = "<group>"; };
+		0406900923E022CD00EC57DD /* CelendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelendarVC.swift; sourceTree = "<group>"; };
+		0406900B23E0264500EC57DD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0409686E2383C6D300B84ABC /* StyleFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFonts.swift; sourceTree = "<group>"; };
 		0409687223841C2E00B84ABC /* DiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscontVC.swift; sourceTree = "<group>"; };
 		0410FEE623D5DAA100F285A5 /* CollectionViewAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewAlbum.swift; sourceTree = "<group>"; };
@@ -422,6 +426,7 @@
 		04477A7623D8A7DE00155566 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0406900B23E0264500EC57DD /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -437,6 +442,7 @@
 		04477A7823D8A7E900155566 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0406900923E022CD00EC57DD /* CelendarVC.swift */,
 				047DAA0723A78A1F0044362E /* DetailServiceVC.swift */,
 				04F9887223A174B50099E354 /* MakeAppointmentVC.swift */,
 			);
@@ -741,6 +747,7 @@
 				0410FEE723D5DAA300F285A5 /* CollectionViewAlbum.swift in Sources */,
 				04BA918E23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift in Sources */,
 				045D423C23B12EFD00C85243 /* RegistrationVC.swift in Sources */,
+				0406900A23E022CD00EC57DD /* CelendarVC.swift in Sources */,
 				042C2DA323C75DFD0073DE33 /* SetupLabel.swift in Sources */,
 				A913336E236317A400A54FEC /* AppDelegate.swift in Sources */,
 				04F9887323A174B50099E354 /* MakeAppointmentVC.swift in Sources */,
@@ -759,6 +766,7 @@
 				046744F123D085BA00616972 /* RegSelectionScreenVC.swift in Sources */,
 				04D9A880239ED2A70063653D /* AddNewMasterVC.swift in Sources */,
 				047DAA0823A78A1F0044362E /* DetailServiceVC.swift in Sources */,
+				0406900C23E0264500EC57DD /* Model.swift in Sources */,
 				045D423A23B11BAF00C85243 /* PersonAccountVC.swift in Sources */,
 				A9133370236317A400A54FEC /* SceneDelegate.swift in Sources */,
 				04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */,
