@@ -49,7 +49,7 @@ class SetupTextField: UITextField {
             self.autocapitalizationType = .words
             self.inputAccessoryView = addDoneButtonOnKeyboard()
             self.textColor = ColorApp.white
-            self.font = Font.fontTitle
+            self.font = Font.fontSubTitle
             self.borderStyle = .none
         default:
             return

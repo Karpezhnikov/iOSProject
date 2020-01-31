@@ -13,7 +13,9 @@ class DetailServiceVC: UIViewController {
     let actionSheetCall = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
     let actionSheetWA = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
     var service = Service() // выбраная услуга
+    var additingNewEntry = false
     private var masters = [Master]() // для списка всех мастеров
+    
     
     @IBOutlet weak var labelMasters: SetupLabel!
     @IBOutlet weak var buttonMakeApp: SetupButton!
@@ -55,6 +57,18 @@ class DetailServiceVC: UIViewController {
         designButton(buttonSendMessage)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        if additingNewEntry{
+            let alertThing = UIAlertController(title: "Запись создана", message: "", preferredStyle: .actionSheet)
+            let cancel = UIAlertAction(title: "Хорошо", style: .cancel)
+            alertThing.addAction(cancel)
+            self.present(alertThing, animated: true, completion: nil)
+            additingNewEntry = false
+        }
+    }
+    
     private func setupCollectionView(){
         
         //collectionViewMasters
@@ -136,6 +150,16 @@ class DetailServiceVC: UIViewController {
                 destinationVC.viewFlg = true
             }
         }
+    }
+    
+    @IBAction func unwindToDetailServiceVC(_ unwindSegue: UIStoryboardSegue) {
+        if let sourceViewController = unwindSegue.source as? MakeAppointmentVC{
+            self.additingNewEntry = sourceViewController.additingNewEntry
+        }
+        
+
+        
+        // Use data from the view controller which initiated the unwind segue
     }
     
 }

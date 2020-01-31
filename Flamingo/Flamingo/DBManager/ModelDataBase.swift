@@ -158,18 +158,18 @@ class ServiceEntry: Object{
     @objc dynamic var serviceName = ""
     @objc dynamic var nameClient = ""
     @objc dynamic var numberPhoneClient = ""
-    @objc dynamic var dttmEntry = ""
+    @objc dynamic var dttmEntry = Date()
     @objc dynamic var idMaster = ""
     @objc dynamic var serviceIdDocument = ""
     @objc dynamic var price = ""
     
-    convenience init(id: String, serviceName: String?, nameClient: String, numberPhoneClient: String, dttmEntry: String?, idMaster: String?, serviceIdDocument: String?, price: String?){
+    convenience init(id: String, serviceName: String?, nameClient: String, numberPhoneClient: String, dttmEntry: Date?, idMaster: String?, serviceIdDocument: String?, price: String?){
         self.init()
         self.id = id
         self.serviceName = serviceName ?? ""
         self.nameClient = nameClient
         self.numberPhoneClient = numberPhoneClient
-        self.dttmEntry = dttmEntry ?? ""
+        self.dttmEntry = dttmEntry ?? Date()
         self.idMaster = idMaster ?? ""
         self.serviceIdDocument = serviceIdDocument ?? ""
         self.price = price ?? ""

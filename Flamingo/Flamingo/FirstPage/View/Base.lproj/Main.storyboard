@@ -17,11 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" tag="5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHM-qR-Ad0">
-                                <rect key="frame" x="152" y="467.5" width="110" height="50"/>
+                                <rect key="frame" x="64.5" y="467.5" width="285" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="0.097335188356164379" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3m9-Hh-5nU"/>
-                                    <constraint firstAttribute="width" constant="110" id="zR9-h0-gZC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -66,6 +65,7 @@
                             <constraint firstItem="pNh-8g-uLp" firstAttribute="width" secondItem="Pb0-vy-zYg" secondAttribute="width" id="J8s-VR-V3z"/>
                             <constraint firstItem="Pb0-vy-zYg" firstAttribute="top" secondItem="HPs-9A-m55" secondAttribute="bottom" constant="50" id="K0f-aE-cc3"/>
                             <constraint firstItem="Pb0-vy-zYg" firstAttribute="centerX" secondItem="Xqe-e5-VAp" secondAttribute="centerX" id="LzI-6O-D1r"/>
+                            <constraint firstItem="lHM-qR-Ad0" firstAttribute="width" secondItem="Pb0-vy-zYg" secondAttribute="width" id="lg2-jh-82U"/>
                             <constraint firstItem="lHM-qR-Ad0" firstAttribute="centerX" secondItem="Xqe-e5-VAp" secondAttribute="centerX" id="oEs-m1-eeF"/>
                             <constraint firstItem="lHM-qR-Ad0" firstAttribute="top" secondItem="Pb0-vy-zYg" secondAttribute="bottom" constant="5" id="p7r-IN-Mjw"/>
                             <constraint firstItem="tLr-Db-7QL" firstAttribute="bottom" secondItem="pNh-8g-uLp" secondAttribute="bottom" constant="10" id="pu2-N4-NKo"/>
@@ -590,7 +590,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScr" translatesAutoresizingMaskIntoConstraints="NO" id="tMb-1U-xAG">
-                                <rect key="frame" x="0.0" y="241" width="414" height="414"/>
+                                <rect key="frame" x="145" y="386" width="124" height="124"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tMb-1U-xAG" secondAttribute="height" multiplier="1:1" id="fsm-xK-ROF"/>
                                 </constraints>
@@ -598,8 +598,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Vp9-Wq-Agu" firstAttribute="trailing" secondItem="tMb-1U-xAG" secondAttribute="trailing" id="Q6c-gh-13B"/>
-                            <constraint firstItem="tMb-1U-xAG" firstAttribute="leading" secondItem="Vp9-Wq-Agu" secondAttribute="leading" id="Wm4-n3-ftS"/>
+                            <constraint firstItem="tMb-1U-xAG" firstAttribute="width" secondItem="jfX-3E-5Ol" secondAttribute="width" multiplier="0.3" id="TRG-yY-RYz"/>
                             <constraint firstItem="tMb-1U-xAG" firstAttribute="centerY" secondItem="jfX-3E-5Ol" secondAttribute="centerY" id="aGJ-BD-5NE"/>
                             <constraint firstItem="tMb-1U-xAG" firstAttribute="centerX" secondItem="jfX-3E-5Ol" secondAttribute="centerX" id="gc3-vQ-SP6"/>
                         </constraints>
@@ -677,6 +676,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FeV-Dj-9Rb"/>
-        <segue reference="r8q-Bh-7bT"/>
+        <segue reference="kxr-C5-YTu"/>
     </inferredMetricsTieBreakers>
 </document>

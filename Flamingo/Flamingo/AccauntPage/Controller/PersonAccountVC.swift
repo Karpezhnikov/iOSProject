@@ -149,48 +149,49 @@ extension PersonAccountVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTVCellSample
-        if segmentControll.selectedSegmentIndex == 0{
-            // заполняем для таблицы с записями
-            cell.nameService.text = arrayTableViewServiceEntry[indexPath.row].serviceName
-            let dttm = arrayTableViewServiceEntry[indexPath.row].dttmEntry.components(separatedBy: ",")
-            if dttm.count != 3{
-                cell.timeService.text = ""
-                cell.price.text = ""
-            }else{
-                cell.timeService.text = "\(dttm[0]), \(dttm[1])"
-                cell.price.text = "\(dttm[2])"
-            }
-            
-            // достаем изображение услуги по номеру документа
-            let serviceId = arrayTableViewServiceEntry[indexPath.row].serviceIdDocument
-            let imageServiceEntry = realm.objects(Service.self).filter("id = '\(serviceId)'")
-            if imageServiceEntry.count != 0{
-                let imageBackground = UIImageView()
-                imageBackground.image = UIImage(data: imageServiceEntry[0].image!)
-                //print("Background")
-                imageBackground.contentMode = .scaleAspectFill
-                //imageBackground.alpha = 0.5
-                cell.backgroundView = imageBackground
-                cell.selectionStyle = UITableViewCell.SelectionStyle.none
-            }
-            else {
-                cell.backgroundView?.backgroundColor = ColorApp.black
-            }
-            return cell
-        }else{
-            //let arrayToDisplay = isFiltering ? filteredService[indexPath.row] : services[indexPath.row]
-            cell.nameService.text = arrayTableViewService[indexPath.row].nameService
-            cell.price.text = "\(arrayTableViewService[indexPath.row].placeService)"
-            cell.timeService.text = arrayTableViewService[indexPath.row].timeService
-            let imageBackground = UIImageView()
-            imageBackground.image = UIImage(data: arrayTableViewService[indexPath.row].image!)
-            //print("Background")
-            imageBackground.contentMode = .scaleAspectFill
-            //imageBackground.alpha = 0.5
-            cell.backgroundView = imageBackground
-            cell.selectionStyle = UITableViewCell.SelectionStyle.none
-            return cell
-        }
+//        if segmentControll.selectedSegmentIndex == 0{
+//            // заполняем для таблицы с записями
+//            cell.nameService.text = arrayTableViewServiceEntry[indexPath.row].serviceName
+//            let dttm = arrayTableViewServiceEntry[indexPath.row].dttmEntry.components(separatedBy: ",")
+//            if dttm.count != 3{
+//                cell.timeService.text = ""
+//                cell.price.text = ""
+//            }else{
+//                cell.timeService.text = "\(dttm[0]), \(dttm[1])"
+//                cell.price.text = "\(dttm[2])"
+//            }
+//
+//            // достаем изображение услуги по номеру документа
+//            let serviceId = arrayTableViewServiceEntry[indexPath.row].serviceIdDocument
+//            let imageServiceEntry = realm.objects(Service.self).filter("id = '\(serviceId)'")
+//            if imageServiceEntry.count != 0{
+//                let imageBackground = UIImageView()
+//                imageBackground.image = UIImage(data: imageServiceEntry[0].image!)
+//                //print("Background")
+//                imageBackground.contentMode = .scaleAspectFill
+//                //imageBackground.alpha = 0.5
+//                cell.backgroundView = imageBackground
+//                cell.selectionStyle = UITableViewCell.SelectionStyle.none
+//            }
+//            else {
+//                cell.backgroundView?.backgroundColor = ColorApp.black
+//            }
+//            return cell
+//        }else{
+//            //let arrayToDisplay = isFiltering ? filteredService[indexPath.row] : services[indexPath.row]
+//            cell.nameService.text = arrayTableViewService[indexPath.row].nameService
+//            cell.price.text = "\(arrayTableViewService[indexPath.row].placeService)"
+//            cell.timeService.text = arrayTableViewService[indexPath.row].timeService
+//            let imageBackground = UIImageView()
+//            imageBackground.image = UIImage(data: arrayTableViewService[indexPath.row].image!)
+//            //print("Background")
+//            imageBackground.contentMode = .scaleAspectFill
+//            //imageBackground.alpha = 0.5
+//            cell.backgroundView = imageBackground
+//            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+//            return cell
+//        }
+        return cell
     }
     
     // заполняем таблицу для вывода мастеров

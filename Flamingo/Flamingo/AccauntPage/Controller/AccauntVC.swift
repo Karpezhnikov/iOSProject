@@ -43,6 +43,12 @@ class AccauntVC: UIViewController {
         }
     }
     
+    @IBAction func unwindToAccauntVC(_ unwindSegue: UIStoryboardSegue) {
+        //let sourceViewController = unwindSegue.source
+        print("Переход на аккаутн")
+        // Use data from the view controller which initiated the unwind segue
+    }
+    
     private func fillInTheData(){
         let namePersonDefault = UserDefaults.standard.string(forKey: "namePerson")
         let numberPersonDefault = UserDefaults.standard.string(forKey: "numberPerson")

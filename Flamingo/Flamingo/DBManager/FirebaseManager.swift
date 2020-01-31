@@ -114,8 +114,11 @@ class FirebaseManager{
         guard let minute = Int(timeInterval[1]) else {return []}
         let timeIntervalMinute = (hour * 60) + minute
         // определяем время начала и конца рабочего дня
-        let stopDate = dateFromStringFirebase(dateStr: "01.01.2020 20:00")
-        var startDate = dateFromStringFirebase(dateStr: "01.01.2020 10:00")
+        let dateCurrentD = calendar.component(.day, from: Date())
+        let dateCurrentM = calendar.component(.month, from: Date())
+        let dateCurrentY = calendar.component(.year, from: Date())
+        let stopDate = dateFromStringFirebase(dateStr: "\(dateCurrentM).\(dateCurrentD).\(dateCurrentY) 20:00")
+        var startDate = dateFromStringFirebase(dateStr: "\(dateCurrentM).\(dateCurrentD).\(dateCurrentY) 10:00")
         guard stopDate != nil, startDate != nil else {return []}
         // цикл будет от начала рабочего дня до конца
         var docDataEntry: [Date] = []
@@ -466,7 +469,7 @@ class FirebaseManager{
     }
     
     //MARK: Delete Document
-    static func deleteDocument(_ id: String, _ imageURL: String, _ collection: String, _ child: String){
+    static func deleteDocument(_ id: String, _ imageURL: String?, _ collection: String, _ child: String?){
         //let db = Firestore.firestore()
         firebaseBD.collection("\(collection)").document("\(id)").delete() { err in
             if let err = err {
@@ -475,7 +478,10 @@ class FirebaseManager{
                 print("Document successfully removed!")
             }
         }
-        deleteImageOfFireBaseStorage(imageURL, child)
+        if imageURL != "", child != ""{
+            deleteImageOfFireBaseStorage(imageURL!, child!)
+        }
+        
     }
     
     //MARK: Delete Image

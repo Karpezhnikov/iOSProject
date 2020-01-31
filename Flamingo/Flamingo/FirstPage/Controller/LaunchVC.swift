@@ -18,6 +18,7 @@ class LaunchVC: UIViewController {
         super.viewDidLoad()
         updataData()
         imageLogo.alpha = 0
+        //imageLogo.backgroundColor = 
         segueFirst()
     }
     

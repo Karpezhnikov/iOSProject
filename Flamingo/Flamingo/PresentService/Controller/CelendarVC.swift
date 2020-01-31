@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class CelendarVC: UIViewController {
     
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var calendarColView: UICollectionView!
     @IBOutlet weak var tableViewTime: UITableView!
+    @IBOutlet weak var activeIndTime: UIActivityIndicatorView!
     
     let arrayMonth = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"]
     let daysOfMonth = ["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресенье"]
@@ -23,22 +25,43 @@ class CelendarVC: UIViewController {
     var master = Master()
     var dateDate = Date()
     var arrayDateSetviceEntry = Array<Date>()
+    var cellDateDateTime: Date? = nil
+    var arrayTimesBlock = Array<Date>()
     //var indexPathDate = IndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        currentMonth = arrayMonth[month]
-        monthLabel.text = "\(currentMonth), \(year)"
-        firstDayMonth(month: month, year: year)
-        arrayDateSetviceEntry = FirebaseManager.createDataEntry(timeService: service.timeService)
-        self.title = "Выбирете дату и время"
+        setupViewElements()
     }
     
+    private func setupViewElements(){
+        currentMonth = arrayMonth[month]
+        print(month)
+        monthLabel.text = "\(currentMonth), \(year)"
+        firstDayMonth(month: month, year: year)
+        removeDateServiceEntry()
+        self.title = "Выбирете дату и время"
+        
+        tableViewTime.isHidden = true //скрываем ТВ
+        activeIndTime.isHidden = true
+    }
+    
+    private func removeDateServiceEntry(){
+        arrayDateSetviceEntry = FirebaseManager.createDataEntry(timeService: service.timeService)
+//        var arraySortedTime = Array<Date>()
+//        for timeServiceE in arrayDateSetviceEntry{
+//            if timeServiceE > Date(){
+//                arraySortedTime.append(timeServiceE)
+//                print(timeServiceE)
+//            }
+//        }
+//        arrayDateSetviceEntry = arraySortedTime
+    }
 
     //функция возвращает день недели первого дня месяца
     private func firstDayMonth(month: Int, year: Int){
-        let datedate = dateFromString(dateStr: "\(year)-\(month + 1)-01 00:00:00")
+        let datedate = WorkTimeAndDate.dateFromString(dateStr: "\(year)-\(month + 1)-01 00:00:00")
         firstWeeakDayMonth = calendar.component(.weekday, from: datedate!) // получили день недели первого числа месяца
         
         switch firstWeeakDayMonth {
@@ -66,29 +89,6 @@ class CelendarVC: UIViewController {
 //            }
 //        }
 //    }
-    
-    //MARK: Date Formater
-    // переводит из теста в дату
-    private func dateFromString(dateStr: String) -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .long
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date = dateFormatter.date(from: dateStr)
-        return date
-    }
-    
-    // переводит в стринг из даты (в нужную структура даты)
-    private func dateFromConvert(_ date: Date, mask: String)->String{
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .long
-        dateFormatter.dateFormat = mask
-        let dateStr = dateFormatter.string(from: date)
-        return dateStr
-    }
     
     @IBAction func actionNextMonth(_ sender: Any) {
         switch currentMonth {
@@ -162,7 +162,7 @@ extension CelendarVC: UICollectionViewDataSource, UICollectionViewDelegate, UICo
             cell.date.textColor = ColorApp.white
         }else{
             //получаем дату из collection View
-            guard let cellDate = dateFromString(dateStr: "\(year)-\(month + 1)-\(dayForCell) 00:00:00") else {
+            guard let cellDate = WorkTimeAndDate.dateFromString(dateStr: "\(year)-\(month + 1)-\(dayForCell) 20:00:00") else {
                 cell.backgroundColor = UIColor.clear
                 cell.date.text = "\(dayForCell)"
                 cell.date.textColor = ColorApp.white
@@ -170,7 +170,7 @@ extension CelendarVC: UICollectionViewDataSource, UICollectionViewDelegate, UICo
             }
             if cellDate < Date(){ // отбрасываем меньшие даты
                 cell.date.text = "\(dayForCell)"
-                cell.date.textColor = ColorApp.white.withAlphaComponent(0.5)
+                cell.date.textColor = ColorApp.white.withAlphaComponent(0.2)
                 cell.isUserInteractionEnabled = false
                 return cell
             }else{
@@ -197,16 +197,55 @@ extension CelendarVC: UICollectionViewDataSource, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = calendarColView.cellForItem(at: indexPath)
+        //обозначаем нажатую ячейку
         cell?.backgroundColor = ColorApp.white.withAlphaComponent(0.1)
+        cell?.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
+        // получаем данные из ячейки
         let dayForCell = indexPath.row + 2 - firstWeeakDayMonth
-        guard let dateDateF = dateFromString(dateStr: "\(year)-\(month + 1)-\(dayForCell) 00:00:00") else {return}
+        guard let dateDateF = WorkTimeAndDate.dateFromString(dateStr: "\(year)-\(month + 1)-\(dayForCell) 00:00:00") else {return}
         dateDate = dateDateF
-        tableViewTime.reloadData()
+        activeIndTime.isHidden = false // появляется индикатор загрузки
+        activeIndTime.startAnimating()
+        //вызов записей в firebase по дате
+        getTimesIsGreaterThan(dateDateF)
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = calendarColView.cellForItem(at: indexPath)
         cell?.backgroundColor = ColorApp.clear
+        tableViewTime.isHidden = true
+    }
+    
+    // выполняем запрос в ФБ и получаем все занятые времена
+    private func getTimesIsGreaterThan(_ timeIsGreater: Date){
+        let firebaseBD = FirebaseManager.firebaseBD
+        let serviceEntryTimes = firebaseBD.collection("service_enrty")
+        let snapshotDoc = serviceEntryTimes.whereField("dttmEntry", isGreaterThan: timeIsGreater)//
+        snapshotDoc.whereField("serviceIdDocoment", isEqualTo: service.id)
+        snapshotDoc.whereField("idMaster", isEqualTo: master.id)
+        snapshotDoc.getDocuments {[weak self] (snapshot, error)  in
+            if error != nil {
+                print("Error getting documents: \(error!)")
+                return
+            }else{
+                guard snapshot != nil else {
+                    return
+                }
+                for document in snapshot!.documents{
+                    let data = document.data()
+                    guard let timeStump = (data["dttmEntry"] as? Timestamp) else {return}
+                    self!.arrayTimesBlock.append(timeStump.dateValue())
+                }
+                // обновляем таблицу и показываем ее (убираем индикатор)
+                self!.tableViewTime.reloadData()
+                self!.activeIndTime.stopAnimating()
+                self!.tableViewTime.isHidden = false
+                self!.activeIndTime.isHidden = true
+                
+            }
+        }
     }
     
     private func setupCollectionView(){
@@ -230,31 +269,51 @@ extension CelendarVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellTime", for: indexPath)
+        
+        if !cell.isUserInteractionEnabled{// чтобы все ячейки нажимались
+            cell.isUserInteractionEnabled = true
+        }
+        
         let dateTime = arrayDateSetviceEntry[indexPath.row]
-        let time = dateFromConvert(dateTime, mask: "HH:mm")
+        let time = WorkTimeAndDate.dateFromConvert(dateTime, mask: "HH:mm")
 //        if calendar.component(.hour, from: dateTime) < calendar.component(.hour, from: Date())+3{ // убираем прошедшее время
 //            print(dateTime)
 //            cell.isHidden = true
 //        }
         //"yyyy-MM-dd HH:mm:ss"
-        let cellDateTime = dateFromConvert(dateTime, mask: "HH:mm:ss")
-        let cellDateDate = dateFromConvert(dateDate, mask: "yyyy-MM-dd")
-        let cellDateDateTime = dateFromString(dateStr: "\(cellDateDate) \(cellDateTime)")
+        let cellDateTime = WorkTimeAndDate.dateFromConvert(dateTime, mask: "HH:mm:ss")
+        let cellDateDate = WorkTimeAndDate.dateFromConvert(dateDate, mask: "yyyy-MM-dd")
+        cellDateDateTime = WorkTimeAndDate.dateFromString(dateStr: "\(cellDateDate) \(cellDateTime)")
         //print(cellDateDateTime)
         if cellDateDateTime! < Date(){ //проверяем дату и убираем прошедшее время
             cell.isUserInteractionEnabled = false
             cell.textLabel?.text = "Нет записи"
             cell.detailTextLabel?.text = ""
-            cell.textLabel?.textColor = ColorApp.white.withAlphaComponent(0.5)
+            cell.textLabel?.textColor = ColorApp.white.withAlphaComponent(0.2)
+        }else if arrayTimesBlock.contains(cellDateDateTime!){ //деактивируем не нужные даты
+            cell.isUserInteractionEnabled = false
+            cell.textLabel?.text = time
+            cell.detailTextLabel?.text = WorkTimeAndDate.dateFromConvert(dateDate, mask: "EEEE, MMMM d")
+            cell.textLabel?.textColor = ColorApp.white.withAlphaComponent(0.2)
+            cell.detailTextLabel?.textColor = ColorApp.white.withAlphaComponent(0.2)
         }else{
             cell.textLabel?.text = time
-            cell.detailTextLabel?.text = dateFromConvert(dateDate, mask: "EEEE, MMMM d")
+            cell.detailTextLabel?.text = WorkTimeAndDate.dateFromConvert(dateDate, mask: "EEEE, MMMM d")
             cell.textLabel?.textColor = ColorApp.white
             cell.detailTextLabel?.textColor = ColorApp.white
         }
         
-        
         return cell
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dateTime = arrayDateSetviceEntry[indexPath.row]
+        let cellDateTime = WorkTimeAndDate.dateFromConvert(dateTime, mask: "HH:mm:ss")
+        let cellDateDate = WorkTimeAndDate.dateFromConvert(dateDate, mask: "yyyy-MM-dd")
+        cellDateDateTime = WorkTimeAndDate.dateFromString(dateStr: "\(cellDateDate) \(cellDateTime)")
+        performSegue(withIdentifier: "unwindToMakeAppointmentVC", sender: nil)
     }
     
     private func timeSelection(){

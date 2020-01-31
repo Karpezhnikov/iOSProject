@@ -14,13 +14,16 @@ class MakeAppointmentVC: UIViewController{
     var service = Service()
     var arrayMaster = Array<Master>()
     var serviceEntry = ServiceEntry()
-    
+    var cellDateDateTime: Date? = nil
+    var additingNewEntry = false
+    var dateEntry = Date()
     
     @IBOutlet weak var imageService: UIImageView!
     @IBOutlet weak var nameService: UILabel!
     @IBOutlet weak var nameClient: UITextField!
     @IBOutlet weak var phoneClient: UITextField!
     @IBOutlet weak var dataReceipt: UITextField!
+    @IBOutlet weak var addDTTMButton: UIButton!
     @IBOutlet weak var makeButton: UIButton!
     //@IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -62,12 +65,16 @@ class MakeAppointmentVC: UIViewController{
         self.imageService.backgroundColor = ColorApp.white.withAlphaComponent(0.1)
         
         self.makeButton.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
-        self.makeButton.layer.borderColor = ColorApp.white.cgColor
+        self.makeButton.layer.borderColor = ColorApp.greenComplete.cgColor
+        self.makeButton.layer.borderWidth = BorderWidth.borderWidth
         self.makeButton.backgroundColor = ColorApp.white.withAlphaComponent(0.1)
-        self.makeButton.setTitleColor(ColorApp.greenComplete, for: .normal)
+        self.makeButton.setTitleColor(ColorApp.white, for: .normal)
+        self.makeButton.contentHorizontalAlignment = .center
+        self.makeButton.titleLabel?.font = Font.fontSubTitle
+        self.makeButton.titleLabel?.textColor = ColorApp.white.withAlphaComponent(0.5)
         
         // add Epmty fitrs item
-        arrayMaster.insert(Master(), at: 0)
+        arrayMaster.insert(Master(), at: 0)// записываем 1 доп ячейку
         
     }
 
@@ -88,15 +95,33 @@ class MakeAppointmentVC: UIViewController{
         guard let identifire = segue.identifier
         else {return}
         if identifire == "selectDateAndTime"{
-            //print("nen")
             guard let calendarVC = segue.destination as? CelendarVC else {return}
-            //print("nen")
-            //guard let indexPath = tableView.indexPathForSelectedRow else {return} // определяем индекс строки
-            //print("nen")
             calendarVC.service = service
-            //calendarVC.master = arrayMaster[indexPath.row]
+            calendarVC.master = arrayMaster[getIdMasterEntry()]
+        }
+    }
+    
+    @IBAction func unwindToMakeAppointmentVC(_ unwindSegue: UIStoryboardSegue) {
+        if let sourceViewController = unwindSegue.source as? CelendarVC{
+            self.cellDateDateTime = sourceViewController.cellDateDateTime
+            if let timeServiceEntry = self.cellDateDateTime{
+                //replaceTitleButton(timeServiceEntry)
+                dateEntry = timeServiceEntry
+                dataReceipt.text = WorkTimeAndDate.dateFromConvert(timeServiceEntry, mask: "d MMMM, HH:mm")
+                _ = checkDataEntry()
+            }else{
+                print("Not entry Time And Date")
+            }
+            
             
         }
+        // Use data from the view controller which initiated the unwind segue
+    }
+    
+    private func replaceTitleButton(_ date: Date){
+        let titleButton = WorkTimeAndDate.dateFromConvert(date, mask: "MMM d, HH:mm")
+        addDTTMButton.setTitle(titleButton, for: .normal)
+        addDTTMButton.setTitleColor(ColorApp.white, for: .normal)
     }
     
     //MARK: Actions
@@ -107,29 +132,26 @@ class MakeAppointmentVC: UIViewController{
     
     @IBAction func makeAppointment(_ sender: Any) {
         
-//        guard checkNameClient(), checkPhoneClient() else{return} // проверяем заполнение данных
-//        collectService() //заполняем данные
-//
-//        DispatchQueue.global(qos: .background).async { //делаем запись в Firebase и Realm(тк это запись клиента)
-//            FirebaseManager.saveServiceEntryToFirebase(self.serviceEntry)
-//
-//        }
-//
-//        self.dismiss(animated: true, completion: nil)
+        guard checkNameClient(), checkPhoneClient(), checkDataEntry() else{return} // проверяем заполнение данных
+        collectServiceEntry() //заполняем данные
+        
+        //ToDo: проверка на доступность интернета
+        FirebaseManager.saveServiceEntryToFirebase(self.serviceEntry)
+        additingNewEntry = true
+        performSegue(withIdentifier: "unwindToDetailServiceVC", sender: nil)
     }
     
-    //MARK: Fill the Service Entry
+    //MARK: Collect Service Entry
     // для записи значений из полей
-    private func collectService(){
+    private func collectServiceEntry(){
         let indexArrayMaster = getIdMasterEntry()
-        print(indexArrayMaster)
         serviceEntry.serviceName = service.nameService
+        serviceEntry.serviceIdDocument = service.id
         serviceEntry.nameClient = nameClient.text ?? ""
         serviceEntry.numberPhoneClient = phoneClient.text ?? ""
-        serviceEntry.dttmEntry = dataReceipt.text ?? ""
         serviceEntry.idMaster = arrayMaster[indexArrayMaster].id// получаем id выбраного мастера
-        serviceEntry.serviceIdDocument = service.id
-        serviceEntry.price = service.placeService
+        serviceEntry.dttmEntry = dateEntry 
+        serviceEntry.price = service.placeService //
     }
     
     // получаем индекс выбраный ячеки (индекс выбраного мастера)
@@ -158,10 +180,18 @@ extension MakeAppointmentVC: UITableViewDataSource, UITableViewDelegate{
         cell.imageMaster.layer.cornerRadius = cell.imageMaster.frame.size.width/2 //делаем из-е круглым(после того как опр-ся высота ячейки)
         cell.selectionStyle = UITableViewCell.SelectionStyle.none // ячейка не выделяется вообще
         // в первую ячейку записываем действие пользователя
+        cell.profilMaster.font = Font.fontRegular
+        cell.profilMaster.textColor = ColorApp.white
         if indexPath.row == 0{
             cell.nameMaster.text = ""
             cell.timeAndPrice.text = ""
-            cell.profilMaster.text = "Выберите специалиста"
+            if (arrayMaster.count - 1) == 0{
+                cell.profilMaster.text = "Нет специалистов"
+            }else{
+                cell.profilMaster.text = "Выберите специалиста"
+            }
+            cell.profilMaster.font = Font.fontSubTitle
+            cell.profilMaster.textColor = ColorApp.white.withAlphaComponent(0.3)
             cell.imageMaster.image = UIImage(named: "launchScr")
             return cell
         }
@@ -246,7 +276,7 @@ extension MakeAppointmentVC{
         nameClient.addTarget(self, action: #selector(checkNameClient), for: .editingChanged)
         phoneClient.addTarget(self, action: #selector(checkPhoneClient), for: .editingChanged)
         phoneClient.addTarget(self, action: #selector(checkPhoneClient), for: .editingDidEnd)
-        //phoneClient.addTarget(self, action: #selector(formattedNumber), for: .editingChanged)
+        dataReceipt.addTarget(self, action: #selector(checkDataEntry), for: .editingChanged)
     }
     
     @objc func checkNameClient()->Bool{
@@ -265,6 +295,16 @@ extension MakeAppointmentVC{
             return false
         }else{
             phoneClient.backgroundColor = ColorApp.clear
+        }
+        return true
+    }
+    
+    @objc func checkDataEntry()->Bool{
+        if dataReceipt.text!.isEmpty{
+            dataReceipt.backgroundColor = ColorApp.redIsEmpty
+            return false
+        }else{
+            dataReceipt.backgroundColor = ColorApp.clear
         }
         return true
     }

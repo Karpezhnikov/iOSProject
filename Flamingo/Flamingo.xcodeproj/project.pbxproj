@@ -39,6 +39,7 @@
 		04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04859C1F23851B5D000E8709 /* AnimateUI.swift */; };
 		049D27C923A8B33400E6872C /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D27C823A8B33400E6872C /* HomeVC.swift */; };
 		049D27CD23A92FB600E6872C /* PresentPhotoSalonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D27CC23A92FB600E6872C /* PresentPhotoSalonVC.swift */; };
+		04B0885A23E1957C0037E518 /* SupportAllFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0885923E1957C0037E518 /* SupportAllFunc.swift */; };
 		04BA917F23D9CD1E007EDA1F /* AccauntVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA917E23D9CD1E007EDA1F /* AccauntVC.swift */; };
 		04BA918423D9DC09007EDA1F /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA918323D9DC09007EDA1F /* CustomUIView.swift */; };
 		04BA918A23DACA27007EDA1F /* PresentCatalogServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA918923DACA27007EDA1F /* PresentCatalogServices.storyboard */; };
@@ -99,6 +100,7 @@
 		04859C1F23851B5D000E8709 /* AnimateUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateUI.swift; sourceTree = "<group>"; };
 		049D27C823A8B33400E6872C /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		049D27CC23A92FB600E6872C /* PresentPhotoSalonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentPhotoSalonVC.swift; sourceTree = "<group>"; };
+		04B0885923E1957C0037E518 /* SupportAllFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAllFunc.swift; sourceTree = "<group>"; };
 		04BA917E23D9CD1E007EDA1F /* AccauntVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccauntVC.swift; path = Flamingo/AccauntPage/Controller/AccauntVC.swift; sourceTree = SOURCE_ROOT; };
 		04BA918323D9DC09007EDA1F /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomUIView.swift; path = /Users/mac/Documents/GitHub/iOSProject/Flamingo/Flamingo/AccauntPage/Controller/CustomUIView.swift; sourceTree = "<absolute>"; };
 		04BA918923DACA27007EDA1F /* PresentCatalogServices.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentCatalogServices.storyboard; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 		A9DA36192367406F0004B711 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				04B0885923E1957C0037E518 /* SupportAllFunc.swift */,
 				A913336D236317A400A54FEC /* AppDelegate.swift */,
 				A913336F236317A400A54FEC /* SceneDelegate.swift */,
 				A9133376236317A700A54FEC /* Assets.xcassets */,
@@ -744,6 +747,7 @@
 				A9DA361E23676D1A0004B711 /* ModelDataBase.swift in Sources */,
 				0409687323841C2E00B84ABC /* DiscontVC.swift in Sources */,
 				04D9A878239ECA690063653D /* MastersVC.swift in Sources */,
+				04B0885A23E1957C0037E518 /* SupportAllFunc.swift in Sources */,
 				0410FEE723D5DAA300F285A5 /* CollectionViewAlbum.swift in Sources */,
 				04BA918E23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift in Sources */,
 				045D423C23B12EFD00C85243 /* RegistrationVC.swift in Sources */,
