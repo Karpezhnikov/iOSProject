@@ -15,7 +15,7 @@
 Администратор добавляет контент в приложение. Функционал:
 ### Акции 
   * добавление акции 
-  ![Кнопка добавления акции](https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/DiscontAdd.png)
+  ![Кнопка добавления акции](https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/DiscontAdd.png){:height="36px" width="36px"}
   * изменение акции 
   * удаление акции 
 ### Услуги 
