@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5iX-Rg-DCc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5iX-Rg-DCc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,25 +15,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQ4-Z2-QpJ" customClass="SetupTextField" customModule="Flamingo" customModuleProvider="target">
-                                <rect key="frame" x="10" y="431" width="394" height="34"/>
-                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="namePhonePad" textContentType="name"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Как к Вам обращаться?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gV1-PF-O0M">
-                                <rect key="frame" x="10" y="362" width="394" height="29"/>
-                                <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Etm-V8-EhP">
-                                <rect key="frame" x="10" y="505" width="394" height="50"/>
+                                <rect key="frame" x="10" y="280.5" width="394" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7zu-8r-REb"/>
                                 </constraints>
                                 <color key="tintColor" red="0.26972859240000002" green="0.5" blue="0.26015184679999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" image="greaterthan.circle" catalog="system"/>
+                                <state key="normal" image="person.badge.plus" catalog="system"/>
                                 <connections>
                                     <action selector="nextAction:" destination="5iX-Rg-DCc" eventType="touchUpInside" id="GGH-Vb-CLZ"/>
                                 </connections>
@@ -43,46 +31,126 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="27g-H4-9yK"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="tintColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="multiply" catalog="system"/>
+                                <state key="normal" title="Регистрация"/>
                                 <connections>
                                     <action selector="exitAction:" destination="5iX-Rg-DCc" eventType="touchUpInside" id="1lE-Rf-JSw"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="QGk-UM-Est">
+                                <rect key="frame" x="10" y="104" width="394" height="166.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Qo-JI-qJa" customClass="CustomUIView" customModule="Flamingo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="78.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CYw-6r-V2y">
+                                                <rect key="frame" x="5" y="5" width="384" height="68.5"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jQt-l7-AcL">
+                                                        <rect key="frame" x="0.0" y="21" width="30" height="27.5"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="jQt-l7-AcL" secondAttribute="height" multiplier="1:1" id="Eiu-9X-xtA"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ваше имя" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uGO-fY-smc" customClass="SetupTextField" customModule="Flamingo" customModuleProvider="target">
+                                                        <rect key="frame" x="35" y="19.5" width="349" height="30"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="kdQ-jA-n54"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="jQt-l7-AcL" firstAttribute="height" secondItem="uGO-fY-smc" secondAttribute="height" id="53T-yj-fuL"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="CYw-6r-V2y" firstAttribute="top" secondItem="4Qo-JI-qJa" secondAttribute="top" constant="5" id="GOT-hm-waw"/>
+                                            <constraint firstAttribute="bottom" secondItem="CYw-6r-V2y" secondAttribute="bottom" constant="5" id="ken-1e-Yr3"/>
+                                            <constraint firstAttribute="trailing" secondItem="CYw-6r-V2y" secondAttribute="trailing" constant="5" id="r38-sY-za7"/>
+                                            <constraint firstItem="CYw-6r-V2y" firstAttribute="leading" secondItem="4Qo-JI-qJa" secondAttribute="leading" constant="5" id="t8n-1K-smE"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKg-H8-BCe" customClass="CustomUIView" customModule="Flamingo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="87.5" width="394" height="79"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="x0a-NW-AZA">
+                                                <rect key="frame" x="5" y="5" width="384" height="69"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ScT-Vn-Xgw">
+                                                        <rect key="frame" x="0.0" y="20" width="30" height="28.5"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="ScT-Vn-Xgw" secondAttribute="height" multiplier="1:1" id="dT1-CK-0tC"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ваш телефон" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fg6-yQ-Vyj" customClass="SetupTextField" customModule="Flamingo" customModuleProvider="target">
+                                                        <rect key="frame" x="35" y="19.5" width="349" height="30"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="UYU-sg-vwP"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" textContentType="tel"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="ScT-Vn-Xgw" firstAttribute="height" secondItem="Fg6-yQ-Vyj" secondAttribute="height" id="jUG-Wz-998"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="x0a-NW-AZA" firstAttribute="leading" secondItem="qKg-H8-BCe" secondAttribute="leading" constant="5" id="D0E-G8-jzk"/>
+                                            <constraint firstAttribute="trailing" secondItem="x0a-NW-AZA" secondAttribute="trailing" constant="5" id="Osv-Yt-TZf"/>
+                                            <constraint firstItem="x0a-NW-AZA" firstAttribute="top" secondItem="qKg-H8-BCe" secondAttribute="top" constant="5" id="OxY-Er-X0F"/>
+                                            <constraint firstAttribute="bottom" secondItem="x0a-NW-AZA" secondAttribute="bottom" constant="5" id="zDD-JN-MJq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eeN-zV-mQu" firstAttribute="leading" secondItem="oSh-bJ-ngr" secondAttribute="leading" constant="10" id="1gh-Tj-D0P"/>
-                            <constraint firstItem="Etm-V8-EhP" firstAttribute="top" secondItem="qQ4-Z2-QpJ" secondAttribute="bottom" constant="40" id="26M-Jo-cOo"/>
-                            <constraint firstAttribute="trailing" secondItem="gV1-PF-O0M" secondAttribute="trailing" constant="10" id="26f-MF-5FS"/>
-                            <constraint firstItem="qQ4-Z2-QpJ" firstAttribute="centerX" secondItem="J7u-SW-zEe" secondAttribute="centerX" id="3l0-iz-k1F"/>
-                            <constraint firstItem="gV1-PF-O0M" firstAttribute="leading" secondItem="oSh-bJ-ngr" secondAttribute="leading" constant="10" id="Hko-ik-yiH"/>
+                            <constraint firstItem="QGk-UM-Est" firstAttribute="top" secondItem="eeN-zV-mQu" secondAttribute="bottom" constant="10" id="6hA-jJ-Kj6"/>
+                            <constraint firstItem="oSh-bJ-ngr" firstAttribute="trailing" secondItem="QGk-UM-Est" secondAttribute="trailing" constant="10" id="9iK-zb-H78"/>
+                            <constraint firstItem="QGk-UM-Est" firstAttribute="leading" secondItem="oSh-bJ-ngr" secondAttribute="leading" constant="10" id="DEJ-ik-aYE"/>
                             <constraint firstItem="Etm-V8-EhP" firstAttribute="leading" secondItem="oSh-bJ-ngr" secondAttribute="leading" constant="10" id="OSu-gh-zAI"/>
-                            <constraint firstItem="qQ4-Z2-QpJ" firstAttribute="leading" secondItem="oSh-bJ-ngr" secondAttribute="leading" constant="10" id="V1f-Pg-sBz"/>
+                            <constraint firstItem="Etm-V8-EhP" firstAttribute="top" secondItem="QGk-UM-Est" secondAttribute="bottom" constant="10" id="d4y-4D-Dlo"/>
                             <constraint firstItem="oSh-bJ-ngr" firstAttribute="trailing" secondItem="eeN-zV-mQu" secondAttribute="trailing" constant="10" id="fG4-xp-99a"/>
-                            <constraint firstItem="qQ4-Z2-QpJ" firstAttribute="top" secondItem="gV1-PF-O0M" secondAttribute="bottom" constant="40" id="fKO-F9-Mby"/>
                             <constraint firstItem="eeN-zV-mQu" firstAttribute="top" secondItem="oSh-bJ-ngr" secondAttribute="top" id="hge-TA-7MY"/>
-                            <constraint firstItem="qQ4-Z2-QpJ" firstAttribute="centerY" secondItem="J7u-SW-zEe" secondAttribute="centerY" id="nYr-Kf-HSq"/>
                             <constraint firstItem="oSh-bJ-ngr" firstAttribute="trailing" secondItem="Etm-V8-EhP" secondAttribute="trailing" constant="10" id="sFg-aP-Hju"/>
-                            <constraint firstItem="oSh-bJ-ngr" firstAttribute="trailing" secondItem="qQ4-Z2-QpJ" secondAttribute="trailing" constant="10" id="zU6-qH-WQ6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oSh-bJ-ngr"/>
                     </view>
                     <navigationItem key="navigationItem" id="ci3-sM-JhB"/>
                     <connections>
-                        <outlet property="actionLabel" destination="gV1-PF-O0M" id="1Mt-U6-1fg"/>
                         <outlet property="buttonExit" destination="eeN-zV-mQu" id="WyD-kb-ViD"/>
                         <outlet property="buttonNext" destination="Etm-V8-EhP" id="tvZ-EN-BfF"/>
-                        <outlet property="infoTextField" destination="qQ4-Z2-QpJ" id="gEh-r1-xUQ"/>
+                        <outlet property="infoTextField" destination="Fg6-yQ-Vyj" id="8lk-0i-H4h"/>
+                        <outlet property="nameClientReg" destination="uGO-fY-smc" id="lmx-51-xHZ"/>
+                        <segue destination="pxX-Zs-j30" kind="unwind" identifier="unwindToAccauntVC" unwindAction="unwindToAccauntVC:" id="pUB-YF-csV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9f-Xr-DQN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="pxX-Zs-j30" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1488" y="94"/>
         </scene>
     </scenes>
     <resources>
-        <image name="greaterthan.circle" catalog="system" width="64" height="60"/>
-        <image name="multiply" catalog="system" width="64" height="54"/>
+        <image name="person" catalog="system" width="64" height="58"/>
+        <image name="person.badge.plus" catalog="system" width="64" height="58"/>
+        <image name="phone" catalog="system" width="64" height="56"/>
     </resources>
 </document>

@@ -22,6 +22,11 @@ class SampleServiceEmptyVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         firstIn()
+        
+        // устанавливаем цвет текста у segmentedControl
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
     }
     
     // изначаль записываем в массив только активные записи
@@ -84,10 +89,6 @@ class SampleServiceEmptyVC: UIViewController {
         
     }
     
-    
-    @IBAction func actionOverwrite(_ sender: Any) {
-    }
-    
     @IBAction func actionPresentService(_ sender: Any) {
         //определяем indexPath ячейки в которой нажата кнопка
         guard let indexPath = tableView.indexPathForRow(at: (sender as AnyObject).convert(CGPoint(), to: tableView)) else {
@@ -105,6 +106,9 @@ class SampleServiceEmptyVC: UIViewController {
     }
     
     
+    @IBAction func actionBack(_ sender: Any) {
+        self.performSegue(withIdentifier: "unwindToAccauntVC", sender: nil)
+    }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

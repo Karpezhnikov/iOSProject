@@ -127,7 +127,7 @@ class ServiceEnryTVCell: UITableViewCell{
     
     @IBOutlet weak var timeServiceEntry: UILabel!
     @IBOutlet weak var buttonCancellation: UIButton!
-    @IBOutlet weak var buttonOverwrite: UIButton!
+    //@IBOutlet weak var buttonOverwrite: UIButton!
     @IBOutlet weak var viewServiceEntry: UIView!
     
     override func awakeFromNib() {
@@ -138,25 +138,23 @@ class ServiceEnryTVCell: UITableViewCell{
     
     func diactivate(){
         self.nameService.alpha = 0.3
-        self.labelMaster.alpha = 0.3
         self.nameMaster.alpha = 0.3
         
         self.timeServiceEntry.alpha = 0.3
         self.buttonCancellation.alpha = 0.3
         self.buttonCancellation.isUserInteractionEnabled = false
-        self.buttonOverwrite.alpha = 0.3
+        //self.buttonOverwrite.alpha = 0.3
         self.buttonCancellation.isUserInteractionEnabled = false
     }
     
     func activate(){
         self.nameService.alpha = 1
-        self.labelMaster.alpha = 1
         self.nameMaster.alpha = 1
         
         self.timeServiceEntry.alpha = 1
         self.buttonCancellation.alpha = 1
         self.buttonCancellation.isUserInteractionEnabled = true
-        self.buttonOverwrite.alpha = 1
+        //self.buttonOverwrite.alpha = 1
         self.buttonCancellation.isUserInteractionEnabled = true
     }
     

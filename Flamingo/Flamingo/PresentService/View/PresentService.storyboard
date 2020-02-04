@@ -403,8 +403,8 @@
                                                                         </label>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.up.chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lBB-k8-hHr">
-                                                                    <rect key="frame" x="364.5" y="1.5" width="19.5" height="77"/>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.draw" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lBB-k8-hHr">
+                                                                    <rect key="frame" x="364.5" y="-1" width="19.5" height="79"/>
                                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </imageView>
                                                             </subviews>
@@ -785,8 +785,10 @@
                     <navigationItem key="navigationItem" id="q1o-Yd-uZY"/>
                     <connections>
                         <outlet property="activeIndTime" destination="6DE-FA-46P" id="lHv-HK-5nN"/>
+                        <outlet property="backMonthButton" destination="VWP-kj-xmQ" id="ZlU-CT-V7O"/>
                         <outlet property="calendarColView" destination="8cw-Kz-NY2" id="ECQ-tD-YzH"/>
                         <outlet property="monthLabel" destination="ImY-WW-1uc" id="CeK-At-IjD"/>
+                        <outlet property="nextMonthButton" destination="UW8-XX-e52" id="k6v-my-lQd"/>
                         <outlet property="tableViewTime" destination="x4H-x1-Q3G" id="78U-74-gdv"/>
                         <segue destination="L9e-IJ-Lc7" kind="unwind" identifier="unwindToMakeAppointmentVC" unwindAction="unwindToMakeAppointmentVC:" id="56E-R1-LNt"/>
                     </connections>
@@ -809,11 +811,11 @@
         <image name="DSC_0698" width="2288" height="1525.5"/>
         <image name="calendar.badge.plus" catalog="system" width="64" height="50"/>
         <image name="chevron.right.circle" catalog="system" width="64" height="60"/>
-        <image name="chevron.up.chevron.down" catalog="system" width="64" height="64"/>
         <image name="clock" catalog="system" width="64" height="60"/>
         <image name="discontTwo" width="1280" height="1280"/>
         <image name="ellipses.bubble" catalog="system" width="64" height="54"/>
         <image name="greaterthan.circle" catalog="system" width="64" height="60"/>
+        <image name="hand.draw" catalog="system" width="64" height="54"/>
         <image name="launchScr" width="392" height="377"/>
         <image name="lessthan.circle" catalog="system" width="64" height="60"/>
         <image name="person" catalog="system" width="64" height="58"/>

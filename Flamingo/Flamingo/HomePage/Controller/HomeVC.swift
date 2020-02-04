@@ -93,6 +93,13 @@ extension HomeVC{
             }
         }
     }
+     
+    @IBAction func unwindToHomeVC(_ unwindSegue: UIStoryboardSegue) {
+        print("Registratiob")
+        //let sourceViewController = unwindSegue.source as! RegistrationVC
+        // Use data from the view controller which initiated the unwind segue
+    }
+    
 }
 
 //MARK: Collection View

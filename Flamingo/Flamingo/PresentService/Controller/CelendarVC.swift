@@ -11,6 +11,8 @@ import Firebase
 
 class CelendarVC: UIViewController {
     
+    @IBOutlet weak var nextMonthButton: SetupButton!
+    @IBOutlet weak var backMonthButton: SetupButton!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var calendarColView: UICollectionView!
     @IBOutlet weak var tableViewTime: UITableView!
@@ -33,6 +35,7 @@ class CelendarVC: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         setupViewElements()
+        checkMonth()//делаем вывод месяцев максимум на 3 вперед
     }
     
     private func setupViewElements(){
@@ -106,6 +109,7 @@ class CelendarVC: UIViewController {
             monthLabel.text = "\(currentMonth), \(year)"
             calendarColView.reloadData()
         }
+        checkMonth()
     }
     
     @IBAction func actionBackMonth(_ sender: Any) {
@@ -123,6 +127,25 @@ class CelendarVC: UIViewController {
             currentMonth = arrayMonth[month]
             monthLabel.text = "\(currentMonth), \(year)"
             calendarColView.reloadData()
+        }
+        checkMonth()
+    }
+    
+    
+    private func checkMonth(){
+        let monthFinish = calendar.component(.month, from: Date())//текущий месяц
+        
+        if month+1 == monthFinish{//если месяц на календаре равен текущему месяцу
+            backMonthButton.isUserInteractionEnabled = false
+            backMonthButton.alpha = 0.2
+        }else if month > monthFinish + 1{//если месяц на календаре больше текущего на 3
+            nextMonthButton.isUserInteractionEnabled = false
+            nextMonthButton.alpha = 0.2
+        }else{
+            nextMonthButton.isUserInteractionEnabled = true
+            nextMonthButton.alpha = 1
+            backMonthButton.isUserInteractionEnabled = true
+            backMonthButton.alpha = 1
         }
     }
     

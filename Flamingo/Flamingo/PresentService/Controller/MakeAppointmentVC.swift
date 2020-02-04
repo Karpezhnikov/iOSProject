@@ -44,12 +44,15 @@ class MakeAppointmentVC: UIViewController{
     
     //MARK: Setup View Elements
     private func setupViewElements(){
-//        nameTextField.text = UserDefaults.standard.string(forKey: "namePerson")
-//        numberPhoneTF.text = UserDefaults.standard.string(forKey: "numberPerson")
-        let name = UserDefaults.standard.string(forKey: "namePerson")
-        let numberPhone = UserDefaults.standard.string(forKey: "numberPerson")
-        self.nameClient.text = name
-        self.phoneClient.text = numberPhone
+        let persons = realm.objects(Person.self)
+        if persons.count > 0{
+            guard let person = persons.first else{return}
+            self.nameClient.text = person.name
+            self.phoneClient.text = person.numberPhone
+        }else{
+            self.nameClient.text = ""
+            self.phoneClient.text = ""
+        }
         
         self.nameService.text = service.nameService
         self.imageService.image = getImageService()

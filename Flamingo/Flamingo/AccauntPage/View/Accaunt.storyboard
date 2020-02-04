@@ -384,11 +384,14 @@
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tEb-zm-71E">
                                 <rect key="frame" x="5" y="88" width="404" height="32"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
                                     <segment title="Активные"/>
                                     <segment title="Не активные"/>
                                     <segment title="Все"/>
                                 </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedSegmentTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="actionActEntry:" destination="2y5-Px-ahS" eventType="valueChanged" id="59Q-wl-6Pc"/>
                                 </connections>
@@ -515,7 +518,7 @@
                                                                             <state key="normal" image="chevron.right.circle" catalog="system"/>
                                                                             <connections>
                                                                                 <action selector="actionPresentMaster:" destination="2y5-Px-ahS" eventType="touchUpInside" id="TL5-13-scp"/>
-                                                                                <segue destination="hC7-mV-Pet" kind="show" identifier="presentMaster" id="8dQ-Jt-c9t"/>
+                                                                                <segue destination="hC7-mV-Pet" kind="presentation" identifier="presentMaster" id="8dQ-Jt-c9t"/>
                                                                             </connections>
                                                                         </button>
                                                                     </subviews>
@@ -586,39 +589,24 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wep-CB-v9C" customClass="CustomUIView" customModule="Flamingo" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="206.5" width="384" height="63.5"/>
                                                                     <subviews>
-                                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ll8-FP-lzG">
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gge-gn-Q0z">
                                                                             <rect key="frame" x="5" y="5" width="374" height="53.5"/>
-                                                                            <subviews>
-                                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gge-gn-Q0z">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="162" height="53.5"/>
-                                                                                    <color key="backgroundColor" red="0.51121040239726023" green="0.079296350369863045" blue="0.17084445505890411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                    <state key="normal" title="Отменить" image="multiply.circle" catalog="system">
-                                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                    </state>
-                                                                                    <connections>
-                                                                                        <action selector="actionCancellaration:" destination="2y5-Px-ahS" eventType="touchUpInside" id="cq2-IS-7kz"/>
-                                                                                    </connections>
-                                                                                </button>
-                                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBx-3A-Xru">
-                                                                                    <rect key="frame" x="167" y="0.0" width="207" height="53.5"/>
-                                                                                    <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                    <state key="normal" title="Перезаписаться" image="clock" catalog="system"/>
-                                                                                    <connections>
-                                                                                        <action selector="actionOverwrite:" destination="2y5-Px-ahS" eventType="touchUpInside" id="kUS-27-Uql"/>
-                                                                                    </connections>
-                                                                                </button>
-                                                                            </subviews>
-                                                                        </stackView>
+                                                                            <color key="backgroundColor" red="0.51121040239726023" green="0.079296350369863045" blue="0.17084445505890411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <state key="normal" title="Отменить" image="multiply.circle" catalog="system">
+                                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </state>
+                                                                            <connections>
+                                                                                <action selector="actionCancellaration:" destination="2y5-Px-ahS" eventType="touchUpInside" id="cq2-IS-7kz"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="trailing" secondItem="Ll8-FP-lzG" secondAttribute="trailing" constant="5" id="BeC-vG-ixi"/>
-                                                                        <constraint firstItem="Ll8-FP-lzG" firstAttribute="top" secondItem="Wep-CB-v9C" secondAttribute="top" constant="5" id="Hx7-rp-x1H"/>
-                                                                        <constraint firstItem="Ll8-FP-lzG" firstAttribute="leading" secondItem="Wep-CB-v9C" secondAttribute="leading" constant="5" id="Sj6-nW-yc0"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="Ll8-FP-lzG" secondAttribute="bottom" constant="5" id="wI5-82-egl"/>
+                                                                        <constraint firstItem="Gge-gn-Q0z" firstAttribute="top" secondItem="Wep-CB-v9C" secondAttribute="top" constant="5" id="HTI-wh-4Ki"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="Gge-gn-Q0z" secondAttribute="trailing" constant="5" id="rRt-zq-Wqf"/>
+                                                                        <constraint firstItem="Gge-gn-Q0z" firstAttribute="leading" secondItem="Wep-CB-v9C" secondAttribute="leading" constant="5" id="v6v-zs-FEQ"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="Gge-gn-Q0z" secondAttribute="bottom" constant="5" id="vTa-qB-0sh"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
@@ -647,7 +635,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="buttonCancellation" destination="Gge-gn-Q0z" id="QSC-h5-vkd"/>
-                                            <outlet property="buttonOverwrite" destination="mBx-3A-Xru" id="xIV-CS-FVS"/>
                                             <outlet property="labelMaster" destination="HNH-XC-Z9x" id="Fst-c4-EU3"/>
                                             <outlet property="nameMaster" destination="Y6t-0F-ciy" id="aci-S2-krY"/>
                                             <outlet property="nameService" destination="7T2-DN-NlW" id="Cvp-HK-muI"/>
@@ -674,15 +661,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZQp-Lg-beo"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Записи" id="S9b-5j-NnO"/>
+                    <navigationItem key="navigationItem" title="Записи" id="S9b-5j-NnO">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="leftBarButton" id="s4a-5T-J33">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="actionBack:" destination="2y5-Px-ahS" id="qWb-Dz-HG9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="segmentedControl" destination="tEb-zm-71E" id="bHF-mZ-ZCB"/>
                         <outlet property="tableView" destination="ZsX-VU-TgP" id="hEw-pw-M61"/>
-                        <segue destination="TzR-0S-Wz0" kind="unwind" unwindAction="unwindToAccauntVC:" id="hSQ-6K-MmE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14t-3E-hsc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="TzR-0S-Wz0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1202.8985507246377" y="1403.5714285714284"/>
         </scene>
@@ -712,6 +704,7 @@
         <image name="chevron.right.circle" catalog="system" width="64" height="60"/>
         <image name="clock" catalog="system" width="64" height="60"/>
         <image name="launchScr" width="392" height="377"/>
+        <image name="leftBarButton" width="24" height="24"/>
         <image name="list.bullet.below.rectangle" catalog="system" width="64" height="56"/>
         <image name="lock" catalog="system" width="64" height="64"/>
         <image name="multiply.circle" catalog="system" width="64" height="60"/>

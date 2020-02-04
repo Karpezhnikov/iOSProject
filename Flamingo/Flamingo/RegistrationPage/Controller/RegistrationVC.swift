@@ -20,13 +20,12 @@ class RegistrationVC: UIViewController {
     @IBOutlet weak var buttonExit: UIButton!
     @IBOutlet weak var buttonNext: UIButton!
     @IBOutlet weak var infoTextField: UITextField!
-    @IBOutlet weak var actionLabel: UILabel!
+    @IBOutlet weak var nameClientReg: SetupTextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         infoTextField.text = ""
-        actionLabel.text = "Введите Ваш номер телефона?"
         infoTextField.keyboardType = .numbersAndPunctuation
         infoTextField.textContentType = .telephoneNumber
         setupTextFieldDelegate()
@@ -35,19 +34,42 @@ class RegistrationVC: UIViewController {
     
     //MARK: Action Next Info
     @IBAction func nextAction(_ sender: Any) {
-        guard checkCountNumber() else {return}
-        
-        print("Check number of Firebase (Spark)")
-        FirebaseManager.checkDataNumberPhone(infoTextField.text!)
-        self.dismiss(animated: true, completion: nil)
+        guard checkName() else {return} // проверка на пустое имя
+        guard checkCountNumber() else {return} // проверка на пустой телефон
+        person.name = nameClientReg.text!
+        person.numberPhone = infoTextField.text!
+        print("Check number of Firebase (Spark)") // будет проверка номера
+        checkDataNumberPhone(infoTextField.text!) // проверка на существующий аккаунт
+    }
+    
+    // проверяем данные по номеру
+    private func checkDataNumberPhone(_ number: String){
+        FirebaseManager.firebaseBD.collection("users").whereField("numberPhone", isEqualTo: "\(number)")
+            .getDocuments() { [weak self](querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    let documents = querySnapshot!.documents
+                    guard documents.count > 0 else {
+                        // если данных нет (то создаем нового пользователя)
+                        FirebaseManager.savePersonToFirebase(self!.person)
+                        StorageManager.saveObject(self!.person)
+                        self!.performSegue(withIdentifier: "unwindToAccauntVC", sender: nil)
+                        return}
+                    let data = documents.first?.data()
+                    //если такой пользователь есть, то сохраняем его
+                    self!.person.name = data!["name"] as! String
+                    self!.person.numberPhone = data!["numberPhone"] as! String
+                    self!.person.numberVerif = true
+                    self!.person.admin = data!["admin"] as! Bool
+                    StorageManager.saveObject(self!.person)
+                    self!.performSegue(withIdentifier: "unwindToAccauntVC", sender: nil)
+                }
+        }
     }
     
     //MARK: Action Back
     @IBAction func exitAction(_ sender: Any) {
-        let presentedBy = presentingViewController as? PersonAccountVC
-        presentedBy?.update1233()
-        presentedBy?.viewWillAppear(true)
-    
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -58,6 +80,16 @@ class RegistrationVC: UIViewController {
                 warningInfo()
                 return false
             }
+            infoTextField.backgroundColor = ColorApp.lagthGreyColor
+            return true
+        }else{
+            warningInfo()
+            return false
+        }
+    }
+    
+    private func checkName()->Bool{
+        if infoTextField.text != ""{
             infoTextField.backgroundColor = ColorApp.lagthGreyColor
             return true
         }else{

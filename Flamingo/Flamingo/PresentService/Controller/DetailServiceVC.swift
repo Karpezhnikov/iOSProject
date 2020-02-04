@@ -61,7 +61,7 @@ class DetailServiceVC: UIViewController {
         super.viewDidAppear(true)
         
         if additingNewEntry{
-            let alertThing = UIAlertController(title: "Запись создана", message: "", preferredStyle: .actionSheet)
+            let alertThing = UIAlertController(title: "Запись создана", message: "Администратор свяжется в вами, чтобы уточнить детали. Желаем вам приятного отдыха.", preferredStyle: .actionSheet)
             let cancel = UIAlertAction(title: "Хорошо", style: .cancel)
             alertThing.addAction(cancel)
             self.present(alertThing, animated: true, completion: nil)

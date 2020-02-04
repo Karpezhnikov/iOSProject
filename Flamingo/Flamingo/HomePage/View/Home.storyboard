@@ -514,6 +514,7 @@
         <!--Navigation Controller-->
         <scene sceneID="XJT-z7-2aQ">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1D0-MT-cyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SpM-51-xiA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="F8V-q4-kUQ"/>
                     <toolbarItems/>
@@ -533,7 +534,6 @@
                         <segue destination="Zwn-Fe-Sdg" kind="relationship" relationship="rootViewController" id="ZeB-3q-ajP"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1D0-MT-cyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1057" y="-2523"/>
         </scene>

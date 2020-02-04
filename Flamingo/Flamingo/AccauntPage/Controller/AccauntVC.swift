@@ -44,30 +44,26 @@ class AccauntVC: UIViewController {
     }
     
     @IBAction func unwindToAccauntVC(_ unwindSegue: UIStoryboardSegue) {
-        //let sourceViewController = unwindSegue.source
-        print("Переход на аккаутн")
-        // Use data from the view controller which initiated the unwind segue
+        fillInTheData()
     }
     
     private func fillInTheData(){
-        let namePersonDefault = UserDefaults.standard.string(forKey: "namePerson")
-        let numberPersonDefault = UserDefaults.standard.string(forKey: "numberPerson")
-        if numberPersonDefault == nil{
+        //проверяем если ли аккаунт
+        let persons = realm.objects(Person.self)
+        if persons.count > 0{
+            guard let person = persons.first else{return}
+            namePerson.text = person.name
+            numberPerson.text = person.numberPhone
+            logInUIView.isHidden = true
+        }else{
             logInUIView.isHidden = false
             namePerson.text = ""
             numberPerson.text = ""
-        }else{
-            logInUIView.isHidden = true
-            namePerson.text = namePersonDefault
-            numberPerson.text = numberPersonDefault
         }
         
         //посмотреть систему бонусов
         bonusPerson.text = "0"
-        // сделать записи активными и нет
-        activeAppointments.text = "0"
-        //
-        
+        activeAppointments.text = "\(countActiveEntry())"
         allAppointsments.text = "\(arrayServiceEntry.count)"
         favoritesService.text = "\(arrayServiceFavorites.count)"
         
@@ -75,4 +71,14 @@ class AccauntVC: UIViewController {
     }
 
 
+    private func countActiveEntry()->Int{
+        var countActiveEntry = 0
+        for sample in arrayServiceEntry{
+            if sample.dttmEntry > Date(){
+                countActiveEntry += 1
+            }
+        }
+        return countActiveEntry
+    }
+    
 }
