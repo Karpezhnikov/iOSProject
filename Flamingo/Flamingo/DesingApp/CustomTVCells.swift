@@ -159,3 +159,27 @@ class ServiceEnryTVCell: UITableViewCell{
     }
     
 }
+
+
+class CommentTVCell: UITableViewCell{
+    @IBOutlet weak var imagePerson: UIImageView!
+    @IBOutlet weak var namePerson: UILabel!
+    @IBOutlet weak var dateComment: UILabel!
+    @IBOutlet weak var oneStar: UIButton!
+    @IBOutlet weak var twoStar: UIButton!
+    @IBOutlet weak var threeStar: UIButton!
+    @IBOutlet weak var forStar: UIButton!
+    @IBOutlet weak var fiveStar: UIButton!
+    @IBOutlet weak var commentBody: UILabel!
+    @IBOutlet weak var viewComment: UIView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.oneStar.isUserInteractionEnabled = false
+        self.twoStar.isUserInteractionEnabled = false
+        self.threeStar.isUserInteractionEnabled = false
+        self.forStar.isUserInteractionEnabled = false
+        self.fiveStar.isUserInteractionEnabled = false
+        
+    }
+}

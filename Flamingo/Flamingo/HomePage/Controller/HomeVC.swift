@@ -119,6 +119,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                 item.image.imageCornerRadiusPlusBorder()
             }
         }
+        item.name.textColor = .clear
+        item.profil.textColor = .clear
         return item
     }
     

@@ -672,9 +672,11 @@
                     <connections>
                         <outlet property="segmentedControl" destination="tEb-zm-71E" id="bHF-mZ-ZCB"/>
                         <outlet property="tableView" destination="ZsX-VU-TgP" id="hEw-pw-M61"/>
+                        <segue destination="NAm-Rx-Tva" kind="unwind" identifier="unwindToAccauntVC" unwindAction="unwindToAccauntVC:" id="h9S-nH-JSe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14t-3E-hsc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="NAm-Rx-Tva" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1202.8985507246377" y="1403.5714285714284"/>
         </scene>

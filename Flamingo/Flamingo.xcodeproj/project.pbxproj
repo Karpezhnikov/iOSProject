@@ -11,6 +11,8 @@
 		040247D3238D66C900C6EFE2 /* AddNewDiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */; };
 		040247D5238DB34C00C6EFE2 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */; };
 		040306EB23D87FFE00045D54 /* PresentMaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040306EA23D87FFE00045D54 /* PresentMaster.storyboard */; };
+		0404DFE223E9F092005D3B9C /* PresentComments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0404DFE123E9F092005D3B9C /* PresentComments.storyboard */; };
+		0404DFE423E9F7A9005D3B9C /* PresentCommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404DFE323E9F7A9005D3B9C /* PresentCommentsVC.swift */; };
 		0406900A23E022CD00EC57DD /* CelendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0406900923E022CD00EC57DD /* CelendarVC.swift */; };
 		0406900C23E0264500EC57DD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0406900B23E0264500EC57DD /* Model.swift */; };
 		0409686F2383C6D300B84ABC /* StyleFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409686E2383C6D300B84ABC /* StyleFonts.swift */; };
@@ -74,6 +76,8 @@
 		040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDiscontVC.swift; sourceTree = "<group>"; };
 		040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		040306EA23D87FFE00045D54 /* PresentMaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentMaster.storyboard; sourceTree = "<group>"; };
+		0404DFE123E9F092005D3B9C /* PresentComments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentComments.storyboard; sourceTree = "<group>"; };
+		0404DFE323E9F7A9005D3B9C /* PresentCommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PresentCommentsVC.swift; path = Flamingo/PresentComments/View/PresentCommentsVC.swift; sourceTree = SOURCE_ROOT; };
 		0406900923E022CD00EC57DD /* CelendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelendarVC.swift; sourceTree = "<group>"; };
 		0406900B23E0264500EC57DD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0409686E2383C6D300B84ABC /* StyleFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFonts.swift; sourceTree = "<group>"; };
@@ -181,6 +185,39 @@
 			isa = PBXGroup;
 			children = (
 				04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0404DFDD23E9F041005D3B9C /* PresentComments */ = {
+			isa = PBXGroup;
+			children = (
+				0404DFE023E9F072005D3B9C /* Controller */,
+				0404DFDF23E9F06A005D3B9C /* View */,
+				0404DFDE23E9F063005D3B9C /* Model */,
+			);
+			path = PresentComments;
+			sourceTree = "<group>";
+		};
+		0404DFDE23E9F063005D3B9C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0404DFDF23E9F06A005D3B9C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0404DFE123E9F092005D3B9C /* PresentComments.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0404DFE023E9F072005D3B9C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0404DFE323E9F7A9005D3B9C /* PresentCommentsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -574,6 +611,7 @@
 		A913336C236317A400A54FEC /* Flamingo */ = {
 			isa = PBXGroup;
 			children = (
+				0404DFDD23E9F041005D3B9C /* PresentComments */,
 				0427472623E87F67000D9E9E /* Flamingo.entitlements */,
 				04BA918523DAC9C3007EDA1F /* PresentCatalogServicre */,
 				04477A7523D8A7D000155566 /* PresentService */,
@@ -681,6 +719,7 @@
 			files = (
 				042C2D8823C74F330073DE33 /* Category.storyboard in Resources */,
 				042C2D7C23C7465F0073DE33 /* Accaunt.storyboard in Resources */,
+				0404DFE223E9F092005D3B9C /* PresentComments.storyboard in Resources */,
 				04477A7A23D8A80B00155566 /* PresentService.storyboard in Resources */,
 				0441BCA023C729D2002A7DB6 /* Registration.storyboard in Resources */,
 				042C2D8E23C751E80073DE33 /* Home.storyboard in Resources */,
@@ -763,6 +802,7 @@
 				04D9A878239ECA690063653D /* MastersVC.swift in Sources */,
 				04B0885A23E1957C0037E518 /* SupportAllFunc.swift in Sources */,
 				0410FEE723D5DAA300F285A5 /* CollectionViewAlbum.swift in Sources */,
+				0404DFE423E9F7A9005D3B9C /* PresentCommentsVC.swift in Sources */,
 				04BA918E23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift in Sources */,
 				045D423C23B12EFD00C85243 /* RegistrationVC.swift in Sources */,
 				0406900A23E022CD00EC57DD /* CelendarVC.swift in Sources */,

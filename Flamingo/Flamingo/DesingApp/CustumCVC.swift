@@ -68,6 +68,7 @@ class MasterCVC: UICollectionViewCell{
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         //image.imageCornerRadiusPlusBorder()
 
         
