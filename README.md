@@ -52,5 +52,8 @@
   <img src="https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/MasterDelete.png" alt="1" width="150"/>
   
 ### Записи 
-  * удаление записи
+  * отмена записи
+  
+  <img src="https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/ServiceEntryDelete.png" alt="1" width="150"/>
+  
   * просмотр профиля клиента
