@@ -19,15 +19,35 @@
   <img src="https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/DiscontAdd.png" alt="1" width="250"/>   <img src="https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/DiscontAddView.png" alt="2" width="250"/>
   
   * изменение акции 
+  
+  <img src="https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/DiscontUpdate.png" alt="1" width="250"/>
+  
   * удаление акции 
+  
+  <img src="https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/DiscontDelete.png" alt="1" width="250"/>
+  
 ### Услуги 
   * добавление услуги 
-  * изменение услуги 
+  
+  <img src="https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/ServiceAdd.png" alt="1" width="250"/>
+  
   * удаление услуги
+  
+  <img src="https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/ServiceDelete.png" alt="1" width="250"/>
+  
 ### Специалисты 
   * добавление инфо о специалисте 
-  * изменение инфо о специалисте  
+  
+  <img src="https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/MasterAdd.png" alt="1" width="250"/>   <img src="https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/MasterAddView.png" alt="1" width="250"/>
+  
+  * изменение инфо о специалисте 
+  
+  <img src="https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/MasterUpdate.png" alt="1" width="250"/>
+  
   * удаление инфо о специалисте 
+  
+  <img src="https://github.com/Karpezhnikov/iOSProject/blob/master/ScreenShot/MasterDelete.png" alt="1" width="250"/>
+  
 ### Записи 
   * удаление записи
   * просмотр профиля клиента
