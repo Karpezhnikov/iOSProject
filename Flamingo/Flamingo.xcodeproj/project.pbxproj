@@ -50,6 +50,9 @@
 		04BA918E23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA918D23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift */; };
 		04C31BED23D0765D006AA0C5 /* TapBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C31BEC23D0765D006AA0C5 /* TapBar.storyboard */; };
 		04C31BEF23D07A12006AA0C5 /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C31BEE23D07A11006AA0C5 /* LaunchVC.swift */; };
+		04C4A44723EAD12B003EC905 /* PresentAddNewComment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C4A44623EAD12B003EC905 /* PresentAddNewComment.storyboard */; };
+		04C4A44923EAD5CB003EC905 /* AddNewCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4A44823EAD5CB003EC905 /* AddNewCommentVC.swift */; };
+		04C4A44B23EB01C1003EC905 /* ModelAddNewComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4A44A23EB01C1003EC905 /* ModelAddNewComment.swift */; };
 		04C56F69239977FD0099E360 /* AddNewServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C56F68239977FD0099E360 /* AddNewServiceVC.swift */; };
 		04D9A878239ECA690063653D /* MastersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9A877239ECA690063653D /* MastersVC.swift */; };
 		04D9A880239ED2A70063653D /* AddNewMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */; };
@@ -120,6 +123,9 @@
 		04BA918D23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SampleServiceEmptyVC.swift; path = Flamingo/AccauntPage/Controller/SampleServiceEmptyVC.swift; sourceTree = SOURCE_ROOT; };
 		04C31BEC23D0765D006AA0C5 /* TapBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TapBar.storyboard; sourceTree = "<group>"; };
 		04C31BEE23D07A11006AA0C5 /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
+		04C4A44623EAD12B003EC905 /* PresentAddNewComment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentAddNewComment.storyboard; sourceTree = "<group>"; };
+		04C4A44823EAD5CB003EC905 /* AddNewCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddNewCommentVC.swift; path = Flamingo/PresentAddNewComment/View/AddNewCommentVC.swift; sourceTree = SOURCE_ROOT; };
+		04C4A44A23EB01C1003EC905 /* ModelAddNewComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAddNewComment.swift; sourceTree = "<group>"; };
 		04C56F68239977FD0099E360 /* AddNewServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewServiceVC.swift; sourceTree = "<group>"; };
 		04D9A877239ECA690063653D /* MastersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MastersVC.swift; sourceTree = "<group>"; };
 		04D9A87F239ED2A70063653D /* AddNewMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMasterVC.swift; sourceTree = "<group>"; };
@@ -581,6 +587,40 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		04C4A44223EAD0DA003EC905 /* PresentAddNewComment */ = {
+			isa = PBXGroup;
+			children = (
+				04C4A44523EAD107003EC905 /* Controller */,
+				04C4A44423EAD102003EC905 /* View */,
+				04C4A44323EAD0FA003EC905 /* model */,
+			);
+			path = PresentAddNewComment;
+			sourceTree = "<group>";
+		};
+		04C4A44323EAD0FA003EC905 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				04C4A44A23EB01C1003EC905 /* ModelAddNewComment.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		04C4A44423EAD102003EC905 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04C4A44623EAD12B003EC905 /* PresentAddNewComment.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04C4A44523EAD107003EC905 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04C4A44823EAD5CB003EC905 /* AddNewCommentVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		3CE2C73A7FD61A2D841357A2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,6 +651,7 @@
 		A913336C236317A400A54FEC /* Flamingo */ = {
 			isa = PBXGroup;
 			children = (
+				04C4A44223EAD0DA003EC905 /* PresentAddNewComment */,
 				0404DFDD23E9F041005D3B9C /* PresentComments */,
 				0427472623E87F67000D9E9E /* Flamingo.entitlements */,
 				04BA918523DAC9C3007EDA1F /* PresentCatalogServicre */,
@@ -719,6 +760,7 @@
 			files = (
 				042C2D8823C74F330073DE33 /* Category.storyboard in Resources */,
 				042C2D7C23C7465F0073DE33 /* Accaunt.storyboard in Resources */,
+				04C4A44723EAD12B003EC905 /* PresentAddNewComment.storyboard in Resources */,
 				0404DFE223E9F092005D3B9C /* PresentComments.storyboard in Resources */,
 				04477A7A23D8A80B00155566 /* PresentService.storyboard in Resources */,
 				0441BCA023C729D2002A7DB6 /* Registration.storyboard in Resources */,
@@ -822,11 +864,13 @@
 				04BA918423D9DC09007EDA1F /* CustomUIView.swift in Sources */,
 				045D423823B0D65E00C85243 /* LoginVC.swift in Sources */,
 				046744F123D085BA00616972 /* RegSelectionScreenVC.swift in Sources */,
+				04C4A44923EAD5CB003EC905 /* AddNewCommentVC.swift in Sources */,
 				04D9A880239ED2A70063653D /* AddNewMasterVC.swift in Sources */,
 				047DAA0823A78A1F0044362E /* DetailServiceVC.swift in Sources */,
 				0406900C23E0264500EC57DD /* Model.swift in Sources */,
 				045D423A23B11BAF00C85243 /* PersonAccountVC.swift in Sources */,
 				A9133370236317A400A54FEC /* SceneDelegate.swift in Sources */,
+				04C4A44B23EB01C1003EC905 /* ModelAddNewComment.swift in Sources */,
 				04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

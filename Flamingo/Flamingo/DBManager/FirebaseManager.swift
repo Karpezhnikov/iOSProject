@@ -14,6 +14,23 @@ class FirebaseManager{
     
     static let firebaseBD = Firestore.firestore()
     
+    //MARK: Save comment
+    static func saveCommentToFirebase(_ comment: Comment){
+        var ref: DocumentReference? = nil
+        ref = firebaseBD.collection("commentFlamingo").addDocument(data: [
+            "namePerson":comment.namePerson,
+            "rating": comment.rating,
+            "date": comment.date,
+            "commentBody": comment.commentBody
+        ]){ err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    
     //MARK: Save Disconts of Firebase
     static func saveDiscontToFirebase(_ discont: Discont){
         //let db = Firestore.firestore()

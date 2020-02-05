@@ -87,7 +87,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="vO3-zp-DoK" kind="show" identifier="makeAppointment" id="ngD-A7-rgy"/>
+                                                    <action selector="actionPresentMakeApp:" destination="CG9-t2-2kb" eventType="touchUpInside" id="lrQ-Si-HY8"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Косметическая чистка лица «Оптимальное очищение Academie для молодой непроблемной кожи»" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgQ-Cc-WN5" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
@@ -255,11 +255,12 @@
                         <outlet property="imageService" destination="Iqp-wj-v9p" id="rsZ-EH-bHd"/>
                         <outlet property="labelMasters" destination="0Pc-OK-khl" id="Pbx-7e-6x9"/>
                         <outlet property="nameService" destination="FgQ-Cc-WN5" id="vQE-aS-fgQ"/>
+                        <segue destination="vO3-zp-DoK" kind="show" identifier="makeAppointment" id="7h7-Wa-tUJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lA-y9-olf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="46"/>
+            <point key="canvasLocation" x="-612" y="38"/>
         </scene>
         <!--Make AppointmentVC-->
         <scene sceneID="ar1-SQ-7IZ">

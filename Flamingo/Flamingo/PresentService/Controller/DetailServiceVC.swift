@@ -69,6 +69,16 @@ class DetailServiceVC: UIViewController {
         }
     }
     
+    
+    
+    
+    private func getAlert(_ title: String, _ message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "Хорошо", style: .cancel)
+        alert.addAction(cancel)
+        self.present(alert, animated: true)
+    }
+    
     private func setupCollectionView(){
         
         //collectionViewMasters
@@ -110,6 +120,14 @@ class DetailServiceVC: UIViewController {
     
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func actionPresentMakeApp(_ sender: Any) {
+        guard realm.objects(Person.self).count > 0 else { //условие на существующий аккаунт
+            getAlert("", "Чтобы оставлять отзывы вам необходимо зарегистрироваться")
+            return
+        }
+        performSegue(withIdentifier: "makeAppointment", sender: nil)
     }
     
     @IBAction func callAction(_ sender: Any) {

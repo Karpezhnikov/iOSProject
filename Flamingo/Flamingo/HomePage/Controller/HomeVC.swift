@@ -79,6 +79,27 @@ class HomeVC: UIViewController {
         //self.collectionViewDesign?.collectionViewLayout = layout
     }
     
+    
+    @IBAction func actionPresentComments(_ sender: Any) {
+        performSegue(withIdentifier: "actionPresentComments", sender: nil)
+    }
+    
+    
+    @IBAction func actionNewComment(_ sender: Any) {
+                guard realm.objects(Person.self).count > 0 else { //условие на существующий аккаунт
+                    getAlert("", "Чтобы оставлять отзывы вам необходимо зарегистрироваться")
+                    return
+                }
+                performSegue(withIdentifier: "presentNewComment", sender: nil)
+    }
+    
+    private func getAlert(_ title: String, _ message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "Хорошо", style: .cancel)
+        alert.addAction(cancel)
+        self.present(alert, animated: true)
+    }
+    
 }
 
 extension HomeVC{
