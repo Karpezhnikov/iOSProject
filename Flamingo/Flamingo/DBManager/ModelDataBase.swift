@@ -139,6 +139,7 @@ class Discont: Object{
     @objc dynamic var dateEnd = ""
     @objc dynamic var imageURL = ""
     @objc dynamic var image: Data?
+    @objc dynamic var dateCreate = Date()
     
     convenience init(id: String, name: String?, description: String?, dateStart: String?, dateEnd: String?, imageURL: String?, image: UIImage){
         self.init()
@@ -198,6 +199,18 @@ class Person: Object{
     @objc dynamic var numberPhone = ""
     @objc dynamic var admin = false
     @objc dynamic var numberVerif = false
+    @objc dynamic var image = UIImage(named: "launchScr")?.pngData()
+    
+    convenience init(name: String?, numberPhone: String, admin: Bool?, numberVerif: Bool?, image: UIImage){
+        self.init()
+        self.name = name ?? ""
+        self.numberPhone = numberPhone
+        self.admin = admin ?? false
+        self.numberVerif = numberVerif ?? false
+        if let dataPNG = image.pngData(){
+            self.image = dataPNG
+        }
+    }
 }
 
 

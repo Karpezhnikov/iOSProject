@@ -52,14 +52,6 @@ class CelendarVC: UIViewController {
     
     private func removeDateServiceEntry(){
         arrayDateSetviceEntry = FirebaseManager.createDataEntry(timeService: service.timeService)
-//        var arraySortedTime = Array<Date>()
-//        for timeServiceE in arrayDateSetviceEntry{
-//            if timeServiceE > Date(){
-//                arraySortedTime.append(timeServiceE)
-//                print(timeServiceE)
-//            }
-//        }
-//        arrayDateSetviceEntry = arraySortedTime
     }
 
     //функция возвращает день недели первого дня месяца
@@ -74,24 +66,6 @@ class CelendarVC: UIViewController {
             firstWeeakDayMonth = firstWeeakDayMonth - 1
         }
     }
-    
-    //MARK: - Navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let identifire = segue.identifier
-//        else {return}
-//        if identifire == "selectDateAndTime"{
-//            guard let makeAppr = segue.destination as? MakeAppointmentVC else {return}
-//            makeAppr.service = service
-//            makeAppr.arrayMaster = masters
-//        }
-//        if identifire == "presentMaster"{
-//            if let indexPath = collectionViewMasters.indexPathsForSelectedItems?.first{
-//                guard let destinationVC = segue.destination as? AddNewMasterVC else {return}
-//                destinationVC.master = masters[indexPath.row]
-//                destinationVC.viewFlg = true
-//            }
-//        }
-//    }
     
     @IBAction func actionNextMonth(_ sender: Any) {
         switch currentMonth {
@@ -241,36 +215,6 @@ extension CelendarVC: UICollectionViewDataSource, UICollectionViewDelegate, UICo
         tableViewTime.isHidden = true
     }
     
-    // выполняем запрос в ФБ и получаем все занятые времена
-    private func getTimesIsGreaterThan(_ timeIsGreater: Date){
-        let firebaseBD = FirebaseManager.firebaseBD
-        let serviceEntryTimes = firebaseBD.collection("service_enrty")
-        let snapshotDoc = serviceEntryTimes.whereField("dttmEntry", isGreaterThan: timeIsGreater)//
-        snapshotDoc.whereField("serviceIdDocoment", isEqualTo: service.id)
-        snapshotDoc.whereField("idMaster", isEqualTo: master.id)
-        snapshotDoc.getDocuments {[weak self] (snapshot, error)  in
-            if error != nil {
-                print("Error getting documents: \(error!)")
-                return
-            }else{
-                guard snapshot != nil else {
-                    return
-                }
-                for document in snapshot!.documents{
-                    let data = document.data()
-                    guard let timeStump = (data["dttmEntry"] as? Timestamp) else {return}
-                    self!.arrayTimesBlock.append(timeStump.dateValue())
-                }
-                // обновляем таблицу и показываем ее (убираем индикатор)
-                self!.tableViewTime.reloadData()
-                self!.activeIndTime.stopAnimating()
-                self!.tableViewTime.isHidden = false
-                self!.activeIndTime.isHidden = true
-                
-            }
-        }
-    }
-    
     private func setupCollectionView(){
         let spacing = CGFloat(0)
         calendarColView.backgroundColor = .clear
@@ -341,5 +285,38 @@ extension CelendarVC: UITableViewDelegate, UITableViewDataSource{
     
     private func timeSelection(){
         
+    }
+}
+
+//MARK: FireBase Select
+extension CelendarVC{
+    // выполняем запрос в ФБ и получаем все занятые времена
+    private func getTimesIsGreaterThan(_ timeIsGreater: Date){
+        let firebaseBD = FirebaseManager.firebaseBD
+        let serviceEntryTimes = firebaseBD.collection("service_enrty")
+        let snapshotDoc = serviceEntryTimes.whereField("dttmEntry", isGreaterThan: timeIsGreater)//
+        snapshotDoc.whereField("serviceIdDocoment", isEqualTo: service.id)
+        snapshotDoc.whereField("idMaster", isEqualTo: master.id)
+        snapshotDoc.getDocuments {[weak self] (snapshot, error)  in
+            if error != nil {
+                print("Error getting documents: \(error!)")
+                return
+            }else{
+                guard snapshot != nil else {
+                    return
+                }
+                for document in snapshot!.documents{
+                    let data = document.data()
+                    guard let timeStump = (data["dttmEntry"] as? Timestamp) else {return}
+                    self!.arrayTimesBlock.append(timeStump.dateValue())
+                }
+                // обновляем таблицу и показываем ее (убираем индикатор)
+                self!.tableViewTime.reloadData()
+                self!.activeIndTime.stopAnimating()
+                self!.tableViewTime.isHidden = false
+                self!.activeIndTime.isHidden = true
+                
+            }
+        }
     }
 }

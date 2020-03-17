@@ -8,10 +8,15 @@
 
 import UIKit
 import RealmSwift
+import Firebase
+
+//сделать вызод в фаир байс и получить все активные записи
 
 class SampleServiceEmptyVC: UIViewController {
     
-    var arrayServiceEntry = realm.objects(ServiceEntry.self).sorted(byKeyPath: "dttmEntry").reversed()
+    
+    var admin = UserDefaults.standard.bool(forKey: "adminFlg")
+    var arrayServiceEntry = Array<ServiceEntry>()
     var indexPathPresent = IndexPath()
     var arrayServiceEntrySample = Array<ServiceEntry>()
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -21,15 +26,18 @@ class SampleServiceEmptyVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstIn()
-        
+        //firstIn()
+        getAllServiceEntry()//получаем данные из Firebase
+        if admin{//если это админ убираем segmentedControl
+            segmentedControl.isHidden = true
+        }
         // устанавливаем цвет текста у segmentedControl
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
         segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
     }
     
-    // изначаль записываем в массив только активные записи
+//    // изначаль записываем в массив только активные записи
     private func firstIn(){
         arrayServiceEntrySample.removeAll()
         for sample in arrayServiceEntry{
@@ -40,6 +48,7 @@ class SampleServiceEmptyVC: UIViewController {
         tableView.reloadData()
     }
     
+    //MARK: Actions
     @IBAction func actionActEntry(_ sender: Any) {
         let currentDate = Date()
         //let searchText = ""
@@ -59,6 +68,7 @@ class SampleServiceEmptyVC: UIViewController {
             for sample in arrayServiceEntry{
                 arrayServiceEntrySample.append(sample)
             }
+            //arrayServiceEntrySample
             tableView.reloadData()
         default:
             arrayServiceEntrySample.removeAll()
@@ -79,8 +89,11 @@ class SampleServiceEmptyVC: UIViewController {
         let alertThing = UIAlertController(title: "Отменить запись?", message: "", preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Нет", style: .cancel)
         let cencelEntry = UIAlertAction(title: "Отменить", style: .default) { [weak self](_) in
-            FirebaseManager.deleteDocument(self!.arrayServiceEntrySample [indexPath.row].id, "", "service_enrty", "")
-            StorageManager.deleteObjectRealm(self!.arrayServiceEntrySample[indexPath.row]) //delete data Realm
+            FirebaseManager.deleteDocument(self!.arrayServiceEntrySample[indexPath.row].id, "", "service_enrty", "")
+            if self!.admin == false{
+                StorageManager.deleteObjectRealm(self!.arrayServiceEntrySample[indexPath.row]) //delete data Realm
+            }
+            self!.arrayServiceEntrySample.remove(at: indexPath.row)
             self!.tableView.reloadData()
         }
         alertThing.addAction(cancel)
@@ -169,5 +182,115 @@ extension SampleServiceEmptyVC: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        if admin == false{//проверка на админа
+            return nil//если нет, то отлючаем действия с удалением
+        }
+        
+        let deleteItem = UIContextualAction(style: .normal, title: nil) {  [weak self] (contextualAction, view, boolValue) in
+            // вызываем окно подтверждения удаления
+            self!.alertCallPerson(self!.arrayServiceEntrySample[indexPath.row])
+        }
+        deleteItem.backgroundColor = ColorApp.black
+        deleteItem.image = UIImage(systemName: "phone")
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem])
+        swipeActions.performsFirstActionWithFullSwipe = false
+
+        return swipeActions
+    }
     
+    
+}
+
+//MARK: Admin
+extension SampleServiceEmptyVC{
+    //позвонить клиенту
+    private func alertCallPerson(_ serviceEntryA: ServiceEntry){
+        let actionSheet = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
+        actionSheet.message = "\(serviceEntryA.nameClient)"
+        let openTEL = UIAlertAction(title: "тел:\(serviceEntryA.numberPhoneClient)", style: .default) { (_) in
+            if let url = URL(string: "тел://\(serviceEntryA.numberPhoneClient)") {
+                UIApplication.shared.open(url)
+            }
+        }
+        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
+        actionSheet.addAction(openTEL)
+        actionSheet.addAction(cancel)
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    // берем из firebase все записи, которые больше сегодняшнее даты и записываем в массив 
+    private func getAllServiceEntry(){
+        let persons = realm.objects(Person.self)
+        guard let person = persons.first else {
+            return
+        }
+        arrayServiceEntry.removeAll()
+        let fireBaseCollection = FirebaseManager.firebaseBD.collection("service_enrty")
+        
+        if admin{
+            fireBaseCollection.whereField("dttmEntry", isGreaterThan: Date())
+                .getDocuments() { [weak self](snapshot, err) in
+                    if err != nil {
+                        print("Error getting documents: \(err!)")
+                        return
+                    }else{
+                        guard snapshot != nil else {
+                            return
+                        }
+                        for document in snapshot!.documents{
+                            let data = document.data()
+                            let serviceEntryFirebase = ServiceEntry()
+                            guard let timeStump = (data["dttmEntry"] as? Timestamp) else {return}
+                            serviceEntryFirebase.dttmEntry = timeStump.dateValue()
+                            serviceEntryFirebase.id = document.documentID
+                            serviceEntryFirebase.idMaster = data["idMaster"] as? String ?? ""
+                            serviceEntryFirebase.nameClient = data["nameClient"] as? String ?? ""
+                            serviceEntryFirebase.price = data["price"] as? String ?? ""
+                            serviceEntryFirebase.numberPhoneClient = data["serviceEnrty"] as? String ?? ""
+                            serviceEntryFirebase.serviceIdDocument = data["serviceIdDocument"] as? String ?? ""
+                            serviceEntryFirebase.serviceName = data["serviceName"] as? String ?? ""
+                            self!.arrayServiceEntry.append(serviceEntryFirebase)
+                            
+                        }
+                        //сортируем по дате и перезаписываем
+                        self!.arrayServiceEntry = self!.arrayServiceEntry.sorted{$0.dttmEntry > $1.dttmEntry}
+                        self!.firstIn()
+                    }
+            }
+            
+        }else{
+            print("No Admin")
+            fireBaseCollection.whereField("serviceEnrty", isEqualTo: person.numberPhone)
+                .getDocuments() { [weak self](snapshot, err) in
+                    if err != nil {
+                        print("Error getting documents: \(err!)")
+                        return
+                    }else{
+                        guard snapshot != nil else {
+                            return
+                        }
+                        for document in snapshot!.documents{
+                            let data = document.data()
+                            let serviceEntryFirebase = ServiceEntry()
+                            guard let timeStump = (data["dttmEntry"] as? Timestamp) else {return}
+                            serviceEntryFirebase.dttmEntry = timeStump.dateValue()
+                            serviceEntryFirebase.id = document.documentID
+                            serviceEntryFirebase.idMaster = data["idMaster"] as? String ?? ""
+                            serviceEntryFirebase.nameClient = data["nameClient"] as? String ?? ""
+                            serviceEntryFirebase.price = data["price"] as? String ?? ""
+                            serviceEntryFirebase.numberPhoneClient = data["serviceEnrty"] as? String ?? ""
+                            serviceEntryFirebase.serviceIdDocument = data["serviceIdDocument"] as? String ?? ""
+                            serviceEntryFirebase.serviceName = data["serviceName"] as? String ?? ""
+                            self!.arrayServiceEntry.append(serviceEntryFirebase)
+                        }
+                        //сортируем по дате и перезаписываем
+                        self!.arrayServiceEntry = self!.arrayServiceEntry.sorted{$0.dttmEntry > $1.dttmEntry}
+                        self!.firstIn()
+                    }
+            }
+        }
+    }
 }

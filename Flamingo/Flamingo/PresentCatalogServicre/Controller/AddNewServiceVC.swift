@@ -281,7 +281,6 @@ extension AddNewServiceVC: UIImagePickerControllerDelegate, UINavigationControll
     }
     
     func chooseImagePicker(source: UIImagePickerController.SourceType){
-        
         if UIImagePickerController.isSourceTypeAvailable(source){ // если данный источник доступен
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -289,7 +288,6 @@ extension AddNewServiceVC: UIImagePickerControllerDelegate, UINavigationControll
             imagePicker.sourceType = source // определяем откуда будет взято изображение
             present(imagePicker, animated: true)
         }
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -298,9 +296,6 @@ extension AddNewServiceVC: UIImagePickerControllerDelegate, UINavigationControll
         imageService.clipsToBounds = true // обрезаем границы
         dismiss(animated: true)
     }
-    
-    
-    
 }
 
 // MARK: Save Image To Storage
@@ -451,8 +446,22 @@ extension AddNewServiceVC: UIPickerViewDelegate, UIPickerViewDataSource{
 // MARK: Setup Elements
 extension AddNewServiceVC{
     private func setupViewElements(){
-        // setup UIDatePicker
-        //setupDatePicker()
+//        @IBOutlet weak var nameService: UITextField!
+//        @IBOutlet weak var timeService: UITextField!
+//        @IBOutlet weak var priceService: UITextField!
+//        @IBOutlet weak var descriptionService: UITextView!
+//        @IBOutlet weak var nameCategoryOfService: UITextField!
+//        @IBOutlet weak var cosmetologiService: UITextField!
+//        @IBOutlet weak var partOfTheBody: UITextField!
+//        @IBOutlet weak var maleMan: UITextField!
+        //add Placeholder for TextField
+        self.nameService.placeholder = "Название услуги"
+        self.timeService.placeholder = "Время услуги"
+        self.priceService.placeholder = "Цена услуги"
+        self.nameCategoryOfService.placeholder = "Категория"
+        self.cosmetologiService.placeholder = "Косметология"
+        self.partOfTheBody.placeholder = "Часть тела"
+        self.maleMan.placeholder = "Для кого"
         
         // setup UIImageView
         self.imageService.contentMode = .scaleAspectFill

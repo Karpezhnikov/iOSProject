@@ -20,6 +20,8 @@ class LaunchVC: UIViewController {
         imageLogo.alpha = 0
         //imageLogo.backgroundColor = 
         segueFirst()
+        
+        FirebaseManager.checkAccauntAdmin()
     }
     
     

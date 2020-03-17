@@ -88,7 +88,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGA-nw-Sjv">
-                                                    <rect key="frame" x="5" y="432" width="404" height="22"/>
+                                                    <rect key="frame" x="5" y="432" width="404" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="RiI-04-b4E"/>
+                                                    </constraints>
                                                     <color key="tintColor" red="0.0" green="0.20784313730000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" title="   Запись только у администратора" image="phone.fill.arrow.up.right" catalog="system">
                                                         <color key="titleColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -142,16 +145,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YDz-Kz-brh"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Акции" id="esR-ow-6dV">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="VHm-dh-NKY">
-                            <connections>
-                                <segue destination="Ymj-wN-Dkv" kind="presentation" identifier="addDiscont" id="Aq6-2r-PV4"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Акции" id="esR-ow-6dV"/>
                     <connections>
                         <outlet property="tableView" destination="F8N-T7-NWW" id="geo-Ft-vdf"/>
                         <segue destination="Ymj-wN-Dkv" kind="presentation" identifier="updateDiscontSegue" id="86b-b7-tjc"/>
+                        <segue destination="Ymj-wN-Dkv" kind="show" identifier="addDiscont" id="p1m-uN-QsS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Le-6L-1mL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -163,11 +161,11 @@
             <objects>
                 <viewController id="Ymj-wN-Dkv" customClass="AddNewDiscontVC" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lzw-f3-xOi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1146"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5p-rb-Ahc">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1112"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1029"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScr" translatesAutoresizingMaskIntoConstraints="NO" id="XW0-xx-utH">
                                         <rect key="frame" x="20" y="0.0" width="374" height="374"/>
@@ -337,7 +335,7 @@
         <scene sceneID="Ncb-k0-gBD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4IJ-13-C4L" customClass="SetupNavigationController" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="rosette" catalog="system" id="Imb-Ba-LRb"/>
+                    <tabBarItem key="tabBarItem" title="" image="flame" catalog="system" id="Imb-Ba-LRb"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="xuq-Ze-gaq">
@@ -363,12 +361,11 @@
     <resources>
         <image name="arrow.clockwise.icloud.fill" catalog="system" width="64" height="44"/>
         <image name="camera" catalog="system" width="64" height="48"/>
+        <image name="flame" catalog="system" width="54" height="64"/>
         <image name="launchScr" width="392" height="377"/>
         <image name="phone.fill.arrow.up.right" catalog="system" width="64" height="56"/>
-        <image name="plus" catalog="system" width="64" height="56"/>
-        <image name="rosette" catalog="system" width="50" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="86b-b7-tjc"/>
+        <segue reference="p1m-uN-QsS"/>
     </inferredMetricsTieBreakers>
 </document>

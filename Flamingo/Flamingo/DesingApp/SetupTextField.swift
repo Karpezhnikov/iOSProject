@@ -28,14 +28,20 @@ class SetupTextField: UITextField {
             
             self.layer.cornerRadius = 10
             
-        case 2:
+        case 2://используется для стиля UITextField при добавлении услуги
             self.autocapitalizationType = .words
-            self.inputAccessoryView = addDoneButtonOnKeyboard()
-            self.textColor = ColorApp.white
-            self.font = Font.fontRegular
-            self.layer.borderWidth = BorderWidth.borderWidth
-            self.layer.borderColor = ColorApp.indigo.cgColor
-            self.layer.cornerRadius = 10
+            self.inputAccessoryView = addDoneButtonOnKeyboard()//подключаем кнопку готово
+        
+            self.textColor = ColorApp.white// цвет шрифта белый
+            self.font = Font.fontRegular// размер шрифта средний (15)
+            self.backgroundColor = ColorApp.white.withAlphaComponent(0.2)
+            self.borderStyle = .roundedRect
+            
+            //устанавливаем цвет Placeholder
+            self.attributedPlaceholder = NSAttributedString(string: " ",
+                                                            attributes: [NSAttributedString.Key.foregroundColor: ColorApp.white.withAlphaComponent(0.7)])
+            //self.layer.borderWidth = BorderWidth.borderWidth
+            //self.layer.borderColor = ColorApp.indigo.cgColor
             
         case 3:
             self.autocapitalizationType = .words

@@ -124,7 +124,7 @@ class DetailServiceVC: UIViewController {
     
     @IBAction func actionPresentMakeApp(_ sender: Any) {
         guard realm.objects(Person.self).count > 0 else { //условие на существующий аккаунт
-            getAlert("", "Чтобы оставлять отзывы вам необходимо зарегистрироваться")
+            getAlert("", "Чтобы записаться на прием вам необходимо зарегистрироваться")
             return
         }
         performSegue(withIdentifier: "makeAppointment", sender: nil)
