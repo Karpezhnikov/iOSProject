@@ -44,7 +44,6 @@
 		049D27CD23A92FB600E6872C /* PresentPhotoSalonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D27CC23A92FB600E6872C /* PresentPhotoSalonVC.swift */; };
 		04B0885A23E1957C0037E518 /* SupportAllFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0885923E1957C0037E518 /* SupportAllFunc.swift */; };
 		04BA917F23D9CD1E007EDA1F /* AccauntVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA917E23D9CD1E007EDA1F /* AccauntVC.swift */; };
-		04BA918423D9DC09007EDA1F /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA918323D9DC09007EDA1F /* CustomUIView.swift */; };
 		04BA918A23DACA27007EDA1F /* PresentCatalogServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA918923DACA27007EDA1F /* PresentCatalogServices.storyboard */; };
 		04BA918C23DAD708007EDA1F /* ModelSimplePraceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA918B23DAD708007EDA1F /* ModelSimplePraceList.swift */; };
 		04BA918E23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA918D23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift */; };
@@ -71,6 +70,7 @@
 		A99DC6BE2372AF5D0045D83C /* CategoryListServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99DC6BD2372AF5D0045D83C /* CategoryListServiceVC.swift */; };
 		A9DA361E23676D1A0004B711 /* ModelDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA361D23676D1A0004B711 /* ModelDataBase.swift */; };
 		A9DA3620236782020004B711 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA361F236782020004B711 /* StorageManager.swift */; };
+		ECE8160224211A160055093F /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE8160124211A160055093F /* CustomUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,7 +117,6 @@
 		04AA13E223E8033F009717E4 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B0885923E1957C0037E518 /* SupportAllFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAllFunc.swift; sourceTree = "<group>"; };
 		04BA917E23D9CD1E007EDA1F /* AccauntVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccauntVC.swift; path = Flamingo/AccauntPage/Controller/AccauntVC.swift; sourceTree = SOURCE_ROOT; };
-		04BA918323D9DC09007EDA1F /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomUIView.swift; path = /Users/mac/Documents/GitHub/iOSProject/Flamingo/Flamingo/AccauntPage/Controller/CustomUIView.swift; sourceTree = "<absolute>"; };
 		04BA918923DACA27007EDA1F /* PresentCatalogServices.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentCatalogServices.storyboard; sourceTree = "<group>"; };
 		04BA918B23DAD708007EDA1F /* ModelSimplePraceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSimplePraceList.swift; sourceTree = "<group>"; };
 		04BA918D23DAEE3D007EDA1F /* SampleServiceEmptyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SampleServiceEmptyVC.swift; path = Flamingo/AccauntPage/Controller/SampleServiceEmptyVC.swift; sourceTree = SOURCE_ROOT; };
@@ -147,6 +146,7 @@
 		A99DC6BD2372AF5D0045D83C /* CategoryListServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListServiceVC.swift; sourceTree = "<group>"; };
 		A9DA361D23676D1A0004B711 /* ModelDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataBase.swift; sourceTree = "<group>"; };
 		A9DA361F236782020004B711 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		ECE8160124211A160055093F /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,7 +406,6 @@
 		042C2D9423C753FD0073DE33 /* DesingApp */ = {
 			isa = PBXGroup;
 			children = (
-				04BA918323D9DC09007EDA1F /* CustomUIView.swift */,
 				04FDA55E23D760B40050AD06 /* CallAlertVC.swift */,
 				0410FEE623D5DAA100F285A5 /* CollectionViewAlbum.swift */,
 				04859C1F23851B5D000E8709 /* AnimateUI.swift */,
@@ -421,6 +420,7 @@
 				042C2DAE23C7677F0073DE33 /* SetupTextView.swift */,
 				042C2DB023C767DE0073DE33 /* SetupTabBarVC.swift */,
 				04FDA55C23D713B90050AD06 /* SupportDesign.swift */,
+				ECE8160124211A160055093F /* CustomUIView.swift */,
 			);
 			path = DesingApp;
 			sourceTree = "<group>";
@@ -852,6 +852,7 @@
 				A913336E236317A400A54FEC /* AppDelegate.swift in Sources */,
 				04F9887323A174B50099E354 /* MakeAppointmentVC.swift in Sources */,
 				042C2DB123C767DE0073DE33 /* SetupTabBarVC.swift in Sources */,
+				ECE8160224211A160055093F /* CustomUIView.swift in Sources */,
 				04BA918C23DAD708007EDA1F /* ModelSimplePraceList.swift in Sources */,
 				A91333842363270300A54FEC /* ModelSamplePriceList.swift in Sources */,
 				04BA917F23D9CD1E007EDA1F /* AccauntVC.swift in Sources */,
@@ -861,7 +862,6 @@
 				042C2DAF23C7677F0073DE33 /* SetupTextView.swift in Sources */,
 				04FDA55D23D713B90050AD06 /* SupportDesign.swift in Sources */,
 				042C2DA123C75DD00073DE33 /* SetupDataPicker.swift in Sources */,
-				04BA918423D9DC09007EDA1F /* CustomUIView.swift in Sources */,
 				045D423823B0D65E00C85243 /* LoginVC.swift in Sources */,
 				046744F123D085BA00616972 /* RegSelectionScreenVC.swift in Sources */,
 				04C4A44923EAD5CB003EC905 /* AddNewCommentVC.swift in Sources */,
