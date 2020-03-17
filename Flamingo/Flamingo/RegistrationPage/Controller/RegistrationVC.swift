@@ -28,6 +28,10 @@ class RegistrationVC: UIViewController {
         infoTextField.text = ""
         infoTextField.keyboardType = .numbersAndPunctuation
         infoTextField.textContentType = .telephoneNumber
+        
+        buttonNext.backgroundColor = ColorApp.white.withAlphaComponent(0.2)
+        buttonNext.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
+        
         setupTextFieldDelegate()
         
     }

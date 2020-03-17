@@ -28,9 +28,9 @@ class AddNewCommentVC: UIViewController {
     }
     
     private func setupElements(){
-        textVeiwComment.backgroundColor = ColorApp.black
-        textVeiwComment.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
-        textVeiwComment.textColor = ColorApp.white
+        //textVeiwComment.backgroundColor = ColorApp.black
+        //textVeiwComment.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
+        //textVeiwComment.textColor = ColorApp.white
         
         //let buttonSendComment = UIButton.init(type: .custom)
         buttonSendComment.setTitle(" Отправить", for: .normal)
@@ -41,11 +41,7 @@ class AddNewCommentVC: UIViewController {
         buttonSendComment.addTarget(self, action: #selector(self.actionSendComment), for: .touchUpInside)
         
         let buttonExit = UIButton.init(type: .custom)
-        buttonExit.setTitle(" Отмена  ", for: .normal)
-        buttonExit.setTitleColor(ColorApp.redExit, for: .normal)
-        buttonExit.setImage(UIImage(systemName: "xmark"), for: .normal)
-        buttonExit.tintColor = ColorApp.redExit
-        buttonExit.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
+        buttonExit.setupBackButton()
         buttonExit.addTarget(self, action: #selector(self.actionExit), for: .touchUpInside)
         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: buttonExit)]
         

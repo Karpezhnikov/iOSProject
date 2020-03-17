@@ -52,5 +52,28 @@ class SetupButton: UIButton {
             return
         }
     }
+}
+
+extension UIButton{
+    func setupBackButton(){
+        self.setTitle(" Назад  ", for: .normal)
+        self.setTitleColor(ColorApp.redExit, for: .normal)
+        self.tintColor = ColorApp.redExit
+        self.setImage(UIImage(systemName: "xmark"), for: .normal)
+        self.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
+        self.contentVerticalAlignment = .center
+        self.contentHorizontalAlignment = .right
+        
+    }
+    
+    func setupAddButton(){
+        self.setTitle("", for: .normal)
+        self.setTitleColor(ColorApp.white, for: .normal)
+        self.tintColor = ColorApp.white
+        self.setImage(UIImage(systemName: "plus"), for: .normal)
+        self.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.01
+        self.contentVerticalAlignment = .center
+        self.contentHorizontalAlignment = .right
+    }
     
 }

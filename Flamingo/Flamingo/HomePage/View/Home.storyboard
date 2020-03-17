@@ -40,21 +40,21 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oLh-rL-g6D">
                                                         <rect key="frame" x="103.5" y="5" width="285.5" height="93.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пн-Bc: 10:00-20:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmI-Dx-H7G">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пн-Bc: 10:00-20:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmI-Dx-H7G">
                                                                 <rect key="frame" x="0.0" y="0.0" width="285.5" height="31"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+7 (701) 962-40-20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32a-AY-dxW">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+7 (701) 962-40-20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32a-AY-dxW">
                                                                 <rect key="frame" x="0.0" y="31" width="285.5" height="31.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+7 (700) 931-65-29" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIt-h8-i24">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+7 (700) 931-65-29" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIt-h8-i24">
                                                                 <rect key="frame" x="0.0" y="62.5" width="285.5" height="31"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -105,6 +105,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
+                                                        <string key="userLabel">"FLAMINGO" - центр ведущих технологий красоты и здоровья! Райский оазис посреди пустыни.    Лучшая команда квалифицированных мастеров. Новейшее оборудование и качественная продукция специально для вас. Самый широкий спектр услуг в городе. Внимательное отношение и высокий сервис.     ЦЕНТР КРАСОТЫ "FLAMINGO" - ГАРАНТИЯ ВОСХИТИТЕЛЬНОГО РЕЗУЛЬТАТА!     Желаем Вам приятного отдыха и ярких впечатлений в нашем Салоне!</string>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8U4-0h-rbN">
                                                         <rect key="frame" x="90.5" y="8.5" width="298.5" height="24"/>
@@ -114,6 +115,9 @@
                                                         <state key="normal" image="chevron.right.circle" catalog="system">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="ydg-4G-Uyj" kind="presentation" identifier="presentText" id="5J4-h8-l0A"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -286,21 +290,21 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khm-4g-OzI">
                                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
-                                                                <state key="normal" image="Instagram"/>
+                                                                <state key="normal" backgroundImage="Instagram"/>
                                                                 <connections>
                                                                     <action selector="openInstagram:" destination="Zwn-Fe-Sdg" eventType="touchUpInside" id="RxW-ZK-NBX"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFs-p6-S9M">
                                                                 <rect key="frame" x="150" y="0.0" width="140" height="140"/>
-                                                                <state key="normal" image="WhatsApp"/>
+                                                                <state key="normal" backgroundImage="WhatsApp"/>
                                                                 <connections>
                                                                     <action selector="openWhatsApp:" destination="Zwn-Fe-Sdg" eventType="touchUpInside" id="OnP-eC-9f2"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwb-i0-AdX">
                                                                 <rect key="frame" x="300" y="0.0" width="140" height="140"/>
-                                                                <state key="normal" image="Brower"/>
+                                                                <state key="normal" backgroundImage="Brower"/>
                                                                 <connections>
                                                                     <action selector="openBrower:" destination="Zwn-Fe-Sdg" eventType="touchUpInside" id="tda-GV-DVt"/>
                                                                 </connections>
@@ -310,7 +314,6 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="UUD-wq-Woo" secondAttribute="bottom" constant="10" id="4nZ-lU-wwM"/>
                                                     <constraint firstItem="UUD-wq-Woo" firstAttribute="top" secondItem="XWN-t5-MPb" secondAttribute="bottom" constant="10" id="Nzn-sd-wWF"/>
                                                     <constraint firstItem="XWN-t5-MPb" firstAttribute="leading" secondItem="iaJ-zJ-8M5" secondAttribute="leading" constant="10" id="Vo7-R9-Qvx"/>
                                                     <constraint firstItem="XWN-t5-MPb" firstAttribute="top" secondItem="iaJ-zJ-8M5" secondAttribute="top" constant="10" id="ZcM-vp-pe7"/>
@@ -320,25 +323,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHL-Iz-B6S" customClass="CustomUIView" customModule="Flamingo" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="816" width="394" height="194"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8zw-7Z-20a">
-                                                        <rect key="frame" x="10" y="10" width="374" height="174"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Отзывы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBz-CS-5It" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="71" height="84.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Koh-DA-fpN">
-                                                                <rect key="frame" x="0.0" y="89.5" width="50" height="84.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cd2-hl-Bmd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="384" height="194"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Отзывы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBz-CS-5It" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
+                                                        <rect key="frame" x="10" y="10" width="71" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cd2-hl-Bmd">
+                                                        <rect key="frame" x="0.0" y="15" width="384" height="179"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="20"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -364,16 +356,14 @@
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="Cd2-hl-Bmd" firstAttribute="leading" secondItem="SHL-Iz-B6S" secondAttribute="leading" id="1Zf-QJ-5ZH"/>
-                                                    <constraint firstAttribute="bottom" secondItem="8zw-7Z-20a" secondAttribute="bottom" constant="10" id="3yD-dp-u05"/>
-                                                    <constraint firstItem="8zw-7Z-20a" firstAttribute="leading" secondItem="SHL-Iz-B6S" secondAttribute="leading" constant="10" id="4gt-Ea-Ur7"/>
                                                     <constraint firstAttribute="trailing" secondItem="Cd2-hl-Bmd" secondAttribute="trailing" constant="10" id="AvH-G8-Kqy"/>
-                                                    <constraint firstItem="8zw-7Z-20a" firstAttribute="top" secondItem="SHL-Iz-B6S" secondAttribute="top" constant="10" id="Stj-sF-lI0"/>
+                                                    <constraint firstItem="eBz-CS-5It" firstAttribute="top" secondItem="SHL-Iz-B6S" secondAttribute="top" constant="10" id="RoU-Wq-cC3"/>
                                                     <constraint firstAttribute="bottom" secondItem="eMY-B6-oYT" secondAttribute="bottom" id="fFO-fh-vaZ"/>
                                                     <constraint firstAttribute="bottom" secondItem="Cd2-hl-Bmd" secondAttribute="bottom" id="lWN-kA-1lI"/>
-                                                    <constraint firstItem="Cd2-hl-Bmd" firstAttribute="top" secondItem="SHL-Iz-B6S" secondAttribute="top" id="nz9-xK-xXd"/>
+                                                    <constraint firstItem="eBz-CS-5It" firstAttribute="leading" secondItem="SHL-Iz-B6S" secondAttribute="leading" constant="10" id="luW-u6-UOx"/>
+                                                    <constraint firstItem="Cd2-hl-Bmd" firstAttribute="top" secondItem="SHL-Iz-B6S" secondAttribute="top" constant="15" id="nz9-xK-xXd"/>
                                                     <constraint firstAttribute="trailing" secondItem="eMY-B6-oYT" secondAttribute="trailing" id="sGj-KE-ojI"/>
                                                     <constraint firstItem="eMY-B6-oYT" firstAttribute="leading" secondItem="SHL-Iz-B6S" secondAttribute="leading" constant="10" id="v34-ye-pnC"/>
-                                                    <constraint firstAttribute="trailing" secondItem="8zw-7Z-20a" secondAttribute="trailing" constant="10" id="yMD-Ak-eIA"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -413,18 +403,21 @@
                         <outlet property="buttonDesign" destination="Jqf-N4-Maz" id="l68-VQ-Bfx"/>
                         <outlet property="collectionViewMasters" destination="Raa-yW-z2g" id="dSH-8c-Z5E"/>
                         <outlet property="imageLogo" destination="XmO-he-KwH" id="KPf-4P-2yn"/>
+                        <outlet property="labelDescription" destination="lol-PG-Pzw" id="00p-fl-0ED"/>
                         <segue destination="MCN-Yj-oCB" kind="show" identifier="actionPresentComments" id="eQY-Yv-lzR"/>
                         <segue destination="0Ui-R0-9Ag" kind="show" identifier="presentNewComment" id="F2O-DQ-KMj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rT3-iC-Rs6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2221.739130434783" y="-2523.2142857142858"/>
+            <point key="canvasLocation" x="2025" y="-2523"/>
         </scene>
         <!--PresentMaster-->
         <scene sceneID="K8J-kM-KKo">
             <objects>
-                <viewControllerPlaceholder storyboardName="PresentMaster" id="AFH-0y-2jZ" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="PresentMaster" id="AFH-0y-2jZ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="IxP-lH-o1e"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Dn-jM-tkK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3199" y="-2523"/>
@@ -545,6 +538,16 @@
             </objects>
             <point key="canvasLocation" x="3199" y="-2094"/>
         </scene>
+        <!--PresentText-->
+        <scene sceneID="f5M-4e-UDV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PresentText" id="ydg-4G-Uyj" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="F2A-sc-U40"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kRJ-cx-sq8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1699" y="-1984"/>
+        </scene>
         <!--Специалисты-->
         <scene sceneID="7wP-fe-Qx6">
             <objects>
@@ -625,16 +628,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QTP-My-eZy"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Специалисты" id="LWu-u2-hz1">
-                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="O7a-Ac-e9e">
-                            <connections>
-                                <segue destination="AFH-0y-2jZ" kind="presentation" identifier="addMaster" id="f8z-Gt-4Kz"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Специалисты" id="LWu-u2-hz1"/>
                     <connections>
                         <outlet property="masterTableView" destination="iSq-vw-EG8" id="CKp-Yp-lhp"/>
                         <segue destination="AFH-0y-2jZ" kind="presentation" identifier="updateMasterSegue" id="OKn-Hv-Qo9"/>
+                        <segue destination="AFH-0y-2jZ" kind="presentation" identifier="addMaster" id="ieq-je-UFh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HeG-7Q-v8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -678,7 +676,6 @@
         <image name="launchScr" width="392" height="377"/>
         <image name="multiply" catalog="system" width="64" height="54"/>
         <image name="paperplane" catalog="system" width="64" height="60"/>
-        <image name="plus" catalog="system" width="64" height="56"/>
         <image name="square" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>

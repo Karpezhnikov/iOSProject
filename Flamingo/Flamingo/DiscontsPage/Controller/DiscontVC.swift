@@ -14,6 +14,7 @@ import Firebase
 class DiscontVC: UIViewController {
 
     let actionSheet = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
+    var admin = false
     var indexPathRowUpdate = Int() // запоминает индекс строки выбраной к редактированию
     var refreshControl:UIRefreshControl!
     var indexPathRow = IndexPath()
@@ -24,12 +25,19 @@ class DiscontVC: UIViewController {
     }
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var buttonAdminAddDis: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRefreshControl()
-        actionSheet.setupCallAction()
-        disconts = realm.objects(Discont.self) // получаем все акции
+        actionSheet.setupCallAction()//устанавливаем кнопку для звонка
+        disconts = realm.objects(Discont.self).sorted(byKeyPath: "dateCreate", ascending: false)// получаем все акции
+        
+        //если админ
+        admin = UserDefaults.standard.bool(forKey: "adminFlg")
+        if admin{
+           adminFunction()
+        }
     }
     
     //MARK: Open Info
@@ -94,7 +102,6 @@ extension DiscontVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellDiscont", for: indexPath) as! CustomTVCellDiscont
-        //print("TableView",disconts[indexPath.row].name)
         cell.newDiscont.isHidden = true
         cell.nameDiscont.text = disconts[indexPath.row].name
         cell.descriptionDiscount.text = disconts[indexPath.row].descriptionDiscont
@@ -137,6 +144,10 @@ extension DiscontVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
+        if admin == false{//проверка на админа
+            return nil//если нет, то отлючаем действия с удалением
+        }
+        
         let deleteItem = UIContextualAction(style: .normal, title: nil) {  [weak self](contextualAction, view, boolValue) in
             // вызываем окно подтверждения удаления
             let actionSheet = UIAlertController(title: nil, message: "Удалить акцию?", preferredStyle: .alert)
@@ -172,4 +183,17 @@ extension DiscontVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     
+}
+
+extension DiscontVC{
+    private func adminFunction(){
+        let buttonAddNewService = UIButton.init(type: .custom)
+        buttonAddNewService.setupAddButton()
+        buttonAddNewService.addTarget(self, action: #selector(self.prepareForNewDiscont), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: buttonAddNewService)]
+    }
+    
+    @objc func prepareForNewDiscont( sender : UIButton ){
+        performSegue(withIdentifier: "addDiscont", sender: nil)
+    }
 }

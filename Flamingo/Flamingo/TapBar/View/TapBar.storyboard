@@ -46,25 +46,25 @@
             </objects>
             <point key="canvasLocation" x="1336" y="-1368"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Circle Bar Controller-->
         <scene sceneID="0sC-Wy-E5E">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="OCW-iy-VEZ" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="OCW-iy-VEZ" customClass="SHCircleBarController" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="iqp-jb-kCd"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="zSr-EH-7T7">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="zSr-EH-7T7" customClass="SHCircleBar" customModule="Flamingo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="83"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <color key="barTintColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <color key="selectedImageTintColor" red="0.41960784309999999" green="0.74509803919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="xIU-nY-NA1" kind="relationship" relationship="viewControllers" id="EOw-RG-efA"/>
                         <segue destination="zyl-Nu-EEq" kind="relationship" relationship="viewControllers" id="xKY-7A-iWR"/>
-                        <segue destination="9Zh-as-pZj" kind="relationship" relationship="viewControllers" id="bW3-Rv-3Fd"/>
                         <segue destination="BGN-j7-IBQ" kind="relationship" relationship="viewControllers" id="Nte-1C-c5t"/>
+                        <segue destination="9Zh-as-pZj" kind="relationship" relationship="viewControllers" id="bW3-Rv-3Fd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIp-O8-asd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -25,12 +25,14 @@ class AddNewMasterVC: UIViewController {
     @IBOutlet weak var tableViewMasterServices: UITableView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var photoButton: SetupButton!
+    @IBOutlet weak var buttonExit: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewElements() // сначала устанавливаем все элементы
         editingMode() // потом определяем режим
         presentViewSetup()
+        buttonExit.setupBackButton()
         //print("SizeMaster = ", imageMaster.frame.size)
     }
     
@@ -141,23 +143,9 @@ extension AddNewMasterVC{
         self.imageMaster.contentMode = .scaleAspectFill
         self.imageMaster.imageCornerRadiusPlusBorder()
         
-        // setup nameMaster
-        self.nameMaster.borderStyle = .line
-        self.nameMaster.backgroundColor = ColorApp.black
-        self.nameMaster.textColor = ColorApp.white
-        
-        // setup profilMaster
-        self.profilMaster.borderStyle = .line
-        self.profilMaster.backgroundColor = ColorApp.black
-        self.profilMaster.textColor = ColorApp.white
-        
-        // setup UITextView
-        self.infoMaster.layer.cornerRadius = nameMaster.layer.cornerRadius
-        self.infoMaster.layer.borderWidth = nameMaster.layer.borderWidth
-        self.infoMaster.layer.borderColor = nameMaster.layer.borderColor
-        self.infoMaster.backgroundColor = ColorApp.black
-        self.infoMaster.textColor = ColorApp.white
-        //self.infoMaster.font = Font.fontRegular
+        //Setup Placeholter
+        self.nameMaster.placeholder = "Имя специалиста"
+        self.profilMaster.placeholder = "Должность"
         
         // setup saveButton
         self.saveButton.layer.cornerRadius = 10
@@ -269,6 +257,7 @@ extension AddNewMasterVC{
             self.profilMaster.borderStyle = .none
             
             //infoMaster
+            self.infoMaster.backgroundColor = ColorApp.black
             self.infoMaster.text = master.info
             self.infoMaster.layer.borderWidth = 0
             self.infoMaster.isUserInteractionEnabled = false

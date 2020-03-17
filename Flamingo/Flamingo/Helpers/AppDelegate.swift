@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //для задержки на экране загрузке
         Thread.sleep(forTimeInterval: 0.5)// чтобы приложение успело открыться
         
-        
 
         // Tell Realm to use this new configuration object for the default Realm
         //Realm.Configuration.defaultConfiguration = config

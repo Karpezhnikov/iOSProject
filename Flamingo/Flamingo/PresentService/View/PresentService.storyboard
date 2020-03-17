@@ -51,7 +51,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="hUF-5L-FKV"/>
                                                         </constraints>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" image="ellipses.bubble" catalog="system">
+                                                        <state key="normal" image="WhatsAppIc">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -159,13 +159,13 @@
                                                                 <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ol9-qe-5kh">
                                                                     <rect key="frame" x="0.0" y="68.5" width="137" height="41"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08c-vJ-5VT" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08c-vJ-5VT" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="137" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55n-ds-qfn" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55n-ds-qfn" customClass="SetupLabel" customModule="Flamingo" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="20.5" width="137" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -810,11 +810,11 @@
     </scenes>
     <resources>
         <image name="DSC_0698" width="2288" height="1525.5"/>
+        <image name="WhatsAppIc" width="17.5" height="17.5"/>
         <image name="calendar.badge.plus" catalog="system" width="64" height="50"/>
         <image name="chevron.right.circle" catalog="system" width="64" height="60"/>
         <image name="clock" catalog="system" width="64" height="60"/>
         <image name="discontTwo" width="1280" height="1280"/>
-        <image name="ellipses.bubble" catalog="system" width="64" height="54"/>
         <image name="greaterthan.circle" catalog="system" width="64" height="60"/>
         <image name="hand.draw" catalog="system" width="64" height="54"/>
         <image name="launchScr" width="392" height="377"/>

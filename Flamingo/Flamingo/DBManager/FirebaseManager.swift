@@ -41,7 +41,8 @@ class FirebaseManager{
             "description": discont.descriptionDiscont,
             "dateStart": discont.dateStart,
             "dateEnd": discont.dateEnd,
-            "imageURL": discont.imageURL
+            "imageURL": discont.imageURL,
+            "dataCreate": Date()
         ]){ err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -521,6 +522,30 @@ class FirebaseManager{
     // помечаем как удаленное и перемещяем в архив
     static func archivedDiscont(_ discont: Discont){
         firebaseBD.collection("disconts").document("\(discont.id)").updateData(["isDelete" : true])
+    }
+    
+    static func checkAccauntAdmin(){
+        // выполняем запрос в ФБ и получаем все занятые времена
+        UserDefaults.standard.removeObject(forKey: "adminFlg")//изначально удаляем флаг
+        let persons = realm.objects(Person.self)
+        guard let person = persons.first else {
+            return
+        }
+        let users = firebaseBD.collection("users")
+        let snapshotDoc = users.whereField("admin", isEqualTo: true).whereField("numberPhone", isEqualTo: person.numberPhone)
+        snapshotDoc.getDocuments {(snapshot, error)  in
+            if error != nil {
+                print("Error admin: \(error!)")
+                return
+            }else{
+                guard snapshot != nil else {
+                    return
+                }
+                guard let dataPerson = snapshot?.documents.first?.data() else{return}
+                let adminFlg = dataPerson["admin"] as? Bool
+                UserDefaults.standard.set(adminFlg, forKey: "adminFlg")//добавляем флаг
+            }
+        }
     }
     
 }

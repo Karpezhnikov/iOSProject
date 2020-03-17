@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Pt-W7-BHy">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Present TextVC-->
+        <scene sceneID="ibK-8T-Bzi">
+            <objects>
+                <viewController id="7Pt-W7-BHy" customClass="PresentTextVC" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gDm-dZ-gfw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLw-pN-4YH">
+                                <rect key="frame" x="0.0" y="54" width="404" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="F4S-I9-iwg"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hxS-kj-Xee">
+                                <rect key="frame" x="10" y="112" width="394" height="750"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="S4z-BC-8rf" firstAttribute="trailing" secondItem="hxS-kj-Xee" secondAttribute="trailing" constant="10" id="OpG-Ml-n53"/>
+                            <constraint firstItem="hxS-kj-Xee" firstAttribute="leading" secondItem="S4z-BC-8rf" secondAttribute="leading" constant="10" id="QMx-Tf-FoS"/>
+                            <constraint firstItem="S4z-BC-8rf" firstAttribute="trailing" secondItem="wLw-pN-4YH" secondAttribute="trailing" constant="10" id="WgJ-q7-Hoa"/>
+                            <constraint firstItem="wLw-pN-4YH" firstAttribute="top" secondItem="S4z-BC-8rf" secondAttribute="top" constant="10" id="XJg-A1-Lcx"/>
+                            <constraint firstItem="wLw-pN-4YH" firstAttribute="leading" secondItem="S4z-BC-8rf" secondAttribute="leading" id="Xa1-Y5-Sd6"/>
+                            <constraint firstItem="S4z-BC-8rf" firstAttribute="bottom" secondItem="hxS-kj-Xee" secondAttribute="bottom" id="hx8-KO-bzV"/>
+                            <constraint firstItem="hxS-kj-Xee" firstAttribute="top" secondItem="wLw-pN-4YH" secondAttribute="bottom" constant="8" symbolic="YES" id="sxM-pp-OFU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="S4z-BC-8rf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iZy-Qg-nk6"/>
+                    <connections>
+                        <outlet property="button" destination="wLw-pN-4YH" id="juY-ru-CQF"/>
+                        <outlet property="textView" destination="hxS-kj-Xee" id="0E0-zc-GH1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SaK-rK-Bkt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="639.13043478260875" y="-14.0625"/>
+        </scene>
+    </scenes>
+</document>

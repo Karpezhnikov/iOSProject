@@ -31,6 +31,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var buttonComment: UIButton!
     @IBOutlet weak var collectionViewMasters: UICollectionView!
     @IBOutlet weak var collectionViewDesign: UICollectionView!
+    @IBOutlet weak var labelDescription: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,8 @@ class HomeVC: UIViewController {
         setupCollectionView()
         imageLogo.imageCornerRadiusPlusBorder()
         masters = realm.objects(Master.self).sorted(byKeyPath: "name")
+        
+        
     }
     
     
@@ -112,6 +115,14 @@ extension HomeVC{
                 destinationVC.master = masters[indexPath.row]
                 destinationVC.viewFlg = true
             }
+        }
+        if identifire == "presentText"{
+            print(1)
+            let presentTextVC = segue.destination as! PresentTextVC
+            print(2)
+            
+            presentTextVC.textData = self.labelDescription.text ?? ""
+            
         }
     }
      

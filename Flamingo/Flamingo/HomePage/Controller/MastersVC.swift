@@ -11,6 +11,7 @@ import RealmSwift
 
 class MastersVC: UIViewController {
     
+    var admin = false
     var refreshControl:UIRefreshControl!
     var indexPathRowUpdate = Int() // запоминает индекс строки выбраной к редактированию
     var arrayMaster = Array<Master>(){//массив мастеров для записи в таблицу мастеров
@@ -32,7 +33,12 @@ class MastersVC: UIViewController {
         setupRefreshControl()
         masters = realm.objects(Master.self).sorted(byKeyPath: "name")
         setupNavigationBar()
-        // Do any additional setup after loading the view.
+        
+        //если админ
+        admin = UserDefaults.standard.bool(forKey: "adminFlg")
+        if admin{
+           adminFunction()
+        }
     }
     
     private func setupNavigationBar(){
@@ -76,6 +82,11 @@ extension MastersVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        if admin == false{//проверка на админа
+            return nil//если нет, то отлючаем действия с удалением
+        }
+        
         self.indexPathRowUpdate = indexPath.row // записываем индекс строки c которой взаимодействуем
         let deleteItem = UIContextualAction(style: .normal, title: nil) {  [weak self] (contextualAction, view, boolValue) in
             let actionSheet = UIAlertController(title: nil, message: "Удалить специалиста?", preferredStyle: .alert)
@@ -156,5 +167,19 @@ extension MastersVC{
         }
         //refreshControl.colo
         
+    }
+}
+
+//MARK: Admin Func
+extension MastersVC{
+    private func adminFunction(){
+        let buttonAddNewService = UIButton.init(type: .custom)
+        buttonAddNewService.setupAddButton()
+        buttonAddNewService.addTarget(self, action: #selector(self.prepareForNewMaster), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: buttonAddNewService)]
+    }
+    
+    @objc func prepareForNewMaster( sender : UIButton ){
+        performSegue(withIdentifier: "addMaster", sender: nil)
     }
 }

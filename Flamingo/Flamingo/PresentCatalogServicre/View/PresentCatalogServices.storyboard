@@ -118,18 +118,13 @@
                         <viewLayoutGuide key="safeArea" id="XDk-qG-bGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="CpX-6e-s2X"/>
-                    <navigationItem key="navigationItem" title="Часть тела" largeTitleDisplayMode="always" id="SL3-cl-8vL">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OXx-mU-ya8">
-                            <connections>
-                                <segue destination="uaW-53-aEJ" kind="presentation" id="f9H-YC-93L"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Часть тела" largeTitleDisplayMode="always" id="SL3-cl-8vL"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="8Qv-Hr-9EL" id="cyE-cS-l0U"/>
                         <segue destination="uaW-53-aEJ" kind="presentation" identifier="updataService" id="mhe-5k-Cj0"/>
+                        <segue destination="uaW-53-aEJ" kind="show" identifier="addNewService" id="Vv6-KC-8ir"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SsZ-kc-EHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -141,11 +136,11 @@
             <objects>
                 <viewController id="uaW-53-aEJ" customClass="AddNewServiceVC" customModule="Flamingo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ubV-Fc-bI5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1346"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oL1-oh-XAj">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1312"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="1278"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScr" translatesAutoresizingMaskIntoConstraints="NO" id="wfV-c2-AV7">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
@@ -409,6 +404,6 @@
         <image name="timer" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mhe-5k-Cj0"/>
+        <segue reference="Vv6-KC-8ir"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,6 +14,7 @@ import RealmSwift
 
 class SamplePriceListVC: UIViewController{
     
+    var admin = false
     var modelSamplePriceListVC = ModelSamplePriceListVC()
     var indexPathRowUpdate = Int()
     var refreshControl:UIRefreshControl!
@@ -41,8 +42,6 @@ class SamplePriceListVC: UIViewController{
         return searchController.isActive && !seatchBarIsEmpty // если поисковая сторока активна и не является пустой
     }
     
-    
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -52,12 +51,13 @@ class SamplePriceListVC: UIViewController{
         getDataFromTheDataBase() // запоняем services
         setupSearchBar() // добавляем поиск
         setupRefreshControl()
+        
+        //если админ
+        admin = UserDefaults.standard.bool(forKey: "adminFlg")
+        if admin{
+           adminFunction()
+        }
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        searchController.isActive = true
-//    }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -107,6 +107,10 @@ extension SamplePriceListVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        if admin == false{//проверка на админа
+            return nil//если нет, то отлючаем действия с удалением
+        }
         
         let deleteItem = UIContextualAction(style: .normal, title: nil) {  [weak self](contextualAction, view, boolValue) in
             // вызываем окно подтверждения удаления
@@ -170,35 +174,8 @@ extension SamplePriceListVC{
     }
 }
 
-//// MARK: Work Collection View
-//extension SamplePriceListVC: UICollectionViewDataSource, UICollectionViewDelegate{
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return arrayHashtagSeatch.seatchHashtagDesignation.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "hashtagSeatch", for: indexPath) as? CustumCVC{
-//            itemCell.hashtagLabel.text = "#\(arrayHashtagSeatch.seatchHashtagDesignation[indexPath.row].emojiDesignation)"
-//            return itemCell
-//        }
-//        return UICollectionViewCell()
-//    }
-//
-//    // для поиска по нажатой ячейки
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//        searchController.searchBar.becomeFirstResponder()
-//        searchController.searchBar.endEditing(true)
-//        searchController.searchBar.text = arrayHashtagSeatch.seatchHashtagDesignation[indexPath.row].textDesignation
-//        // ToDo: добавить скрытик клавиатуры при поиске по тегу
-//    }
-//
-//
-//}
-
 // MARK: Get Data From The DataBase
 extension SamplePriceListVC{
-    
     // функция для выборки данный из БД
     private func getDataFromTheDataBase(){
         if modelSamplePriceListVC.category.isEmpty{
@@ -256,3 +233,16 @@ extension SamplePriceListVC: UISearchResultsUpdating{
     }
 }
 
+//MARK: Admin Func
+extension SamplePriceListVC{
+    private func adminFunction(){
+        let buttonAddNewService = UIButton.init(type: .custom)
+        buttonAddNewService.setupAddButton()
+        buttonAddNewService.addTarget(self, action: #selector(self.prepareForNewService), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: buttonAddNewService)]
+    }
+    
+    @objc func prepareForNewService( sender : UIButton ){
+        performSegue(withIdentifier: "addNewService", sender: nil)
+    }
+}

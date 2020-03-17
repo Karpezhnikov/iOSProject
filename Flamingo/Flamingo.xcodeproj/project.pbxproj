@@ -11,6 +11,8 @@
 		040247D3238D66C900C6EFE2 /* AddNewDiscontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */; };
 		040247D5238DB34C00C6EFE2 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */; };
 		040306EB23D87FFE00045D54 /* PresentMaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040306EA23D87FFE00045D54 /* PresentMaster.storyboard */; };
+		0403F68223FAC799003C2B47 /* SHCircleBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403F68123FAC799003C2B47 /* SHCircleBarController.swift */; };
+		0403F68423FAC84A003C2B47 /* SHCircleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403F68323FAC84A003C2B47 /* SHCircleBar.swift */; };
 		0404DFE223E9F092005D3B9C /* PresentComments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0404DFE123E9F092005D3B9C /* PresentComments.storyboard */; };
 		0404DFE423E9F7A9005D3B9C /* PresentCommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404DFE323E9F7A9005D3B9C /* PresentCommentsVC.swift */; };
 		0406900A23E022CD00EC57DD /* CelendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0406900923E022CD00EC57DD /* CelendarVC.swift */; };
@@ -30,14 +32,16 @@
 		042C2DA723C763810073DE33 /* CustumCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C2DA623C763810073DE33 /* CustumCVC.swift */; };
 		042C2DAD23C7675A0073DE33 /* SetupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C2DAC23C7675A0073DE33 /* SetupTextField.swift */; };
 		042C2DAF23C7677F0073DE33 /* SetupTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C2DAE23C7677F0073DE33 /* SetupTextView.swift */; };
-		042C2DB123C767DE0073DE33 /* SetupTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C2DB023C767DE0073DE33 /* SetupTabBarVC.swift */; };
 		0441BCA023C729D2002A7DB6 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0441BC9F23C729D2002A7DB6 /* Registration.storyboard */; };
+		0443593A23EC193D0034C9B6 /* PresentText.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0443593923EC193D0034C9B6 /* PresentText.storyboard */; };
+		0443593C23EC19DA0034C9B6 /* PresentTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443593B23EC19DA0034C9B6 /* PresentTextVC.swift */; };
 		04477A7A23D8A80B00155566 /* PresentService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04477A7923D8A80B00155566 /* PresentService.storyboard */; };
 		045D423823B0D65E00C85243 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D423723B0D65E00C85243 /* LoginVC.swift */; };
 		045D423A23B11BAF00C85243 /* PersonAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D423923B11BAF00C85243 /* PersonAccountVC.swift */; };
 		045D423C23B12EFD00C85243 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D423B23B12EFD00C85243 /* RegistrationVC.swift */; };
 		046744F123D085BA00616972 /* RegSelectionScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046744F023D085BA00616972 /* RegSelectionScreenVC.swift */; };
-		0471603F23E831960022AF2D /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0471603E23E831960022AF2D /* GTMSessionFetcher.framework */; };
+		0473284A241F815E009E2773 /* Pods_Flamingo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94904DB311A9C8CDF2665D96 /* Pods_Flamingo.framework */; };
+		0473284B241F815E009E2773 /* Pods_Flamingo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94904DB311A9C8CDF2665D96 /* Pods_Flamingo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		047DAA0823A78A1F0044362E /* DetailServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047DAA0723A78A1F0044362E /* DetailServiceVC.swift */; };
 		04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04859C1F23851B5D000E8709 /* AnimateUI.swift */; };
 		049D27C923A8B33400E6872C /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D27C823A8B33400E6872C /* HomeVC.swift */; };
@@ -58,7 +62,6 @@
 		04F9887323A174B50099E354 /* MakeAppointmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9887223A174B50099E354 /* MakeAppointmentVC.swift */; };
 		04FDA55D23D713B90050AD06 /* SupportDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDA55C23D713B90050AD06 /* SupportDesign.swift */; };
 		04FDA55F23D760B40050AD06 /* CallAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDA55E23D760B40050AD06 /* CallAlertVC.swift */; };
-		0CBA80D88BA23B05379FF30F /* Pods_Flamingo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94904DB311A9C8CDF2665D96 /* Pods_Flamingo.framework */; };
 		A913336E236317A400A54FEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913336D236317A400A54FEC /* AppDelegate.swift */; };
 		A9133370236317A400A54FEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913336F236317A400A54FEC /* SceneDelegate.swift */; };
 		A9133375236317A400A54FEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9133373236317A400A54FEC /* Main.storyboard */; };
@@ -73,12 +76,28 @@
 		ECF08DCB24210B2200E5BD5D /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF08DCA24210B2200E5BD5D /* CustomUIView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0473284C241F815E009E2773 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0473284B241F815E009E2773 /* Pods_Flamingo.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		017E11B325003FE43014A310 /* Pods-Flamingo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flamingo.debug.xcconfig"; path = "Target Support Files/Pods-Flamingo/Pods-Flamingo.debug.xcconfig"; sourceTree = "<group>"; };
 		040247D0238D467B00C6EFE2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		040247D2238D66C900C6EFE2 /* AddNewDiscontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDiscontVC.swift; sourceTree = "<group>"; };
 		040247D4238DB34C00C6EFE2 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		040306EA23D87FFE00045D54 /* PresentMaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentMaster.storyboard; sourceTree = "<group>"; };
+		0403F68123FAC799003C2B47 /* SHCircleBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHCircleBarController.swift; sourceTree = "<group>"; };
+		0403F68323FAC84A003C2B47 /* SHCircleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHCircleBar.swift; sourceTree = "<group>"; };
 		0404DFE123E9F092005D3B9C /* PresentComments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentComments.storyboard; sourceTree = "<group>"; };
 		0404DFE323E9F7A9005D3B9C /* PresentCommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PresentCommentsVC.swift; path = Flamingo/PresentComments/View/PresentCommentsVC.swift; sourceTree = SOURCE_ROOT; };
 		0406900923E022CD00EC57DD /* CelendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelendarVC.swift; sourceTree = "<group>"; };
@@ -99,8 +118,9 @@
 		042C2DA623C763810073DE33 /* CustumCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumCVC.swift; sourceTree = "<group>"; };
 		042C2DAC23C7675A0073DE33 /* SetupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTextField.swift; sourceTree = "<group>"; };
 		042C2DAE23C7677F0073DE33 /* SetupTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTextView.swift; sourceTree = "<group>"; };
-		042C2DB023C767DE0073DE33 /* SetupTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTabBarVC.swift; sourceTree = "<group>"; };
 		0441BC9F23C729D2002A7DB6 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
+		0443593923EC193D0034C9B6 /* PresentText.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentText.storyboard; sourceTree = "<group>"; };
+		0443593B23EC19DA0034C9B6 /* PresentTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentTextVC.swift; sourceTree = "<group>"; };
 		04477A7923D8A80B00155566 /* PresentService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentService.storyboard; sourceTree = "<group>"; };
 		045D423723B0D65E00C85243 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = Flamingo/FirstPage/Controller/LoginVC.swift; sourceTree = SOURCE_ROOT; };
 		045D423923B11BAF00C85243 /* PersonAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonAccountVC.swift; sourceTree = "<group>"; };
@@ -154,8 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0471603F23E831960022AF2D /* GTMSessionFetcher.framework in Frameworks */,
-				0CBA80D88BA23B05379FF30F /* Pods_Flamingo.framework in Frameworks */,
+				0473284A241F815E009E2773 /* Pods_Flamingo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +438,6 @@
 				042C2DA623C763810073DE33 /* CustumCVC.swift */,
 				042C2DAC23C7675A0073DE33 /* SetupTextField.swift */,
 				042C2DAE23C7677F0073DE33 /* SetupTextView.swift */,
-				042C2DB023C767DE0073DE33 /* SetupTabBarVC.swift */,
 				04FDA55C23D713B90050AD06 /* SupportDesign.swift */,
 			);
 			path = DesingApp;
@@ -462,6 +480,39 @@
 			isa = PBXGroup;
 			children = (
 				045D423B23B12EFD00C85243 /* RegistrationVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0443593523EC19060034C9B6 /* PresentText */ = {
+			isa = PBXGroup;
+			children = (
+				0443593823EC19270034C9B6 /* Controller */,
+				0443593723EC191F0034C9B6 /* View */,
+				0443593623EC19190034C9B6 /* model */,
+			);
+			path = PresentText;
+			sourceTree = "<group>";
+		};
+		0443593623EC19190034C9B6 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0443593723EC191F0034C9B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0443593923EC193D0034C9B6 /* PresentText.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0443593823EC19270034C9B6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0443593B23EC19DA0034C9B6 /* PresentTextVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -583,6 +634,8 @@
 		04C31BEB23D0762E006AA0C5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0403F68123FAC799003C2B47 /* SHCircleBarController.swift */,
+				0403F68323FAC84A003C2B47 /* SHCircleBar.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -651,6 +704,7 @@
 		A913336C236317A400A54FEC /* Flamingo */ = {
 			isa = PBXGroup;
 			children = (
+				0443593523EC19060034C9B6 /* PresentText */,
 				04C4A44223EAD0DA003EC905 /* PresentAddNewComment */,
 				0404DFDD23E9F041005D3B9C /* PresentComments */,
 				0427472623E87F67000D9E9E /* Flamingo.entitlements */,
@@ -710,6 +764,7 @@
 				A9133367236317A400A54FEC /* Frameworks */,
 				A9133368236317A400A54FEC /* Resources */,
 				46FCB898BE635C426F622808 /* [CP] Embed Pods Frameworks */,
+				0473284C241F815E009E2773 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -761,6 +816,7 @@
 				042C2D8823C74F330073DE33 /* Category.storyboard in Resources */,
 				042C2D7C23C7465F0073DE33 /* Accaunt.storyboard in Resources */,
 				04C4A44723EAD12B003EC905 /* PresentAddNewComment.storyboard in Resources */,
+				0443593A23EC193D0034C9B6 /* PresentText.storyboard in Resources */,
 				0404DFE223E9F092005D3B9C /* PresentComments.storyboard in Resources */,
 				04477A7A23D8A80B00155566 /* PresentService.storyboard in Resources */,
 				0441BCA023C729D2002A7DB6 /* Registration.storyboard in Resources */,
@@ -825,6 +881,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0403F68423FAC84A003C2B47 /* SHCircleBar.swift in Sources */,
 				049D27C923A8B33400E6872C /* HomeVC.swift in Sources */,
 				A92731FC236C23EC00976122 /* ModelController.swift in Sources */,
 				040247D5238DB34C00C6EFE2 /* FirebaseManager.swift in Sources */,
@@ -851,8 +908,7 @@
 				042C2DA323C75DFD0073DE33 /* SetupLabel.swift in Sources */,
 				A913336E236317A400A54FEC /* AppDelegate.swift in Sources */,
 				04F9887323A174B50099E354 /* MakeAppointmentVC.swift in Sources */,
-				042C2DB123C767DE0073DE33 /* SetupTabBarVC.swift in Sources */,
-				ECF08DCB24210B2200E5BD5D /* CustomUIView.swift in Sources */,
+>>>>>>> f58fe035cbe4c9a7734f3afc2a0c06aeea45f6f3
 				04BA918C23DAD708007EDA1F /* ModelSimplePraceList.swift in Sources */,
 				A91333842363270300A54FEC /* ModelSamplePriceList.swift in Sources */,
 				04BA917F23D9CD1E007EDA1F /* AccauntVC.swift in Sources */,
@@ -870,6 +926,8 @@
 				0406900C23E0264500EC57DD /* Model.swift in Sources */,
 				045D423A23B11BAF00C85243 /* PersonAccountVC.swift in Sources */,
 				A9133370236317A400A54FEC /* SceneDelegate.swift in Sources */,
+				0403F68223FAC799003C2B47 /* SHCircleBarController.swift in Sources */,
+				0443593C23EC19DA0034C9B6 /* PresentTextVC.swift in Sources */,
 				04C4A44B23EB01C1003EC905 /* ModelAddNewComment.swift in Sources */,
 				04859C2023851B5D000E8709 /* AnimateUI.swift in Sources */,
 			);
@@ -970,6 +1028,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				"LIBRARY_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Realm/core\"",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1016,6 +1078,7 @@
 				DEVELOPMENT_TEAM = 3WT2QN7Y27;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1024,7 +1087,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -30,12 +30,12 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wAw-6D-lwa">
                                                 <rect key="frame" x="10" y="65.5" width="187" height="76"/>
                                                 <subviews>
-                                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ef-sC-piR" customClass="SetupTextField" customModule="Flamingo" customModuleProvider="target">
+                                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ef-sC-piR" customClass="SetupTextField" customModule="Flamingo" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="187" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HxC-PO-fBY" customClass="SetupTextField" customModule="Flamingo" customModuleProvider="target">
+                                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HxC-PO-fBY" customClass="SetupTextField" customModule="Flamingo" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="42" width="187" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -184,7 +184,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Y4-am-Rap">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="3wR-J2-fnD"/>
                                         </constraints>
@@ -207,7 +207,7 @@
                                     <constraint firstItem="BBg-y4-UaX" firstAttribute="top" secondItem="9Q4-D7-zHQ" secondAttribute="bottom" constant="5" id="BRV-rI-L7E"/>
                                     <constraint firstItem="9Q4-D7-zHQ" firstAttribute="leading" secondItem="TzR-Yi-w5P" secondAttribute="leading" constant="5" id="NOc-gV-ybt"/>
                                     <constraint firstAttribute="trailing" secondItem="9Q4-D7-zHQ" secondAttribute="trailing" constant="15" id="OR1-el-rK9"/>
-                                    <constraint firstAttribute="trailing" secondItem="8Y4-am-Rap" secondAttribute="trailing" id="Py7-1E-kYK"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Y4-am-Rap" secondAttribute="trailing" constant="10" id="Py7-1E-kYK"/>
                                     <constraint firstItem="Yxh-eY-a33" firstAttribute="leading" secondItem="TzR-Yi-w5P" secondAttribute="leading" constant="2" id="V38-c6-bJK"/>
                                     <constraint firstItem="8Y4-am-Rap" firstAttribute="leading" secondItem="TzR-Yi-w5P" secondAttribute="leading" id="WlT-tc-Gt0"/>
                                     <constraint firstItem="6Zx-ka-sBV" firstAttribute="leading" secondItem="TzR-Yi-w5P" secondAttribute="leading" constant="5" id="cmM-jR-0Gw"/>
@@ -238,6 +238,7 @@
                     </view>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
+                        <outlet property="buttonExit" destination="8Y4-am-Rap" id="CnA-mm-Y3a"/>
                         <outlet property="imageMaster" destination="CDu-D3-Rgl" id="ru8-ug-clh"/>
                         <outlet property="infoMaster" destination="BBg-y4-UaX" id="t73-8f-IO0"/>
                         <outlet property="nameMaster" destination="1ef-sC-piR" id="DqK-f0-QoT"/>
